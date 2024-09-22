@@ -21,9 +21,10 @@ UserSettings/
 *.svd
 *.pdb
 *.opendb
-*.suo
 *.user
 *.userprefs
+
+# Ignore specific large files
 *.apk
 outdoor.apk
 
@@ -37,3 +38,21 @@ Packages/packages-lock.json
 
 # Ignore crash reports
 crash-reports/
+
+# Ignore build artifacts
+*.app
+*.exe
+*.dll
+*.dSYM/
+*.apk
+
+# Ignore cache files
+*.cache
+
+# Ignore other temporary files
+*.tmp
+*.temp
+
+# Ignore system files
+.DS_Store
+Thumbs.db
