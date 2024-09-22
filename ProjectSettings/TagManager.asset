@@ -7,6 +7,7 @@ TagManager:
   - Fluid
   - Enemy
   - UI
+  - Fiero
   layers:
   - Default
   - TransparentFX
