@@ -2,7 +2,7 @@
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class CirclePreviewDetector : MonoBehaviour
+public class CirclePreviewDetector : UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable
 {
     public GameObject previewPrefab; // 要顯示的 Preview 預製物件
     public float circleRadius = 10f;  // 圓形範圍的半徑
@@ -10,11 +10,35 @@ public class CirclePreviewDetector : MonoBehaviour
 
     private GameObject currentPreview; // 當前顯示的 Preview
 
+    protected override void Awake()
+    {
+        base.Awake();
+        // 使用新的事件簽名
+        hoverEntered.AddListener(OnHoverEnter);
+        hoverExited.AddListener(OnHoverExit);
+    }
+
+    private void OnHoverEnter(HoverEnterEventArgs args)
+    {
+        UpdatePreview(args.interactorObject.transform.position);
+    }
+
+    private void OnHoverExit(HoverExitEventArgs args)
+    {
+        HidePreview();
+    }
+
     void Update()
     {
-        Vector3 playerPathEnd = player.position + GetControllerDirection() * 5f; // 設定距離為5單位
+        // 在 Update 中不需要進行檢查，只在懸停狀態下顯示 Preview
+    }
 
-        if (IsLineIntersectingCircle(player.position, playerPathEnd, transform.position, circleRadius))
+    private void UpdatePreview(Vector3 interactorPosition)
+    {
+        Vector3 playerPathEnd = interactorPosition + GetControllerDirection() * 5f; // 設定距離為5單位
+
+        // 檢查交集並顯示 Preview
+        if (IsLineIntersectingCircle(interactorPosition, playerPathEnd, transform.position, circleRadius))
         {
             ShowPreview();
         }
@@ -45,8 +69,16 @@ public class CirclePreviewDetector : MonoBehaviour
 
         float projection = Vector3.Dot(lineToCircle, lineDir.normalized);
         Vector3 closestPoint = lineStart + lineDir.normalized * projection;
-        Vector3 closestToCircle = circleCenter - closestPoint;
 
+        // 檢查 closestPoint 是否在直線的範圍內
+        if (projection < 0 || projection > lineDir.magnitude)
+        {
+            // 找到的最近點不在直線段上，檢查線段的起始點到圓心的距離
+            return (lineStart - circleCenter).sqrMagnitude <= circleRadius * circleRadius ||
+                   (lineEnd - circleCenter).sqrMagnitude <= circleRadius * circleRadius;
+        }
+
+        Vector3 closestToCircle = circleCenter - closestPoint;
         return closestToCircle.sqrMagnitude <= circleRadius * circleRadius;
     }
 
