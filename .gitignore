@@ -56,3 +56,13 @@ crash-reports/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+# Ignore IL2CPP generated files
+outdoor_BackUpThisFolder_ButDontShipltWithYourGame/il2cppOutput/*
+
+# Ignore Visual Studio index files
+.vs/
+.vs/Focus3/FileContentIndex/*.vsidx
+
+# Ignore symbol files
+outdoor-0.1-v1-IL2CPP.symbols.zip
