@@ -58,7 +58,7 @@ crash-reports/
 Thumbs.db
 
 # Ignore IL2CPP generated files
-outdoor_BackUpThisFolder_ButDontShipltWithYourGame/il2cppOutput/*
+outdoor_BackUpThisFolder_ButDontShipItWithYourGame/
 
 # Ignore Visual Studio index files
 .vs/

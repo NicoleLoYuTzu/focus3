@@ -2,7 +2,7 @@
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class CirclePreviewDetector : UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable
+public class TEST : UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable
 {
     public GameObject previewPrefab; // 要顯示的 Preview 預製物件
     public float circleRadius = 10f;  // 圓形範圍的半徑

@@ -1,64 +1,136 @@
 ﻿using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
-public class PreviewInRange : MonoBehaviour
+public class PreviewInRangeVR : MonoBehaviour
 {
-    public GameObject previewPrefab; // 預覽畫面Prefab
-    public float radius = 5f; // 設定圓形半徑
-    public Camera mainCamera; // 需要在Inspector中設置的相機引用
-    public GameObject teleportInteractor; // 右手控制器
-    private GameObject currentPreview;
-    private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor rayInteractor;
 
-    private void Start()
+    public float radius = 5f; // 圓形範圍的半徑
+    public GameObject previewPrefab; // 預覽物件
+    private Camera mainCamera; // 主攝影機
+    private GameObject previewInstance; // 獲取 phantopreview 物件
+    private Preview previewScript; // 獲取 Preview 腳本
+    private bool isPreviewShown = false; // 記錄預覽是否顯示
+
+    void Start()
     {
-        if (mainCamera == null)
-        {
-            Debug.LogError("[PREVIEW] Main camera not set!");
-            return;
-        }
-
-        rayInteractor = teleportInteractor.GetComponentInChildren<UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor>();
-        if (rayInteractor == null)
-        {
-            Debug.LogError("[PREVIEW] XRRayInteractor not found in camera's children!");
-            return;
-        }
-
-        // 預先實例化預覽物件
-        currentPreview = Instantiate(previewPrefab, mainCamera.transform.position, Quaternion.identity);
-        currentPreview.SetActive(false); // 初始時隱藏預覽物件
-        currentPreview.transform.SetParent(mainCamera.transform); // 設定預覽物件為相機的子物件
-        Debug.Log("[PREVIEW] Preview object instantiated and set as child of the main camera.");
+        mainCamera = Camera.main; // 獲取主要相機
+        previewInstance = mainCamera.transform.Find("PhantoPreview").gameObject; // 獲取 phantopreview 物件
+        previewScript = previewInstance.GetComponent<Preview>(); // 獲取 Preview 腳本
+        HidePreview(); // 初始狀態隱藏預覽
+        Debug.Log("[PREVIEW] PreviewInRangeVR script started, preview hidden by default.");
     }
 
-    private void Update()
+    void Update()
     {
-        // 檢查射線的碰撞
-        RaycastHit hit;
-        if (rayInteractor.TryGetCurrent3DRaycastHit(out hit))
+        // 檢測控制器是否有移動
+        if (IsControllerMoving())
         {
-            // 計算控制器到碰撞點的距離
-            float distance = Vector3.Distance(hit.point, teleportInteractor.transform.position);
-            Debug.Log($"[PREVIEW] Ray hit at {hit.point}, distance from interactor: {distance}");
-
-            // 檢查是否在範圍內
-            if (distance <= radius)
-            {
-                currentPreview.SetActive(true); // 顯示預覽物件
-                currentPreview.transform.position = hit.point; // 更新預覽物件位置
-                currentPreview.transform.rotation = Quaternion.LookRotation(hit.normal); // 調整預覽物件的朝向
-                Debug.Log("[PREVIEW] Preview object is now visible.");
-            }
-            else
-            {
-                currentPreview.SetActive(false); // 隱藏預覽物件
-                Debug.Log("[PREVIEW] Preview object is out of range and hidden.");
-            }
+            Debug.Log("[PREVIEW] Controller is moving, performing raycast check.");
+            // 當控制器移動時進行交集檢測
+            PerformRaycastCheck();
         }
         else
         {
-            currentPreview.SetActive(false); // 隱藏預覽物件
-            Debug.Log("[PREVIEW] No ray hit detected; preview object is hidden.");
+            Debug.Log("[PREVIEW] Controller is not moving.");
+            // 如果控制器沒有移動且預覽顯示中，隱藏預覽物件
+            if (isPreviewShown)
+            {
+                HidePreview();
+                isPreviewShown = false;
+                Debug.Log("[PREVIEW] Preview hidden because controller stopped moving.");
+            }
         }
+    }
+
+    private bool IsControllerMoving()
+    {
+        // 檢查控制器的 2D 軸（操縱桿）輸入，用於檢測前後左右的移動
+        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        Vector2 primary2DAxisValue;
+
+        // 嘗試獲取操控桿的值
+        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
+        {
+            Debug.Log($"[PREVIEW] Controller primary2DAxisValue: {primary2DAxisValue}");
+            // 如果操縱桿的值不為 (0,0)，表示控制器正在移動
+            return primary2DAxisValue != Vector2.zero;
+        }
+
+        // 嘗試獲取其他可能的控制器輸入（如觸摸板或其他）
+        float triggerValue;
+        if (device.TryGetFeatureValue(CommonUsages.trigger, out triggerValue) && triggerValue > 0.1f)
+        {
+            Debug.Log($"[PREVIEW] Controller trigger value: {triggerValue}");
+            return true; // 假設觸發器被按下表示正在移動
+        }
+
+        Debug.LogWarning("[PREVIEW] Failed to get movement input from controller.");
+        return false;
+    }
+
+    private void PerformRaycastCheck()
+    {
+        // 獲取控制器的前進方向，並進行 Raycast 檢測
+        Ray ray = new Ray(transform.position, transform.forward);
+        float distance = radius;
+
+        Debug.Log($"[PREVIEW] Performing raycast with ray origin: {transform.position}, direction: {transform.forward}, distance: {distance}");
+
+        // 檢測直線與圓形的交集
+        if (Physics.Raycast(ray, out RaycastHit hit, distance))
+        {
+            Vector3 hitPoint = hit.point;
+            Vector3 center = transform.position;
+
+            Debug.Log($"[PREVIEW] Raycast hit at {hitPoint}, checking distance to center.");
+
+            // 計算到圓心的距離
+            float distanceToCenter = Vector3.Distance(hitPoint, center);
+            Debug.Log($"[PREVIEW] Distance to center: {distanceToCenter}, Radius: {radius}");
+
+            if (distanceToCenter <= radius && !isPreviewShown)
+            {
+                // 若進入範圍且預覽未顯示，顯示預覽物件
+                ShowPreview();
+                isPreviewShown = true;
+                Debug.Log("[PREVIEW] Preview shown because object is within range.");
+            }
+            else if (distanceToCenter > radius && isPreviewShown)
+            {
+                // 若離開範圍且預覽顯示中，隱藏預覽物件
+                HidePreview();
+                isPreviewShown = false;
+                Debug.Log("[PREVIEW] Preview hidden because object left range.");
+            }
+        }
+        else if (isPreviewShown)
+        {
+            // 若沒有檢測到任何物體且預覽顯示中，隱藏預覽物件
+            HidePreview();
+            isPreviewShown = false;
+            Debug.Log("[PREVIEW] Preview hidden because no object was hit by the raycast.");
+        }
+    }
+
+    private void ShowPreview()
+    {
+        previewScript.Show(); // 調用 Preview 腳本中的 Show 方法
+        Debug.Log("[PREVIEW] Preview object shown.");
+    }
+
+    private void HidePreview()
+    {
+        previewScript.Hide(); // 調用 Preview 腳本中的 Hide 方法
+        Debug.Log("[PREVIEW] Preview object hidden.");
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 設置 Gizmos 顏色
+        Gizmos.color = Color.red;
+        // 劃出圓形範圍
+        Gizmos.DrawWireSphere(transform.position, radius);
+        Debug.Log("[PREVIEW] Gizmos drawn to represent detection radius.");
     }
 }
