@@ -69,49 +69,102 @@ public class PreviewInRangeVR : MonoBehaviour
         return false;
     }
 
+
+    private bool IsRayInRange(Vector3 rayOrigin, Vector3 rayDirection, Vector3 objectCenter, float radius)
+    {
+        // 計算從射線起始點到物件中心的向量
+        Vector3 toObject = objectCenter - rayOrigin;
+
+        // 計算射線與物件中心的垂直距離
+        float projection = Vector3.Dot(toObject, rayDirection.normalized);
+
+        // 確保投影點在射線的範圍內
+        if (projection < 0)
+        {
+            // 投影點在射線的起始點之前
+            return false;
+        }
+
+        // 計算投影點的位置
+        Vector3 closestPointOnRay = rayOrigin + rayDirection.normalized * projection;
+
+        // 計算投影點到物件中心的距離
+        float distanceToCenter = Vector3.Distance(closestPointOnRay, objectCenter);
+
+        // 判斷距離是否在範圍內
+        return distanceToCenter <= radius;
+    }
+
     private void PerformRaycastCheck()
     {
         // 獲取控制器的前進方向，並進行 Raycast 檢測
         Ray ray = new Ray(transform.position, transform.forward);
         float distance = radius;
 
-        Debug.Log($"[PREVIEW] Performing raycast with ray origin: {transform.position}, direction: {transform.forward}, distance: {distance}");
+        // 這裡的 objectCenter 是您物件的中心
+        Vector3 objectCenter = transform.position; // 或者是您物件的其他位置
 
-        // 檢測直線與圓形的交集
-        if (Physics.Raycast(ray, out RaycastHit hit, distance))
+        // 檢查射線是否在範圍內
+        if (IsRayInRange(ray.origin, ray.direction, objectCenter, radius))
         {
-            Vector3 hitPoint = hit.point;
-            Vector3 center = transform.position;
-
-            Debug.Log($"[PREVIEW] Raycast hit at {hitPoint}, checking distance to center.");
-
-            // 計算到圓心的距離
-            float distanceToCenter = Vector3.Distance(hitPoint, center);
-            Debug.Log($"[PREVIEW] Distance to center: {distanceToCenter}, Radius: {radius}");
-
-            if (distanceToCenter <= radius && !isPreviewShown)
-            {
-                // 若進入範圍且預覽未顯示，顯示預覽物件
-                ShowPreview();
-                isPreviewShown = true;
-                Debug.Log("[PREVIEW] Preview shown because object is within range.");
-            }
-            else if (distanceToCenter > radius && isPreviewShown)
-            {
-                // 若離開範圍且預覽顯示中，隱藏預覽物件
-                HidePreview();
-                isPreviewShown = false;
-                Debug.Log("[PREVIEW] Preview hidden because object left range.");
-            }
+            // 若射線與範圍相交，執行相應邏輯
+            ShowPreview();
+            isPreviewShown = true;
+            Debug.Log("[PREVIEW] Preview shown because ray is within range.");
         }
-        else if (isPreviewShown)
+        else
         {
-            // 若沒有檢測到任何物體且預覽顯示中，隱藏預覽物件
+            // 若射線不在範圍內，隱藏預覽物件
             HidePreview();
             isPreviewShown = false;
-            Debug.Log("[PREVIEW] Preview hidden because no object was hit by the raycast.");
+            Debug.Log("[PREVIEW] Preview hidden because ray is out of range.");
         }
     }
+
+
+    //private void PerformRaycastCheck()
+    //{
+    //    // 獲取控制器的前進方向，並進行 Raycast 檢測
+    //    Ray ray = new Ray(transform.position, transform.forward);
+    //    float distance = radius;
+
+    //    Debug.Log($"[PREVIEW] Performing raycast with ray origin: {transform.position}, direction: {transform.forward}, distance: {distance}");
+
+    //    // 檢測直線與圓形的交集
+    //    if (Physics.Raycast(ray, out RaycastHit hit, distance))
+    //    {
+    //        Vector3 hitPoint = hit.point;
+    //        Vector3 center = transform.position;
+
+    //        Debug.Log($"[PREVIEW] Raycast hit at {hitPoint}, checking distance to center.");
+
+    //        // 計算到圓心的距離
+    //        float distanceToCenter = Vector3.Distance(hitPoint, center);
+    //        Debug.Log($"[PREVIEW] Distance to center: {distanceToCenter}, Radius: {radius}");
+
+    //        if (distanceToCenter <= radius && !isPreviewShown)
+    //        {
+    //            // 若進入範圍且預覽未顯示，顯示預覽物件
+    //            ShowPreview();
+    //            isPreviewShown = true;
+    //            Debug.Log("[PREVIEW] Preview shown because object is within range.");
+    //        }
+    //        else if (distanceToCenter > radius && isPreviewShown)
+    //        {
+    //            // 若離開範圍且預覽顯示中，隱藏預覽物件
+    //            HidePreview();
+    //            isPreviewShown = false;
+    //            Debug.Log("[PREVIEW] Preview hidden because object left range.");
+    //        }
+    //    }
+    //    else if (isPreviewShown)
+    //    {
+    //        // 若沒有檢測到任何物體且預覽顯示中，隱藏預覽物件
+    //        HidePreview();
+    //        isPreviewShown = false;
+    //        Debug.Log("[PREVIEW] Preview hidden because no object was hit by the raycast.");
+    //    }
+    //}
 
     private void ShowPreview()
     {
