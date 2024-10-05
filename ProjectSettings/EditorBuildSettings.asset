@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Outdoor3Scene.unity
     guid: 4cb5b8ccf4bb9594f8168bca6600895d
+  - enabled: 0
+    path: Assets/Scenes/OutdoorScene/New Scene.unity
+    guid: 750ad1af2f368d84bb0165593960273d
   m_configObjects:
     com.htc.upm.wave.xrsdk.xrsettings: {fileID: 11400000, guid: 8f088df1f6d992044b010c0f47097f5b, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8e1cb915d0ec70f4d9a2bd1296c88bf3, type: 2}
