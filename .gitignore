@@ -1,5 +1,5 @@
-# Unity generated files
-[Ll]ibrary/
+# Ignore the entire Library directory
+Library/*
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
