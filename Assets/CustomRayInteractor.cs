@@ -117,6 +117,8 @@ public class CustomRayInteractor : MonoBehaviour
             if (CheckIntersection(path, targetObject))
             {
                 ShowMessage(uiPanel); // 显示对应的 UI 面板
+
+                LogWithName($"CheckIntersection uiPanel= {uiPanel}, targetObject={targetObject}");
             }
             else
             {
