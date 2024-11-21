@@ -76,6 +76,8 @@ public class ImageSpawner : MonoBehaviour
             GameObject newButton = Instantiate(buttonPrefab, parentTransform);
             LogInfo($"Instantiated new button for image: {imagesArray[i].name}");
 
+            newButton.name = imagesArray[i].name;
+
             // 為兔子的 Button 設定星星和圖片
             if (imagesArray[i].name == "RABBIT1")
             {

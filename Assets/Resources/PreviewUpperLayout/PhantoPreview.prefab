@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3842228990407486178}
   - component: {fileID: 3478640107244639669}
   - component: {fileID: 1368145394850999675}
+  - component: {fileID: -9009719598566312955}
   m_Layer: 5
   m_Name: PhantoPreview
   m_TagString: Untagged
@@ -149,6 +150,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &-9009719598566312955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283181924662316577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2dcf92064fa0ea46b28ac636915f2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7028419195467269244
 GameObject:
   m_ObjectHideFlags: 0
