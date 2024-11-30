@@ -4,6 +4,7 @@ public class PrefabHoverHandler : MonoBehaviour
 {
     private Canvas activeCanvas; // 當前顯示的 Canvas
     private GameObject rabbitPreview;
+    private GameObject caterpillarPreview;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class PrefabHoverHandler : MonoBehaviour
 
         // 如果 Canvas 存在，嘗試找到 RabbitPreview
         Transform canvasTransform = canvasObject.transform;
+        //找到兔子
         Transform rabbitPreviewTransform = canvasTransform.Find("RabbitPreview");
 
         if (rabbitPreviewTransform == null)
@@ -32,9 +34,14 @@ public class PrefabHoverHandler : MonoBehaviour
         // 如果 RabbitPreview 存在，將其存入變量
         rabbitPreview = rabbitPreviewTransform.gameObject;
         Debug.Log("Successfully found RabbitPreview!");
+
+
+        //找到毛毛蟲
+        Transform caterpillarPreviewTransform = canvasTransform.Find("CaterpillarPreview");
+        caterpillarPreview = caterpillarPreviewTransform.gameObject;
     }
 
-    void OnHoverEnter()
+    public void OnHoverEnter()
     {
         Debug.Log($"OnHoverEnter triggered for {gameObject.name}.");
 
@@ -46,6 +53,7 @@ public class PrefabHoverHandler : MonoBehaviour
                 {
                     Debug.Log("Activating RabbitPreview UI.");
                     rabbitPreview.SetActive(true); // 顯示 RabbitPreview
+                    caterpillarPreview.SetActive(false);
                 }
                 else
                 {
@@ -55,7 +63,8 @@ public class PrefabHoverHandler : MonoBehaviour
 
             case "CATERPILLER":
                 Debug.Log("CATERPILLER hover detected. Implement logic here.");
-                // Caterpillar-specific logic goes here
+                caterpillarPreview.SetActive(true); // 顯示 RabbitPreview
+                rabbitPreview.SetActive(false); // 顯示 RabbitPreview
                 break;
 
             default:
@@ -64,15 +73,15 @@ public class PrefabHoverHandler : MonoBehaviour
         }
     }
 
-    void OnHoverExit()
-    {
-        Debug.Log($"OnHoverExit triggered for {gameObject.name}.");
+    //void OnHoverExit()
+    //{
+    //    Debug.Log($"OnHoverExit triggered for {gameObject.name}.");
 
-        // 隱藏目前顯示的畫面（如果有需要）
-        if (rabbitPreview != null && rabbitPreview.activeSelf)
-        {
-            Debug.Log("Deactivating RabbitPreview UI.");
-            rabbitPreview.SetActive(false); // 隱藏 RabbitPreview
-        }
-    }
+    //    // 隱藏目前顯示的畫面（如果有需要）
+    //    if (rabbitPreview != null && rabbitPreview.activeSelf)
+    //    {
+    //        Debug.Log("Deactivating RabbitPreview UI.");
+    //        rabbitPreview.SetActive(false); // 隱藏 RabbitPreview
+    //    }
+    //}
 }
