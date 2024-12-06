@@ -8,6 +8,9 @@ public class ParabolicLineCircle : MonoBehaviour
     public GameObject circleObject;           // Circle 3D object to instantiate
     private LineRenderer lineRenderer;        // LineRenderer component
 
+    private LineRenderer uiLineRenderer;  // 用於連接 UI 和圓形的直線
+
+
     private GameObject ballInstance;          // Ball instance to hold the created object
 
     void Start()
@@ -15,7 +18,7 @@ public class ParabolicLineCircle : MonoBehaviour
         // Check if lineVisual and circleObject are assigned
         if (lineVisual != null && circleObject != null)
         {
-            circleObject.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            circleObject.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
             // Retrieve the LineRenderer component from the XRInteractorLineVisual
             lineRenderer = lineVisual.GetComponent<LineRenderer>();
@@ -24,38 +27,118 @@ public class ParabolicLineCircle : MonoBehaviour
             {
                 Log("LineRenderer component not found on the XRInteractorLineVisual.");
             }
+
+            // 初始化 uiLineRenderer
+            uiLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
+            uiLineRenderer.transform.SetParent(this.transform); // 把它設為當前物件的子物件（可選）
+            uiLineRenderer.material = new Material(Shader.Find("Sprites/Default")); // 使用適合的材質
+            uiLineRenderer.startColor = Color.white; // 設置起點顏色
+            uiLineRenderer.endColor = Color.white;   // 設置終點顏色
+            uiLineRenderer.widthMultiplier = 0.05f;  // 設置線的寬度
+
+
         }
         else
         {
             Log("lineVisual or circleObject is not assigned.");
         }
+
+       
+
+
     }
 
     void Update()
     {
-        if (lineRenderer != null)
+        if (lineRenderer == null)
         {
-            int pointCount = lineRenderer.positionCount;  // Get the number of positions in the line
+            Log("lineRenderer is null, skipping Update logic.");
+            return;  // 如果 lineRenderer 為 null，就跳過後續邏輯
+        }
 
-            // Get the positions of the line from the LineRenderer
+        Log("Update method running...");
+
+        int pointCount = lineRenderer.positionCount;
+        Log($"LineRenderer has {pointCount} points.");
+
+        if (pointCount > 0)
+        {
             Vector3[] linePoints = new Vector3[pointCount];
             lineRenderer.GetPositions(linePoints);
-
-            // Find the middle point of the line (halfway through the array of points)
             Vector3 middlePoint = linePoints[pointCount / 2];
-
-            // Instantiate or move the circle object to the middle point of the parabolic line
             if (ballInstance == null)
             {
                 ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
             }
             else
             {
-                ballInstance.transform.position = middlePoint; // Update position if the ball already exists
+                ballInstance.transform.position = middlePoint;
             }
         }
     }
 
-    private void Log(string message) { Debug.Log($"拋物線: {message}"); }
-    private void LogWarning(string message) { Debug.LogWarning($"拋物線: {message}"); }
+
+    public void ConnectObjectToUI(GameObject uiElement)
+    {
+        Debug.Log("ParabolicLineCircle: ConnectObjectToUI started.");
+
+        if (ballInstance == null)
+        {
+            Debug.LogError("ParabolicLineCircle: ballInstance is null!");
+            return;
+        }
+
+        if (uiElement == null)
+        {
+            Debug.LogError("ParabolicLineCircle: uiElement is null!");
+            return;
+        }
+
+        RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
+        if (rectTransform == null)
+        {
+            Debug.LogError($"ParabolicLineCircle: The provided uiElement '{uiElement.name}' does not have a RectTransform component.");
+            return;
+        }
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("ParabolicLineCircle: No main camera found in the scene!");
+            return;
+        }
+
+       
+
+        Vector3 objectPosition = ballInstance.transform.position;
+
+        // 將 RectTransform 轉換為世界座標
+        Vector3 uiWorldPosition;
+        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                rectTransform,
+                rectTransform.position,
+                mainCamera,
+                out uiWorldPosition))
+        {
+            Debug.Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition},objectPosition {objectPosition}");
+            // 更新 LineRenderer 的位置
+            uiLineRenderer.positionCount = 2; // 設置 LineRenderer 的點數為 2，表示從起點到終點
+            uiLineRenderer.SetPosition(0, objectPosition);  // 設置起點
+            uiLineRenderer.SetPosition(1, uiWorldPosition); // 設置終點
+
+
+            Debug.Log($"ParabolicLineCircle: Line drawn between {objectPosition} and {uiWorldPosition}.");
+            uiLineRenderer.SetPosition(0, objectPosition);
+            uiLineRenderer.SetPosition(1, uiWorldPosition);
+
+           
+        }
+        else
+        {
+            Debug.LogWarning("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
+        }
+    }
+
+    private void Log(string message) { Debug.Log($"ParabolicLineCircle: {message}"); }
+    private void LogWarning(string message) { Debug.LogWarning($"ParabolicLineCircle: {message}"); }
 }

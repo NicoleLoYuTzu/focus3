@@ -3,7 +3,6 @@
 public class Preview : MonoBehaviour
 {
     public GameObject uiElement; // 要顯示或隱藏的 UI 元素
-
     private void LogWithName(string message)
     {
         Debug.Log($"Nicole: {message}");
@@ -18,6 +17,10 @@ public class Preview : MonoBehaviour
 
         // 使用 LogWithName 函数打印位置信息
         LogWithName($"Preview : MonoBehaviour UI Panel Position: {rectTransform.anchoredPosition}, Scale rectTransform: {rectTransform.localScale}");
+
+
+     
+
 
     }
 

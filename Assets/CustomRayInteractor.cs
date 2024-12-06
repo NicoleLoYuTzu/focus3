@@ -15,6 +15,9 @@ public class CustomRayInteractor : MonoBehaviour
     }
 
 
+    public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
+
+
     public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
     private LineRenderer lineRenderer;
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
@@ -153,6 +156,7 @@ public class CustomRayInteractor : MonoBehaviour
             LogWithName("UI Panel is now visible.");
             RectTransform rectTransform = uiPanel.GetComponent<RectTransform>();
 
+            parabolicLineCircle.ConnectObjectToUI(uiPanel); // 調用其他腳本的方法
             // 使用 LogWithName 函数打印位置信息
             LogWithName($"CustomRayInteractor : MonoBehaviour UI Panel Position: {rectTransform.anchoredPosition}, Scale rectTransform: {rectTransform.localScale}");
 
