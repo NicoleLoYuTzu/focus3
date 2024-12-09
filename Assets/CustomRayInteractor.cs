@@ -201,12 +201,5 @@ public class CustomRayInteractor : MonoBehaviour
         Debug.Log($"Nicole: {message}");
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        foreach (Vector3 position in checkSpherePositions)
-        {
-            Gizmos.DrawWireSphere(position, 0.1f); // 繪製CheckSphere檢測位置
-        }
-    }
+
 }

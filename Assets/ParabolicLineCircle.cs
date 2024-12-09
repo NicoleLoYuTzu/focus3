@@ -32,10 +32,8 @@ public class ParabolicLineCircle : MonoBehaviour
             uiLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
             uiLineRenderer.transform.SetParent(this.transform); // 把它設為當前物件的子物件（可選）
             uiLineRenderer.material = new Material(Shader.Find("Sprites/Default")); // 使用適合的材質
-            uiLineRenderer.startColor = Color.white; // 設置起點顏色
-            uiLineRenderer.endColor = Color.white;   // 設置終點顏色
-            uiLineRenderer.widthMultiplier = 0.05f;  // 設置線的寬度
 
+            uiLineRenderer.useWorldSpace = true;
 
         }
         else
@@ -114,29 +112,36 @@ public class ParabolicLineCircle : MonoBehaviour
 
         // 將 RectTransform 轉換為世界座標
         Vector3 uiWorldPosition;
+        Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
+
+
+
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                rectTransform,
-                rectTransform.position,
-                mainCamera,
-                out uiWorldPosition))
-        {
-            Debug.Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition},objectPosition {objectPosition}");
+            rectTransform,
+            screenPoint,
+            mainCamera,
+            out uiWorldPosition))
+            {
+                Debug.Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition},objectPosition {objectPosition}");
             // 更新 LineRenderer 的位置
+        
             uiLineRenderer.positionCount = 2; // 設置 LineRenderer 的點數為 2，表示從起點到終點
+          
+            uiLineRenderer.startColor = Color.white; // 設置起點顏色
+            uiLineRenderer.endColor = Color.white;   // 設置終點顏色
+            uiLineRenderer.widthMultiplier = 0.05f;  // 設置線的寬度
+
             uiLineRenderer.SetPosition(0, objectPosition);  // 設置起點
             uiLineRenderer.SetPosition(1, uiWorldPosition); // 設置終點
 
 
-            Debug.Log($"ParabolicLineCircle: Line drawn between {objectPosition} and {uiWorldPosition}.");
-            uiLineRenderer.SetPosition(0, objectPosition);
-            uiLineRenderer.SetPosition(1, uiWorldPosition);
-
-           
         }
-        else
-        {
-            Debug.LogWarning("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
-        }
+            else
+            {
+                Debug.LogWarning("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
+            }
+        
+        
     }
 
     private void Log(string message) { Debug.Log($"ParabolicLineCircle: {message}"); }
