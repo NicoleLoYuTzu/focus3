@@ -155,7 +155,10 @@ public class CustomRayInteractor : MonoBehaviour
             uiPanel.SetActive(true); // 顯示UI面板
             LogWithName("UI Panel is now visible.");
             RectTransform rectTransform = uiPanel.GetComponent<RectTransform>();
+            LogWithName($"UI Panel Position: {uiPanel.transform.position}");
 
+
+            LogWithName($"{uiPanel.name} Active: {uiPanel.activeSelf}");
             parabolicLineCircle.ConnectObjectToUI(uiPanel); // 調用其他腳本的方法
             // 使用 LogWithName 函数打印位置信息
             LogWithName($"CustomRayInteractor : MonoBehaviour UI Panel Position: {rectTransform.anchoredPosition}, Scale rectTransform: {rectTransform.localScale}");
