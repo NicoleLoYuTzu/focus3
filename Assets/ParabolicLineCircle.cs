@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using UnityEngine;
+using UnityEngine.XR;
 
 public class ParabolicLineCircle : MonoBehaviour
 {
@@ -48,16 +49,37 @@ public class ParabolicLineCircle : MonoBehaviour
 
     void Update()
     {
+
+
+        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        Vector2 thumbstickValue;
+        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstickValue);
+        Log($"thumbstickValue...{thumbstickValue}");
+        if (thumbstickValue.x < 1f && thumbstickValue.y < 1f)
+        {
+            if (ballInstance != null)
+            {
+                Destroy(ballInstance);
+                ballInstance = null; // 確保將 ballInstance 設為 null，避免後續使用
+            }
+        }
+
+
+
         if (lineRenderer == null)
         {
             Log("lineRenderer is null, skipping Update logic.");
+
+            
             return;  // 如果 lineRenderer 為 null，就跳過後續邏輯
         }
+       
 
         Log("Update method running...");
 
         int pointCount = lineRenderer.positionCount;
         Log($"LineRenderer has {pointCount} points.");
+        Log($"LineRenderer enabled??? {lineRenderer.enabled} .");
 
         if (pointCount > 0)
         {
@@ -73,6 +95,8 @@ public class ParabolicLineCircle : MonoBehaviour
                 ballInstance.transform.position = middlePoint;
             }
         }
+        
+      
     }
 
 
