@@ -49,21 +49,18 @@ public class ParabolicLineCircle : MonoBehaviour
 
     void Update()
     {
-
         if (lineRenderer == null)
         {
             Log("lineRenderer is null, skipping Update logic.");
-
-            
             return;  // 如果 lineRenderer 為 null，就跳過後續邏輯
         }
-       
 
         Log("Update method running...");
 
         int pointCount = lineRenderer.positionCount;
         Log($"LineRenderer has {pointCount} points.");
         Log($"LineRenderer enabled??? {lineRenderer.enabled} .");
+
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             if (pointCount > 0)
@@ -71,27 +68,46 @@ public class ParabolicLineCircle : MonoBehaviour
                 Vector3[] linePoints = new Vector3[pointCount];
                 lineRenderer.GetPositions(linePoints);
                 Vector3 middlePoint = linePoints[pointCount / 2];
+
+                // 只在 ballInstance 為 null 時創建一個新的球體
                 if (ballInstance == null)
                 {
                     ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
+                    Log("ballInstance created.");
                 }
                 else
                 {
+                    // 如果 ballInstance 已經存在，則只更新它的位置
                     ballInstance.transform.position = middlePoint;
+                    Log("ballInstance position updated.");
                 }
             }
 
-        }
-        else {
-            if (ballInstance != null)
+            // 確保 LineRenderer 在控制器移動時保持啟用
+            if (!lineRenderer.enabled)
             {
-                ballInstance = null;
+                lineRenderer.enabled = true;  // 保證 LineRenderer 在控制器移動時啟用
             }
         }
-         
-        
-      
+        else
+        {
+            // 如果沒有命中，並且 ballInstance 存在，則清除 ballInstance
+            if (ballInstance != null)
+            {
+                Destroy(ballInstance);  // 使用 Destroy 而不是設為 null
+                ballInstance = null;
+                Log("ballInstance destroyed because no hit detected.");
+            }
+
+            // 確保 LineRenderer 在放開遙控器時被禁用
+            if (lineRenderer.enabled)
+            {
+                lineRenderer.enabled = false;  // 禁用 LineRenderer
+                Log("LineRenderer disabled because no controller movement detected.");
+            }
+        }
     }
+
 
     private bool IsControllerMoving()
     {
