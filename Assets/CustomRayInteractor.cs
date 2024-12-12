@@ -13,10 +13,10 @@ public class CustomRayInteractor : MonoBehaviour
         public GameObject targetObject; // 目標物體
         public GameObject uiPanel; // 對應的 UI 面板
     }
-
+    public ChangeImageMaterial changeImageMaterial; // 引用 ChangeImageMaterial 脚本
 
     public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
-
+    private InputDevice controller;
 
     public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
     private LineRenderer lineRenderer;
@@ -25,6 +25,8 @@ public class CustomRayInteractor : MonoBehaviour
 
     void Start()
     {
+
+
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f; // 設置起始點的寬度
         lineRenderer.endWidth = 0.1f; // 設置結束點的寬度
@@ -52,30 +54,58 @@ public class CustomRayInteractor : MonoBehaviour
                 uiElement.SetActive(false); // 隱藏 UI 元素
             }
         }
+        if (changeImageMaterial == null)
+        {
+            changeImageMaterial = FindObjectOfType<ChangeImageMaterial>();
 
+            if (changeImageMaterial == null)
+            {
+                Debug.LogError("ChangeImageMaterial script is not found in the scene!");
+            }
+            else
+            {
+                Debug.Log("ChangeImageMaterial script assigned dynamically.");
+            }
+        }
     }
 
     void Update()
     {
+        // 檢查 UI 面板是否顯示
+        foreach (var uiPair in targetObjectsWithUI)
+        {
+            if (uiPair.uiPanel.activeSelf) // 檢查是否有激活的 UI
+            {
+                CheckTriggerAndChangeMaterial(uiPair.uiPanel); // 檢測扳機鍵並更換材質
+            }
+        }
+
+        // 如果控制器在移動並且有有效的射線擊中
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
-            Vector3 rayOrigin = rayInteractor.transform.position; // 射线的原始位置
-            Vector3 hitPoint = hit.point; // 射线击中的位置
+            Vector3 rayOrigin = rayInteractor.transform.position; // 射線的原始位置
+            Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
 
-            // 计算路径
+            // 計算路徑
             if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
             {
-                DrawPath(path); // 绘制路径
+                DrawPath(path); // 繪製路徑
             }
             else
             {
-                lineRenderer.enabled = false; // 如果路径无效，隐藏线
+                lineRenderer.enabled = false; // 如果路徑無效，隱藏線
             }
         }
         else
         {
-            lineRenderer.enabled = false; // 如果没有击中，隐藏线
+            lineRenderer.enabled = false; // 如果沒有擊中，隱藏線
+            Debug.Log("UI 隱藏 - 控制器未移動或無有效射線擊中。");
+
+            foreach (var uiPair in targetObjectsWithUI)
+            {
+                uiPair.uiPanel.SetActive(false); // 隱藏所有 UI 面板
+            }
         }
     }
 
@@ -88,11 +118,19 @@ public class CustomRayInteractor : MonoBehaviour
         // 嘗試獲取操縱桿的值
         if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
         {
+            if (primary2DAxisValue == Vector2.zero)
+            {
+                Debug.LogWarning("方向桿未移動：值為零");
+            }
+            else
+            {
+                Debug.Log($"方向桿移動中：值為 {primary2DAxisValue}");
+            }
             return primary2DAxisValue != Vector2.zero;
         }
         else
         {
-            Debug.LogWarning("Unable to retrieve primary2DAxis value from the controller.");
+            Debug.LogWarning("無法從控制器檢索 primary2DAxis 值。");
             return false;
         }
     }
@@ -124,6 +162,26 @@ public class CustomRayInteractor : MonoBehaviour
             else
             {
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
+            }
+        }
+    }
+
+    private void CheckTriggerAndChangeMaterial(GameObject uiPanel)
+    {
+        // 获取右手控制器设备
+        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
+        // 检测扳机按钮是否按下
+        if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed) && isTriggerPressed)
+        {
+            if (changeImageMaterial != null)
+            {
+                changeImageMaterial.ChangeMaterial(uiPanel); // 调用 ChangeImageMaterial 的方法
+                Debug.Log("Trigger button pressed, changing material...");
+            }
+            else
+            {
+                Debug.LogWarning("ChangeImageMaterial script is not assigned!");
             }
         }
     }
@@ -163,6 +221,7 @@ public class CustomRayInteractor : MonoBehaviour
         if (uiPanel != null)
         {
             uiPanel.SetActive(true);
+            parabolicLineCircle.ConnectObjectToUI(uiPanel);
             LogWithName($"UI Panel {uiPanel.name} is now visible.");
         }
     }
