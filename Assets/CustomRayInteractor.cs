@@ -137,10 +137,18 @@ public class CustomRayInteractor : MonoBehaviour
             return false;
         }
 
-        for (int i = 0; i < path.corners.Length; i++)
+        //for (int i = 0; i < path.corners.Length; i++)
+        //{
+        //    Vector3 point = path.corners[i];
+        //    if (Physics.CheckSphere(point, 0.1f, LayerMask.GetMask("Interactable")))
+        //    {
+        //        return true;
+        //    }
+        //}
+        //return false;
+        foreach (Vector3 corner in path.corners)
         {
-            Vector3 point = path.corners[i];
-            if (Physics.CheckSphere(point, 0.1f, LayerMask.GetMask("Interactable")))
+            if (targetCollider.bounds.Contains(corner)) // 确认路径点是否在目标物体的碰撞范围内
             {
                 return true;
             }
@@ -150,38 +158,22 @@ public class CustomRayInteractor : MonoBehaviour
 
     private void ShowMessage(GameObject uiPanel)
     {
+        LogWithName($"Attempting to show UI Panel: {uiPanel?.name}");
+        HideAllUI();
         if (uiPanel != null)
         {
-            uiPanel.SetActive(true); // 顯示UI面板
-            LogWithName("UI Panel is now visible.");
-            RectTransform rectTransform = uiPanel.GetComponent<RectTransform>();
-            LogWithName($"UI Panel Position: {uiPanel.transform.position}");
-
-
-            LogWithName($"{uiPanel.name} Active: {uiPanel.activeSelf}");
-            parabolicLineCircle.ConnectObjectToUI(uiPanel); // 調用其他腳本的方法
-            // 使用 LogWithName 函数打印位置信息
-            LogWithName($"CustomRayInteractor : MonoBehaviour UI Panel Position: {rectTransform.anchoredPosition}, Scale rectTransform: {rectTransform.localScale}");
-
-
-        }
-        else
-        {
-            LogWithName("No UI Panel assigned.");
+            uiPanel.SetActive(true);
+            LogWithName($"UI Panel {uiPanel.name} is now visible.");
         }
     }
 
     private void HideMessage(GameObject uiPanel)
     {
-        // 如果 UI 面板存在，隐藏它
+        LogWithName($"Attempting to hide UI Panel: {uiPanel?.name}");
         if (uiPanel != null)
         {
-            uiPanel.SetActive(false); // 隐藏 UI 面板
-            LogWithName($"{uiPanel.name} is now hidden.");
-        }
-        else
-        {
-            LogWithName("No UI Panel assigned to hide.");
+            uiPanel.SetActive(false);
+            LogWithName($"UI Panel {uiPanel.name} is now hidden.");
         }
     }
 
