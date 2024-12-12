@@ -13781,6 +13781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineVisual: {fileID: 1795298655}
   circleObject: {fileID: -5547542145952523856, guid: 9094d926ab9985f4b86f05bb985fcaef, type: 3}
+  rayInteractor: {fileID: 1795298649}
 --- !u!1 &1807497889
 GameObject:
   m_ObjectHideFlags: 0

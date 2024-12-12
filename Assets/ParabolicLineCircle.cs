@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -11,7 +11,7 @@ public class ParabolicLineCircle : MonoBehaviour
 
     private LineRenderer uiLineRenderer;  // 用於連接 UI 和圓形的直線
 
-
+    public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
     private GameObject ballInstance;          // Ball instance to hold the created object
 
     void Start()
@@ -49,57 +49,11 @@ public class ParabolicLineCircle : MonoBehaviour
 
     void Update()
     {
-
-
-        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        Vector2 thumbstickValue;
-        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstickValue);
-    
-        Log($"thumbstickValue: {thumbstickValue}, ballInstance: {ballInstance}");
-        if (thumbstickValue.x < 1f && thumbstickValue.y < 1f)
-        {
-            Log("Condition met, attempting to destroy ballInstance.");
-            if (ballInstance != null)
-            {
-                Destroy(ballInstance);
-                ballInstance = null; // 確保將 ballInstance 設為 null，避免後續使用
-                Log("ballInstance destroyed.");
-            }
-            else
-            {
-                Log("ballInstance is already null.");
-            }
-        }
-
-        Vector2 primary2DAxisValue;
-
-        // 嘗試獲取操縱桿的值
-        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
-        {
-            if (primary2DAxisValue == Vector2.zero)
-            {
-               Log("primary2DAxisValue 0 ");
-            }
-            else
-            {
-                Log($"primary2DAxisValue=={primary2DAxisValue}");
-            }
-        }
-        else
-        {
-            Log("no primary2DAxis value。");
-        }
-    
-
-
         if (lineRenderer == null)
         {
             Log("lineRenderer is null, skipping Update logic.");
-
-            
             return;  // 如果 lineRenderer 為 null，就跳過後續邏輯
         }
-       
 
         Log("Update method running...");
 
@@ -107,23 +61,60 @@ public class ParabolicLineCircle : MonoBehaviour
         Log($"LineRenderer has {pointCount} points.");
         Log($"LineRenderer enabled??? {lineRenderer.enabled} .");
 
-        if (pointCount > 0)
+        if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
-            Vector3[] linePoints = new Vector3[pointCount];
-            lineRenderer.GetPositions(linePoints);
-            Vector3 middlePoint = linePoints[pointCount / 2];
-            if (ballInstance == null)
+            if (pointCount > 0)
             {
-                ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
+                Vector3[] linePoints = new Vector3[pointCount];
+                lineRenderer.GetPositions(linePoints);
+                Vector3 middlePoint = linePoints[pointCount / 2];
+                if (ballInstance == null)
+                {
+                    ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
+                }
+                else
+                {
+                    ballInstance.transform.position = middlePoint;
+                }
+            }
+        }
+        else
+        {
+            if (ballInstance != null)
+            {
+                ballInstance = null;  // 正確地將 ballInstance 設為 null
+            }
+        }
+    }
+
+
+    private bool IsControllerMoving()
+    {
+        // 獲取右手控制器設備
+        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        Vector2 primary2DAxisValue;
+
+        // 嘗試獲取操縱桿的值
+        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
+        {
+            if (primary2DAxisValue == Vector2.zero)
+            {
+                Debug.LogWarning("方向桿未移動：值為零");
             }
             else
             {
-                ballInstance.transform.position = middlePoint;
+                Debug.Log($"方向桿移動中：值為 {primary2DAxisValue}");
             }
+            return primary2DAxisValue != Vector2.zero;
         }
-        
-      
+        else
+        {
+            Debug.LogWarning("無法從控制器檢索 primary2DAxis 值。");
+            return false;
+        }
     }
+
+
 
 
     public void ConnectObjectToUI(GameObject uiElement)
