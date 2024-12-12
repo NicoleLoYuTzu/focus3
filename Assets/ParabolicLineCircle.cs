@@ -49,18 +49,21 @@ public class ParabolicLineCircle : MonoBehaviour
 
     void Update()
     {
+
         if (lineRenderer == null)
         {
             Log("lineRenderer is null, skipping Update logic.");
+
+            
             return;  // 如果 lineRenderer 為 null，就跳過後續邏輯
         }
+       
 
         Log("Update method running...");
 
         int pointCount = lineRenderer.positionCount;
         Log($"LineRenderer has {pointCount} points.");
         Log($"LineRenderer enabled??? {lineRenderer.enabled} .");
-
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             if (pointCount > 0)
@@ -77,16 +80,18 @@ public class ParabolicLineCircle : MonoBehaviour
                     ballInstance.transform.position = middlePoint;
                 }
             }
+
         }
-        else
-        {
+        else {
             if (ballInstance != null)
             {
-                ballInstance = null;  // 正確地將 ballInstance 設為 null
+                ballInstance = null;
             }
         }
+         
+        
+      
     }
-
 
     private bool IsControllerMoving()
     {
@@ -119,31 +124,31 @@ public class ParabolicLineCircle : MonoBehaviour
 
     public void ConnectObjectToUI(GameObject uiElement)
     {
-        Debug.Log("ParabolicLineCircle: ConnectObjectToUI started.");
+        Log("ParabolicLineCircle: ConnectObjectToUI started.");
 
         if (ballInstance == null)
         {
-            Debug.LogError("ParabolicLineCircle: ballInstance is null!");
+            Log("ParabolicLineCircle: ballInstance is null!");
             return;
         }
 
         if (uiElement == null)
         {
-            Debug.LogError("ParabolicLineCircle: uiElement is null!");
+           Log("ParabolicLineCircle: uiElement is null!");
             return;
         }
 
         RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
         if (rectTransform == null)
         {
-            Debug.LogError($"ParabolicLineCircle: The provided uiElement '{uiElement.name}' does not have a RectTransform component.");
+            Log($"ParabolicLineCircle: The provided uiElement '{uiElement.name}' does not have a RectTransform component.");
             return;
         }
 
         Camera mainCamera = Camera.main;
         if (mainCamera == null)
         {
-            Debug.LogError("ParabolicLineCircle: No main camera found in the scene!");
+            Log("ParabolicLineCircle: No main camera found in the scene!");
             return;
         }
 
@@ -163,7 +168,7 @@ public class ParabolicLineCircle : MonoBehaviour
             mainCamera,
             out uiWorldPosition))
             {
-                Debug.Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition},objectPosition {objectPosition}");
+                Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition},objectPosition {objectPosition}");
             // 更新 LineRenderer 的位置
         
             uiLineRenderer.positionCount = 2; // 設置 LineRenderer 的點數為 2，表示從起點到終點
@@ -177,10 +182,9 @@ public class ParabolicLineCircle : MonoBehaviour
 
 
         }
-            else
-            {
-                Debug.LogWarning("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
-            }
+        else{
+           Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
+        }
         
         
     }
