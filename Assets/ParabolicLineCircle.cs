@@ -54,16 +54,42 @@ public class ParabolicLineCircle : MonoBehaviour
         InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         Vector2 thumbstickValue;
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out thumbstickValue);
-        Log($"thumbstickValue...{thumbstickValue}");
+    
+        Log($"thumbstickValue: {thumbstickValue}, ballInstance: {ballInstance}");
         if (thumbstickValue.x < 1f && thumbstickValue.y < 1f)
         {
+            Log("Condition met, attempting to destroy ballInstance.");
             if (ballInstance != null)
             {
                 Destroy(ballInstance);
                 ballInstance = null; // 確保將 ballInstance 設為 null，避免後續使用
+                Log("ballInstance destroyed.");
+            }
+            else
+            {
+                Log("ballInstance is already null.");
             }
         }
 
+        Vector2 primary2DAxisValue;
+
+        // 嘗試獲取操縱桿的值
+        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
+        {
+            if (primary2DAxisValue == Vector2.zero)
+            {
+               Log("primary2DAxisValue 0 ");
+            }
+            else
+            {
+                Log($"primary2DAxisValue=={primary2DAxisValue}");
+            }
+        }
+        else
+        {
+            Log("no primary2DAxis value。");
+        }
+    
 
 
         if (lineRenderer == null)
