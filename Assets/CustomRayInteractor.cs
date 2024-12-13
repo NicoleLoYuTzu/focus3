@@ -106,6 +106,7 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 uiPair.uiPanel.SetActive(false); // 隱藏所有 UI 面板
             }
+            parabolicLineCircle.HideUIAndBall();
         }
     }
 
@@ -158,12 +159,33 @@ public class CustomRayInteractor : MonoBehaviour
             if (CheckIntersection(path, targetObject))
             {
                 ShowMessage(uiPanel); // 显示对应的 UI 面板
+                parabolicLineCircle.ShowUIAndBall();
             }
             else
             {
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
             }
         }
+
+        bool allNoIntersection = true;
+        foreach (var pair in targetObjectsWithUI)
+        {
+            GameObject targetObject = pair.targetObject;
+
+            if (CheckIntersection(path, targetObject))
+            {
+                allNoIntersection = false;
+                break; // 找到一個有交集的物體，跳出迴圈
+            }
+        }
+
+        // 如果全部都是沒有交集，則呼叫 HideUIAndBall
+        if (allNoIntersection)
+        {
+            parabolicLineCircle.HideUIAndBall();
+        }
+
+
     }
 
     private void CheckTriggerAndChangeMaterial(GameObject uiPanel)

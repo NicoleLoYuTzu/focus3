@@ -108,6 +108,36 @@ public class ParabolicLineCircle : MonoBehaviour
         }
     }
 
+    public void HideUIAndBall()
+    {
+        // 隱藏 ballInstance
+        if (ballInstance != null)
+        {
+            ballInstance.SetActive(false);
+        }
+
+        // 隱藏 uiLineRenderer
+        if (uiLineRenderer != null)
+        {
+            uiLineRenderer.gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowUIAndBall()
+    {
+        // 隱藏 ballInstance
+        if (ballInstance != null)
+        {
+            ballInstance.SetActive(true);
+        }
+
+        // 隱藏 uiLineRenderer
+        if (uiLineRenderer != null)
+        {
+            uiLineRenderer.gameObject.SetActive(true);
+        }
+    }
+
 
     private bool IsControllerMoving()
     {
