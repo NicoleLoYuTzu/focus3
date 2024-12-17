@@ -2,7 +2,8 @@
 using UnityEngine.AI; // 引入导航命名空间
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR;
-using System.Collections.Generic; // 引入UI命名空間
+using System.Collections.Generic;
+using UnityEngine.UIElements; // 引入UI命名空間
 
 public class CustomRayInteractor : MonoBehaviour
 {
@@ -17,9 +18,9 @@ public class CustomRayInteractor : MonoBehaviour
 
     public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
     private InputDevice controller;
-
+    private LineRenderer lineRenderer;        // LineRenderer component
     public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
-    private LineRenderer lineRenderer;
+    public LineRenderer paraboliclineRenderer;
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
 
@@ -79,17 +80,19 @@ public class CustomRayInteractor : MonoBehaviour
                 CheckTriggerAndChangeMaterial(uiPair.uiPanel); // 檢測扳機鍵並更換材質
             }
         }
-
+        
         // 如果控制器在移動並且有有效的射線擊中
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             Vector3 rayOrigin = rayInteractor.transform.position; // 射線的原始位置
             Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
-
+            Debug.Log("TryGetCurrent3DRaycastHit");
             // 計算路徑
             if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
             {
+                Debug.Log("CalculatePath");
+
                 DrawPath(path); // 繪製路徑
             }
             else
@@ -110,31 +113,34 @@ public class CustomRayInteractor : MonoBehaviour
         }
     }
 
+    private const float deadZone = 0.1f; // 死區閾值
+
     private bool IsControllerMoving()
     {
-        // 獲取右手控制器設備
         InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         Vector2 primary2DAxisValue;
 
-        // 嘗試獲取操縱桿的值
         if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
         {
-            if (primary2DAxisValue == Vector2.zero)
+            // 檢查是否超過死區範圍
+            if (primary2DAxisValue.magnitude > deadZone)
             {
-                Debug.LogWarning("方向桿未移動：值為零");
+                Debug.Log($"111 value {primary2DAxisValue}");
+                return true;
             }
             else
             {
-                Debug.Log($"方向桿移動中：值為 {primary2DAxisValue}");
+                Debug.LogWarning("000 - Inside Dead Zone");
+                return false;
             }
-            return primary2DAxisValue != Vector2.zero;
         }
         else
         {
-            Debug.LogWarning("無法從控制器檢索 primary2DAxis 值。");
+            Debug.LogWarning("Cannot get primary2DAxis value.");
             return false;
         }
     }
+
 
     private void DrawPath(NavMeshPath path)
     {
@@ -145,6 +151,14 @@ public class CustomRayInteractor : MonoBehaviour
         for (int i = 0; i < path.corners.Length; i++)
         {
             lineRenderer.SetPosition(i, path.corners[i]);
+        }
+
+        Debug.Log($"CustomRayInteractor LineRenderer total {lineRenderer.positionCount} spot：");
+
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+            Vector3 point = lineRenderer.GetPosition(i);
+            Debug.Log($"CustomRayInteractor spot {i}: {point}");
         }
 
         //// 檢測是否有交集並更新對應的UI
@@ -242,9 +256,16 @@ public class CustomRayInteractor : MonoBehaviour
         HideAllUI();
         if (uiPanel != null)
         {
-            uiPanel.SetActive(true);
-            parabolicLineCircle.ConnectObjectToUI(uiPanel);
-            LogWithName($"UI Panel {uiPanel.name} is now visible.");
+            if (!paraboliclineRenderer.enabled)
+            {
+                Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
+                parabolicLineCircle.HideUIAndBall();
+            }
+            else {
+                uiPanel.SetActive(true);
+                parabolicLineCircle.ConnectObjectToUI(uiPanel);
+                LogWithName($"UI Panel {uiPanel.name} is now visible.");
+            }
         }
     }
 

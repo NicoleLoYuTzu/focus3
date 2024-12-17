@@ -28,7 +28,7 @@ public class ParabolicLineCircle : MonoBehaviour
             {
                 Log("LineRenderer component not found on the XRInteractorLineVisual.");
             }
-
+          
             // 初始化 uiLineRenderer
             uiLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
             uiLineRenderer.transform.SetParent(this.transform); // 把它設為當前物件的子物件（可選）
@@ -51,15 +51,15 @@ public class ParabolicLineCircle : MonoBehaviour
     {
         if (lineRenderer == null)
         {
-            Log("lineRenderer is null, skipping Update logic.");
+            Log("ParabolicLineCircle lineRenderer is null, skipping Update logic.");
             return;  // 如果 lineRenderer 為 null，就跳過後續邏輯
         }
 
         Log("Update method running...");
 
         int pointCount = lineRenderer.positionCount;
-        Log($"LineRenderer has {pointCount} points.");
-        Log($"LineRenderer enabled??? {lineRenderer.enabled} .");
+        Log($"ParabolicLineCircle LineRenderer has {pointCount} points.");
+        Log($"ParabolicLineCircle LineRenderer enabled??? {lineRenderer.enabled} .");
 
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
@@ -83,11 +83,11 @@ public class ParabolicLineCircle : MonoBehaviour
                 }
             }
 
-            // 確保 LineRenderer 在控制器移動時保持啟用
-            if (!lineRenderer.enabled)
-            {
-                lineRenderer.enabled = true;  // 保證 LineRenderer 在控制器移動時啟用
-            }
+            //// 確保 LineRenderer 在控制器移動時保持啟用
+            //if (!lineRenderer.enabled)
+            //{
+            //    lineRenderer.enabled = true;  // 保證 LineRenderer 在控制器移動時啟用
+            //}
         }
         else
         {
@@ -99,29 +99,49 @@ public class ParabolicLineCircle : MonoBehaviour
                 Log("ballInstance destroyed because no hit detected.");
             }
 
-            // 確保 LineRenderer 在放開遙控器時被禁用
-            if (lineRenderer.enabled)
-            {
-                lineRenderer.enabled = false;  // 禁用 LineRenderer
-                Log("LineRenderer disabled because no controller movement detected.");
-            }
+            //// 確保 LineRenderer 在放開遙控器時被禁用
+            //if (lineRenderer.enabled)
+            //{
+            //    lineRenderer.enabled = false;  // 禁用 LineRenderer
+            //    Log("LineRenderer disabled because no controller movement detected.");
+            //}
         }
     }
 
     public void HideUIAndBall()
     {
-        // 隱藏 ballInstance
+        // 紀錄當前狀態
+        Log($"ballInstance: {ballInstance}"); // 確認 ballInstance 的狀態
+
+        // 檢查並隱藏 ballInstance
         if (ballInstance != null)
         {
-            ballInstance.SetActive(false);
+            Destroy(ballInstance);
+        }
+        else
+        {
+            Log("ballInstance is null. Nothing to hide.");
         }
 
-        // 隱藏 uiLineRenderer
+        // 檢查並隱藏 uiLineRenderer
         if (uiLineRenderer != null)
         {
-            uiLineRenderer.gameObject.SetActive(false);
+            if (uiLineRenderer.gameObject.activeSelf)
+            {
+                Log("Hiding uiLineRenderer...");
+                uiLineRenderer.gameObject.SetActive(false);
+            }
+            else
+            {
+                Log("uiLineRenderer is already inactive.");
+            }
+        }
+        else
+        {
+            Log("uiLineRenderer is null. Nothing to hide.");
         }
     }
+
 
     public void ShowUIAndBall()
     {
