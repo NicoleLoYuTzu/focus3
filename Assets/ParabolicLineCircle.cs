@@ -23,11 +23,6 @@ public class ParabolicLineCircle : MonoBehaviour
 
             // Retrieve the LineRenderer component from the XRInteractorLineVisual
             lineRenderer = lineVisual.GetComponent<LineRenderer>();
-
-            if (lineRenderer == null)
-            {
-                Log("LineRenderer component not found on the XRInteractorLineVisual.");
-            }
           
             // 初始化 uiLineRenderer
             uiLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
@@ -37,11 +32,6 @@ public class ParabolicLineCircle : MonoBehaviour
             uiLineRenderer.useWorldSpace = true;
 
         }
-        else
-        {
-            Log("lineVisual or circleObject is not assigned.");
-        }
-
        
 
 
@@ -83,11 +73,6 @@ public class ParabolicLineCircle : MonoBehaviour
                 }
             }
 
-            //// 確保 LineRenderer 在控制器移動時保持啟用
-            //if (!lineRenderer.enabled)
-            //{
-            //    lineRenderer.enabled = true;  // 保證 LineRenderer 在控制器移動時啟用
-            //}
         }
         else
         {
@@ -99,12 +84,6 @@ public class ParabolicLineCircle : MonoBehaviour
                 Log("ballInstance destroyed because no hit detected.");
             }
 
-            //// 確保 LineRenderer 在放開遙控器時被禁用
-            //if (lineRenderer.enabled)
-            //{
-            //    lineRenderer.enabled = false;  // 禁用 LineRenderer
-            //    Log("LineRenderer disabled because no controller movement detected.");
-            //}
         }
     }
 
@@ -118,11 +97,6 @@ public class ParabolicLineCircle : MonoBehaviour
         {
             Destroy(ballInstance);
         }
-        else
-        {
-            Log("ballInstance is null. Nothing to hide.");
-        }
-
         // 檢查並隱藏 uiLineRenderer
         if (uiLineRenderer != null)
         {
@@ -131,14 +105,6 @@ public class ParabolicLineCircle : MonoBehaviour
                 Log("Hiding uiLineRenderer...");
                 uiLineRenderer.gameObject.SetActive(false);
             }
-            else
-            {
-                Log("uiLineRenderer is already inactive.");
-            }
-        }
-        else
-        {
-            Log("uiLineRenderer is null. Nothing to hide.");
         }
     }
 
@@ -168,14 +134,7 @@ public class ParabolicLineCircle : MonoBehaviour
         // 嘗試獲取操縱桿的值
         if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
         {
-            if (primary2DAxisValue == Vector2.zero)
-            {
-                Debug.LogWarning("方向桿未移動：值為零");
-            }
-            else
-            {
-                Debug.Log($"方向桿移動中：值為 {primary2DAxisValue}");
-            }
+          
             return primary2DAxisValue != Vector2.zero;
         }
         else
