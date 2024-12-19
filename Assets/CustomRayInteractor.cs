@@ -28,7 +28,7 @@ public class CustomRayInteractor : MonoBehaviour
     void Start()
     {
 
-
+        HideAllUI();
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f; // 設置起始點的寬度
         lineRenderer.endWidth = 0.1f; // 設置結束點的寬度
@@ -73,6 +73,13 @@ public class CustomRayInteractor : MonoBehaviour
 
     void Update()
     {
+
+        if (!paraboliclineRenderer.enabled)
+        {
+            Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
+            parabolicLineCircle.HideUIAndBall();
+        }
+
         // 檢查 UI 面板是否顯示
         foreach (var uiPair in targetObjectsWithUI)
         {
@@ -89,11 +96,11 @@ public class CustomRayInteractor : MonoBehaviour
             Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
             Debug.Log("TryGetCurrent3DRaycastHit");
+            HideAllUI();
             // 計算路徑
             if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
             {
                 Debug.Log("CalculatePath");
-
                 DrawPath(path); // 繪製路徑
             }
             else
@@ -110,7 +117,7 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 uiPair.uiPanel.SetActive(false); // 隱藏所有 UI 面板
             }
-            parabolicLineCircle.HideUIAndBall();
+            //parabolicLineCircle.HideUIAndBall();
         }
     }
 
@@ -165,6 +172,8 @@ public class CustomRayInteractor : MonoBehaviour
         //// 檢測是否有交集並更新對應的UI
         //CheckIntersection(path);
         // 检测每个目标物体与路径的交集
+        List<GameObject> intersectedUIPanels = new List<GameObject>();
+
         foreach (var pair in targetObjectsWithUI)
         {
             GameObject PreviewArea = pair.PreviewArea;
@@ -175,31 +184,33 @@ public class CustomRayInteractor : MonoBehaviour
             if (CheckIntersection(path, PreviewArea))
             {
                 ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
-                parabolicLineCircle.ShowUIAndBall();
+                intersectedUIPanels.Add(uiPanel); // Add the panel to the list
+                parabolicLineCircle.CalculateUserPositionToObject(targetObject);
             }
             else
             {
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
             }
         }
+        parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels);
 
-        bool allNoIntersection = true;
-        foreach (var pair in targetObjectsWithUI)
-        {
-            GameObject targetObject = pair.PreviewArea;
+        //bool allNoIntersection = true;
+        //foreach (var pair in targetObjectsWithUI)
+        //{
+        //    GameObject targetObject = pair.PreviewArea;
 
-            if (CheckIntersection(path, targetObject))
-            {
-                allNoIntersection = false;
-                break; // 找到一個有交集的物體，跳出迴圈
-            }
-        }
+        //    if (CheckIntersection(path, targetObject))
+        //    {
+        //        allNoIntersection = false;
+        //        break; // 找到一個有交集的物體，跳出迴圈
+        //    }
+        //}
 
-        // 如果全部都是沒有交集，則呼叫 HideUIAndBall
-        if (allNoIntersection)
-        {
-            parabolicLineCircle.HideUIAndBall();
-        }
+        //// 如果全部都是沒有交集，則呼叫 HideUIAndBall
+        //if (allNoIntersection)
+        //{
+        //    parabolicLineCircle.HideUIAndBall();
+        //}
 
 
     }
@@ -245,7 +256,6 @@ public class CustomRayInteractor : MonoBehaviour
     private void ShowMessage(GameObject uiPanel, GameObject targetObject)
     {
         LogWithName($"Attempting to show UI Panel: {uiPanel?.name}");
-        HideAllUI();
         if (uiPanel != null)
         {
             if (!paraboliclineRenderer.enabled)
@@ -253,10 +263,9 @@ public class CustomRayInteractor : MonoBehaviour
                 Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
                 parabolicLineCircle.HideUIAndBall();
             }
-            else {
+            else
+            {
                 uiPanel.SetActive(true);
-                parabolicLineCircle.ConnectObjectToUI(uiPanel);
-                parabolicLineCircle.CalculateUserPositionToObject(targetObject);
                 LogWithName($"UI Panel {uiPanel.name} is now visible.");
             }
         }
