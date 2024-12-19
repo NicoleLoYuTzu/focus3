@@ -234,6 +234,10 @@ public class ParabolicLineCircle : MonoBehaviour
                     newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
                     newLineRenderer.useWorldSpace = true;
 
+                    // 設定 LineRenderer 層級，確保它不會擋住 UI 元素
+                    newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI"); // 設置為 UI 層
+                    newLineRenderer.sortingOrder = -1;  // 確保 LineRenderer 在 UI 之後繪製
+
                     // 設置 LineRenderer 的屬性
                     newLineRenderer.positionCount = 2;
                     newLineRenderer.startColor = Color.white;
@@ -259,6 +263,7 @@ public class ParabolicLineCircle : MonoBehaviour
                 existingLineRenderer.SetPosition(0, objectPosition);
                 existingLineRenderer.SetPosition(1, uiElement.transform.position);
             }
+
         }
     }
 
