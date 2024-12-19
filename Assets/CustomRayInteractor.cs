@@ -11,8 +11,9 @@ public class CustomRayInteractor : MonoBehaviour
     [System.Serializable]
     public class TargetUIPair
     {
-        public GameObject targetObject; // 目標物體
+        public GameObject PreviewArea; // 目標物體
         public GameObject uiPanel; // 對應的 UI 面板
+        public GameObject targetObject;
     }
     public ChangeImageMaterial changeImageMaterial; // 引用 ChangeImageMaterial 脚本
 
@@ -166,13 +167,14 @@ public class CustomRayInteractor : MonoBehaviour
         // 检测每个目标物体与路径的交集
         foreach (var pair in targetObjectsWithUI)
         {
-            GameObject targetObject = pair.targetObject;
+            GameObject PreviewArea = pair.PreviewArea;
             GameObject uiPanel = pair.uiPanel;
+            GameObject targetObject = pair.targetObject;
 
             // 检测该物体是否与路径有交集
-            if (CheckIntersection(path, targetObject))
+            if (CheckIntersection(path, PreviewArea))
             {
-                ShowMessage(uiPanel); // 显示对应的 UI 面板
+                ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
                 parabolicLineCircle.ShowUIAndBall();
             }
             else
@@ -184,7 +186,7 @@ public class CustomRayInteractor : MonoBehaviour
         bool allNoIntersection = true;
         foreach (var pair in targetObjectsWithUI)
         {
-            GameObject targetObject = pair.targetObject;
+            GameObject targetObject = pair.PreviewArea;
 
             if (CheckIntersection(path, targetObject))
             {
@@ -222,24 +224,14 @@ public class CustomRayInteractor : MonoBehaviour
         }
     }
 
-    private bool CheckIntersection(NavMeshPath path, GameObject targetObject)
+    private bool CheckIntersection(NavMeshPath path, GameObject PreviewArea)
     {
-        Collider targetCollider = targetObject.GetComponent<Collider>();
+        Collider targetCollider = PreviewArea.GetComponent<Collider>();
         if (targetCollider == null)
         {
-            LogWithName($"Target object {targetObject.name} does not have a collider.");
+            LogWithName($"Target object {PreviewArea.name} does not have a collider.");
             return false;
         }
-
-        //for (int i = 0; i < path.corners.Length; i++)
-        //{
-        //    Vector3 point = path.corners[i];
-        //    if (Physics.CheckSphere(point, 0.1f, LayerMask.GetMask("Interactable")))
-        //    {
-        //        return true;
-        //    }
-        //}
-        //return false;
         foreach (Vector3 corner in path.corners)
         {
             if (targetCollider.bounds.Contains(corner)) // 确认路径点是否在目标物体的碰撞范围内
@@ -250,7 +242,7 @@ public class CustomRayInteractor : MonoBehaviour
         return false;
     }
 
-    private void ShowMessage(GameObject uiPanel)
+    private void ShowMessage(GameObject uiPanel, GameObject targetObject)
     {
         LogWithName($"Attempting to show UI Panel: {uiPanel?.name}");
         HideAllUI();
@@ -264,6 +256,7 @@ public class CustomRayInteractor : MonoBehaviour
             else {
                 uiPanel.SetActive(true);
                 parabolicLineCircle.ConnectObjectToUI(uiPanel);
+                parabolicLineCircle.CalculateUserPositionToObject(targetObject);
                 LogWithName($"UI Panel {uiPanel.name} is now visible.");
             }
         }

@@ -2,6 +2,7 @@
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine;
 using UnityEngine.XR;
+using TMPro;
 
 public class ParabolicLineCircle : MonoBehaviour
 {
@@ -145,7 +146,69 @@ public class ParabolicLineCircle : MonoBehaviour
     }
 
 
+    public void CalculateUserPositionToObject(GameObject targetObject)
+    {
+        Debug.Log("DEBUG_CALC_DISTANCE: Starting CalculateUserPositionToObject");
 
+        Vector3 objectPosition = targetObject.transform.position;
+        Debug.Log($"DEBUG_CALC_DISTANCE: Target Object Position = {objectPosition}");
+
+        // 獲取使用者的位置
+        Vector3 userPosition = GetUserPosition();
+        Debug.Log($"DEBUG_CALC_DISTANCE: User Position = {userPosition}");
+
+        float distance = Vector3.Distance(userPosition, objectPosition);
+        Debug.Log($"DEBUG_CALC_DISTANCE: Calculated Distance = {distance}");
+
+        // 查找場景中的 TMP Text 物件，名稱為 "targetObject+_distance"
+        string textObjectName = $"{targetObject.name}_distance";
+        Debug.Log($"DEBUG_CALC_DISTANCE: Looking for Text Object with name = {textObjectName}");
+
+        GameObject textObject = GameObject.Find(textObjectName);
+        if (textObject != null)
+        {
+            Debug.Log($"DEBUG_CALC_DISTANCE: Found Text Object = {textObject.name}");
+
+            // 嘗試獲取 TextMeshPro (UI) 組件
+            TextMeshProUGUI textUIComponent = textObject.GetComponent<TextMeshProUGUI>();
+            if (textUIComponent != null)
+            {
+                Debug.Log($"DEBUG_CALC_DISTANCE: Found TextMeshProUGUI Component on {textObject.name}");
+
+                // 更新文字內容為距離加上 "m"
+                textUIComponent.text = $"{distance:F2}m"; // 保留兩位小數
+                Debug.Log($"DEBUG_CALC_DISTANCE: Updated UI Text = {textUIComponent.text}");
+            }
+            else
+            {
+                Debug.LogWarning($"DEBUG_CALC_DISTANCE: No TextMeshPro component found on {textObjectName}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"DEBUG_CALC_DISTANCE: Text object named {textObjectName} not found in the scene.");
+        }
+
+
+        Debug.Log("DEBUG_CALC_DISTANCE: Finished CalculateUserPositionToObject");
+    }
+
+
+    private Vector3 GetUserPosition()
+    {
+        // 假設使用 XR Rig，抓取主攝影機的位置（通常表示使用者位置）
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera != null)
+        {
+            return mainCamera.transform.position;
+        }
+        else
+        {
+            Debug.LogWarning("Main Camera not found. Returning Vector3.zero as fallback.");
+            return Vector3.zero; // 回傳預設值
+        }
+    }
 
     public void ConnectObjectToUI(GameObject uiElement)
     {
