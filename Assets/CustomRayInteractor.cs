@@ -65,6 +65,7 @@ public class CustomRayInteractor : MonoBehaviour
         {
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
+            HideAllUI();
         }
         
         // 如果控制器在移動並且有有效的射線擊中
@@ -74,7 +75,6 @@ public class CustomRayInteractor : MonoBehaviour
             Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
             Debug.Log("TryGetCurrent3DRaycastHit");
-            HideAllUI();
             // 計算路徑
             if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
             {
@@ -279,17 +279,27 @@ public class CustomRayInteractor : MonoBehaviour
 
     private void HideAllUI()
     {
-
-        // 確保所有 UI 元素最開始是隱藏的
+        // 确保所有 UI 元素最开始是隐藏的
         foreach (var uiPair in targetObjectsWithUI)
         {
-            GameObject uiElement = uiPair.uiPanel; // 獲取對應的 UI 元素
+            GameObject uiElement = uiPair.uiPanel; // 获取对应的 UI 元素
             if (uiElement != null)
             {
-                uiElement.SetActive(false); // 隱藏 UI 元素
+                uiElement.SetActive(false); // 隐藏 UI 元素
+
+                // 更新状态为从未显示过
+                if (uiPanelState.ContainsKey(uiElement))
+                {
+                    uiPanelState[uiElement] = false; // 设置为未显示过
+                }
+                else
+                {
+                    uiPanelState.Add(uiElement, false); // 如果没有记录，添加到字典并设置为 false
+                }
             }
         }
     }
+
 
     private void LogWithName(string message)
     {
