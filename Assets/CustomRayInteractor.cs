@@ -15,7 +15,6 @@ public class CustomRayInteractor : MonoBehaviour
         public GameObject uiPanel; // 對應的 UI 面板
         public GameObject targetObject;
     }
-    public ChangeImageMaterial changeImageMaterial; // 引用 ChangeImageMaterial 脚本
 
     public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
     private InputDevice controller;
@@ -56,19 +55,7 @@ public class CustomRayInteractor : MonoBehaviour
                 uiElement.SetActive(false); // 隱藏 UI 元素
             }
         }
-        if (changeImageMaterial == null)
-        {
-            changeImageMaterial = FindObjectOfType<ChangeImageMaterial>();
-
-            if (changeImageMaterial == null)
-            {
-                Debug.LogError("ChangeImageMaterial script is not found in the scene!");
-            }
-            else
-            {
-                Debug.Log("ChangeImageMaterial script assigned dynamically.");
-            }
-        }
+      
     }
 
     void Update()
@@ -78,15 +65,6 @@ public class CustomRayInteractor : MonoBehaviour
         {
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
-        }
-
-        // 檢查 UI 面板是否顯示
-        foreach (var uiPair in targetObjectsWithUI)
-        {
-            if (uiPair.uiPanel.activeSelf) // 檢查是否有激活的 UI
-            {
-                CheckTriggerAndChangeMaterial(uiPair.uiPanel); // 檢測扳機鍵並更換材質
-            }
         }
         
         // 如果控制器在移動並且有有效的射線擊中
@@ -215,25 +193,6 @@ public class CustomRayInteractor : MonoBehaviour
 
     }
 
-    private void CheckTriggerAndChangeMaterial(GameObject uiPanel)
-    {
-        // 获取右手控制器设备
-        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-
-        // 检测扳机按钮是否按下
-        if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed) && isTriggerPressed)
-        {
-            if (changeImageMaterial != null)
-            {
-                changeImageMaterial.ChangeMaterial(uiPanel); // 调用 ChangeImageMaterial 的方法
-                Debug.Log("Trigger button pressed, changing material...");
-            }
-            else
-            {
-                Debug.LogWarning("ChangeImageMaterial script is not assigned!");
-            }
-        }
-    }
 
     private bool CheckIntersection(NavMeshPath path, GameObject PreviewArea)
     {
@@ -253,33 +212,70 @@ public class CustomRayInteractor : MonoBehaviour
         return false;
     }
 
+    //private void ShowMessage(GameObject uiPanel, GameObject targetObject)
+    //{
+    //    LogWithName($"Attempting to show UI Panel: {uiPanel?.name}");
+    //    if (uiPanel != null)
+    //    {
+           
+    //        else
+    //        {
+    //            uiPanel.SetActive(true);
+    //            LogWithName($"UI Panel {uiPanel.name} is now visible.");
+    //        }
+    //    }
+    //}
+
+    // 增加 UI 顯示狀態標誌
+    private Dictionary<GameObject, bool> uiPanelState = new Dictionary<GameObject, bool>();
+
+    // 顯示訊息，只有當 uiPanel 尚未顯示過時才會顯示
     private void ShowMessage(GameObject uiPanel, GameObject targetObject)
     {
-        LogWithName($"Attempting to show UI Panel: {uiPanel?.name}");
-        if (uiPanel != null)
+        if (uiPanel != null && !uiPanelState.ContainsKey(uiPanel))
         {
+            uiPanelState[uiPanel] = false; // 初始時設置為隱藏
             if (!paraboliclineRenderer.enabled)
             {
                 Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
                 parabolicLineCircle.HideUIAndBall();
             }
-            else
+
+        }
+
+        if (uiPanel != null && !uiPanelState[uiPanel])
+        {
+            uiPanel.SetActive(true);
+            uiPanelState[uiPanel] = true;  // 設置為顯示
+            if (!paraboliclineRenderer.enabled)
             {
-                uiPanel.SetActive(true);
-                LogWithName($"UI Panel {uiPanel.name} is now visible.");
+                Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
+                parabolicLineCircle.HideUIAndBall();
             }
+            LogWithName($"UI Panel {uiPanel.name} is now visible.");
         }
     }
 
+
+    // 隱藏訊息，當控制器移出範圍時隱藏 UI
     private void HideMessage(GameObject uiPanel)
     {
-        LogWithName($"Attempting to hide UI Panel: {uiPanel?.name}");
-        if (uiPanel != null)
+        if (uiPanel != null && uiPanelState.ContainsKey(uiPanel))
         {
             uiPanel.SetActive(false);
+            uiPanelState[uiPanel] = false; // 設置為隱藏
             LogWithName($"UI Panel {uiPanel.name} is now hidden.");
         }
     }
+    //private void HideMessage(GameObject uiPanel)
+    //{
+    //    LogWithName($"Attempting to hide UI Panel: {uiPanel?.name}");
+    //    if (uiPanel != null)
+    //    {
+    //        uiPanel.SetActive(false);
+    //        LogWithName($"UI Panel {uiPanel.name} is now hidden.");
+    //    }
+    //}
 
     private void HideAllUI()
     {

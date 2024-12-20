@@ -23,17 +23,17 @@ public class ImageSpawner : MonoBehaviour
         //}
 
 
-        UpdateImagesBasedOnCondition("phanto"); // 使用 phanto 作为条件
-        GenerateImages();
+        //UpdateImagesBasedOnCondition("phanto"); // 使用 phanto 作为条件
+        //GenerateImages();
       
     }
 
-    void UpdateImagesBasedOnCondition(string condition)
+    public void UpdateImagesBasedOnCondition(string condition)
     {
         imagesArray.Clear();
         LogInfo($"Updating images based on condition: {condition}");
 
-        if (condition == "phanto")
+        if (condition == "purpleGhost")
         {
             // 加入兔子和毛毛虫的图片
             Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/RABBIT1");
@@ -65,6 +65,8 @@ public class ImageSpawner : MonoBehaviour
             imagesArray.Add(Resources.Load<Sprite>("Sprites/Image4"));
             imagesArray.Add(Resources.Load<Sprite>("Sprites/Image5"));
         }
+
+        GenerateImages();
     }
 
     void GenerateImages()
