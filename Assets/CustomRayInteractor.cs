@@ -17,6 +17,7 @@ public class CustomRayInteractor : MonoBehaviour
     }
 
     public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
+    public CalculateUserToTaskDistance calculateUserToTaskDistance; // 將其他腳本拖動到此引用
     private InputDevice controller;
     private LineRenderer lineRenderer;        // LineRenderer component
     public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
@@ -163,7 +164,7 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
                 intersectedUIPanels.Add(uiPanel); // Add the panel to the list
-                parabolicLineCircle.CalculateUserPositionToObject(targetObject);
+                calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject);
             }
             else
             {
@@ -267,15 +268,6 @@ public class CustomRayInteractor : MonoBehaviour
             LogWithName($"UI Panel {uiPanel.name} is now hidden.");
         }
     }
-    //private void HideMessage(GameObject uiPanel)
-    //{
-    //    LogWithName($"Attempting to hide UI Panel: {uiPanel?.name}");
-    //    if (uiPanel != null)
-    //    {
-    //        uiPanel.SetActive(false);
-    //        LogWithName($"UI Panel {uiPanel.name} is now hidden.");
-    //    }
-    //}
 
     private void HideAllUI()
     {

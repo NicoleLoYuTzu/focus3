@@ -33,7 +33,7 @@ public class ImageSpawner : MonoBehaviour
         imagesArray.Clear();
         LogInfo($"Updating images based on condition: {condition}");
 
-        if (condition == "purpleGhost")
+        if (condition == "PurpleGhostContent")
         {
             // 加入兔子和毛毛虫的图片
             Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/RABBIT1");
@@ -59,7 +59,7 @@ public class ImageSpawner : MonoBehaviour
                 LogWarning("Caterpillar sprite not found!");
             }
         }
-        else if (condition == "anotherCondition")
+        else if (condition == "RabbitPreviewContent")
         {
             imagesArray.Add(Resources.Load<Sprite>("Sprites/Image3"));
             imagesArray.Add(Resources.Load<Sprite>("Sprites/Image4"));

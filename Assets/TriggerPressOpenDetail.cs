@@ -49,7 +49,7 @@ public class TriggerPressOpenDetail : MonoBehaviour
                     Debug.Log($"{UpperDetail.name} has been enabled.");
 
                     // 更新圖片或其他狀態
-                    imageSpawner.UpdateImagesBasedOnCondition("purpleGhost");
+                    imageSpawner.UpdateImagesBasedOnCondition(gameObject.name);
                     Debug.Log("ImageSpawner updated with condition: purpleGhost.");
                 }
                 else
