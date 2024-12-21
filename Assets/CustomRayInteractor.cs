@@ -164,7 +164,7 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
                 intersectedUIPanels.Add(uiPanel); // Add the panel to the list
-                calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject);
+                calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject,uiPanel);
             }
             else
             {

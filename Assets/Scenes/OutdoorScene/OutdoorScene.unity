@@ -7911,7 +7911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parabolicLineCircle: {fileID: 1795298658}
-  calculateUserToTaskDistance: {fileID: 0}
+  calculateUserToTaskDistance: {fileID: 1795298665}
   rayInteractor: {fileID: 1795298649}
   paraboliclineRenderer: {fileID: 1795298661}
   targetObjectsWithUI:
@@ -10197,7 +10197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19, y: 0}
+  m_AnchoredPosition: {x: 178, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1288595835
