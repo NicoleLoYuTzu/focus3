@@ -233,26 +233,23 @@ public class CustomRayInteractor : MonoBehaviour
     // 顯示訊息，只有當 uiPanel 尚未顯示過時才會顯示
     private void ShowMessage(GameObject uiPanel, GameObject targetObject)
     {
-        if (uiPanel != null && !uiPanelState.ContainsKey(uiPanel))
-        {
-            uiPanelState[uiPanel] = false; // 初始時設置為隱藏
-            if (!paraboliclineRenderer.enabled)
+          if (!paraboliclineRenderer.enabled)
             {
                 Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
                 parabolicLineCircle.HideUIAndBall();
             }
 
+        if (uiPanel != null && !uiPanelState.ContainsKey(uiPanel))
+        {
+            uiPanelState[uiPanel] = false; // 初始時設置為隱藏
         }
 
         if (uiPanel != null && !uiPanelState[uiPanel])
         {
+            calculateUserToTaskDistance.UIPanelPosition(uiPanel, targetObject);
             uiPanel.SetActive(true);
             uiPanelState[uiPanel] = true;  // 設置為顯示
-            if (!paraboliclineRenderer.enabled)
-            {
-                Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
-                parabolicLineCircle.HideUIAndBall();
-            }
+
             LogWithName($"UI Panel {uiPanel.name} is now visible.");
         }
     }

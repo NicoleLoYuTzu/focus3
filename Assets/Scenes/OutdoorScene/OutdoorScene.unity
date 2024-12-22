@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 24842950}
   - component: {fileID: 24842949}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: CaterpillarPreview_Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1339,7 +1339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &184756121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3312,12 +3312,12 @@ GameObject:
   - component: {fileID: 386026553}
   - component: {fileID: 386026555}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: RabbitPreview_Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &386026549
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3620,7 +3620,7 @@ GameObject:
   - component: {fileID: 395357287}
   - component: {fileID: 395357286}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: CaterpillarPreview_Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4628,12 +4628,12 @@ GameObject:
   - component: {fileID: 563374595}
   - component: {fileID: 563374597}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: RabbitPreview_Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &563374591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5284,7 +5284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &664752726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5487,7 +5487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &722257678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8374,7 +8374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1125975342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8464,12 +8464,12 @@ GameObject:
   - component: {fileID: 1137678893}
   - component: {fileID: 1137678894}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: RabbitPreview_Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1137678888
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9518,7 +9518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1233533590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10197,7 +10197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 178, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1288595835
@@ -10313,6 +10313,8 @@ MonoBehaviour:
   Canvas: {fileID: 973420878}
   UpperDetail: {fileID: 5061248416490257506}
   BottomDetail: {fileID: 1332664709}
+  imageSpawner: {fileID: 8847400005895080963}
+  lineRenderer: {fileID: 1795298661}
 --- !u!114 &1288595843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12054,7 +12056,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487792942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.681}
+  m_LocalPosition: {x: 0, y: 0, z: 4.74}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12063,8 +12065,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.488, y: 0.86999995}
-  m_SizeDelta: {x: 438, y: 557}
+  m_AnchoredPosition: {x: 0, y: 0.775}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487792944
 MonoBehaviour:
@@ -12559,7 +12561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570823871
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12862,7 +12864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1603746694
@@ -13118,6 +13120,8 @@ MonoBehaviour:
   Canvas: {fileID: 973420878}
   UpperDetail: {fileID: 5061248416490257506}
   BottomDetail: {fileID: 1328321769}
+  imageSpawner: {fileID: 8847400005895080963}
+  lineRenderer: {fileID: 1795298661}
 --- !u!1 &1610426747
 GameObject:
   m_ObjectHideFlags: 0
@@ -14786,7 +14790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1855489935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15676,7 +15680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2001910719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16360,7 +16364,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072216149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.26}
+  m_LocalPosition: {x: 0, y: 0, z: 4.64}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16369,7 +16373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0, y: 0.87}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072216151
@@ -16685,7 +16689,7 @@ GameObject:
   - component: {fileID: 2132963519}
   - component: {fileID: 2132963518}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: CaterpillarPreview_Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257773,13 +257777,13 @@ PrefabInstance:
       addedObject: {fileID: 1942228648}
     - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1487792943}
+    - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2072216150}
     - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 973420879}
-    - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1487792943}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1

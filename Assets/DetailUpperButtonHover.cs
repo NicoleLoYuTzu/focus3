@@ -49,22 +49,29 @@ public class PrefabHoverHandler : MonoBehaviour
         switch (gameObject.name)
         {
             case "RABBIT1":
-                if (rabbitPreview != null)
+                if (rabbitPreview != null && caterpillarPreview != null)
                 {
                     Debug.Log("Activating RabbitPreview UI.");
-                    rabbitPreview.SetActive(true); // 顯示 RabbitPreview
-                    caterpillarPreview.SetActive(false);
+                    SetActiveRecursively(rabbitPreview, true); // 顯示 RabbitPreview 及其所有子物件
+                    SetActiveRecursively(caterpillarPreview, false); // 隱藏CaterpillarPreview 及其所有子物件
                 }
                 else
                 {
-                    Debug.LogError("RabbitPreview is null. Cannot activate.");
+                    Debug.LogError("RabbitPreview or CaterpillarPreview is null. Cannot activate.");
                 }
                 break;
 
             case "CATERPILLER":
-                Debug.Log("CATERPILLER hover detected. Implement logic here.");
-                caterpillarPreview.SetActive(true); // 顯示 RabbitPreview
-                rabbitPreview.SetActive(false); // 顯示 RabbitPreview
+                if (rabbitPreview != null && caterpillarPreview != null)
+                {
+                    Debug.Log("Activating CaterpillarPreview UI.");
+                    SetActiveRecursively(caterpillarPreview, true); // 顯示CaterpillarPreview 及其所有子物件
+                    SetActiveRecursively(rabbitPreview, false); // 隱藏RabbitPreview 及其所有子物件
+                }
+                else
+                {
+                    Debug.LogError("RabbitPreview or CaterpillarPreview is null. Cannot activate.");
+                }
                 break;
 
             default:
@@ -72,6 +79,27 @@ public class PrefabHoverHandler : MonoBehaviour
                 break;
         }
     }
+
+    // 遞迴設置物件及其所有子物件的 Active 狀態
+    private void SetActiveRecursively(GameObject obj, bool isActive)
+    {
+        if (obj != null)
+        {
+            obj.SetActive(isActive);
+
+            // 遞迴遍歷所有子物件，設置為相同的 Active 狀態
+            foreach (Transform child in obj.transform)
+            {
+                SetActiveRecursively(child.gameObject, isActive);
+            }
+        }
+        else
+        {
+            Debug.LogError("Trying to set active state on a null object.");
+        }
+    }
+
+}
 
     //void OnHoverExit()
     //{
@@ -84,4 +112,3 @@ public class PrefabHoverHandler : MonoBehaviour
     //        rabbitPreview.SetActive(false); // 隱藏 RabbitPreview
     //    }
     //}
-}

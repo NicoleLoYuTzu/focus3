@@ -51,7 +51,8 @@ public class TriggerToCloseDetail : MonoBehaviour
 
                     if (detailScript.BottomDetail != null && detailScript.BottomDetail.activeSelf)
                     {
-                        detailScript.BottomDetail.SetActive(false);
+                        DisableAllChildObjectsRecursive(detailScript.BottomDetail);
+                        //detailScript.BottomDetail.SetActive(false);
                         Debug.Log($"Closed BottomDetail: {detailScript.BottomDetail.name}");
                     }
                 }
@@ -69,5 +70,24 @@ public class TriggerToCloseDetail : MonoBehaviour
         {
             Debug.LogWarning("Failed to retrieve trigger button status.");
         }
+
+
     }
+
+    private void DisableAllChildObjectsRecursive(GameObject parent)
+    {
+        if (parent != null)
+        {
+            // 遍歷子物件並遞迴關閉
+            foreach (Transform child in parent.transform)
+            {
+                DisableAllChildObjectsRecursive(child.gameObject);
+            }
+
+            // 最後關閉自身
+            parent.SetActive(false);
+        }
+    }
+
+
 }

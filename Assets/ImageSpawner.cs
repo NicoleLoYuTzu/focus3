@@ -28,8 +28,11 @@ public class ImageSpawner : MonoBehaviour
       
     }
 
+
+
     public void UpdateImagesBasedOnCondition(string condition)
     {
+
         imagesArray.Clear();
         LogInfo($"Updating images based on condition: {condition}");
 

@@ -5,9 +5,79 @@ using TMPro;
 
 public class CalculateUserToTaskDistance : MonoBehaviour
 {
+
     void Update()
     {
         // 可根據需求調用 CalculateUserPositionToObject，傳入目標物件
+    }
+
+    public void UIPanelPosition(GameObject uiPanel, GameObject targetObject) {
+
+        Vector3 objectPosition = targetObject.transform.position;
+
+        // 獲取使用者的位置
+        Vector3 userPosition = GetUserPosition();
+
+        // 判斷目標在使用者的左方、右方、前方或後方
+        string positionRelation = GetPositionRelation(userPosition, objectPosition);
+
+        // 根據目標位置的相對方向決定UI面板的位置
+        // Store the initial position of the UI panel
+        // 獲取 UI 面板的 RectTransform
+        RectTransform uiPanelRectTransform = uiPanel.GetComponent<RectTransform>();
+
+        Vector3 initialPosition = uiPanelRectTransform.position;
+        int screenWidth = Screen.width;  // 螢幕寬度（像素）
+        int screenHeight = Screen.height; // 螢幕高度（像素）
+
+
+
+        Debug.Log($"Screen size: {screenWidth}x{screenHeight}");
+
+        if (positionRelation == "Right" || positionRelation == "Left") // 檢查是否要將面板放置在左邊或右邊
+        {
+            if (uiPanelRectTransform != null)
+            {
+                Camera mainCamera = Camera.main;
+                if (mainCamera != null)
+                {
+                    // 計算相機的右方向
+                    Vector3 rightDirection = mainCamera.transform.right;
+
+                    // 計算相機的前方向
+                    Vector3 forwardDirection = mainCamera.transform.forward;
+
+                    // 預設一個初始位置
+                    Vector3 targetPosition = mainCamera.transform.position;
+
+                    if (positionRelation == "Right")
+                    {
+                        // 將 UI 面板放置在相機前方右邊
+                        targetPosition = mainCamera.transform.position + forwardDirection * 5f + rightDirection * 2f; // 5f 是距離相機的前方，2f 是右邊的偏移量
+                    }
+                    else if (positionRelation == "Left")
+                    {
+                        // 將 UI 面板放置在相機前方左邊
+                        targetPosition = mainCamera.transform.position + forwardDirection * 5f - rightDirection * 1f; // 5f 是距離相機的前方，-2f 是左邊的偏移量
+                    }
+
+                    // 更新 UI 面板的位置
+                    uiPanelRectTransform.position = targetPosition;
+
+                    // 輸出新的世界座標
+                    Debug.Log($"UI Panel moved to new position: {uiPanelRectTransform.position}");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Unexpected positionRelation value: {positionRelation}");
+        }
+
+
+
+
+
     }
 
     public void CalculateUserPositionToObject(GameObject targetObject, GameObject uiPanel)
@@ -20,7 +90,6 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         // 計算使用者到目標的距離
         float distance = Vector3.Distance(userPosition, objectPosition);
 
-        // 判斷目標在使用者的左方、右方、前方或後方
         string positionRelation = GetPositionRelation(userPosition, objectPosition);
 
         // 查找場景中的 TMP Text 物件，名稱為 "targetObject+_distance"
@@ -34,92 +103,13 @@ public class CalculateUserToTaskDistance : MonoBehaviour
             if (textUIComponent != null)
             {
                 // 更新文字內容為距離和位置關係
-                textUIComponent.text = $"{distance:F2}m";
-            }
-        }
-
-        // 根據目標位置的相對方向決定UI面板的位置
-        if (positionRelation == "Right")
-        {
-            // 獲取 UI 面板的 RectTransform
-            RectTransform uiPanelRectTransform = uiPanel.GetComponent<RectTransform>();
-
-            if (uiPanelRectTransform != null)
-            {
-                // 取得相機的世界座標系位置
-                Camera mainCamera = Camera.main;
-                if (mainCamera != null)
-                {
-                    // 計算物體的螢幕座標位置
-                    Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, uiPanelRectTransform.position);
-
-                    // 設定 UI 面板的位置
-                    Vector3 newScreenPosition = new Vector3(
-                        Screen.width * 0.75f, // 移動到屏幕右邊
-                        screenPoint.y,        // 保持原本的高度
-                        0                      // 屏幕深度設為 0，保持 UI 元素在同一層
-                    );
-
-                    // 將新的螢幕座標轉換回世界座標
-                    Vector3 worldPosition;
-                    RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                        uiPanelRectTransform,
-                        newScreenPosition,
-                        mainCamera,
-                        out worldPosition
-                    );
-
-                    // 更新 UI 面板的世界位置
-                    uiPanelRectTransform.position = worldPosition;
-
-                    // 加入 log 訊息，檢查新位置
-                    Debug.Log($"CalculateUserToTaskDistance {uiPanel} UI Panel moved to new position: {uiPanelRectTransform.position}");
-                }
-            }
-        }
-
-        else if (positionRelation == "Left")
-        {
-            // 如果目標在左邊，將 UI 面板移動到畫面0.25位置
-            RectTransform uiPanelRectTransform = uiPanel.GetComponent<RectTransform>();
-            if (uiPanelRectTransform != null)
-            {
-                // 獲取相機並計算螢幕座標
-                Camera mainCamera = Camera.main;
-                if (mainCamera != null)
-                {
-                    // 計算物體的螢幕座標位置
-                    Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, uiPanelRectTransform.position);
-
-                    // 移動 UI 面板到螢幕左邊 0.25 位置
-                    Vector3 newScreenPosition = new Vector3(
-                        Screen.width * 0.25f, // 移動到屏幕左邊
-                        screenPoint.y,        // 保持原本的高度
-                        0                      // 屏幕深度設為 0，保持 UI 元素在同一層
-                    );
-
-                    // 將新的螢幕座標轉換回世界座標
-                    Vector3 worldPosition;
-                    RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                        uiPanelRectTransform,
-                        newScreenPosition,
-                        mainCamera,
-                        out worldPosition
-                    );
-
-                    // 更新 UI 面板的世界位置
-                    uiPanelRectTransform.position = worldPosition;
-
-                    // 加入 log 訊息，檢查新位置
-                    Debug.Log($"CalculateUserToTaskDistance {uiPanel }UI Panel moved to new position: {uiPanelRectTransform.position}");
-                }
+                textUIComponent.text = $"{distance:F2}m {positionRelation}";
             }
         }
 
         // 加入 log 訊息
         Debug.Log($"UpdatePanelPositionBasedOnUserDistance: Target {targetObject.name} is {positionRelation} at a distance of {distance:F2}m.");
     }
-
 
     private string GetPositionRelation(Vector3 userPosition, Vector3 objectPosition)
     {
@@ -145,8 +135,7 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         float dotRight = Vector3.Dot(userRight, targetDirection.normalized);
         string leftOrRight = dotRight > 0 ? "Right" : "Left";
 
-       
-            return leftOrRight;
+        return leftOrRight;
     }
 
     private Vector3 GetUserPosition()

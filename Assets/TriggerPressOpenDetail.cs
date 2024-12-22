@@ -9,8 +9,9 @@ public class TriggerPressOpenDetail : MonoBehaviour
     public GameObject UpperDetail; // 要啟用的目標 GameObject
     public GameObject BottomDetail; // 要啟用的目標 GameObject
 
-    private bool isTriggerPressedPreviously = false; // 記錄上一次的按鍵狀態
-    private ImageSpawner imageSpawner;
+    public ImageSpawner imageSpawner;
+
+    public LineRenderer lineRenderer;
 
     // Update is called once per frame
     void Update()
@@ -28,48 +29,59 @@ public class TriggerPressOpenDetail : MonoBehaviour
         // 檢測扳機按鈕是否按下
         if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed))
         {
-            Debug.Log($"Trigger button status: {isTriggerPressed}, Previous status: {isTriggerPressedPreviously}");
 
             // 當按鍵從未按下變為按下的瞬間觸發
-            if (isTriggerPressed && !isTriggerPressedPreviously)
+            if (isTriggerPressed)
             {
                 Debug.Log("Trigger button pressed for the first time in this cycle.");
 
-                if (UpperDetail != null)
-                {
                     Debug.Log("UpperDetail is not null. Proceeding to enable UI elements.");
 
                     Canvas.SetActive(true);
                     Debug.Log("Canvas enabled.");
 
-                    BottomDetail.SetActive(true);
+                    //BottomDetail.SetActive(true);
+                    if (BottomDetail != null)
+                    {
+                        EnableAllChildObjectsRecursive(BottomDetail); // 啟用所有層級
+                    }
                     Debug.Log("BottomDetail enabled.");
 
                     UpperDetail.SetActive(true);
                     Debug.Log($"{UpperDetail.name} has been enabled.");
-
+                    Debug.Log($"ImageSpawner updated with condition: {gameObject.name}.");
+                    lineRenderer.enabled = false;
                     // 更新圖片或其他狀態
+                    
+                   
                     imageSpawner.UpdateImagesBasedOnCondition(gameObject.name);
-                    Debug.Log("ImageSpawner updated with condition: purpleGhost.");
-                }
-                else
-                {
-                    Debug.LogWarning("UpperDetail GameObject is not assigned!");
-                }
             }
             else
             {
                 Debug.Log("Trigger button not pressed or still being held.");
             }
-
-            // 更新按鍵狀態
-            isTriggerPressedPreviously = isTriggerPressed;
-            Debug.Log($"Updated previous trigger status to: {isTriggerPressedPreviously}");
         }
         else
         {
             Debug.LogWarning("Failed to retrieve trigger button status.");
         }
     }
+
+    private void EnableAllChildObjectsRecursive(GameObject parent)
+    {
+        if (parent != null)
+        {
+            parent.SetActive(true); // 啟用當前物件
+
+            // 遍歷子物件
+            foreach (Transform child in parent.transform)
+            {
+                EnableAllChildObjectsRecursive(child.gameObject); // 遞迴啟用子物件及其子孫
+            }
+        }
+    }
+
+
+
 
 }
