@@ -20,27 +20,41 @@ public class TriggerPressOpenDetail : MonoBehaviour
     {
         CheckTriggerAndEnableGameObject();
     }
-
     private void CheckTriggerAndEnableGameObject()
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        RaycastHit hit;
 
         if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed))
         {
-            if (isTriggerPressed && !hasTriggered) // 第一次按下時觸發
+            Debug.Log($"CheckTriggerAndEnableGameObject LeftHand isTriggerPressed");
+            // 發射射線來檢測點擊物件
+            Ray ray = new Ray(transform.position, transform.forward); // 假設你有指定的射線方向
+            Debug.Log($"CheckTriggerAndEnableGameObject ray");
+            if (Physics.Raycast(ray, out hit))
             {
-                ActivateGameObjects();
-                PrintObjectActivationStatus();
-                hasTriggered = true; // 防止重複觸發
+                GameObject hitObject = hit.collider.gameObject;
+                Debug.Log($"CheckTriggerAndEnableGameObject Raycast hit: {hitObject.name}");
+
+                // 根據射線命中的物件來執行相應操作
+                if (hitObject.CompareTag("RabbitContent"))
+                {
+                    // 按下兔子時啟用 RabbitContent 的對應物件
+                    ActivateGameObjects(hitObject);
+                    hasTriggered = true; // 防止重複觸發
+                }
+                else if (hitObject.CompareTag("PurpleGhostContent"))
+                {
+                    // 按下 PurpleGhost 時啟用 PurpleGhostContent 的對應物件
+                    ActivateGameObjects(hitObject);
+                    hasTriggered = true; // 防止重複觸發
+                }
             }
-        }
-        else
-        {
-            Debug.LogWarning("Failed to retrieve trigger button status.");
         }
     }
 
-    private void ActivateGameObjects()
+
+    private void ActivateGameObjects(GameObject gameObject)
     {
         if (Canvas != null)
         {
@@ -71,6 +85,58 @@ public class TriggerPressOpenDetail : MonoBehaviour
             lineRenderer.enabled = false;
         }
     }
+
+    //private void CheckTriggerAndEnableGameObject()
+    //{
+    //    InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+
+    //    if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed))
+    //    {
+    //        if (isTriggerPressed && !hasTriggered) // 第一次按下時觸發
+    //        {
+    //            ActivateGameObjects();
+    //            PrintObjectActivationStatus();
+    //            hasTriggered = true; // 防止重複觸發
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Failed to retrieve trigger button status.");
+    //    }
+    //}
+
+
+    //private void ActivateGameObjects(GameObject gameObject)
+    //{
+    //    if (Canvas != null)
+    //    {
+    //        Canvas.SetActive(true);
+    //        Debug.Log("Canvas enabled.");
+    //    }
+
+    //    if (UpperDetail != null)
+    //    {
+    //        UpperDetail.SetActive(true);
+    //        Debug.Log($"{UpperDetail.name} has been enabled.");
+    //    }
+
+    //    if (BottomDetail != null)
+    //    {
+    //        EnableAllChildObjectsRecursive(BottomDetail);
+    //        Debug.Log($"{BottomDetail.name} and all its children have been enabled.");
+    //    }
+
+    //    if (generateDetailUpperRecycleImage != null)
+    //    {
+    //        generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(gameObject.name);
+    //        Debug.Log($"ImageSpawner updated with condition: {gameObject.name}.");
+    //    }
+
+    //    if (lineRenderer != null)
+    //    {
+    //        lineRenderer.enabled = false;
+    //    }
+    //}
 
     private void EnableAllChildObjectsRecursive(GameObject parent)
     {

@@ -72,11 +72,9 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
                 LogWarning("Caterpillar sprite not found!");
             }
         }
-        else if (condition == "RabbitPreviewContent")
+        else if (condition == "RabbitContent")
         {
-            imagesArray.Add(Resources.Load<Sprite>("Sprites/Image3"));
-            imagesArray.Add(Resources.Load<Sprite>("Sprites/Image4"));
-            imagesArray.Add(Resources.Load<Sprite>("Sprites/Image5"));
+            Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
         }
 
         GenerateImages();
