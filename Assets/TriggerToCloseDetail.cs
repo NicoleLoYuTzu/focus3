@@ -7,6 +7,7 @@ public class TriggerToCloseDetail : MonoBehaviour
 {
     private bool isTriggerPressedPreviously = false; // 記錄上一次的按鍵狀態
     private TriggerPressOpenDetail[] openDetailScripts; // 用於存儲所有的 TriggerPressOpenDetail 腳本
+    public GenerateDetailUpperRecycleImage generateDetailUpperRecycleImage;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class TriggerToCloseDetail : MonoBehaviour
             // 當按鍵從未按下變為按下的瞬間觸發
             if (isTriggerPressed && !isTriggerPressedPreviously)
             {
+                TriggerPressOpenDetail.ResetTrigger(); // 使用靜態方式調用 ResetTrigger()
                 Debug.Log("Trigger button pressed on controller. Checking for open UIs...");
 
                 bool anyUIClosed = false;
@@ -61,10 +63,14 @@ public class TriggerToCloseDetail : MonoBehaviour
                 {
                     Debug.Log("No open UIs found to close.");
                 }
+
+                 generateDetailUpperRecycleImage.ClearExistingButtons();
+
             }
 
             // 更新按鍵狀態
             isTriggerPressedPreviously = isTriggerPressed;
+         
         }
         else
         {

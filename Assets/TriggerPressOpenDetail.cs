@@ -5,60 +5,33 @@ using UnityEngine.XR;
 
 public class TriggerPressOpenDetail : MonoBehaviour
 {
-    public GameObject Canvas; // 要啟用的目標 GameObject
-    public GameObject UpperDetail; // 要啟用的目標 GameObject
-    public GameObject BottomDetail; // 要啟用的目標 GameObject
+    // 靜態變數，所有 TriggerPressOpenDetail 實例共享
+    public static bool hasTriggered = false; // 防止重複執行的旗標
 
-    public ImageSpawner imageSpawner;
+    public GameObject Canvas; // 要啟用的目標 Canvas
+    public GameObject UpperDetail; // 要啟用的 UpperDetail
+    public GameObject BottomDetail; // 要啟用的 BottomDetail
 
-    public LineRenderer lineRenderer;
+    public GenerateDetailUpperRecycleImage generateDetailUpperRecycleImage; // 負責更新圖片的腳本
+    public LineRenderer lineRenderer; // 負責顯示線條的組件
 
-    // Update is called once per frame
+    // 每幀更新檢查輸入
     void Update()
     {
-        Debug.Log("TriggerPressOpenDetail Update called");
         CheckTriggerAndEnableGameObject();
     }
 
     private void CheckTriggerAndEnableGameObject()
     {
-        Debug.Log("Checking trigger button status...");
-
         InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
 
-        // 檢測扳機按鈕是否按下
         if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed))
         {
-
-            // 當按鍵從未按下變為按下的瞬間觸發
-            if (isTriggerPressed)
+            if (isTriggerPressed && !hasTriggered) // 第一次按下時觸發
             {
-                Debug.Log("Trigger button pressed for the first time in this cycle.");
-
-                    Debug.Log("UpperDetail is not null. Proceeding to enable UI elements.");
-
-                    Canvas.SetActive(true);
-                    Debug.Log("Canvas enabled.");
-
-                    //BottomDetail.SetActive(true);
-                    if (BottomDetail != null)
-                    {
-                        EnableAllChildObjectsRecursive(BottomDetail); // 啟用所有層級
-                    }
-                    Debug.Log("BottomDetail enabled.");
-
-                    UpperDetail.SetActive(true);
-                    Debug.Log($"{UpperDetail.name} has been enabled.");
-                    Debug.Log($"ImageSpawner updated with condition: {gameObject.name}.");
-                    lineRenderer.enabled = false;
-                    // 更新圖片或其他狀態
-                    
-                   
-                    imageSpawner.UpdateImagesBasedOnCondition(gameObject.name);
-            }
-            else
-            {
-                Debug.Log("Trigger button not pressed or still being held.");
+                ActivateGameObjects();
+                PrintObjectActivationStatus();
+                hasTriggered = true; // 防止重複觸發
             }
         }
         else
@@ -67,21 +40,83 @@ public class TriggerPressOpenDetail : MonoBehaviour
         }
     }
 
+    private void ActivateGameObjects()
+    {
+        if (Canvas != null)
+        {
+            Canvas.SetActive(true);
+            Debug.Log("Canvas enabled.");
+        }
+
+        if (UpperDetail != null)
+        {
+            UpperDetail.SetActive(true);
+            Debug.Log($"{UpperDetail.name} has been enabled.");
+        }
+
+        if (BottomDetail != null)
+        {
+            EnableAllChildObjectsRecursive(BottomDetail);
+            Debug.Log($"{BottomDetail.name} and all its children have been enabled.");
+        }
+
+        if (generateDetailUpperRecycleImage != null)
+        {
+            generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(gameObject.name);
+            Debug.Log($"ImageSpawner updated with condition: {gameObject.name}.");
+        }
+
+        if (lineRenderer != null)
+        {
+            lineRenderer.enabled = false;
+        }
+    }
+
     private void EnableAllChildObjectsRecursive(GameObject parent)
     {
         if (parent != null)
         {
-            parent.SetActive(true); // 啟用當前物件
+            parent.SetActive(true);
 
-            // 遍歷子物件
             foreach (Transform child in parent.transform)
             {
-                EnableAllChildObjectsRecursive(child.gameObject); // 遞迴啟用子物件及其子孫
+                EnableAllChildObjectsRecursive(child.gameObject);
             }
         }
     }
 
+    private void PrintObjectActivationStatus()
+    {
+        Debug.Log($"PrintObjectActivationStatus Canvas is {(Canvas != null && Canvas.activeSelf ? "enabled" : "disabled or null")}");
 
+        Debug.Log($"PrintObjectActivationStatus UpperDetail is {(UpperDetail != null && UpperDetail.activeSelf ? "enabled" : "disabled or null")}");
 
+        if (BottomDetail != null && BottomDetail.activeSelf)
+        {
+            Debug.Log($"PrintObjectActivationStatus BottomDetail is enabled. Name: {BottomDetail.name}");
+            PrintAllChildObjectNames(BottomDetail);
+        }
+        else
+        {
+            Debug.Log("PrintObjectActivationStatus BottomDetail is disabled or null.");
+        }
+    }
 
+    private void PrintAllChildObjectNames(GameObject parent)
+    {
+        Debug.Log($"PrintObjectActivationStatus Parent: {parent.name}");
+
+        foreach (Transform child in parent.transform)
+        {
+            Debug.Log($"PrintObjectActivationStatus Child: {child.gameObject.name}");
+            PrintAllChildObjectNames(child.gameObject); // 遞迴列出子物件
+        }
+    }
+
+    // 重置 hasTriggered 靜態標誌
+    public static void ResetTrigger()
+    {
+        hasTriggered = false;
+        Debug.Log("Trigger flag has been reset.");
+    }
 }

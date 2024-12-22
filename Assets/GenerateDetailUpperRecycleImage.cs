@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ImageSpawner : MonoBehaviour
+public class GenerateDetailUpperRecycleImage : MonoBehaviour
 {
     public GameObject buttonPrefab; // 预制的 Button 模板，包含两个 Image
     public Transform parentTransform; // 用来放置生成的 Button 的父物件（ImageContainer）
@@ -28,6 +28,16 @@ public class ImageSpawner : MonoBehaviour
       
     }
 
+    // 清除已經存在的按鈕物件
+    public void ClearExistingButtons()
+    {
+        foreach (Transform child in parentTransform)
+        {
+            // 這裡刪除父物件下的所有子物件
+            Destroy(child.gameObject);
+            LogInfo($"Removed existing button: {child.name}");
+        }
+    }
 
 
     public void UpdateImagesBasedOnCondition(string condition)

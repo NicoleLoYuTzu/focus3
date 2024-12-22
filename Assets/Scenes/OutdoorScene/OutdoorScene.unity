@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &16340445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -277,7 +277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &24842948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &39035113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &49667179
 RectTransform:
   m_ObjectHideFlags: 0
@@ -731,7 +731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &92107709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &179400582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1443,7 +1443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &192623354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1508,7 +1508,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332664709}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2288,6 +2288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9b9d6733972b942b7829f4e8bc2b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
 --- !u!1 &235184210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,7 +2727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &329597267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3625,7 +3626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &395357285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4223,7 +4224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &446152038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5580,7 +5581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743531652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7061,7 +7062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &928120218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7195,7 +7196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931359099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7530,7 +7531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &971970781
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8134,7 +8135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1095951071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10313,7 +10314,7 @@ MonoBehaviour:
   Canvas: {fileID: 973420878}
   UpperDetail: {fileID: 5061248416490257506}
   BottomDetail: {fileID: 1332664709}
-  imageSpawner: {fileID: 8847400005895080963}
+  generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   lineRenderer: {fileID: 1795298661}
 --- !u!114 &1288595843
 MonoBehaviour:
@@ -10897,7 +10898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1342220354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10972,7 +10973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1345809887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11457,7 +11458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1433315107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12357,7 +12358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1533496398
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12839,7 +12840,7 @@ GameObject:
   - component: {fileID: 1603746699}
   - component: {fileID: 1603746701}
   m_Layer: 0
-  m_Name: RabbitPreviewContent
+  m_Name: RabbitContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13120,7 +13121,7 @@ MonoBehaviour:
   Canvas: {fileID: 973420878}
   UpperDetail: {fileID: 5061248416490257506}
   BottomDetail: {fileID: 1328321769}
-  imageSpawner: {fileID: 8847400005895080963}
+  generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   lineRenderer: {fileID: 1795298661}
 --- !u!1 &1610426747
 GameObject:
@@ -13139,7 +13140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1610426748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13214,7 +13215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1628518727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13750,7 +13751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1753562622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16350,7 +16351,7 @@ GameObject:
   - component: {fileID: 2072216151}
   - component: {fileID: 2072216154}
   m_Layer: 0
-  m_Name: RabbitPreview
+  m_Name: Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16694,7 +16695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2132963517
 RectTransform:
   m_ObjectHideFlags: 0

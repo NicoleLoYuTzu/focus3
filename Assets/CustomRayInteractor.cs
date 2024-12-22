@@ -15,7 +15,6 @@ public class CustomRayInteractor : MonoBehaviour
         public GameObject uiPanel; // 對應的 UI 面板
         public GameObject targetObject;
     }
-
     public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
     public CalculateUserToTaskDistance calculateUserToTaskDistance; // 將其他腳本拖動到此引用
     private InputDevice controller;
