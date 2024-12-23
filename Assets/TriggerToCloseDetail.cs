@@ -12,7 +12,18 @@ public class TriggerToCloseDetail : MonoBehaviour
     void Start()
     {
         // 獲取場景中所有的 TriggerPressOpenDetail 腳本
+        //openDetailScripts = FindObjectsOfType<TriggerPressOpenDetail>();
+        // 獲取場景中所有的 TriggerPressOpenDetail 腳本
         openDetailScripts = FindObjectsOfType<TriggerPressOpenDetail>();
+        Debug.Log($"Found {openDetailScripts.Length} TriggerPressOpenDetail scripts in the scene.");
+
+        foreach (var script in openDetailScripts)
+        {
+            if (script != null)
+            {
+                Debug.Log($"TriggerPressOpenDetail is attached to: {script.gameObject.name}");
+            }
+        }
     }
 
     void Update()

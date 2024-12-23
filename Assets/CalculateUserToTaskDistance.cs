@@ -26,14 +26,6 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         // 獲取 UI 面板的 RectTransform
         RectTransform uiPanelRectTransform = uiPanel.GetComponent<RectTransform>();
 
-        Vector3 initialPosition = uiPanelRectTransform.position;
-        int screenWidth = Screen.width;  // 螢幕寬度（像素）
-        int screenHeight = Screen.height; // 螢幕高度（像素）
-
-
-
-        Debug.Log($"Screen size: {screenWidth}x{screenHeight}");
-
         if (positionRelation == "Right" || positionRelation == "Left") // 檢查是否要將面板放置在左邊或右邊
         {
             if (uiPanelRectTransform != null)

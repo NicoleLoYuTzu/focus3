@@ -75,6 +75,7 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
         else if (condition == "RabbitContent")
         {
             Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
+            imagesArray.Add(caterpillarSprite); // 毛毛虫图片
         }
 
         GenerateImages();

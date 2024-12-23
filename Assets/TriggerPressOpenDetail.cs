@@ -11,6 +11,7 @@ public class TriggerPressOpenDetail : MonoBehaviour
     public GameObject Canvas; // 要啟用的目標 Canvas
     public GameObject UpperDetail; // 要啟用的 UpperDetail
     public GameObject BottomDetail; // 要啟用的 BottomDetail
+    public GameObject thisone;
 
     public GenerateDetailUpperRecycleImage generateDetailUpperRecycleImage; // 負責更新圖片的腳本
     public LineRenderer lineRenderer; // 負責顯示線條的組件
@@ -18,43 +19,30 @@ public class TriggerPressOpenDetail : MonoBehaviour
     // 每幀更新檢查輸入
     void Update()
     {
-        CheckTriggerAndEnableGameObject();
+        CheckTriggerAndEnableGameObject(thisone);
     }
-    private void CheckTriggerAndEnableGameObject()
+
+    private void CheckTriggerAndEnableGameObject(GameObject uipanel)
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        RaycastHit hit;
 
         if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed))
         {
-            Debug.Log($"CheckTriggerAndEnableGameObject LeftHand isTriggerPressed");
-            // 發射射線來檢測點擊物件
-            Ray ray = new Ray(transform.position, transform.forward); // 假設你有指定的射線方向
-            Debug.Log($"CheckTriggerAndEnableGameObject ray");
-            if (Physics.Raycast(ray, out hit))
+            if (isTriggerPressed && !hasTriggered) // 第一次按下時觸發
             {
-                GameObject hitObject = hit.collider.gameObject;
-                Debug.Log($"CheckTriggerAndEnableGameObject Raycast hit: {hitObject.name}");
-
-                // 根據射線命中的物件來執行相應操作
-                if (hitObject.CompareTag("RabbitContent"))
-                {
-                    // 按下兔子時啟用 RabbitContent 的對應物件
-                    ActivateGameObjects(hitObject);
-                    hasTriggered = true; // 防止重複觸發
-                }
-                else if (hitObject.CompareTag("PurpleGhostContent"))
-                {
-                    // 按下 PurpleGhost 時啟用 PurpleGhostContent 的對應物件
-                    ActivateGameObjects(hitObject);
-                    hasTriggered = true; // 防止重複觸發
-                }
+                ActivateGameObjects(uipanel);
+                PrintObjectActivationStatus(uipanel);
+                hasTriggered = true; // 防止重複觸發
             }
+        }
+        else
+        {
+            Debug.LogWarning("Failed to retrieve trigger button status.");
         }
     }
 
 
-    private void ActivateGameObjects(GameObject gameObject)
+    private void ActivateGameObjects(GameObject uipanel)
     {
         if (Canvas != null)
         {
@@ -71,13 +59,13 @@ public class TriggerPressOpenDetail : MonoBehaviour
         if (BottomDetail != null)
         {
             EnableAllChildObjectsRecursive(BottomDetail);
-            Debug.Log($"{BottomDetail.name} and all its children have been enabled.");
+            Debug.Log($"{BottomDetail.name} BottomDetail.name and all its children have been enabled. PrintObjectActivationStatus");
         }
 
         if (generateDetailUpperRecycleImage != null)
         {
-            generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(gameObject.name);
-            Debug.Log($"ImageSpawner updated with condition: {gameObject.name}.");
+            generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(uipanel.name);
+            Debug.Log($"PrintObjectActivationStatus ImageSpawner updated with condition: {uipanel.name}.");
         }
 
         if (lineRenderer != null)
@@ -86,72 +74,20 @@ public class TriggerPressOpenDetail : MonoBehaviour
         }
     }
 
-    //private void CheckTriggerAndEnableGameObject()
-    //{
-    //    InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-
-    //    if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed))
-    //    {
-    //        if (isTriggerPressed && !hasTriggered) // 第一次按下時觸發
-    //        {
-    //            ActivateGameObjects();
-    //            PrintObjectActivationStatus();
-    //            hasTriggered = true; // 防止重複觸發
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Failed to retrieve trigger button status.");
-    //    }
-    //}
-
-
-    //private void ActivateGameObjects(GameObject gameObject)
-    //{
-    //    if (Canvas != null)
-    //    {
-    //        Canvas.SetActive(true);
-    //        Debug.Log("Canvas enabled.");
-    //    }
-
-    //    if (UpperDetail != null)
-    //    {
-    //        UpperDetail.SetActive(true);
-    //        Debug.Log($"{UpperDetail.name} has been enabled.");
-    //    }
-
-    //    if (BottomDetail != null)
-    //    {
-    //        EnableAllChildObjectsRecursive(BottomDetail);
-    //        Debug.Log($"{BottomDetail.name} and all its children have been enabled.");
-    //    }
-
-    //    if (generateDetailUpperRecycleImage != null)
-    //    {
-    //        generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(gameObject.name);
-    //        Debug.Log($"ImageSpawner updated with condition: {gameObject.name}.");
-    //    }
-
-    //    if (lineRenderer != null)
-    //    {
-    //        lineRenderer.enabled = false;
-    //    }
-    //}
-
-    private void EnableAllChildObjectsRecursive(GameObject parent)
+    private void EnableAllChildObjectsRecursive(GameObject bottomDetail)
     {
-        if (parent != null)
+        if (bottomDetail != null)
         {
-            parent.SetActive(true);
+            bottomDetail.SetActive(true);
 
-            foreach (Transform child in parent.transform)
+            foreach (Transform child in bottomDetail.transform)
             {
                 EnableAllChildObjectsRecursive(child.gameObject);
             }
         }
     }
 
-    private void PrintObjectActivationStatus()
+    private void PrintObjectActivationStatus(GameObject bottomDetail)
     {
         Debug.Log($"PrintObjectActivationStatus Canvas is {(Canvas != null && Canvas.activeSelf ? "enabled" : "disabled or null")}");
 
@@ -168,11 +104,11 @@ public class TriggerPressOpenDetail : MonoBehaviour
         }
     }
 
-    private void PrintAllChildObjectNames(GameObject parent)
+    private void PrintAllChildObjectNames(GameObject bottomDetail)
     {
-        Debug.Log($"PrintObjectActivationStatus Parent: {parent.name}");
+        Debug.Log($"PrintObjectActivationStatus Parent: {bottomDetail.name}");
 
-        foreach (Transform child in parent.transform)
+        foreach (Transform child in bottomDetail.transform)
         {
             Debug.Log($"PrintObjectActivationStatus Child: {child.gameObject.name}");
             PrintAllChildObjectNames(child.gameObject); // 遞迴列出子物件

@@ -10170,8 +10170,8 @@ GameObject:
   - component: {fileID: 1288595835}
   - component: {fileID: 1288595839}
   - component: {fileID: 1288595840}
-  - component: {fileID: 1288595842}
   - component: {fileID: 1288595843}
+  - component: {fileID: 1288595842}
   m_Layer: 0
   m_Name: PurpleGhostContent
   m_TagString: Untagged
@@ -10297,8 +10297,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 129.60286, y: 58.81743, z: 23.823063}
-  m_Center: {x: -55.641544, y: -19.576393, z: -9.756532}
+  m_Size: {x: 97.52948, y: 47.995872, z: 23.823063}
+  m_Center: {x: -49.12525, y: -24.425196, z: -9.756532}
 --- !u!114 &1288595842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10314,6 +10314,7 @@ MonoBehaviour:
   Canvas: {fileID: 973420878}
   UpperDetail: {fileID: 5061248416490257506}
   BottomDetail: {fileID: 1332664709}
+  thisone: {fileID: 1288595833}
   generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   lineRenderer: {fileID: 1795298661}
 --- !u!114 &1288595843
@@ -10328,15 +10329,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13107d69910413a42b79f56170645476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 1942228649}
-  m_Colliders:
-  - {fileID: 1288595840}
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
   m_InteractionLayers:
     m_Bits: 4294967295
-  m_DistanceCalculationMode: 0
+  m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
-  m_CustomReticle: {fileID: 1288595833}
+  m_CustomReticle: {fileID: 0}
   m_AllowGazeInteraction: 0
   m_AllowGazeSelect: 0
   m_OverrideGazeTimeToSelect: 0
@@ -12066,7 +12066,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.775}
+  m_AnchoredPosition: {x: 0, y: 0.14}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487792944
@@ -13121,6 +13121,7 @@ MonoBehaviour:
   Canvas: {fileID: 973420878}
   UpperDetail: {fileID: 5061248416490257506}
   BottomDetail: {fileID: 1328321769}
+  thisone: {fileID: 1603746692}
   generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   lineRenderer: {fileID: 1795298661}
 --- !u!1 &1610426747
@@ -16374,7 +16375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072216151

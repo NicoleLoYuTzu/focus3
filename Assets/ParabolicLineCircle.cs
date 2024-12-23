@@ -159,6 +159,8 @@ public class ParabolicLineCircle : MonoBehaviour
         // 遍歷每個 UI 元素
         foreach (GameObject uiElement in uiElements)
         {
+
+            Log($"ParabolicLineCircle GameObject: {uiElement}");
             if (uiElement == null)
             {
                 Log("ParabolicLineCircle: uiElement is null!");
