@@ -2288,7 +2288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9b9d6733972b942b7829f4e8bc2b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
+  panelsToClose:
+  - {fileID: 973420878}
 --- !u!1 &235184210
 GameObject:
   m_ObjectHideFlags: 0
@@ -12839,6 +12840,7 @@ GameObject:
   - component: {fileID: 1603746700}
   - component: {fileID: 1603746699}
   - component: {fileID: 1603746701}
+  - component: {fileID: 1603746702}
   m_Layer: 0
   m_Name: RabbitContent
   m_TagString: Untagged
@@ -13113,7 +13115,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603746692}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef17527df08938f4a9575c4d38ea8897, type: 3}
   m_Name: 
@@ -13124,6 +13126,24 @@ MonoBehaviour:
   thisone: {fileID: 1603746692}
   generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   lineRenderer: {fileID: 1795298661}
+--- !u!114 &1603746702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603746692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c7f15c99bc28f4eba87fced4b5baf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 973420878}
+  UpperDetail: {fileID: 5061248416490257506}
+  BottomDetail: {fileID: 1328321769}
+  thisone: {fileID: 1603746692}
+  generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
+  lineRenderer: {fileID: 2023881258}
 --- !u!1 &1610426747
 GameObject:
   m_ObjectHideFlags: 0
@@ -15758,6 +15778,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiElement: {fileID: 2001910718}
+--- !u!120 &2023881258 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 1319746311, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 9014170783777442263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2037278706
 GameObject:
   m_ObjectHideFlags: 0
