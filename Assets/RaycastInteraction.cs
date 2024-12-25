@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class RaycastInteractor : MonoBehaviour
 {
     public GameObject canvas;  // 這裡應該是一個 GameObject，而非 Canvas 本身
+    public LayerMask raycastLayerMask;  // 用來設定射線檢測的層
 
     [System.Serializable]
     public class TargetUIPair
@@ -30,14 +31,15 @@ public class RaycastInteractor : MonoBehaviour
 
     void Update()
     {
-        // 發射射線並檢查是否有按下板機（trigger）
         if (leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out bool isPressed) && isPressed)
         {
             Debug.Log("Update: Trigger pressed");
 
             // 發射射線，從左手控制器的位置開始，並且射向它的前方
             Ray ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out hitInfo))
+
+            // 使用指定的 LayerMask 限制射線檢測範圍
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, raycastLayerMask))
             {
                 // 如果射線碰撞到物件，印出物件的名字
                 Debug.Log("Raycast hit object: " + hitInfo.collider.gameObject.name);
@@ -67,6 +69,13 @@ public class RaycastInteractor : MonoBehaviour
             else
             {
                 Debug.Log("No object hit by raycast");
+
+                // 如果射線沒有命中物件，檢查是否有顯示中的 selectableObjectDetail，有的話就關閉它們
+                if (isAnyObjectSelected)
+                {
+                    DisableDetailObjects();
+                    isAnyObjectSelected = false;  // 重置標記
+                }
             }
         }
         else
