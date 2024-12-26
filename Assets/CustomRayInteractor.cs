@@ -90,7 +90,6 @@ public class CustomRayInteractor : MonoBehaviour
         {
             lineRenderer.enabled = false; // 如果沒有擊中，隱藏線
             Debug.Log("UI 隱藏 - 控制器未移動或無有效射線擊中。");
-
             foreach (var uiPair in targetObjectsWithUI)
             {
                 uiPair.uiPanel.SetActive(false); // 隱藏所有 UI 面板
@@ -171,17 +170,7 @@ public class CustomRayInteractor : MonoBehaviour
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
             }
         }
-
-        // 如果没有交集，清空 intersectedUIPanels
-        if (!hasIntersection)
-        {
-            intersectedUIPanels.Clear();
-            parabolicLineCircle.HideLineRenderers(); // 清空所有线条
-        }
-        else
-        {
-            parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels); // 更新连接
-        }
+        parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels); // 更新连接
 
 
 

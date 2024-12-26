@@ -14,7 +14,6 @@ public class ParabolicLineCircle : MonoBehaviour
     private Dictionary<GameObject, LineRenderer> uiLineRenderers = new Dictionary<GameObject, LineRenderer>(); // 存儲UI元素對應的LineRenderer
     private LineRenderer existingLineRenderer;
     private LineRenderer newLineRenderer;
-
     void Start()
     {
         // Check if lineVisual and circleObject are assigned
