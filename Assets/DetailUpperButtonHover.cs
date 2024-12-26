@@ -2,9 +2,8 @@
 
 public class PrefabHoverHandler : MonoBehaviour
 {
-    private Canvas activeCanvas; // 當前顯示的 Canvas
-    private GameObject rabbitPreview;
-    private GameObject caterpillarPreview;
+    private GameObject rabbit;
+    private GameObject purpleGhost;
 
     void Start()
     {
@@ -23,22 +22,20 @@ public class PrefabHoverHandler : MonoBehaviour
         // 如果 Canvas 存在，嘗試找到 RabbitPreview
         Transform canvasTransform = canvasObject.transform;
         //找到兔子
-        Transform rabbitPreviewTransform = canvasTransform.Find("RabbitPreview");
+        Transform rabbitTransform = canvasTransform.Find("RabbitPreview");
 
-        if (rabbitPreviewTransform == null)
+        if (rabbitTransform == null)
         {
             Debug.LogError("RabbitPreview not found under Canvas!");
             return; // 提前結束，因為 RabbitPreview 找不到
         }
 
         // 如果 RabbitPreview 存在，將其存入變量
-        rabbitPreview = rabbitPreviewTransform.gameObject;
+        rabbit = rabbitTransform.gameObject;
         Debug.Log("Successfully found RabbitPreview!");
 
-
-        //找到毛毛蟲
-        Transform caterpillarPreviewTransform = canvasTransform.Find("CaterpillarPreview");
-        caterpillarPreview = caterpillarPreviewTransform.gameObject;
+        Transform PurpleGhostTransform = canvasTransform.Find("PurpleGhostPreview");
+        purpleGhost = PurpleGhostTransform.gameObject;
     }
 
     public void OnHoverEnter()
@@ -49,24 +46,16 @@ public class PrefabHoverHandler : MonoBehaviour
         switch (gameObject.name)
         {
             case "RABBIT1":
-                if (rabbitPreview != null && caterpillarPreview != null)
-                {
-                    Debug.Log("Activating RabbitPreview UI.");
-                    SetActiveRecursively(rabbitPreview, true); // 顯示 RabbitPreview 及其所有子物件
-                    SetActiveRecursively(caterpillarPreview, false); // 隱藏CaterpillarPreview 及其所有子物件
-                }
-                else
-                {
-                    Debug.LogError("RabbitPreview or CaterpillarPreview is null. Cannot activate.");
-                }
+                    SetActiveRecursively(rabbit, true); // 顯示 RabbitPreview 及其所有子物件
+                    SetActiveRecursively(purpleGhost, false); 
                 break;
 
             case "CATERPILLER":
-                if (rabbitPreview != null && caterpillarPreview != null)
+                if (rabbit != null && purpleGhost != null)
                 {
                     Debug.Log("Activating CaterpillarPreview UI.");
-                    SetActiveRecursively(caterpillarPreview, true); // 顯示CaterpillarPreview 及其所有子物件
-                    SetActiveRecursively(rabbitPreview, false); // 隱藏RabbitPreview 及其所有子物件
+                    SetActiveRecursively(purpleGhost, true); // 顯示CaterpillarPreview 及其所有子物件
+                    SetActiveRecursively(rabbit, false); // 隱藏RabbitPreview 及其所有子物件
                 }
                 else
                 {

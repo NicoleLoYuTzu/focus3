@@ -46,7 +46,7 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
         imagesArray.Clear();
         LogInfo($"Updating images based on condition: {condition}");
 
-        if (condition == "PurpleGhostContent")
+        if (condition == "PurpleGhost")
         {
             // 加入兔子和毛毛虫的图片
             Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/RABBIT1");
@@ -72,7 +72,7 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
                 LogWarning("Caterpillar sprite not found!");
             }
         }
-        else if (condition == "RabbitContent")
+        else if (condition == "Rabbit")
         {
             Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
             imagesArray.Add(caterpillarSprite); // 毛毛虫图片

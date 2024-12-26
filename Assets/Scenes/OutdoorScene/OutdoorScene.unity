@@ -2222,9 +2222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 973420878}
+  upperDetail: {fileID: 5061248416490257506}
   raycastLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   targetUIPairs:
   - selectableObject: {fileID: 1487792942}
     selectableObjectDetail: {fileID: 1332664709}
@@ -8322,7 +8324,7 @@ GameObject:
   - component: {fileID: 1125975344}
   - component: {fileID: 1125975343}
   m_Layer: 0
-  m_Name: CaterpillarPreview2
+  m_Name: PurpleGhostPreview2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9466,7 +9468,7 @@ GameObject:
   - component: {fileID: 1233533592}
   - component: {fileID: 1233533591}
   m_Layer: 0
-  m_Name: CaterpillarPreview_DownerImageContainer
+  m_Name: PurpleGhost_DownerImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10793,7 +10795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194260727}
   m_Layer: 0
-  m_Name: CaterpillarPreview
+  m_Name: PurpleGhostPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12634,7 +12636,7 @@ GameObject:
   - component: {fileID: 1570823873}
   - component: {fileID: 1570823872}
   m_Layer: 0
-  m_Name: CaterpillarPreview3
+  m_Name: PurpleGhostPreview3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14845,7 +14847,7 @@ GameObject:
   - component: {fileID: 1855489937}
   - component: {fileID: 1855489936}
   m_Layer: 0
-  m_Name: CaterpillarPreview1
+  m_Name: PurpleGhostPreview1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
