@@ -151,7 +151,7 @@ public class CustomRayInteractor : MonoBehaviour
         //CheckIntersection(path);
         // 检测每个目标物体与路径的交集
         List<GameObject> intersectedUIPanels = new List<GameObject>();
-
+        bool hasIntersection = false; // 用於追蹤是否有任何交集
         foreach (var pair in targetObjectsWithUI)
         {
             GameObject PreviewArea = pair.PreviewArea;
@@ -164,31 +164,25 @@ public class CustomRayInteractor : MonoBehaviour
                 ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
                 intersectedUIPanels.Add(uiPanel); // Add the panel to the list
                 calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject,uiPanel);
+                hasIntersection = true;            // 標記存在交集
             }
             else
             {
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
             }
         }
-        parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels);
 
-        //bool allNoIntersection = true;
-        //foreach (var pair in targetObjectsWithUI)
-        //{
-        //    GameObject targetObject = pair.PreviewArea;
+        // 如果没有交集，清空 intersectedUIPanels
+        if (!hasIntersection)
+        {
+            intersectedUIPanels.Clear();
+            parabolicLineCircle.HideLineRenderers(); // 清空所有线条
+        }
+        else
+        {
+            parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels); // 更新连接
+        }
 
-        //    if (CheckIntersection(path, targetObject))
-        //    {
-        //        allNoIntersection = false;
-        //        break; // 找到一個有交集的物體，跳出迴圈
-        //    }
-        //}
-
-        //// 如果全部都是沒有交集，則呼叫 HideUIAndBall
-        //if (allNoIntersection)
-        //{
-        //    parabolicLineCircle.HideUIAndBall();
-        //}
 
 
     }
@@ -232,9 +226,11 @@ public class CustomRayInteractor : MonoBehaviour
     // 顯示訊息，只有當 uiPanel 尚未顯示過時才會顯示
     private void ShowMessage(GameObject uiPanel, GameObject targetObject)
     {
-          if (!paraboliclineRenderer.enabled)
+        LogWithName($"ShowMessage");
+        if (!paraboliclineRenderer.enabled)
             {
-                Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
+            uiPanel.SetActive(false);
+            Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
                 parabolicLineCircle.HideUIAndBall();
             }
 

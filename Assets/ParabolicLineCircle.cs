@@ -12,6 +12,8 @@ public class ParabolicLineCircle : MonoBehaviour
     public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
     private GameObject ballInstance;          // Ball instance to hold the created object
     private Dictionary<GameObject, LineRenderer> uiLineRenderers = new Dictionary<GameObject, LineRenderer>(); // 存儲UI元素對應的LineRenderer
+    private LineRenderer existingLineRenderer;
+    private LineRenderer newLineRenderer;
 
     void Start()
     {
@@ -190,7 +192,7 @@ public class ParabolicLineCircle : MonoBehaviour
                     Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition}, objectPosition {objectPosition}");
 
                     // 為該 UI 元素創建並設置新的 LineRenderer
-                    LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
+                    newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
                     newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
                     newLineRenderer.useWorldSpace = true;
 
@@ -219,13 +221,42 @@ public class ParabolicLineCircle : MonoBehaviour
             else
             {
                 // 更新現有的 LineRenderer 位置
-                LineRenderer existingLineRenderer = uiLineRenderers[uiElement];
+                existingLineRenderer = uiLineRenderers[uiElement];
                 existingLineRenderer.SetPosition(0, objectPosition);
                 existingLineRenderer.SetPosition(1, uiElement.transform.position);
             }
 
         }
     }
+
+    public void HideLineRenderers()
+    {
+        if (existingLineRenderer != null)
+        {
+            // 清除現有線的點數，隱藏線條
+            existingLineRenderer.positionCount = 0;
+            existingLineRenderer.gameObject.SetActive(false);
+            Log("Existing LineRenderer hidden.");
+        }
+        else
+        {
+            LogWarning("Existing LineRenderer is null.");
+        }
+
+        if (newLineRenderer != null)
+        {
+            // 清除新線的點數，隱藏線條
+            newLineRenderer.positionCount = 0;
+            newLineRenderer.gameObject.SetActive(false);
+            Log("New LineRenderer hidden.");
+        }
+        else
+        {
+            LogWarning("New LineRenderer is null.");
+        }
+    }
+
+
 
 
 
