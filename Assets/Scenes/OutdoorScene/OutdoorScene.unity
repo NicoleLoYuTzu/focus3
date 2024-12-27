@@ -13489,6 +13489,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light+Beam
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e84d54a973f17cb4d8cff2b8537df2fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14480,13 +14484,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295878328}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72769a49ae481354c89f8b97c540869a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportLayerMask:
-    m_Bits: 2147483648
 --- !u!1 &1807497889
 GameObject:
   m_ObjectHideFlags: 0
@@ -15651,7 +15653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773656247975474, guid: 57d78de69bcaf8a4e969c0c3350b859b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779164207820988, guid: 57d78de69bcaf8a4e969c0c3350b859b, type: 3}
       propertyPath: m_Name
@@ -93546,6 +93548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleGhost
       objectReference: {fileID: 0}
+    - target: {fileID: 2916924673652110780, guid: bd0bca4625d527a41aaf5eaf430eecf2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4919062160448587221, guid: bd0bca4625d527a41aaf5eaf430eecf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.09
@@ -121746,7 +121752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4789223595398378996, guid: 534ba4ecbab970d4287d86ece60e8f02, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5277495081875795790, guid: 534ba4ecbab970d4287d86ece60e8f02, type: 3}
       propertyPath: m_LocalPosition.x
