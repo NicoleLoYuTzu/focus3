@@ -129,6 +129,8 @@ public class CustomRayInteractor : MonoBehaviour
 
     private void DrawPath(NavMeshPath path)
     {
+        // 清除舊的圓球
+        parabolicLineCircle.ClearOldBalls();
         // 启用 LineRenderer
         lineRenderer.enabled = true;
         lineRenderer.positionCount = path.corners.Length;
@@ -149,7 +151,10 @@ public class CustomRayInteractor : MonoBehaviour
         //// 檢測是否有交集並更新對應的UI
         //CheckIntersection(path);
         // 检测每个目标物体与路径的交集
-        List<GameObject> intersectedUIPanels = new List<GameObject>();
+        //List<GameObject> intersectedUIPanels = new List<GameObject>();
+        List<TargetUIPair> intersectedUIPanels = new List<TargetUIPair>();
+
+
         bool hasIntersection = false; // 用於追蹤是否有任何交集
         foreach (var pair in targetObjectsWithUI)
         {
@@ -161,7 +166,7 @@ public class CustomRayInteractor : MonoBehaviour
             if (CheckIntersection(path, PreviewArea))
             {
                 ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
-                intersectedUIPanels.Add(uiPanel); // Add the panel to the list
+                intersectedUIPanels.Add(pair); // Add the panel to the list
                 calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject,uiPanel);
                 hasIntersection = true;            // 標記存在交集
             }
@@ -170,7 +175,7 @@ public class CustomRayInteractor : MonoBehaviour
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
             }
         }
-        parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels); // 更新连接
+        parabolicLineCircle.ConnectObjectToUI( intersectedUIPanels); // 更新连接
 
 
 

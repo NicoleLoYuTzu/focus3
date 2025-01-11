@@ -11,6 +11,8 @@ public class ParabolicLineCircle : MonoBehaviour
     private LineRenderer lineRenderer;        // LineRenderer component
     public XRRayInteractor rayInteractor; // 连接到 XR Ray Interactor
     private GameObject ballInstance;          // Ball instance to hold the created object
+    private List<GameObject> ballInstances = new List<GameObject>(); // 用來儲存所有創建的 ballInstance
+
     private Dictionary<GameObject, LineRenderer> uiLineRenderers = new Dictionary<GameObject, LineRenderer>(); // 存儲UI元素對應的LineRenderer
     private LineRenderer existingLineRenderer;
     private LineRenderer newLineRenderer;
@@ -39,38 +41,38 @@ public class ParabolicLineCircle : MonoBehaviour
         int pointCount = lineRenderer.positionCount;
         Log($"ParabolicLineCircle LineRenderer has {pointCount} points.");
 
-        if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-        {
-            if (pointCount > 0)
-            {
-                Vector3[] linePoints = new Vector3[pointCount];
-                lineRenderer.GetPositions(linePoints);
-                Vector3 middlePoint = linePoints[pointCount / 2];
+        //if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        //{
+        //    if (pointCount > 0)
+        //    {
+        //        Vector3[] linePoints = new Vector3[pointCount];
+        //        lineRenderer.GetPositions(linePoints);
+        //        Vector3 middlePoint = linePoints[pointCount / 2];
 
-                // 只在 ballInstance 為 null 時創建一個新的球體
-                if (ballInstance == null)
-                {
-                    ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
-                    Log("ballInstance created.");
-                }
-                else
-                {
-                    // 如果 ballInstance 已經存在，則只更新它的位置
-                    ballInstance.transform.position = middlePoint;
-                    Log("ballInstance position updated.");
-                }
-            }
-        }
-        else
-        {
-            // 如果沒有命中，並且 ballInstance 存在，則清除 ballInstance
-            if (ballInstance != null)
-            {
-                Destroy(ballInstance);  // 使用 Destroy 而不是設為 null
-                ballInstance = null;
-                Log("ballInstance destroyed because no hit detected.");
-            }
-        }
+        //        // 只在 ballInstance 為 null 時創建一個新的球體
+        //        if (ballInstance == null)
+        //        {
+        //            ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
+        //            Log("ballInstance created.");
+        //        }
+        //        else
+        //        {
+        //            // 如果 ballInstance 已經存在，則只更新它的位置
+        //            ballInstance.transform.position = middlePoint;
+        //            Log("ballInstance position updated.");
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    // 如果沒有命中，並且 ballInstance 存在，則清除 ballInstance
+        //    if (ballInstance != null)
+        //    {
+        //        Destroy(ballInstance);  // 使用 Destroy 而不是設為 null
+        //        ballInstance = null;
+        //        Log("ballInstance destroyed because no hit detected.");
+        //    }
+        //}
     }
 
     public void HideUIAndBall()
@@ -106,6 +108,14 @@ public class ParabolicLineCircle : MonoBehaviour
             uiLineRenderers.Clear();
         }
     }
+    public void ClearOldBalls()
+    {
+        foreach (GameObject ball in ballInstances)
+        {
+            Destroy(ball);  // 刪除每一個圓球物件
+        }
+        ballInstances.Clear();  // 清空列表
+    }
 
 
 
@@ -130,21 +140,14 @@ public class ParabolicLineCircle : MonoBehaviour
     }
 
 
-   
 
-    public void ConnectObjectToUI(List<GameObject> uiElements)
+    public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
     {
         Log("ParabolicLineCircle: ConnectObjectToUI started.");
 
-        if (ballInstance == null)
+        if (targetUIPair == null || targetUIPair.Count == 0)
         {
-            Log("ParabolicLineCircle: ballInstance is null!");
-            return;
-        }
-
-        if (uiElements == null || uiElements.Count == 0)
-        {
-            Log("ParabolicLineCircle: uiElements list is null or empty!");
+            Log("ParabolicLineCircle: targetUIPair list is null or empty!");
             return;
         }
 
@@ -155,78 +158,84 @@ public class ParabolicLineCircle : MonoBehaviour
             return;
         }
 
-        Vector3 objectPosition = ballInstance.transform.position;
+        ClearOldBalls(); // 清除之前的球实例
 
-        // 遍歷每個 UI 元素
-        foreach (GameObject uiElement in uiElements)
+        foreach (CustomRayInteractor.TargetUIPair targetUIPairDetail in targetUIPair)
         {
-
-            Log($"ParabolicLineCircle GameObject: {uiElement}");
-            if (uiElement == null)
+            Log($"Processing TargetUIPair: {targetUIPairDetail}");
+            if (targetUIPairDetail == null)
             {
-                Log("ParabolicLineCircle: uiElement is null!");
+                Log("ParabolicLineCircle: targetUIPairDetail is null!");
                 continue;
             }
 
-            RectTransform rectTransform = uiElement.GetComponent<RectTransform>();
+            RectTransform rectTransform = targetUIPairDetail.uiPanel.GetComponent<RectTransform>();
             if (rectTransform == null)
             {
-                Log($"ParabolicLineCircle: The provided uiElement '{uiElement.name}' does not have a RectTransform component.");
+                Log($"ParabolicLineCircle: The provided uiPanel '{targetUIPairDetail.uiPanel}' does not have a RectTransform component.");
                 continue;
             }
 
-            // 檢查是否已有該 UI 元素的 LineRenderer
-            if (!uiLineRenderers.ContainsKey(uiElement))
+            Vector3 uiWorldPosition;
+            Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
+
+            if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
+                rectTransform,
+                screenPoint,
+                mainCamera,
+                out uiWorldPosition))
             {
-                // 將 RectTransform 轉換為世界座標
-                Vector3 uiWorldPosition;
-                Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
+                Log($"UI world position calculated: {uiWorldPosition}");
 
-                if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                    rectTransform,
-                    screenPoint,
-                    mainCamera,
-                    out uiWorldPosition))
+                Vector3 lineStart = lineRenderer.GetPosition(0); // 起始点
+                Vector3 lineEnd = lineRenderer.GetPosition(1);   // 终点
+
+                Vector3 userPosition = mainCamera.transform.position; // 用户位置为主相机位置
+                float distanceToUser = Vector3.Distance(rectTransform.position, userPosition);
+
+                float maxParabolicDistance = 100f;
+                float ratio = Mathf.InverseLerp(0f, maxParabolicDistance, distanceToUser);
+
+                Vector3 ballPositionOnLine;
+                if (distanceToUser > maxParabolicDistance)
                 {
-                    Log($"ParabolicLineCircle: UI world position calculated: {uiWorldPosition}, objectPosition {objectPosition}");
-
-                    // 為該 UI 元素創建並設置新的 LineRenderer
-                    newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
-                    newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-                    newLineRenderer.useWorldSpace = true;
-
-                    // 設定 LineRenderer 層級，確保它不會擋住 UI 元素
-                    newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI"); // 設置為 UI 層
-                    newLineRenderer.sortingOrder = -1;  // 確保 LineRenderer 在 UI 之後繪製
-
-                    // 設置 LineRenderer 的屬性
-                    newLineRenderer.positionCount = 2;
-                    newLineRenderer.startColor = Color.white;
-                    newLineRenderer.endColor = Color.white;
-                    newLineRenderer.widthMultiplier = 0.05f;
-
-                    // 更新 LineRenderer 的位置
-                    newLineRenderer.SetPosition(0, objectPosition);
-                    newLineRenderer.SetPosition(1, uiWorldPosition);
-
-                    // 將新創建的 LineRenderer 添加到字典中
-                    uiLineRenderers.Add(uiElement, newLineRenderer);
+                    ballPositionOnLine = Vector3.Dot(rectTransform.position - userPosition, lineEnd - lineStart) > 0
+                        ? lineEnd
+                        : lineStart;
                 }
                 else
                 {
-                    Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
+                    ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
                 }
+
+                GameObject newBallInstance = Instantiate(circleObject, ballPositionOnLine, Quaternion.identity);
+                ballInstances.Add(newBallInstance); // 添加到列表中
+                Log($"Created new ballInstance at: {newBallInstance.transform.position}");
+
+                LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
+                newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+                newLineRenderer.useWorldSpace = true;
+
+                newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI");
+                newLineRenderer.sortingOrder = -1;
+
+                newLineRenderer.positionCount = 2;
+                newLineRenderer.startColor = Color.white;
+                newLineRenderer.endColor = Color.white;
+                newLineRenderer.widthMultiplier = 0.05f;
+
+                newLineRenderer.SetPosition(0, newBallInstance.transform.position);
+                newLineRenderer.SetPosition(1, uiWorldPosition);
+
+                uiLineRenderers[targetUIPairDetail.uiPanel] = newLineRenderer; // 更新字典
             }
             else
             {
-                // 更新現有的 LineRenderer 位置
-                existingLineRenderer = uiLineRenderers[uiElement];
-                existingLineRenderer.SetPosition(0, objectPosition);
-                existingLineRenderer.SetPosition(1, uiElement.transform.position);
+                Log("Failed to convert RectTransform position to world position.");
             }
-
         }
     }
+
 
     public void HideLineRenderers()
     {
