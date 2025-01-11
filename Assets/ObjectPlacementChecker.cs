@@ -14,8 +14,8 @@ public class ItemPlacementChecker : MonoBehaviour
     {
         Debug.Log("ItemPlacementChecker: OnTriggerEnter called. Checking if the object is a required item...");
 
-        // 使用名稱來檢查是否為需要的物品
-        if (requiredItems.Exists(item => item.name == other.gameObject.name) && !placedItems.Contains(other.gameObject))
+        // 如果進入的物體是要求放置的物品，則將其加入 placedItems 列表
+        if (requiredItems.Contains(other.gameObject) && !placedItems.Contains(other.gameObject))
         {
             Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " added to placed items.");
 
@@ -34,25 +34,21 @@ public class ItemPlacementChecker : MonoBehaviour
         }
     }
 
-
     void OnTriggerExit(Collider other)
     {
         Debug.Log("ItemPlacementChecker: OnTriggerExit called. Checking if the object was in placed items...");
 
-        // 使用名稱來檢查物體是否已經在 placedItems 中
-        GameObject itemToRemove = placedItems.Find(item => item.name == other.gameObject.name);
-
-        if (itemToRemove != null)
+        // 如果物體離開區域，從 placedItems 列表中移除該物體
+        if (placedItems.Contains(other.gameObject))
         {
             Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " removed from placed items.");
-            placedItems.Remove(itemToRemove);
+            placedItems.Remove(other.gameObject);
         }
         else
         {
             Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " was not in placed items.");
         }
     }
-
 
     // 當所有物品都放置後要執行的操作
     void DoAction()
