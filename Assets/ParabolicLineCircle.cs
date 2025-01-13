@@ -202,83 +202,17 @@ public class ParabolicLineCircle : MonoBehaviour
                 continue;
             }
 
-            Vector3 uiWorldPosition;
+            Vector3 uiWorldPosition = Vector3.zero; // 初始化變數
             Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
 
             GameObject newBallInstance = null; // Predefine
 
             if (!uiLineRenderers.ContainsKey(targetUIPairDetail.uiPanel))
             {
-                if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
-                    rectTransform,
-                    screenPoint,
-                    mainCamera,
-                    out uiWorldPosition))
+                if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
                 {
-                    Log($"ParabolicLineCircle: UI world position calculated for UI Panel '{targetUIPairDetail.uiPanel.name}': {uiWorldPosition}");
-
-                    Vector3 lineStart = lineRenderer.GetPosition(0); // Start point
-                    Vector3 lineEnd = lineRenderer.GetPosition(1);   // End point
-
-                    Vector3 userPosition = mainCamera.transform.position; // User position is the main camera position
-                    Vector3 targetPosition = targetUIPairDetail.targetObject.transform.position;
-                    float distanceToUser = Vector3.Distance(targetPosition, userPosition);
-
-                    // 計算拋物線的實際長度（lineRenderer 的長度）
-                    float maxParabolicDistance = Vector3.Distance(lineStart, lineEnd);
-                    //float ratio = Mathf.InverseLerp(0f, maxParabolicDistance, distanceToUser);
-                    float ratio = Mathf.InverseLerp(0f, maxParabolicDistance, distanceToUser);
-                    Log($"ParabolicLineCircle: distanceToUser for UI Panel '{targetUIPairDetail.uiPanel.name}': {distanceToUser}, ratio: {ratio}");
-
-                    Vector3 ballPositionOnLine;
-                    if (distanceToUser > maxParabolicDistance)
-                    {
-                        Vector3 objectPosition = targetUIPairDetail.targetObject.transform.position;
-
-                        string positionRelation = GetPositionRelation(userPosition, objectPosition);
-                        if (positionRelation == "Front")
-                        {
-                            ballPositionOnLine = lineEnd; // In front
-                            Log($"ParabolicLineCircle: Ball for UI Panel '{targetUIPairDetail.uiPanel.name}' positioned at lineEnd (Front).");
-                        }
-                        else if (positionRelation == "Back")
-                        {
-                            ballPositionOnLine = lineStart; // In the back
-                            Log($"ParabolicLineCircle: Ball for UI Panel '{targetUIPairDetail.uiPanel.name}' positioned at lineStart (Back).");
-                        }
-                        else
-                        {
-                            Debug.LogWarning("ParabolicLineCircle: Position relation is unknown. Defaulting to lineStart.");
-                            ballPositionOnLine = lineStart;
-                            Log($"ParabolicLineCircle: Ball for UI Panel '{targetUIPairDetail.uiPanel.name}' positioned at lineStart (Unknown relation).");
-                        }
-                    }
-                    else
-                    {
-                        ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
-                        Log($"ParabolicLineCircle: Ball for UI Panel '{targetUIPairDetail.uiPanel.name}' positioned between lineStart and lineEnd.");
-                    }
-
-                    newBallInstance = Instantiate(circleObject, ballPositionOnLine, Quaternion.identity);
-                    ballInstances.Add(newBallInstance); // Add to list
-                    Log($"ParabolicLineCircle: Created new ballInstance at: {newBallInstance.transform.position} for UI Panel '{targetUIPairDetail.uiPanel.name}'");
-
-                    LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
-                    newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-                    newLineRenderer.useWorldSpace = true;
-
-                    newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI");
-                    newLineRenderer.sortingOrder = -1;
-
-                    newLineRenderer.positionCount = 2;
-                    newLineRenderer.startColor = Color.white;
-                    newLineRenderer.endColor = Color.white;
-                    newLineRenderer.widthMultiplier = 0.05f;
-
-                    newLineRenderer.SetPosition(0, newBallInstance.transform.position);
-                    newLineRenderer.SetPosition(1, uiWorldPosition);
-
-                    uiLineRenderers[targetUIPairDetail.uiPanel] = newLineRenderer; // Update the dictionary
+                    newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, uiWorldPosition, ref newBallInstance);
+                    CreateLineRenderer(newBallInstance, uiWorldPosition, targetUIPairDetail.uiPanel);
                 }
                 else
                 {
@@ -287,79 +221,126 @@ public class ParabolicLineCircle : MonoBehaviour
             }
             else
             {
-                // 获取 LineRenderer 的起点和终点
-                Vector3 lineStart = lineRenderer.GetPosition(0);
-                Vector3 lineEnd = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
-
-                // 获取用户和目标的位置
-                Vector3 userPosition = mainCamera.transform.position;
-                Vector3 targetPosition = targetUIPairDetail.targetObject.transform.position;
-                Vector3 ballPositionOnLine = Vector3.zero;
-
-                // 确保只有一个球实例
-                if (rayInteractor != null && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-                {
-                    Vector3 hitPoint = hit.point;
-                    Debug.Log($"Ray hit point: {hitPoint}");
-
-                    float lineEndToUser = Vector3.Distance(hitPoint, userPosition);
-                    float targetToUser = Vector3.Distance(targetPosition, userPosition);
-
-                    Log($"ParabolicLineCircle:lineEndToUser '{lineEndToUser}' targetToUser {targetToUser}.");
-
-                    string positionRelation = GetPositionRelation(userPosition, targetPosition);
-
-                    if (positionRelation == "Front")
-                    {
-                        if (lineEndToUser < targetToUser)
-                        {
-                            // 球放在 lineEnd
-                            ballPositionOnLine = lineEnd;
-                        }
-                        else
-                        {
-                            // 球放在 lineStart 和 lineEnd 的比例位置
-                            float ratio = lineEndToUser / targetToUser;
-                            ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
-                        }
-                    }
-                    else if (positionRelation == "Back")
-                    {
-                        if (lineEndToUser < targetToUser)
-                        {
-                            // 球放在 lineStart
-                            ballPositionOnLine = lineStart;
-                        }
-                        else
-                        {
-                            // 球放在 lineStart 和 lineEnd 的比例位置
-                            float ratio = lineEndToUser / targetToUser;
-                            ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
-                        }
-                    }
-
-                    // 如果球实例不存在，创建一个新的实例
-                    if (newBallInstance == null)
-                    {
-                        newBallInstance = Instantiate(circleObject, ballPositionOnLine, Quaternion.identity);
-                        ballInstances.Add(newBallInstance);
-                    }
-                    else
-                    {
-                        // 更新球实例的位置
-                        newBallInstance.transform.position = ballPositionOnLine;
-                    }
-
-                    Log($"ParabolicLineCircle: Updated ballInstance for UI Panel '{targetUIPairDetail.uiPanel.name}' to position: {ballPositionOnLine}");
-
-                    // 更新 LineRenderer 的位置
-                    existingLineRenderer.SetPosition(0, newBallInstance.transform.position);
-                    existingLineRenderer.SetPosition(1, rectTransform.position);
-                }
-
-                Log($"ParabolicLineCircle: Updated ballInstance line for UI Panel '{targetUIPairDetail.uiPanel.name}' with new ball position: {newBallInstance.transform.position}");
+                newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, uiWorldPosition, ref newBallInstance);
+                UpdateLineRenderer(targetUIPairDetail.uiPanel, newBallInstance);
             }
         }
+    }
+
+    private bool TryGetWorldPosition(RectTransform rectTransform, Vector3 screenPoint, Camera mainCamera, out Vector3 uiWorldPosition)
+    {
+        return RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, screenPoint, mainCamera, out uiWorldPosition);
+    }
+
+    private GameObject HandleBallPosition(CustomRayInteractor.TargetUIPair targetUIPairDetail, Camera mainCamera, RectTransform rectTransform, Vector3 uiWorldPosition, ref GameObject newBallInstance)
+    {
+        Vector3 lineStart = lineRenderer.GetPosition(0);
+        Vector3 lineEnd = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
+
+        Vector3 userPosition = mainCamera.transform.position;
+        Vector3 targetPosition = targetUIPairDetail.targetObject.transform.position;
+        Vector3 ballPositionOnLine = Vector3.zero;
+
+        if (rayInteractor != null && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        {
+            Vector3 hitPoint = hit.point;
+            Debug.Log($"Ray hit point: {hitPoint}");
+
+            float lineEndToUser = Vector3.Distance(hitPoint, userPosition);
+            float targetToUser = Vector3.Distance(targetPosition, userPosition);
+
+            Log($"ParabolicLineCircle: lineEndToUser '{lineEndToUser}' targetToUser {targetToUser}.");
+
+            string positionRelation = GetPositionRelation(userPosition, targetPosition);
+
+            ballPositionOnLine = CalculateBallPosition(lineStart, lineEnd, lineEndToUser, targetToUser, positionRelation);
+
+            // Create or update the ball instance
+            if (newBallInstance == null)
+            {
+                newBallInstance = Instantiate(circleObject, ballPositionOnLine, Quaternion.identity);
+                ballInstances.Add(newBallInstance);
+            }
+            else
+            {
+                newBallInstance.transform.position = ballPositionOnLine;
+            }
+
+            Log($"ParabolicLineCircle: Updated ballInstance for UI Panel '{targetUIPairDetail.uiPanel.name}' to position: {ballPositionOnLine}");
+        }
+        return newBallInstance;
+    }
+
+    private Vector3 CalculateBallPosition(Vector3 lineStart, Vector3 lineEnd, float lineEndToUser, float targetToUser, string positionRelation)
+    {
+        // 初始化球的位置
+        Vector3 ballPositionOnLine = Vector3.zero;
+
+        // Log 輸出
+        Log($"CalculateBallPosition: lineStart = {lineStart}, lineEnd = {lineEnd}, lineEndToUser = {lineEndToUser}, targetToUser = {targetToUser}, positionRelation = {positionRelation}");
+
+        if (positionRelation == "Front")
+        {
+            if (lineEndToUser < targetToUser)
+            {
+                ballPositionOnLine = lineEnd;
+                Log($"CalculateBallPosition: Front case, ball placed at lineEnd = {lineEnd}");
+            }
+            else
+            {
+                float ratio = lineEndToUser / targetToUser;
+                ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
+                Log($"CalculateBallPosition: Front case, ball placed at Lerp position, ratio = {ratio}, ballPositionOnLine = {ballPositionOnLine}");
+            }
+        }
+        else if (positionRelation == "Back")
+        {
+            if (lineEndToUser < targetToUser)
+            {
+                ballPositionOnLine = lineStart;
+                Log($"CalculateBallPosition: Back case, ball placed at lineStart = {lineStart}");
+            }
+            else
+            {
+                float ratio = lineEndToUser / targetToUser;
+                ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
+                Log($"CalculateBallPosition: Back case, ball placed at Lerp position, ratio = {ratio}, ballPositionOnLine = {ballPositionOnLine}");
+            }
+        }
+
+        Log($"CalculateBallPosition: Final ball position = {ballPositionOnLine}");
+
+        return ballPositionOnLine;
+    }
+
+
+    private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
+    {
+        LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
+        newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        newLineRenderer.useWorldSpace = true;
+
+        newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI");
+        newLineRenderer.sortingOrder = -1;
+
+        newLineRenderer.positionCount = 2;
+        newLineRenderer.startColor = Color.white;
+        newLineRenderer.endColor = Color.white;
+        newLineRenderer.widthMultiplier = 0.05f;
+
+        newLineRenderer.SetPosition(0, newBallInstance.transform.position);
+        newLineRenderer.SetPosition(1, uiWorldPosition);
+
+        uiLineRenderers[uiPanel] = newLineRenderer; // Update the dictionary
+    }
+
+    private void UpdateLineRenderer(GameObject uiPanel, GameObject newBallInstance)
+    {
+        LineRenderer existingLineRenderer = uiLineRenderers[uiPanel];
+        existingLineRenderer.SetPosition(0, newBallInstance.transform.position);
+        existingLineRenderer.SetPosition(1, uiPanel.GetComponent<RectTransform>().position);
+
+        Log($"ParabolicLineCircle: Updated ballInstance line for UI Panel '{uiPanel.name}' with new ball position: {newBallInstance.transform.position}");
     }
 
 
