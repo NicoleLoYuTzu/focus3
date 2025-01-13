@@ -37,14 +37,6 @@ public class CustomRayInteractor : MonoBehaviour
         lineRenderer.useWorldSpace = true; // 使用世界座標
         lineRenderer.enabled = false; // 初始時禁用路徑
 
-        //// 確保所有 UI 元素最開始是隱藏的
-        //foreach (var uiPair in targetObjectsWithUI)
-        //{
-        //    if (uiPair.Value != null)
-        //    {
-        //        uiPair.Value.SetActive(false);
-        //    }
-        //}
 
         // 確保所有 UI 元素最開始是隱藏的
         foreach (var uiPair in targetObjectsWithUI)
@@ -55,7 +47,7 @@ public class CustomRayInteractor : MonoBehaviour
                 uiElement.SetActive(false); // 隱藏 UI 元素
             }
         }
-      
+
     }
 
     void Update()
@@ -67,7 +59,7 @@ public class CustomRayInteractor : MonoBehaviour
             parabolicLineCircle.HideUIAndBall();
             HideAllUI();
         }
-        
+
         // 如果控制器在移動並且有有效的射線擊中
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
@@ -79,11 +71,12 @@ public class CustomRayInteractor : MonoBehaviour
             if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
             {
 
-                if (paraboliclineRenderer.enabled) {
+                if (paraboliclineRenderer.enabled)
+                {
                     Debug.Log("CalculatePath");
                     DrawPath(path); // 繪製路徑
                 }
-               
+
             }
             else
             {
@@ -133,8 +126,6 @@ public class CustomRayInteractor : MonoBehaviour
 
     private void DrawPath(NavMeshPath path)
     {
-        // 清除舊的圓球
-        parabolicLineCircle.ClearOldBalls();
         // 启用 LineRenderer
         lineRenderer.enabled = true;
         lineRenderer.positionCount = path.corners.Length;
@@ -171,18 +162,18 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
                 intersectedUIPanels.Add(pair); // Add the panel to the list
-                calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject,uiPanel);
+                calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject, uiPanel);
                 hasIntersection = true;            // 標記存在交集
             }
             else
             {
                 HideMessage(uiPanel); // 隐藏对应的 UI 面板
+
+                parabolicLineCircle.OnUIPanelHiddenOrDestroyed(uiPanel);
+
             }
         }
-        parabolicLineCircle.ConnectObjectToUI( intersectedUIPanels); // 更新连接
-
-
-
+        parabolicLineCircle.ConnectObjectToUI(intersectedUIPanels); // 更新连接
     }
 
 
@@ -204,19 +195,6 @@ public class CustomRayInteractor : MonoBehaviour
         return false;
     }
 
-    //private void ShowMessage(GameObject uiPanel, GameObject targetObject)
-    //{
-    //    LogWithName($"Attempting to show UI Panel: {uiPanel?.name}");
-    //    if (uiPanel != null)
-    //    {
-           
-    //        else
-    //        {
-    //            uiPanel.SetActive(true);
-    //            LogWithName($"UI Panel {uiPanel.name} is now visible.");
-    //        }
-    //    }
-    //}
 
     // 增加 UI 顯示狀態標誌
     private Dictionary<GameObject, bool> uiPanelState = new Dictionary<GameObject, bool>();
@@ -224,28 +202,25 @@ public class CustomRayInteractor : MonoBehaviour
     // 顯示訊息，只有當 uiPanel 尚未顯示過時才會顯示
     private void ShowMessage(GameObject uiPanel, GameObject targetObject)
     {
-        LogWithName($"ShowMessage");
+        LogWithName($"ShowMessage called");
+
+        // Check if parabolicLineRenderer is not enabled
         if (!paraboliclineRenderer.enabled)
-            {
-            uiPanel.SetActive(false);
-            Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
-                parabolicLineCircle.HideUIAndBall();
-            }
-
-        if (uiPanel != null && !uiPanelState.ContainsKey(uiPanel))
         {
-            uiPanelState[uiPanel] = false; // 初始時設置為隱藏
+            uiPanel.SetActive(false); // Hide the UI panel
+            Debug.Log($"paraboliclineRenderer.enabled is {paraboliclineRenderer.enabled}, hiding UI panel.");
+            parabolicLineCircle.HideUIAndBall(); // Hide the line and ball
         }
-
-        if (uiPanel != null && !uiPanelState[uiPanel])
+        else
         {
-            calculateUserToTaskDistance.UIPanelPosition(uiPanel, targetObject);
-            uiPanel.SetActive(true);
-            uiPanelState[uiPanel] = true;  // 設置為顯示
-
-            LogWithName($"UI Panel {uiPanel.name} is now visible.");
+            Debug.Log("paraboliclineRenderer is enabled.");
         }
+        LogWithName($"Displaying UI Panel: {uiPanel.name}");
+        calculateUserToTaskDistance.UIPanelPosition(uiPanel, targetObject); // Adjust panel position
+        uiPanel.SetActive(true); // Show the UI panel
+        uiPanelState[uiPanel] = true; // Set the state as visible
     }
+
 
 
     // 隱藏訊息，當控制器移出範圍時隱藏 UI

@@ -39,7 +39,7 @@ public class RayTargetChecker : MonoBehaviour
             // 如果沒有 hit 到任何物體
             if (!rayInteractor.hasSelection)
             {
-                parabolicLineCircle.HideLineRenderers(); // 隱藏線條
+                parabolicLineCircle.HideUIAndBall(); // 隱藏線條
             }
         }
     }

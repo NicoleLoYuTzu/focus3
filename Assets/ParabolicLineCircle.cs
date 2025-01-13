@@ -44,68 +44,33 @@ public class ParabolicLineCircle : MonoBehaviour
 
     public void HideUIAndBall()
     {
-        // 紀錄當前狀態
-        Log($"ballInstance: {ballInstance}"); // 確認 ballInstance 的狀態
+        // 刪除並清空 ballInstances
+        foreach (GameObject ball in ballInstances)
+        {
+            Destroy(ball);
+        }
+        ballInstances.Clear();
 
-        // 檢查並隱藏 ballInstance
+        // 刪除單一 ballInstance（如果存在）
         if (ballInstance != null)
         {
             Destroy(ballInstance);
+            ballInstance = null; // 確保變數重置
         }
 
-        // 檢查並隱藏所有 uiLineRenderers
-        if (uiLineRenderers != null && uiLineRenderers.Count > 0)
+        // 刪除並清空 uiLineRenderers
+        if (uiLineRenderers.Count > 0)
         {
-            Log("Hiding uiLineRenderers...");
-
-            foreach (var lineRendererEntry in uiLineRenderers)
+            foreach (var lineRendererEntry in uiLineRenderers.Values)
             {
-                LineRenderer lineRenderer = lineRendererEntry.Value;
-                if (lineRenderer != null)
+                if (lineRendererEntry != null)
                 {
-                    // 清除已繪製的線條
-                    lineRenderer.positionCount = 0;
-
-                    // 隱藏 LineRenderer
-                    lineRenderer.gameObject.SetActive(false);
+                    Destroy(lineRendererEntry.gameObject);
                 }
             }
-
-            // 清空 uiLineRenderers 字典
             uiLineRenderers.Clear();
         }
     }
-    public void ClearOldBalls()
-    {
-        foreach (GameObject ball in ballInstances)
-        {
-            Destroy(ball);  // 刪除每一個圓球物件
-        }
-        ballInstances.Clear();  // 清空列表
-    }
-
-
-
-
-    private bool IsControllerMoving()
-    {
-        // 獲取右手控制器設備
-        InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        Vector2 primary2DAxisValue;
-
-        // 嘗試獲取操縱桿的值
-        if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out primary2DAxisValue))
-        {
-
-            return primary2DAxisValue != Vector2.zero;
-        }
-        else
-        {
-            Debug.LogWarning("無法從控制器檢索 primary2DAxis 值。");
-            return false;
-        }
-    }
-
 
     private string GetPositionRelation(Vector3 userPosition, Vector3 objectPosition)
     {
@@ -149,7 +114,7 @@ public class ParabolicLineCircle : MonoBehaviour
             return;
         }
 
-        ClearOldBalls(); // Clear previous ball instances
+        HideUIAndBall(); // Clear previous ball instances
 
         foreach (CustomRayInteractor.TargetUIPair targetUIPairDetail in targetUIPair)
         {
@@ -282,6 +247,7 @@ public class ParabolicLineCircle : MonoBehaviour
 
     private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
     {
+        // 創建新的 LineRenderer
         LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
         newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         newLineRenderer.useWorldSpace = true;
@@ -297,51 +263,31 @@ public class ParabolicLineCircle : MonoBehaviour
         newLineRenderer.SetPosition(0, newBallInstance.transform.position);
         newLineRenderer.SetPosition(1, uiWorldPosition);
 
-        uiLineRenderers[uiPanel] = newLineRenderer; // Update the dictionary
+        // 更新字典
+        uiLineRenderers[uiPanel] = newLineRenderer;
     }
 
     private void UpdateLineRenderer(GameObject uiPanel, GameObject newBallInstance)
     {
-        LineRenderer existingLineRenderer = uiLineRenderers[uiPanel];
-        existingLineRenderer.SetPosition(0, newBallInstance.transform.position);
-        existingLineRenderer.SetPosition(1, uiPanel.GetComponent<RectTransform>().position);
+        if (uiLineRenderers.TryGetValue(uiPanel, out LineRenderer existingLineRenderer))
+        {
+            existingLineRenderer.SetPosition(0, newBallInstance.transform.position);
+            existingLineRenderer.SetPosition(1, uiPanel.GetComponent<RectTransform>().position);
 
-        Log($"ParabolicLineCircle: Updated ballInstance line for UI Panel '{uiPanel.name}' with new ball position: {newBallInstance.transform.position}");
+            Debug.Log($"Updated ballInstance line for UI Panel '{uiPanel.name}' with new ball position: {newBallInstance.transform.position}");
+        }
     }
 
-
-
-
-    public void HideLineRenderers()
+    public void OnUIPanelHiddenOrDestroyed(GameObject uiPanel)
     {
-        if (existingLineRenderer != null)
+        // 當面板隱藏或銷毀時移除對應的 LineRenderer
+        if (uiLineRenderers.TryGetValue(uiPanel, out LineRenderer lineRenderer))
         {
-            // 清除現有線的點數，隱藏線條
-            existingLineRenderer.positionCount = 0;
-            existingLineRenderer.gameObject.SetActive(false);
-            Log("Existing LineRenderer hidden.");
-        }
-        else
-        {
-            LogWarning("Existing LineRenderer is null.");
-        }
-
-        if (newLineRenderer != null)
-        {
-            // 清除新線的點數，隱藏線條
-            newLineRenderer.positionCount = 0;
-            newLineRenderer.gameObject.SetActive(false);
-            Log("New LineRenderer hidden.");
-        }
-        else
-        {
-            LogWarning("New LineRenderer is null.");
+            Destroy(lineRenderer.gameObject); // 刪除 LineRenderer
+            uiLineRenderers.Remove(uiPanel); // 從字典移除
+            Debug.Log($"LineRenderer for UI Panel '{uiPanel.name}' has been removed.");
         }
     }
-
-
-
-
 
     private void Log(string message) { Debug.Log($"ParabolicLineCircle: {message}"); }
     private void LogWarning(string message) { Debug.LogWarning($"ParabolicLineCircle: {message}"); }
