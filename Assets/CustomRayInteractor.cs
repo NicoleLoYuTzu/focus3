@@ -142,11 +142,6 @@ public class CustomRayInteractor : MonoBehaviour
             Vector3 point = lineRenderer.GetPosition(i);
             Debug.Log($"CustomRayInteractor spot {i}: {point}");
         }
-
-        //// 檢測是否有交集並更新對應的UI
-        //CheckIntersection(path);
-        // 检测每个目标物体与路径的交集
-        //List<GameObject> intersectedUIPanels = new List<GameObject>();
         List<TargetUIPair> intersectedUIPanels = new List<TargetUIPair>();
 
 

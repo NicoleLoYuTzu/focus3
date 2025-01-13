@@ -31,9 +31,10 @@ public class RaycastInteractor : MonoBehaviour
         Debug.Log("Start: Left hand device initialized");
     }
 
+    [System.Obsolete]
     void Update()
     {
-        if (leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out bool isPressed) && isPressed)
+        if (!(!leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out bool isPressed) || !isPressed))
         {
             Debug.Log("Update: Trigger pressed");
 
@@ -52,6 +53,7 @@ public class RaycastInteractor : MonoBehaviour
                         if (currentSelectedObject != pair.selectableObject) // 檢查是否為新選中的物件
                         {
                             ShowSelectableObjectDetail(pair);
+                            generateDetailUpperRecycleImage.ClearExistingButtons();
                             generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(pair.selectableObject.name);
                             currentSelectedObject = pair.selectableObject; // 更新當前選中的物件
                         }
