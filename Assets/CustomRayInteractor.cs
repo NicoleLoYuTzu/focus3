@@ -78,8 +78,12 @@ public class CustomRayInteractor : MonoBehaviour
             // 計算路徑
             if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
             {
-                Debug.Log("CalculatePath");
-                DrawPath(path); // 繪製路徑
+
+                if (paraboliclineRenderer.enabled) {
+                    Debug.Log("CalculatePath");
+                    DrawPath(path); // 繪製路徑
+                }
+               
             }
             else
             {
