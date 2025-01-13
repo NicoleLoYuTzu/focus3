@@ -21,7 +21,7 @@ public class ParabolicLineCircle : MonoBehaviour
         // Check if lineVisual and circleObject are assigned
         if (lineVisual != null && circleObject != null)
         {
-            circleObject.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+            circleObject.transform.localScale = new Vector3(0.0005f, 0.0005f, 0.0005f);
 
             // Retrieve the LineRenderer component from the XRInteractorLineVisual
             lineRenderer = lineVisual.GetComponent<LineRenderer>();
@@ -40,39 +40,6 @@ public class ParabolicLineCircle : MonoBehaviour
 
         int pointCount = lineRenderer.positionCount;
         Log($"ParabolicLineCircle LineRenderer has {pointCount} points.");
-
-        //if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-        //{
-        //    if (pointCount > 0)
-        //    {
-        //        Vector3[] linePoints = new Vector3[pointCount];
-        //        lineRenderer.GetPositions(linePoints);
-        //        Vector3 middlePoint = linePoints[pointCount / 2];
-
-        //        // 只在 ballInstance 為 null 時創建一個新的球體
-        //        if (ballInstance == null)
-        //        {
-        //            ballInstance = Instantiate(circleObject, middlePoint, Quaternion.identity);
-        //            Log("ballInstance created.");
-        //        }
-        //        else
-        //        {
-        //            // 如果 ballInstance 已經存在，則只更新它的位置
-        //            ballInstance.transform.position = middlePoint;
-        //            Log("ballInstance position updated.");
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    // 如果沒有命中，並且 ballInstance 存在，則清除 ballInstance
-        //    if (ballInstance != null)
-        //    {
-        //        Destroy(ballInstance);  // 使用 Destroy 而不是設為 null
-        //        ballInstance = null;
-        //        Log("ballInstance destroyed because no hit detected.");
-        //    }
-        //}
     }
 
     public void HideUIAndBall()
@@ -273,11 +240,14 @@ public class ParabolicLineCircle : MonoBehaviour
 
     private Vector3 CalculateBallPosition(Vector3 lineStart, Vector3 lineEnd, float lineEndToUser, float targetToUser, string positionRelation)
     {
-        // 初始化球的位置
-        Vector3 ballPositionOnLine = Vector3.zero;
-
         // Log 輸出
         Log($"CalculateBallPosition: lineStart = {lineStart}, lineEnd = {lineEnd}, lineEndToUser = {lineEndToUser}, targetToUser = {targetToUser}, positionRelation = {positionRelation}");
+
+        // 獲取線段的中間點
+        int middleIndex = lineRenderer.positionCount / 2;
+        Vector3 middlePoint = lineRenderer.GetPosition(middleIndex);
+
+        Vector3 ballPositionOnLine = Vector3.zero;
 
         if (positionRelation == "Front")
         {
@@ -288,9 +258,7 @@ public class ParabolicLineCircle : MonoBehaviour
             }
             else
             {
-                float ratio = lineEndToUser / targetToUser;
-                ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
-                Log($"CalculateBallPosition: Front case, ball placed at Lerp position, ratio = {ratio}, ballPositionOnLine = {ballPositionOnLine}");
+                ballPositionOnLine = middlePoint;
             }
         }
         else if (positionRelation == "Back")
@@ -302,9 +270,7 @@ public class ParabolicLineCircle : MonoBehaviour
             }
             else
             {
-                float ratio = lineEndToUser / targetToUser;
-                ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, ratio);
-                Log($"CalculateBallPosition: Back case, ball placed at Lerp position, ratio = {ratio}, ballPositionOnLine = {ballPositionOnLine}");
+                ballPositionOnLine = middlePoint;
             }
         }
 
