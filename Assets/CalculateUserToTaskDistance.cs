@@ -26,6 +26,57 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         // 獲取 UI 面板的 RectTransform
         RectTransform uiPanelRectTransform = uiPanel.GetComponent<RectTransform>();
 
+        //if (positionRelation == "Right" || positionRelation == "Left") // 檢查是否要將面板放置在左邊或右邊
+        //{
+        //    if (uiPanelRectTransform != null)
+        //    {
+        //        Camera mainCamera = Camera.main;
+        //        if (mainCamera != null)
+        //        {
+        //            // 計算相機的右方向
+        //            Vector3 rightDirection = mainCamera.transform.right;
+
+        //            // 計算相機的前方向
+        //            Vector3 forwardDirection = mainCamera.transform.forward;
+
+        //            // 預設一個初始位置
+        //            Vector3 targetPosition = mainCamera.transform.position;
+
+        //            //if (positionRelation == "Right")
+        //            //{
+        //            //    // 將 UI 面板放置在相機前方右邊
+        //            //    targetPosition = mainCamera.transform.position + forwardDirection * 5f + rightDirection * 2f; // 5f 是距離相機的前方，2f 是右邊的偏移量
+        //            //}
+        //            //else if (positionRelation == "Left")
+        //            //{
+        //            //    // 將 UI 面板放置在相機前方左邊
+        //            //    targetPosition = mainCamera.transform.position + forwardDirection * 5f - rightDirection * 1f; // 5f 是距離相機的前方，-2f 是左邊的偏移量
+        //            //}
+
+        //            // 添加一個 offsetIndex，確保每個面板有不同的偏移
+        //            int offsetIndex = uiPanel.transform.GetSiblingIndex(); // 或其他方式獲取唯一索引
+        //            float offset = offsetIndex * 2f; // 每個面板的間隔距離
+
+        //            if (positionRelation == "Right")
+        //            {
+        //                targetPosition = mainCamera.transform.position + forwardDirection * 5f + rightDirection * (2f + offset);
+        //            }
+        //            else if (positionRelation == "Left")
+        //            {
+        //                targetPosition = mainCamera.transform.position + forwardDirection * 5f - rightDirection * (1f + offset);
+        //            }
+
+
+
+
+        //            // 更新 UI 面板的位置
+        //            uiPanelRectTransform.position = targetPosition;
+
+        //            // 輸出新的世界座標
+        //            Debug.Log($"UI Panel moved to new position: {uiPanelRectTransform.position}");
+        //        }
+        //    }
+        //}
         if (positionRelation == "Right" || positionRelation == "Left") // 檢查是否要將面板放置在左邊或右邊
         {
             if (uiPanelRectTransform != null)
@@ -39,35 +90,26 @@ public class CalculateUserToTaskDistance : MonoBehaviour
                     // 計算相機的前方向
                     Vector3 forwardDirection = mainCamera.transform.forward;
 
+                    // 計算相機的上下方向
+                    Vector3 upDirection = mainCamera.transform.up;
+
                     // 預設一個初始位置
                     Vector3 targetPosition = mainCamera.transform.position;
 
-                    //if (positionRelation == "Right")
-                    //{
-                    //    // 將 UI 面板放置在相機前方右邊
-                    //    targetPosition = mainCamera.transform.position + forwardDirection * 5f + rightDirection * 2f; // 5f 是距離相機的前方，2f 是右邊的偏移量
-                    //}
-                    //else if (positionRelation == "Left")
-                    //{
-                    //    // 將 UI 面板放置在相機前方左邊
-                    //    targetPosition = mainCamera.transform.position + forwardDirection * 5f - rightDirection * 1f; // 5f 是距離相機的前方，-2f 是左邊的偏移量
-                    //}
-
-                    // 添加一個 offsetIndex，確保每個面板有不同的偏移
+                    // 確定索引以進行區隔
                     int offsetIndex = uiPanel.transform.GetSiblingIndex(); // 或其他方式獲取唯一索引
-                    float offset = offsetIndex * 2f; // 每個面板的間隔距離
+                    float verticalOffset = offsetIndex * 2f; // 每個面板的上下間隔距離
 
                     if (positionRelation == "Right")
                     {
-                        targetPosition = mainCamera.transform.position + forwardDirection * 5f + rightDirection * (2f + offset);
+                        // 將面板放置在右邊，並根據上下方向區隔
+                        targetPosition = mainCamera.transform.position + forwardDirection * 5f + rightDirection * 1f + upDirection * verticalOffset;
                     }
                     else if (positionRelation == "Left")
                     {
-                        targetPosition = mainCamera.transform.position + forwardDirection * 5f - rightDirection * (1f + offset);
+                        // 將面板放置在左邊，並根據上下方向區隔
+                        targetPosition = mainCamera.transform.position + forwardDirection * 5f - rightDirection * 1f + upDirection * verticalOffset;
                     }
-
-
-
 
                     // 更新 UI 面板的位置
                     uiPanelRectTransform.position = targetPosition;
@@ -77,6 +119,7 @@ public class CalculateUserToTaskDistance : MonoBehaviour
                 }
             }
         }
+
         else
         {
             Debug.LogWarning($"Unexpected positionRelation value: {positionRelation}");

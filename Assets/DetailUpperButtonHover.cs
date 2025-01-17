@@ -45,6 +45,8 @@ public class PrefabHoverHandler : MonoBehaviour
         // 根據物件名稱切換對應的 UI 畫面
         switch (gameObject.name)
         {
+            case "Purple":
+
             case "Rabbit1":
                     SetActiveRecursively(rabbit, true); // 顯示 RabbitPreview 及其所有子物件
                     SetActiveRecursively(purpleGhost, false); 
