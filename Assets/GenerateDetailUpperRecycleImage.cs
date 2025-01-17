@@ -49,7 +49,7 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
         if (condition == "PurpleGhost")
         {
             // 加入兔子和毛毛虫的图片
-            Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/RABBIT1");
+            Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/Rabbit1");
             Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
 
             if (rabbitSprite != null)
@@ -93,7 +93,7 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
             newButton.name = imagesArray[i].name;
 
             // 為兔子的 Button 設定星星和圖片
-            if (imagesArray[i].name == "RABBIT1")
+            if (imagesArray[i].name == "Rabbit1")
             {
                 Transform starTransform = newButton.transform.Find("stars");
                 if (starTransform != null)
