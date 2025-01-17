@@ -98,7 +98,7 @@ public class CalculateUserToTaskDistance : MonoBehaviour
 
                     // 確定索引以進行區隔
                     int offsetIndex = uiPanel.transform.GetSiblingIndex(); // 或其他方式獲取唯一索引
-                    float verticalOffset = offsetIndex * 2f; // 每個面板的上下間隔距離
+                    float verticalOffset = offsetIndex * 0.5f; // 每個面板的上下間隔距離
 
                     if (positionRelation == "Right")
                     {

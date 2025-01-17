@@ -9512,9 +9512,9 @@ MonoBehaviour:
   - PreviewArea: {fileID: 1160348450}
     uiPanel: {fileID: 2072216149}
     targetObject: {fileID: 613789344}
-  - PreviewArea: {fileID: 1816187216}
+  - PreviewArea: {fileID: 1753712767}
     uiPanel: {fileID: 301012397}
-    targetObject: {fileID: 1053838475757597473}
+    targetObject: {fileID: 1307784741}
 --- !u!1 &1063881068
 GameObject:
   m_ObjectHideFlags: 0
@@ -12712,6 +12712,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2449787133337329437, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
   m_PrefabInstance: {fileID: 9014170783777442263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1307784741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4789223595398378996, guid: 534ba4ecbab970d4287d86ece60e8f02, type: 3}
+  m_PrefabInstance: {fileID: 3834480316363328600}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1307784742 stripped
 Transform:
