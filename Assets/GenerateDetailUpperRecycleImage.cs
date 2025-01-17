@@ -74,14 +74,16 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
         }
         else if (condition == "Rabbit")
         {
+            Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/Rabbit1");
+            imagesArray.Add(rabbitSprite); // RABBIT1 图片
             Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
             imagesArray.Add(caterpillarSprite); // 毛毛虫图片
         }
 
-        GenerateImages();
+        GenerateImages(condition);
     }
 
-    void GenerateImages()
+    void GenerateImages(string condition)
     {
         LogInfo($"Generating {imagesArray.Count} images.");
 
@@ -113,7 +115,12 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
             // 為毛毛蟲的 Button 設定背景、星星和圖片
             if (imagesArray[i].name == "CATERPILLER")
             {
-                newButton.GetComponent<Image>().color = Color.gray;
+
+                if (condition == "PurpleGhost")
+                {
+                    newButton.GetComponent<Image>().color = Color.gray;
+                }
+               
                 LogInfo("Set button background color to gray for caterpillar.");
 
                 Transform starTransform = newButton.transform.Find("stars");
