@@ -4,6 +4,7 @@ public class PrefabHoverHandler : MonoBehaviour
 {
     private GameObject rabbit;
     private GameObject purpleGhost;
+    private GameObject Caterpillar;
 
     void Start()
     {
@@ -36,6 +37,10 @@ public class PrefabHoverHandler : MonoBehaviour
 
         Transform PurpleGhostTransform = canvasTransform.Find("PurpleGhostPreview");
         purpleGhost = PurpleGhostTransform.gameObject;
+
+        Transform CaterpillarTransform = canvasTransform.Find("CaterpillarPreview");
+        Caterpillar = CaterpillarTransform.gameObject;
+
     }
 
     public void OnHoverEnter()
@@ -45,19 +50,24 @@ public class PrefabHoverHandler : MonoBehaviour
         // 根據物件名稱切換對應的 UI 畫面
         switch (gameObject.name)
         {
-            case "Purple":
-
+            case "purpleGhost":
+                SetActiveRecursively(purpleGhost, true); // 顯示 RabbitPreview 及其所有子物件
+                SetActiveRecursively(rabbit, false); // 顯示 RabbitPreview 及其所有子物件
+                SetActiveRecursively(Caterpillar, false);
+                break;
             case "Rabbit1":
-                    SetActiveRecursively(rabbit, true); // 顯示 RabbitPreview 及其所有子物件
-                    SetActiveRecursively(purpleGhost, false); 
+                SetActiveRecursively(rabbit, true); // 顯示 RabbitPreview 及其所有子物件
+                SetActiveRecursively(purpleGhost, false);
+                SetActiveRecursively(Caterpillar, false);
                 break;
 
             case "CATERPILLER":
                 if (rabbit != null && purpleGhost != null)
                 {
                     Debug.Log("Activating CaterpillarPreview UI.");
-                    SetActiveRecursively(purpleGhost, true); // 顯示CaterpillarPreview 及其所有子物件
+                    SetActiveRecursively(Caterpillar, true); // 顯示CaterpillarPreview 及其所有子物件
                     SetActiveRecursively(rabbit, false); // 隱藏RabbitPreview 及其所有子物件
+                    SetActiveRecursively(purpleGhost, false);
                 }
                 else
                 {
@@ -92,14 +102,14 @@ public class PrefabHoverHandler : MonoBehaviour
 
 }
 
-    //void OnHoverExit()
-    //{
-    //    Debug.Log($"OnHoverExit triggered for {gameObject.name}.");
+//void OnHoverExit()
+//{
+//    Debug.Log($"OnHoverExit triggered for {gameObject.name}.");
 
-    //    // 隱藏目前顯示的畫面（如果有需要）
-    //    if (rabbitPreview != null && rabbitPreview.activeSelf)
-    //    {
-    //        Debug.Log("Deactivating RabbitPreview UI.");
-    //        rabbitPreview.SetActive(false); // 隱藏 RabbitPreview
-    //    }
-    //}
+//    // 隱藏目前顯示的畫面（如果有需要）
+//    if (rabbitPreview != null && rabbitPreview.activeSelf)
+//    {
+//        Debug.Log("Deactivating RabbitPreview UI.");
+//        rabbitPreview.SetActive(false); // 隱藏 RabbitPreview
+//    }
+//}
