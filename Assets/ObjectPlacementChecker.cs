@@ -6,6 +6,8 @@ public class ItemPlacementChecker : MonoBehaviour
     // 在 Inspector 中指定三個需要放置的物品
     public List<GameObject> requiredItems; // 必須放置的物品列表
     private List<GameObject> placedItems = new List<GameObject>(); // 已經放置的物品
+    public GameObject TakenBox; // 必須放置的物品列表
+    public GameObject GloveTaken; // 必須放置的物品列表
 
     // 動畫目標物件，需在 Inspector 中指定
     public GameObject animatedObject;
@@ -54,7 +56,8 @@ public class ItemPlacementChecker : MonoBehaviour
     void DoAction()
     {
         Debug.Log("ItemPlacementChecker: DoAction called. Starting animation.");
-
+        TakenBox.SetActive(true);
+        GloveTaken.SetActive(true);
         if (animatedObject != null)
         {
             Debug.Log("ItemPlacementChecker: Target object for animation found: " + animatedObject.name);
@@ -70,6 +73,7 @@ public class ItemPlacementChecker : MonoBehaviour
                 // Play the default clip of the Animation
                 animation.Play();
                 Debug.Log("ItemPlacementChecker: Playing animation.");
+                Invoke(nameof(HideObject), 15f);
             }
             else
             {
@@ -79,6 +83,15 @@ public class ItemPlacementChecker : MonoBehaviour
         else
         {
             Debug.LogError("ItemPlacementChecker: No target object specified for the animation!");
+        }
+    }
+
+    void HideObject()
+    {
+        if (animatedObject != null)
+        {
+            animatedObject.SetActive(false);
+            Debug.Log("ItemPlacementChecker: Object has been hidden after 15 seconds.");
         }
     }
 }
