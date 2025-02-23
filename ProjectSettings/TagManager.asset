@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - UI
   - Fiero
+  - CaterpillarAnchor
   layers:
   - Default
   - TransparentFX
