@@ -3934,6 +3934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoText: {fileID: 652055476}
+  glove: {fileID: 1508396562}
+  lightBeam: {fileID: 1722418971}
 --- !u!1 &352090719
 GameObject:
   m_ObjectHideFlags: 0
@@ -17000,6 +17002,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84d54a973f17cb4d8cff2b8537df2fe, type: 3}
+--- !u!1 &1722418971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e84d54a973f17cb4d8cff2b8537df2fe, type: 3}
+  m_PrefabInstance: {fileID: 1722418970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1731298971 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
