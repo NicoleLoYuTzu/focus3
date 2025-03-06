@@ -6,6 +6,7 @@ public class PlayerTextUpdate : MonoBehaviour
     public TMP_Text infoText; // 使用 TextMeshPro，或改成 `public Text infoText;` 來使用舊版 UI
     public GameObject glove;
     public GameObject lightBeam;
+    public GameObject lightBeamAnchor;
     private void OnTriggerEnter(Collider other)
     {
         // 使用 `other.gameObject.CompareTag` 檢查碰撞物件的 Tag
@@ -17,6 +18,7 @@ public class PlayerTextUpdate : MonoBehaviour
             if (glove.active == true)
             {
                 lightBeam.active = true;
+                lightBeamAnchor.active = true;
                 infoText.text = "你拿到手套！通往另一世界的大門已開啟!快去探索吧!";
             }
             
