@@ -274,7 +274,7 @@ public class ParabolicLineCircle : MonoBehaviour
             existingLineRenderer.SetPosition(0, newBallInstance.transform.position);
             existingLineRenderer.SetPosition(1, uiPanel.GetComponent<RectTransform>().position);
 
-            Debug.Log($"Updated ballInstance line for UI Panel '{uiPanel.name}' with new ball position: {newBallInstance.transform.position}");
+            Log($"Updated ballInstance line for UI Panel '{uiPanel.name}' with new ball position: {newBallInstance.transform.position}");
         }
     }
 
@@ -285,7 +285,7 @@ public class ParabolicLineCircle : MonoBehaviour
         {
             Destroy(lineRenderer.gameObject); // 刪除 LineRenderer
             uiLineRenderers.Remove(uiPanel); // 從字典移除
-            Debug.Log($"LineRenderer for UI Panel '{uiPanel.name}' has been removed.");
+            Log($"LineRenderer for UI Panel '{uiPanel.name}' has been removed.");
         }
     }
 
