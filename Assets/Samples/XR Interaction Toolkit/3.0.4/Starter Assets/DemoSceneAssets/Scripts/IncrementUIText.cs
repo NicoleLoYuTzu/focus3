@@ -1,4 +1,4 @@
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
@@ -37,7 +37,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         /// </summary>
         public void IncrementText()
         {
-            m_Count += 1;
+            m_Count = (m_Count + 1) % 13; // 當數字達到 13 時，自動歸零
             if (m_Text != null)
                 m_Text.text = m_Count.ToString();
         }

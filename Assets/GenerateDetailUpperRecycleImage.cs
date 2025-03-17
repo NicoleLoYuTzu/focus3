@@ -68,13 +68,21 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
             Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
             imagesArray.Add(caterpillarSprite); // 毛毛虫图片
         }
-        else if (condition == "Caterpillar") {
+
+        else if (condition == "Caterpillar")
+        {
             Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
             imagesArray.Add(caterpillarSprite); // 毛毛虫图片
 
 
         }
 
+        else if (condition == "RedPrincess")
+        {
+            Sprite redprincess2dSprite = Resources.Load<Sprite>("RedPrincess/redprincess2d");
+            imagesArray.Add(redprincess2dSprite); // 毛毛虫图片
+        }
+        
         GenerateImages(condition);
     }
 
@@ -147,6 +155,27 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
                     LogInfo("Set caterpillar image.");
                 }
             }
+
+            if (imagesArray[i].name == "redprincess2d")
+            {
+                LogInfo("Set button background color to gray for caterpillar.");
+
+                Transform starTransform = newButton.transform.Find("stars");
+                if (starTransform != null)
+                {
+                    starTransform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Caterpillar/stars");
+                    LogInfo("Set star image for caterpillar.");
+                }
+
+                Transform redprincessTransform = newButton.transform.Find("image");
+                if (redprincessTransform != null)
+                {
+                    redprincessTransform.GetComponent<Image>().sprite = imagesArray[i];
+                    LogInfo("Set caterpillar image.");
+                }
+            }
+
+
         }
         LogInfo("Image generation completed.");
     }
