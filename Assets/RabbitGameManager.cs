@@ -20,15 +20,15 @@ public class RabbitGameManager : MonoBehaviour
     public GameObject GloveTaken; // 手套獲得的物件
     public GameObject animatedObject; // 觸發動畫的物件
 
-    [Header("必須收集的物品")]
-    public List<GameObject> requiredItems = new List<GameObject>(); // 需要收集的物品
-    private List<GameObject> collectedItems = new List<GameObject>(); // 已收集的物品
+    [Header("物品放置區域")]
+    public ItemPlacementZone placementZone; // 連結到放置區
 
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor;
+    private bool allItemsPlaced = false; // 追蹤是否所有物品都已放置
 
     private void Start()
     {
-        // 監聽 Hover 進出事件
+        // 監聽 Hover 事件
         hintButton.hoverEntered.AddListener(OnHoverEnter);
         hintButton.hoverExited.AddListener(OnHoverExit);
 
@@ -51,18 +51,17 @@ public class RabbitGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (hoveringInteractor != null) // 確保有 Hover 的控制器
+        if (hoveringInteractor != null)
         {
             // 取得控制器輸入
             InputDevice rightHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
             bool isPressed = false;
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressed);
 
-            if (isPressed) // 當按下 Trigger
+            if (isPressed)
             {
-                if (hoveringInteractor.hasSelection) return; // 避免重複觸發
+                if (hoveringInteractor.hasSelection) return;
 
-                // 判斷是哪個按鈕被 Hover
                 if (hoveringInteractor.interactablesHovered.Contains(hintButton))
                 {
                     ShowHint();
@@ -81,58 +80,58 @@ public class RabbitGameManager : MonoBehaviour
 
     private void ShowHint()
     {
-        UpdateText("「唉呀，真是糟透了！我剛剛弄丟了我的手套，但沒辦法直接給你。" +
-                   "你知道的，我現在實在太餓了，腦袋都轉不過來了。" +
-                   "嗯...如果你能幫我找到我最愛的三樣東西——" +
-                   "一個冰淇淋、甜甜圈，還有一個漢堡，我的肚子餵飽了，" +
-                   "或許我就能想起來手套放在哪了。" +
-                   "拜託了，我可沒時間耽誤，皇后的命令不容忽視啊！」");
+        UpdateText("「唉呀，真是糟透了！我剛剛弄丟了我的手套，" +
+                   "但我太餓了，腦袋轉不過來。" +
+                   "如果你能幫我找到冰淇淋、甜甜圈和漢堡，" +
+                   "或許我就能想起來手套放在哪了。」");
     }
 
     private void StartGame()
     {
         if (targetObject != null)
         {
-            targetObject.SetActive(true); // 顯示物件
+            targetObject.SetActive(true);
         }
         else
         {
-            Debug.LogError("RabbitGameActivate: targetObject 未設定！");
+            Debug.LogError("RabbitGameManager: targetObject 未設定！");
         }
+    }
+
+    public void OnAllItemsPlaced()
+    {
+        allItemsPlaced = true;
+        Debug.Log("RabbitGameManager: 所有物品都已放置！");
     }
 
     private void EndGame()
     {
-        if (HasCollectedAllItems()) // 檢查是否收集所有物品
+        if (allItemsPlaced) // 確保所有物品已放置
         {
             Debug.Log("所有物品收集完成，觸發結束動作！");
             DoAction();
         }
         else
         {
-            UpdateText("「你還沒找到所有東西！快點去收集冰淇淋、甜甜圈和漢堡！」");
+            UpdateText("「你還沒找到所有東西！請放置冰淇淋、甜甜圈和漢堡在旁邊黃色的盤子上！」");
         }
-    }
-
-    private bool HasCollectedAllItems()
-    {
-        foreach (GameObject item in requiredItems)
-        {
-            if (!collectedItems.Contains(item))
-            {
-                Debug.Log($"RabbitGameActivate: 缺少物品 - {item.name}");
-                return false;
-            }
-        }
-        return true;
     }
 
     private void DoAction()
     {
-        Debug.Log("RabbitGameActivate: 開始結束流程...");
+        Debug.Log("RabbitGameManager: 開始結束流程...");
+
+        // 更新 NPC 對話
+        UpdateText("「哇！你真的找到所有東西了！" +
+                   "冰淇淋、甜甜圈、漢堡，我現在感覺好多了！" +
+                   "喔對了，我的手套......給你" +
+                   "接下來你去找看看紅色的毛毛蟲吧");
+
+        // 顯示獎勵物品
         TakenBox.SetActive(true);
         GloveTaken.SetActive(true);
 
+        // 播放動畫
         if (animatedObject != null)
         {
             Animation animation = animatedObject.GetComponent<Animation>();
@@ -144,41 +143,22 @@ public class RabbitGameManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("RabbitGameActivate: 動畫物件缺少 Animation 組件！");
+                Debug.LogError("RabbitGameManager: 動畫物件缺少 Animation 組件！");
             }
         }
         else
         {
-            Debug.LogError("RabbitGameActivate: animatedObject 未設定！");
+            Debug.LogError("RabbitGameManager: animatedObject 未設定！");
         }
     }
+
 
     private void HideObject()
     {
         if (animatedObject != null)
         {
             animatedObject.SetActive(false);
-            Debug.Log("RabbitGameActivate: 動畫物件已隱藏");
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log($"RabbitGameActivate: 進入觸發區 - {other.gameObject.name}");
-
-        if (requiredItems.Contains(other.gameObject) && !collectedItems.Contains(other.gameObject))
-        {
-            collectedItems.Add(other.gameObject);
-            Debug.Log($"RabbitGameActivate: 收集到 {other.gameObject.name}");
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (collectedItems.Contains(other.gameObject))
-        {
-            collectedItems.Remove(other.gameObject);
-            Debug.Log($"RabbitGameActivate: {other.gameObject.name} 離開觸發區，移出已收集列表");
+            Debug.Log("RabbitGameManager: 動畫物件已隱藏");
         }
     }
 
@@ -190,7 +170,7 @@ public class RabbitGameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("RabbitGameActivate: infoTextUI 沒有設定！");
+            Debug.LogError("RabbitGameManager: infoTextUI 沒有設定！");
         }
     }
 }

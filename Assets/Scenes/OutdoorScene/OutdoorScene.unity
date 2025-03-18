@@ -4617,10 +4617,7 @@ MonoBehaviour:
   TakenBox: {fileID: 895567271}
   GloveTaken: {fileID: 1508396562}
   animatedObject: {fileID: 558560035}
-  requiredItems:
-  - {fileID: 520594735176233884}
-  - {fileID: 919132147702487832}
-  - {fileID: 919132147977297358}
+  placementZone: {fileID: 7655750794060224269}
 --- !u!1 &386026548
 GameObject:
   m_ObjectHideFlags: 0
@@ -401342,10 +401339,8 @@ MonoBehaviour:
   requiredItems:
   - {fileID: 520594735176233884}
   - {fileID: 919132147702487832}
-  - {fileID: 919132147977297358}
-  TakenBox: {fileID: 895567271}
-  GloveTaken: {fileID: 1508396562}
-  animatedObject: {fileID: 558560035}
+  - {fileID: 919132149035978370}
+  gameManager: {fileID: 357061486}
 --- !u!65 &7655750794060224270
 BoxCollider:
   m_ObjectHideFlags: 0

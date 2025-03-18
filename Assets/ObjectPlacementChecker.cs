@@ -1,97 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class ItemPlacementChecker : MonoBehaviour
+public class ItemPlacementZone : MonoBehaviour
 {
-    // 在 Inspector 中指定三個需要放置的物品
-    public List<GameObject> requiredItems; // 必須放置的物品列表
-    private List<GameObject> placedItems = new List<GameObject>(); // 已經放置的物品
-    public GameObject TakenBox; // 必須放置的物品列表
-    public GameObject GloveTaken; // 必須放置的物品列表
+    [Header("必須放置的物品")]
+    public List<GameObject> requiredItems = new List<GameObject>(); // 需要放置的物品
+    private List<GameObject> placedItems = new List<GameObject>(); // 已放置的物品
 
-    // 動畫目標物件，需在 Inspector 中指定
-    public GameObject animatedObject;
+    public RabbitGameManager gameManager; // 連結到 RabbitGameManager
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ItemPlacementChecker: OnTriggerEnter called. Checking if the object is a required item...");
-
-        // 如果進入的物體是要求放置的物品，則將其加入 placedItems 列表
         if (requiredItems.Contains(other.gameObject) && !placedItems.Contains(other.gameObject))
         {
-            Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " added to placed items.");
-
             placedItems.Add(other.gameObject);
+            Debug.Log($"ItemPlacementZone: {other.gameObject.name} 正確放置！");
 
-            // 當所有物品都已經放置時，執行某個操作
+            // 檢查是否所有物品都已放置
             if (placedItems.Count == requiredItems.Count)
             {
-                Debug.Log("ItemPlacementChecker: All required items have been placed. Executing action!");
-                DoAction();
+                Debug.Log("ItemPlacementZone: 所有物品都已放置！");
+                gameManager.OnAllItemsPlaced(); // 通知遊戲管理器
             }
-        }
-        else
-        {
-            Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " is either not a required item or already placed.");
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        Debug.Log("ItemPlacementChecker: OnTriggerExit called. Checking if the object was in placed items...");
-
-        // 如果物體離開區域，從 placedItems 列表中移除該物體
         if (placedItems.Contains(other.gameObject))
         {
-            Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " removed from placed items.");
             placedItems.Remove(other.gameObject);
-        }
-        else
-        {
-            Debug.Log("ItemPlacementChecker: Item " + other.gameObject.name + " was not in placed items.");
-        }
-    }
-
-    // 當所有物品都放置後要執行的操作
-    void DoAction()
-    {
-        Debug.Log("ItemPlacementChecker: DoAction called. Starting animation.");
-        TakenBox.SetActive(true);
-        GloveTaken.SetActive(true);
-        if (animatedObject != null)
-        {
-            Debug.Log("ItemPlacementChecker: Target object for animation found: " + animatedObject.name);
-
-            // Ensure the target object has an Animation component
-            Animation animation = animatedObject.GetComponent<Animation>();
-            if (animation != null)
-            {
-                Debug.Log("ItemPlacementChecker: Animation component found on target object.");
-
-                animation.enabled = true; // Enable the animation
-                Debug.Log("ItemPlacementChecker: Animation component enabled.");
-                // Play the default clip of the Animation
-                animation.Play();
-                Debug.Log("ItemPlacementChecker: Playing animation.");
-                Invoke(nameof(HideObject), 15f);
-            }
-            else
-            {
-                Debug.LogError("ItemPlacementChecker: The target object is missing an Animation component!");
-            }
-        }
-        else
-        {
-            Debug.LogError("ItemPlacementChecker: No target object specified for the animation!");
-        }
-    }
-
-    void HideObject()
-    {
-        if (animatedObject != null)
-        {
-            animatedObject.SetActive(false);
-            Debug.Log("ItemPlacementChecker: Object has been hidden after 15 seconds.");
+            Debug.Log($"ItemPlacementZone: {other.gameObject.name} 已移除！");
         }
     }
 }
