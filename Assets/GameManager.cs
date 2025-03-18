@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor; // 紀錄 Hover 的控制器
     public GameObject animatedObject;
     public GameObject magicWand;
+    public CustomRayInteractor customRayInteractor;
+    public GameObject princess;
 
 
     private void Awake()
@@ -121,6 +123,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start Button Pressed");
         wingUI.SetActive(true);
         heartUI.SetActive(true);
+        //customRayInteractor.StartTask(princess);
+
     }
 
     // 當結束被觸發
@@ -136,6 +140,7 @@ public class GameManager : MonoBehaviour
             UpdateMaterials();
             PlayAnimation(); // 播放動畫
             magicWand.SetActive(true);
+            customRayInteractor.EndTask(princess);
         }
         else
         {

@@ -23,6 +23,22 @@ public class CustomRayInteractor : MonoBehaviour
     public LineRenderer paraboliclineRenderer;
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
+    private Dictionary<GameObject, bool> completedTasks = new Dictionary<GameObject, bool>();
+
+
+
+    public void EndTask(GameObject targetObject)
+    {
+        if (!completedTasks.ContainsKey(targetObject))
+        {
+            completedTasks.Add(targetObject, true);
+        }
+        else
+        {
+            completedTasks[targetObject] = true;
+        }
+    }
+
 
     void Start()
     {
@@ -151,6 +167,14 @@ public class CustomRayInteractor : MonoBehaviour
             GameObject PreviewArea = pair.PreviewArea;
             GameObject uiPanel = pair.uiPanel;
             GameObject targetObject = pair.targetObject;
+
+            // **👉 檢查該物件的任務是否已結束**
+            if (completedTasks.ContainsKey(targetObject) && completedTasks[targetObject])
+            {
+                Debug.Log($"任務已結束，隱藏 {targetObject.name}");
+                HideMessage(uiPanel);
+                continue; // **跳過這個物件，不再顯示 UI**
+            }
 
             // 检测该物体是否与路径有交集
             if (CheckIntersection(path, PreviewArea))

@@ -82,7 +82,15 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
             Sprite redprincess2dSprite = Resources.Load<Sprite>("RedPrincess/redprincess2d");
             imagesArray.Add(redprincess2dSprite); // 毛毛虫图片
         }
-        
+
+        else if (condition == "CardSoldier")
+        {
+            Sprite redprincess2dSprite = Resources.Load<Sprite>("CardSoldier/CardSoldier");
+            imagesArray.Add(redprincess2dSprite); // 毛毛虫图片
+        }
+
+
+
         GenerateImages(condition);
     }
 
