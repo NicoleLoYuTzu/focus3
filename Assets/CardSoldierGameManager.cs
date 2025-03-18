@@ -24,6 +24,7 @@ public class CardSoldierGameManager : MonoBehaviour
 
     public GameObject potion;  // 🔹 藥水的 GameObject (需在 Unity 拖入)
     public GameObject animatedObject;
+    public GameObject potionShowCorner;
 
     private void Start()
     {
@@ -118,6 +119,7 @@ public class CardSoldierGameManager : MonoBehaviour
                 UpdateText("恭喜你！你成功解開了撲克牌的謎題，獲得了真正的放大藥水！");
                 potion.SetActive(true); // 讓藥水出現
                 PlayAnimation(); // 播放動畫
+                potionShowCorner.SetActive(true);
             }
             else
             {
