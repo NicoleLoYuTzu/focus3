@@ -101,6 +101,7 @@ public class CardSoldierGameManager : MonoBehaviour
         if (gameArea != null)
         {
             gameArea.SetActive(true); // 啟動遊戲區域
+            UpdateText("任務開始 請把將正確答案輸入在後面的操控台");
         }
         wandCornerClose.SetActive(false);
     }
