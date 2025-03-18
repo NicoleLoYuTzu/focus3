@@ -2,20 +2,10 @@
 
 public class PurpleGhostHintActivate : MonoBehaviour
 {
-    public GameObject hintUI; // 需要顯示的物件 (請在 Inspector 設定)
+    public GameObject hintUI1; // 需要顯示的物件 (請在 Inspector 設定)
+    public GameObject hintUI2; // 需要顯示的物件 (請在 Inspector 設定)
 
-    private void Start()
-    {
-        if (hintUI != null)
-        {
-            hintUI.SetActive(false); // 遊戲開始時隱藏 hintUI
-        }
-        else
-        {
-            Debug.LogError("PurpleGhostHintActivate: hintUI 未指定！");
-        }
-    }
-
+   
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"PurpleGhostHintActivate: PlayerTextUpdate other {other.gameObject.name}");
@@ -25,10 +15,9 @@ public class PurpleGhostHintActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 進入觸發區，顯示提示 UI");
 
-            if (hintUI != null)
-            {
-                hintUI.SetActive(true); // 顯示提示 UI
-            }
+           
+            hintUI1.SetActive(true); // 顯示提示 UI
+            hintUI2.SetActive(true); // 顯示提示 UI
         }
     }
 
@@ -39,10 +28,8 @@ public class PurpleGhostHintActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 離開觸發區，隱藏提示 UI");
 
-            if (hintUI != null)
-            {
-                hintUI.SetActive(false);
-            }
+            hintUI1.SetActive(false); // 顯示提示 UI
+            hintUI2.SetActive(false); // 顯示提示 UI
         }
     }
 }
