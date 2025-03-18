@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] objectsToUpdate; // 需要更新材質的 4 個物件
 
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor; // 紀錄 Hover 的控制器
+    public GameObject animatedObject;
+    public GameObject magicWand;
+
 
     private void Awake()
     {
@@ -59,32 +62,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    if (hoveringInteractor != null) // 確保目前有 Hover 的控制器
-    //    {
-    //        InputDevice leftHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-    //        InputDevice rightHandDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-
-    //        bool isPressedLeft = false, isPressedRight = false;
-
-    //        InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
-    //        InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
-
-    //        if (isPressedLeft || isPressedRight) // 任何一隻手的 Trigger 被按下
-    //        {
-    //            // 🔹 使用 interactablesSelected 檢查選中的物件
-    //            if (hoveringInteractor.IsSelecting(startButton))
-    //            {
-    //                StartGame();
-    //            }
-    //            else if (hoveringInteractor.IsSelecting(endButton))
-    //            {
-    //                EndGame();
-    //            }
-    //        }
-    //    }
-    //}
     private void Update()
     {
         if (hoveringInteractor != null) // 確保目前有 Hover 的控制器
@@ -157,6 +134,8 @@ public class GameManager : MonoBehaviour
         {
             resultText.text = "任務達成!";
             UpdateMaterials();
+            PlayAnimation(); // 播放動畫
+            magicWand.SetActive(true);
         }
         else
         {
@@ -179,6 +158,42 @@ public class GameManager : MonoBehaviour
             objectsToUpdate[3].GetComponent<Renderer>().material = heartMaterial;
         }
     }
+
+    private void PlayAnimation()
+    {
+        if (animatedObject != null)
+        {
+            Animation animation = animatedObject.GetComponent<Animation>();
+            if (animation != null)
+            {
+                Debug.Log("GameManager: Animation component found on target object.");
+                animation.enabled = true; // 啟用動畫元件
+                Debug.Log("GameManager: Animation component enabled.");
+                animation.Play(); // 播放動畫
+                Debug.Log("GameManager: Playing animation.");
+                Invoke(nameof(HideObject), 15f); // 15 秒後隱藏物件
+            }
+            else
+            {
+                Debug.LogError("GameManager: No Animation component found on animatedObject.");
+            }
+        }
+        else
+        {
+            Debug.LogError("GameManager: animatedObject is not assigned.");
+        }
+    }
+
+    private void HideObject()
+    {
+        if (animatedObject != null)
+        {
+            animatedObject.SetActive(false);
+            Debug.Log("GameManager: animatedObject is now hidden.");
+        }
+    }
+
+
 
     // 收集物品
     public void CollectItem(string itemType)
