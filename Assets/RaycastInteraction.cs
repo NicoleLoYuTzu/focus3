@@ -31,51 +31,55 @@ public class RaycastInteractor : MonoBehaviour
         Debug.Log("Start: Left hand device initialized");
     }
 
-    [System.Obsolete]
     void Update()
     {
-
-        if (!leftHandDevice.isValid)
-        {
-            TryGetLeftHandDevice(); // 確保 device 是有效的
-        }
-        bool isPressed;
-
-        if (leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out isPressed) && isPressed)
+        // 取得左手 Trigger 按鈕狀態
+        if (leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out bool isPressed) && isPressed)
         {
             Debug.Log("Update: Trigger pressed");
 
+            // 進行 Raycast 檢測
             Ray ray = new Ray(transform.position, transform.forward);
-
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, raycastLayerMask))
             {
                 Debug.Log("Raycast hit object: " + hitInfo.collider.gameObject.name);
+
+                bool foundSelectable = false;
 
                 foreach (var pair in targetUIPairs)
                 {
                     if (pair.selectableObject == hitInfo.collider.gameObject)
                     {
-                        isAnyObjectSelected = true; // 只有點到目標物才設為 true
+                        if (currentSelectedObject != pair.selectableObject) // 只在選中新物件時執行
+                        {
+                            ShowSelectableObjectDetail(pair);
+                            generateDetailUpperRecycleImage.ClearExistingButtons();
+                            generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(pair.selectableObject.name);
+                            currentSelectedObject = pair.selectableObject; // 更新目前選中的物件
+                        }
+
+                        foundSelectable = true;
+                        isAnyObjectSelected = true;
                         break;
                     }
                 }
-            }
 
-            else
-            {
-                Debug.Log("No object hit by raycast");
-
-                if (isAnyObjectSelected)
+//                當 Raycast 打到的物件不是 targetUIPairs 裡的任何 selectableObject
+//並且之前有選過東西（isAnyObjectSelected == true）
+//=> 這時候關閉 UI
+                if (!foundSelectable && isAnyObjectSelected)
                 {
                     DisableDetailObjects();
                 }
             }
-        }
-        else
-        {
-            Debug.Log("Update: Trigger not pressed");
+            else
+            {
+                Debug.Log("No object hit by raycast - Closing UI");
+                DisableDetailObjects();
+            }
         }
     }
+
 
     private void ShowSelectableObjectDetail(TargetUIPair selectedPair)
     {

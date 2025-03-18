@@ -26,6 +26,8 @@ public class CardSoldierGameManager : MonoBehaviour
     public GameObject animatedObject;
     public GameObject potionShowCorner;
     public GameObject wandCornerClose;
+    public CustomRayInteractor customRayInteractor;
+    public GameObject endGameCloseCardSoldierPreview;
 
     private void Start()
     {
@@ -122,6 +124,7 @@ public class CardSoldierGameManager : MonoBehaviour
                 potion.SetActive(true); // 讓藥水出現
                 PlayAnimation(); // 播放動畫
                 potionShowCorner.SetActive(true);
+                customRayInteractor.EndTask(endGameCloseCardSoldierPreview);
             }
             else
             {

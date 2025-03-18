@@ -8,7 +8,7 @@ public class CardSoldierGameActivate : MonoBehaviour
     public GameObject hintUI;   // 提示 UI
     public GameObject wandUI;   // 權杖 UI (檢查是否已經獲得權杖)
     public TextMeshProUGUI infoTextUI;  // 顯示文字的 UI (需拖入 TextMeshPro 物件)
-
+    public GameObject gameArea;
     private void Start()
     {
         // 確保這個物件有 Collider 並啟用 Trigger
@@ -46,7 +46,14 @@ public class CardSoldierGameActivate : MonoBehaviour
 
     private void ShowHintUI()  // ✅ 更改方法名稱，避免衝突
     {
-        if (wandUI != null && wandUI.activeSelf)
+        if (gameArea.activeSelf)
+        {
+            // ✅ 遊戲已經開始，仍然要顯示提示 UI
+            if (hintUI != null) hintUI.SetActive(true);
+            return;  // **避免執行後續邏輯**
+        }
+
+        else if (wandUI != null && wandUI.activeSelf)
         {
             // 只有權杖 UI 被啟動時，才顯示提示 UI
             if (hintUI != null) hintUI.SetActive(true);

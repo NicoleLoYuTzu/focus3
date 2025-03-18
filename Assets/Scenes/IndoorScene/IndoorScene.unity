@@ -2000,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &136902210
 Transform:
   m_ObjectHideFlags: 0
@@ -18829,6 +18829,7 @@ MonoBehaviour:
   hintUI: {fileID: 2146965514}
   wandUI: {fileID: 1127583099}
   infoTextUI: {fileID: 1003587351}
+  gameArea: {fileID: 136902209}
 --- !u!65 &877237346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19040,6 +19041,8 @@ MonoBehaviour:
   animatedObject: {fileID: 1533813227}
   potionShowCorner: {fileID: 1117038238}
   wandCornerClose: {fileID: 1127583099}
+  customRayInteractor: {fileID: 720394172}
+  endGameCloseCardSoldierPreview: {fileID: 455713969}
 --- !u!1 &890800024
 GameObject:
   m_ObjectHideFlags: 0
@@ -26377,7 +26380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79b249208b2e193458a6b03a7261f51b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13b3314f952566f4ea4864f1196104ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36930,6 +36933,8 @@ MonoBehaviour:
     selectableObjectDetail: {fileID: 1111447837}
   - selectableObject: {fileID: 1359385286}
     selectableObjectDetail: {fileID: 1585653701}
+  - selectableObject: {fileID: 122245895}
+    selectableObjectDetail: {fileID: 2031419079}
 --- !u!1 &1384618554
 GameObject:
   m_ObjectHideFlags: 0
@@ -46374,13 +46379,13 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746898598}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: f7e6e0752309f0c42a6b2c5bda195926, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: f7e6e0752309f0c42a6b2c5bda195926, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &1752474172
@@ -46579,7 +46584,6 @@ Transform:
   - {fileID: 59977110}
   - {fileID: 469596528}
   - {fileID: 1394537787}
-  - {fileID: 1997006220}
   m_Father: {fileID: 1457969246}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1782322186
@@ -50116,37 +50120,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992504148}
   m_CullTransparentMesh: 1
---- !u!1 &1997006219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1997006220}
-  m_Layer: 0
-  m_Name: CardSoldier
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1997006220
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997006219}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1782322185}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1998738388
 GameObject:
   m_ObjectHideFlags: 0

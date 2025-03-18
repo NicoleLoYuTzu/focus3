@@ -19,23 +19,18 @@ public class AliceGameManager : MonoBehaviour
 
     private void Start()
     {
-        if (infoTextUI != null)
-        {
-            infoTextUI.text = "";
-        }
+       
 
         // 綁定 Hover 事件到提示按鈕
         if (hintButton != null)
         {
             hintButton.hoverEntered.AddListener(OnHintHoverEnter);
-            hintButton.hoverExited.AddListener(OnHoverExit);
         }
 
         // 綁定 Hover 事件到結束按鈕
         if (endButton != null)
         {
             endButton.hoverEntered.AddListener(OnEndHoverEnter);
-            endButton.hoverExited.AddListener(OnHoverExit);
         }
     }
 
@@ -84,20 +79,9 @@ public class AliceGameManager : MonoBehaviour
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
         if (infoTextUI != null)
         {
-            infoTextUI.text = "準備變大!";
+            infoTextUI.text = "你帶來藥水了嗎?";
         }
     }
-
-    private void OnHoverExit(HoverExitEventArgs args)
-    {
-        hoveringInteractor = null;
-        if (infoTextUI != null)
-        {
-            infoTextUI.text = "";
-        }
-    }
-
-
 
     private void GiveHint()
     {
@@ -109,7 +93,7 @@ public class AliceGameManager : MonoBehaviour
 
     private void EndGame()
     {
-        if (potion != null) // 確保藥水存在
+        if (potion.activeSelf) // 確保藥水存在
         {
             if (infoTextUI != null)
             {
