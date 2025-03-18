@@ -25,6 +25,7 @@ public class CardSoldierGameManager : MonoBehaviour
     public GameObject potion;  // 🔹 藥水的 GameObject (需在 Unity 拖入)
     public GameObject animatedObject;
     public GameObject potionShowCorner;
+    public GameObject wandCornerClose;
 
     private void Start()
     {
@@ -99,6 +100,7 @@ public class CardSoldierGameManager : MonoBehaviour
         {
             gameArea.SetActive(true); // 啟動遊戲區域
         }
+        wandCornerClose.SetActive(false);
     }
 
     private void EndGame()

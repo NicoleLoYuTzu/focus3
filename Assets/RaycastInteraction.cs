@@ -34,7 +34,14 @@ public class RaycastInteractor : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-        if (!(!leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out bool isPressed) || !isPressed))
+
+        if (!leftHandDevice.isValid)
+        {
+            TryGetLeftHandDevice(); // 確保 device 是有效的
+        }
+        bool isPressed;
+
+        if (leftHandDevice.IsPressed(InputHelpers.Button.Trigger, out isPressed) && isPressed)
         {
             Debug.Log("Update: Trigger pressed");
 
@@ -44,31 +51,16 @@ public class RaycastInteractor : MonoBehaviour
             {
                 Debug.Log("Raycast hit object: " + hitInfo.collider.gameObject.name);
 
-                bool foundSelectable = false;
-
                 foreach (var pair in targetUIPairs)
                 {
                     if (pair.selectableObject == hitInfo.collider.gameObject)
                     {
-                        if (currentSelectedObject != pair.selectableObject) // 檢查是否為新選中的物件
-                        {
-                            ShowSelectableObjectDetail(pair);
-                            generateDetailUpperRecycleImage.ClearExistingButtons();
-                            generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(pair.selectableObject.name);
-                            currentSelectedObject = pair.selectableObject; // 更新當前選中的物件
-                        }
-
-                        foundSelectable = true;
-                        isAnyObjectSelected = true;
+                        isAnyObjectSelected = true; // 只有點到目標物才設為 true
                         break;
                     }
                 }
-
-                if (!foundSelectable && isAnyObjectSelected)
-                {
-                    DisableDetailObjects();
-                }
             }
+
             else
             {
                 Debug.Log("No object hit by raycast");
