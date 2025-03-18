@@ -22,6 +22,9 @@ public class CardSoldierGameManager : MonoBehaviour
 
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor;
 
+    public GameObject potion;  // 🔹 藥水的 GameObject (需在 Unity 拖入)
+    public GameObject animatedObject;
+
     private void Start()
     {
         // 監聽 Hover 進出事件
@@ -113,6 +116,8 @@ public class CardSoldierGameManager : MonoBehaviour
             if (heartValue == "1" && diamondValue == "12" && clubValue == "10" && spadeValue == "8")
             {
                 UpdateText("恭喜你！你成功解開了撲克牌的謎題，獲得了真正的放大藥水！");
+                potion.SetActive(true); // 讓藥水出現
+                PlayAnimation(); // 播放動畫
             }
             else
             {
@@ -136,4 +141,40 @@ public class CardSoldierGameManager : MonoBehaviour
             Debug.LogError("CardSoldierGameManager: infoTextUI is not assigned!");
         }
     }
+
+
+    private void PlayAnimation()
+    {
+        if (animatedObject != null)
+        {
+            Animation animation = animatedObject.GetComponent<Animation>();
+            if (animation != null)
+            {
+                Debug.Log("GameManager: Animation component found on target object.");
+                animation.enabled = true; // 啟用動畫元件
+                Debug.Log("GameManager: Animation component enabled.");
+                animation.Play(); // 播放動畫
+                Debug.Log("GameManager: Playing animation.");
+                Invoke(nameof(HideObject), 15f); // 15 秒後隱藏物件
+            }
+            else
+            {
+                Debug.LogError("GameManager: No Animation component found on animatedObject.");
+            }
+        }
+        else
+        {
+            Debug.LogError("GameManager: animatedObject is not assigned.");
+        }
+    }
+
+    private void HideObject()
+    {
+        if (animatedObject != null)
+        {
+            animatedObject.SetActive(false);
+            Debug.Log("GameManager: animatedObject is now hidden.");
+        }
+    }
+
 }
