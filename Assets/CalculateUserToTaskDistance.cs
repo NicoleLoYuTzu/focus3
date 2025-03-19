@@ -7,7 +7,7 @@ public class CalculateUserToTaskDistance : MonoBehaviour
 {
     public Transform leftPanelContainer;  // 左側 UI 容器
     public Transform rightPanelContainer; // 右側 UI 容器
-    public float spacing = 1.5f; // UI 面板之間的間距
+    private float spacing = 300f; // UI 面板之間的間距
 
     void Update()
     {
@@ -22,32 +22,47 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         // 判斷物件在使用者的左側或右側
         string positionRelation = GetLeftOrRight(userPosition, objectPosition);
 
-        // 獲取 UI 面板的 RectTransform
-        RectTransform uiPanelRectTransform = uiPanel.GetComponent<RectTransform>();
+        // 設定 UI 面板應該放置的區塊
+        Transform parentContainer = positionRelation == "Left" ? leftPanelContainer : rightPanelContainer;
 
-        if (uiPanelRectTransform != null)
-        {
-            // 設定 UI 面板應該放置的區塊
-            Transform parentContainer = positionRelation == "Left" ? leftPanelContainer : rightPanelContainer;
-            uiPanel.transform.SetParent(parentContainer, false);
+        // 🚀 設置新的父物件
+        uiPanel.transform.SetParent(parentContainer, false);
 
-            // 確保 UI 面板按照水平間距排列
-            ArrangePanels(parentContainer);
-        }
-        else
-        {
-            Debug.LogWarning("UI Panel does not have a RectTransform.");
-        }
+
+        // 排列 UI 面板
+        ArrangePanels(parentContainer);
     }
 
     private void ArrangePanels(Transform container)
     {
-        for (int i = 0; i < container.childCount; i++)
+        int panelCount = container.childCount;
+        Debug.Log($"Container: {container.name}, Number of child objects: {panelCount}");
+
+        if (panelCount == 0) return;
+
+        float totalWidth = (panelCount - 1) * spacing;
+        float startX = -totalWidth / 2f;
+
+        for (int i = 0; i < panelCount; i++)
         {
             Transform panel = container.GetChild(i);
-            panel.localPosition = new Vector3(i * spacing, 0, 0); // 水平方向排列
+            Vector3 newPosition = new Vector3(startX + (i * spacing), 0, 0);
+
+            // **只有當位置確實變動時才更新**
+            if (panel.localPosition != newPosition)
+            {
+                panel.localPosition = newPosition;
+                Debug.Log($"UI Panel {panel.name} set position: {panel.localPosition}");
+            }
+            else
+            {
+                Debug.Log($"UI Panel {panel.name} position unchanged: {panel.localPosition}");
+            }
         }
     }
+
+
+
 
     private string GetLeftOrRight(Vector3 userPosition, Vector3 objectPosition)
     {
