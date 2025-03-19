@@ -97,6 +97,68 @@ public class ParabolicLineCircle : MonoBehaviour
             return "Back";
     }
 
+    //public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
+    //{
+    //    Log("ParabolicLineCircle: ConnectObjectToUI started.");
+
+    //    if (targetUIPair == null || targetUIPair.Count == 0)
+    //    {
+    //        Log("ParabolicLineCircle: targetUIPair list is null or empty!");
+    //        return;
+    //    }
+
+    //    Camera mainCamera = Camera.main;
+    //    if (mainCamera == null)
+    //    {
+    //        Log("ParabolicLineCircle: No main camera found in the scene!");
+    //        return;
+    //    }
+
+    //    HideUIAndBall(); // Clear previous ball instances
+
+    //    foreach (CustomRayInteractor.TargetUIPair targetUIPairDetail in targetUIPair)
+    //    {
+    //        if (targetUIPairDetail == null)
+    //        {
+    //            Log("ParabolicLineCircle: targetUIPairDetail is null!");
+    //            continue;
+    //        }
+
+    //        // Log the corresponding UI panel for each ball.
+    //        Log($"ParabolicLineCircle: Processing TargetUIPair with UI Panel: {targetUIPairDetail.uiPanel.name}");
+
+    //        RectTransform rectTransform = targetUIPairDetail.uiPanel.GetComponent<RectTransform>();
+    //        if (rectTransform == null)
+    //        {
+    //            Log($"ParabolicLineCircle: The provided uiPanel '{targetUIPairDetail.uiPanel.name}' does not have a RectTransform component.");
+    //            continue;
+    //        }
+
+    //        Vector3 uiWorldPosition = Vector3.zero; // 初始化變數
+    //        Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
+
+    //        GameObject newBallInstance = null; // Predefine
+
+    //        if (!uiLineRenderers.ContainsKey(targetUIPairDetail.uiPanel))
+    //        {
+    //            if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
+    //            {
+    //                newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, uiWorldPosition, ref newBallInstance);
+    //                CreateLineRenderer(newBallInstance, uiWorldPosition, targetUIPairDetail.uiPanel);
+    //            }
+    //            else
+    //            {
+    //                Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
+    //            }
+    //        }
+    //        else
+    //        {
+    //            newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, uiWorldPosition, ref newBallInstance);
+    //            UpdateLineRenderer(targetUIPairDetail.uiPanel, newBallInstance);
+    //        }
+    //    }
+    //}
+
     public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
     {
         Log("ParabolicLineCircle: ConnectObjectToUI started.");
@@ -124,7 +186,6 @@ public class ParabolicLineCircle : MonoBehaviour
                 continue;
             }
 
-            // Log the corresponding UI panel for each ball.
             Log($"ParabolicLineCircle: Processing TargetUIPair with UI Panel: {targetUIPairDetail.uiPanel.name}");
 
             RectTransform rectTransform = targetUIPairDetail.uiPanel.GetComponent<RectTransform>();
@@ -134,17 +195,17 @@ public class ParabolicLineCircle : MonoBehaviour
                 continue;
             }
 
-            Vector3 uiWorldPosition = Vector3.zero; // 初始化變數
+            Vector3 uiWorldPosition = Vector3.zero;
             Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
-
-            GameObject newBallInstance = null; // Predefine
+            GameObject newBallInstance = null;
 
             if (!uiLineRenderers.ContainsKey(targetUIPairDetail.uiPanel))
             {
                 if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
                 {
-                    newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, uiWorldPosition, ref newBallInstance);
-                    CreateLineRenderer(newBallInstance, uiWorldPosition, targetUIPairDetail.uiPanel);
+                    Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
+                    newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
+                    CreateLineRenderer(newBallInstance, connectionPoint, targetUIPairDetail.uiPanel);
                 }
                 else
                 {
@@ -153,11 +214,72 @@ public class ParabolicLineCircle : MonoBehaviour
             }
             else
             {
-                newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, uiWorldPosition, ref newBallInstance);
+                Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
+                newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
                 UpdateLineRenderer(targetUIPairDetail.uiPanel, newBallInstance);
             }
         }
     }
+
+    //private Vector3 GetUIPanelConnectionPoint(RectTransform rectTransform, Vector3 uiWorldPosition)
+    //{
+    //    // 獲取 UI Panel 的寬度 & 高度
+    //    float panelWidth = rectTransform.rect.width * rectTransform.lossyScale.x;
+    //    float panelHeight = rectTransform.rect.height * rectTransform.lossyScale.y;
+
+    //    // 獲取拋物線的終點（改用 lineRenderer）
+    //    Vector3 lastPointOnLine = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
+
+    //    // 判斷 UI 在拋物線的左側還是右側
+    //    bool isUIPanelOnRight = uiWorldPosition.x > lastPointOnLine.x;
+
+    //    if (isUIPanelOnRight)
+    //    {
+    //        // UI 在右側，連接到 UI 的左下角
+    //        return uiWorldPosition + new Vector3(-panelWidth / 2, -panelHeight / 2, 0);
+    //    }
+    //    else
+    //    {
+    //        // UI 在左側，連接到 UI 的右下角
+    //        return uiWorldPosition + new Vector3(panelWidth / 2, -panelHeight / 2, 0);
+    //    }
+    //}
+    private Vector3 GetUIPanelConnectionPoint(RectTransform rectTransform, Vector3 uiWorldPosition)
+    {
+        // 取得 UI Panel 的寬度 & 高度
+        float panelWidth = rectTransform.rect.width * rectTransform.lossyScale.x;
+        float panelHeight = rectTransform.rect.height * rectTransform.lossyScale.y;
+
+        // 取得拋物線的終點
+        Vector3 lastPointOnLine = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
+
+        // 判斷 UI 面板的位置
+        bool isUIPanelOnRight = uiWorldPosition.x > lastPointOnLine.x;
+        bool isUIPanelOnTop = uiWorldPosition.y > lastPointOnLine.y;
+
+        if (isUIPanelOnRight && isUIPanelOnTop)
+        {
+            // UI 在右上角，連接到 UI 的左下角
+            return uiWorldPosition + new Vector3(-panelWidth / 2, -panelHeight / 2, 0);
+        }
+        else if (isUIPanelOnRight && !isUIPanelOnTop)
+        {
+            // UI 在右下角，連接到 UI 的左上角
+            return uiWorldPosition + new Vector3(-panelWidth / 2, panelHeight / 2, 0);
+        }
+        else if (!isUIPanelOnRight && isUIPanelOnTop)
+        {
+            // UI 在左上角，連接到 UI 的右下角
+            return uiWorldPosition + new Vector3(panelWidth / 2, -panelHeight / 2, 0);
+        }
+        else
+        {
+            // UI 在左下角，連接到 UI 的右上角
+            return uiWorldPosition + new Vector3(panelWidth / 2, panelHeight / 2, 0);
+        }
+    }
+
+
 
     private bool TryGetWorldPosition(RectTransform rectTransform, Vector3 screenPoint, Camera mainCamera, out Vector3 uiWorldPosition)
     {
