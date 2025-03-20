@@ -462501,6 +462501,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 283181924662316577, guid: 841a6ab6c39e3cb4b8efceab30d37934, type: 3}
   parentTransform: {fileID: 4170998599299717358}
+  imagesArray: []
+  purpleGhostSprite: {fileID: 21300000, guid: 19edf84b02eafdb4ab8d2606b1468a7f, type: 3}
+  rabbitSprite: {fileID: 21300000, guid: 3e1f81445612a464db96b0ca25ba75c6, type: 3}
+  caterpillarSprite: {fileID: 21300000, guid: 3d56cf681e711004ebb80cb3c6a22e78, type: 3}
+  redprincess2dSprite: {fileID: 21300000, guid: 79b249208b2e193458a6b03a7261f51b, type: 3}
+  cardSoldierSprite: {fileID: 21300000, guid: 075bd3d55ce9a9a4ebd4e513cfd8e166, type: 3}
+  aliceSprite: {fileID: 21300000, guid: 13b3314f952566f4ea4864f1196104ac, type: 3}
+  fiveStars: {fileID: 21300000, guid: b00ae2f5918dac849b795db9efb30499, type: 3}
+  fourStars: {fileID: 21300000, guid: 531e2065e4cb5224ebadabcfa24ae77a, type: 3}
+  threeStars: {fileID: 21300000, guid: 57f8972ee6981a241b1baf71c809316b, type: 3}
 --- !u!114 &8847400005895080964
 MonoBehaviour:
   m_ObjectHideFlags: 0

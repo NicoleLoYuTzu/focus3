@@ -8,88 +8,66 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
     public Transform parentTransform; // 用来放置生成的 Button 的父物件（ImageContainer）
     private List<Sprite> imagesArray = new List<Sprite>(); // 使用 List 可以灵活添加或删除图片
 
+    public Sprite purpleGhostSprite;
+    public Sprite rabbitSprite;
+    public Sprite caterpillarSprite;
+    public Sprite redprincess2dSprite;
+    public Sprite cardSoldierSprite;
+    public Sprite aliceSprite;
+
+    public Sprite fiveStars;
+    public Sprite fourStars;
+    public Sprite threeStars;
+
     void Start()
     {
         LogInfo("Start called. Updating images based on condition.");
-      
     }
 
-    // 清除已經存在的按鈕物件
     public void ClearExistingButtons()
     {
         foreach (Transform child in parentTransform)
         {
-            // 這裡刪除父物件下的所有子物件
             Destroy(child.gameObject);
             LogInfo($"Removed existing button: {child.name}");
         }
     }
 
-
     public void UpdateImagesBasedOnCondition(string condition)
     {
-
         imagesArray.Clear();
         LogInfo($"Updating images based on condition: {condition}");
 
         if (condition == "PurpleGhost")
         {
-            // 加入兔子和毛毛虫的图片
-            Sprite purpleGhostSprite = Resources.Load<Sprite>("PurpleGhost/purpleGhost");
-            Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/Rabbit1");
-            Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
-
-            imagesArray.Add(purpleGhostSprite); // RABBIT1 图片
-
-            if (rabbitSprite != null)
-            {
-                imagesArray.Add(rabbitSprite); // RABBIT1 图片
-                LogInfo("Added rabbit sprite.");
-            }
-            else
-            {
-                LogWarning("Rabbit sprite not found!");
-            }
-
-            if (caterpillarSprite != null)
-            {
-                imagesArray.Add(caterpillarSprite); // 毛毛虫图片
-                LogInfo("Added caterpillar sprite.");
-            }
-            else
-            {
-                LogWarning("Caterpillar sprite not found!");
-            }
+            imagesArray.Add(purpleGhostSprite);
+            imagesArray.Add(rabbitSprite);
+            imagesArray.Add(caterpillarSprite);
         }
         else if (condition == "Rabbit")
         {
-            Sprite rabbitSprite = Resources.Load<Sprite>("Rabbit/Rabbit1");
-            imagesArray.Add(rabbitSprite); // RABBIT1 图片
-            Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
-            imagesArray.Add(caterpillarSprite); // 毛毛虫图片
+            imagesArray.Add(rabbitSprite);
+            imagesArray.Add(caterpillarSprite);
         }
-
         else if (condition == "Caterpillar")
         {
-            Sprite caterpillarSprite = Resources.Load<Sprite>("Caterpillar/CATERPILLER");
-            imagesArray.Add(caterpillarSprite); // 毛毛虫图片
-
-
+            imagesArray.Add(caterpillarSprite);
         }
-
         else if (condition == "RedPrincess")
         {
-            Sprite redprincess2dSprite = Resources.Load<Sprite>("RedPrincess/redprincess2d");
-            imagesArray.Add(redprincess2dSprite); // 毛毛虫图片
+            imagesArray.Add(redprincess2dSprite);
+            imagesArray.Add(cardSoldierSprite);
+            imagesArray.Add(aliceSprite);
         }
-
         else if (condition == "CardSoldier")
         {
-            Sprite redprincess2dSprite = Resources.Load<Sprite>("CardSoldier/CardSoldier");
-            imagesArray.Add(redprincess2dSprite); // 毛毛虫图片
+            imagesArray.Add(cardSoldierSprite);
+            imagesArray.Add(aliceSprite);
         }
-
-
+        else if (condition == "Alice")
+        {
+            imagesArray.Add(aliceSprite);
+        }
 
         GenerateImages(condition);
     }
@@ -105,91 +83,50 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
 
             newButton.name = imagesArray[i].name;
 
+            Transform starTransform = newButton.transform.Find("stars");
+            Transform imageTransform = newButton.transform.Find("image");
 
-            if (imagesArray[i].name == "purpleGhost") {
-                Transform starTransform = newButton.transform.Find("stars");
-                if (starTransform != null)
-                {
-                    starTransform.GetComponent<Image>().sprite = Resources.Load<Sprite>("PurpleGhost/stars");
-                    LogInfo("Set star image for rabbit.");
-                }
-
-                Transform rabbitTransform = newButton.transform.Find("image");
-                if (rabbitTransform != null)
-                {
-                    rabbitTransform.GetComponent<Image>().sprite = imagesArray[i];
-                    LogInfo("Set rabbit image.");
-                }
-            }
-
-            // 為兔子的 Button 設定星星和圖片
-            if (imagesArray[i].name == "Rabbit1")
+            if (starTransform != null)
             {
-                Transform starTransform = newButton.transform.Find("stars");
-                if (starTransform != null)
-                {
-                    starTransform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Rabbit/stars");
-                    LogInfo("Set star image for rabbit.");
-                }
-
-                Transform rabbitTransform = newButton.transform.Find("image");
-                if (rabbitTransform != null)
-                {
-                    rabbitTransform.GetComponent<Image>().sprite = imagesArray[i];
-                    LogInfo("Set rabbit image.");
-                }
-            }
-
-            // 為毛毛蟲的 Button 設定背景、星星和圖片
-            if (imagesArray[i].name == "CATERPILLER")
-            {
-
                 if (condition == "PurpleGhost")
                 {
-                    newButton.GetComponent<Image>().color = Color.gray;
+                    starTransform.GetComponent<Image>().sprite = imagesArray[i] == purpleGhostSprite ? fiveStars :
+                                                                   imagesArray[i] == rabbitSprite ? fourStars :
+                                                                   imagesArray[i] == caterpillarSprite ? threeStars : null;
                 }
-               
-                LogInfo("Set button background color to gray for caterpillar.");
-
-                Transform starTransform = newButton.transform.Find("stars");
-                if (starTransform != null)
+                else if (condition == "Rabbit")
                 {
-                    starTransform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Caterpillar/stars");
-                    LogInfo("Set star image for caterpillar.");
+                    starTransform.GetComponent<Image>().sprite = imagesArray[i] == rabbitSprite ? fiveStars :
+                                                                   imagesArray[i] == caterpillarSprite ? fourStars : null;
                 }
-
-                Transform caterpillarTransform = newButton.transform.Find("image");
-                if (caterpillarTransform != null)
+                else if (condition == "Caterpillar")
                 {
-                    caterpillarTransform.GetComponent<Image>().sprite = imagesArray[i];
-                    LogInfo("Set caterpillar image.");
+                    starTransform.GetComponent<Image>().sprite = fiveStars;
+                }
+                else if (condition == "RedPrincess")
+                {
+                    starTransform.GetComponent<Image>().sprite = imagesArray[i] == redprincess2dSprite ? fiveStars :
+                                                                   imagesArray[i] == cardSoldierSprite ? fourStars :
+                                                                   imagesArray[i] == aliceSprite ? threeStars : null;
+                }
+                else if (condition == "CardSoldier")
+                {
+                    starTransform.GetComponent<Image>().sprite = imagesArray[i] == cardSoldierSprite ? fiveStars :
+                                                                   imagesArray[i] == aliceSprite ? fourStars : null;
+                }
+                else if (condition == "Alice")
+                {
+                    starTransform.GetComponent<Image>().sprite = fiveStars;
                 }
             }
 
-            if (imagesArray[i].name == "redprincess2d")
+            if (imageTransform != null)
             {
-                LogInfo("Set button background color to gray for caterpillar.");
-
-                Transform starTransform = newButton.transform.Find("stars");
-                if (starTransform != null)
-                {
-                    starTransform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Caterpillar/stars");
-                    LogInfo("Set star image for caterpillar.");
-                }
-
-                Transform redprincessTransform = newButton.transform.Find("image");
-                if (redprincessTransform != null)
-                {
-                    redprincessTransform.GetComponent<Image>().sprite = imagesArray[i];
-                    LogInfo("Set caterpillar image.");
-                }
+                imageTransform.GetComponent<Image>().sprite = imagesArray[i];
             }
-
-
         }
         LogInfo("Image generation completed.");
     }
-
 
     private void LogInfo(string message)
     {
@@ -200,6 +137,4 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
     {
         Debug.LogWarning($"ImageSpawner LogWarning: {message}");
     }
-
- 
 }

@@ -55,7 +55,7 @@ public class PrefabHoverHandler : MonoBehaviour
                 SetActiveRecursively(rabbit, false); // 顯示 RabbitPreview 及其所有子物件
                 SetActiveRecursively(Caterpillar, false);
                 break;
-            case "Rabbit1":
+            case "rabbit":
                 SetActiveRecursively(rabbit, true); // 顯示 RabbitPreview 及其所有子物件
                 SetActiveRecursively(purpleGhost, false);
                 SetActiveRecursively(Caterpillar, false);
