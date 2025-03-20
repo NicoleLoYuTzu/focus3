@@ -16154,7 +16154,7 @@ GameObject:
   - component: {fileID: 724942314}
   - component: {fileID: 724942313}
   - component: {fileID: 724942312}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CardSoldier_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39551,7 +39551,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147484659
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -39560,7 +39560,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.016666668
+  m_VoxelSize: 0.07
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: ba377b405bbaf2f49bfe8bc3fe9b7bd1, type: 2}
   m_BuildHeightMesh: 0
@@ -52914,7 +52914,7 @@ GameObject:
   - component: {fileID: 2031419083}
   - component: {fileID: 2031419082}
   - component: {fileID: 2031419081}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Alice_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138425,7 +138425,7 @@ GameObject:
   - component: {fileID: 768440713817941319}
   - component: {fileID: 7098207719747492504}
   - component: {fileID: 8679279993785723343}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RedPrincessArea_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
