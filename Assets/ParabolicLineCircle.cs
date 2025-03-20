@@ -282,6 +282,28 @@ public class ParabolicLineCircle : MonoBehaviour
     }
 
 
+    //private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
+    //{
+    //    // 創建新的 LineRenderer
+    //    LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
+    //    newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+    //    newLineRenderer.useWorldSpace = true;
+
+    //    newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI");
+    //    newLineRenderer.sortingOrder = -1;
+
+    //    newLineRenderer.positionCount = 2;
+    //    newLineRenderer.startColor = Color.white;
+    //    newLineRenderer.endColor = Color.white;
+    //    newLineRenderer.widthMultiplier = 0.05f;
+
+    //    newLineRenderer.SetPosition(0, newBallInstance.transform.position);
+    //    newLineRenderer.SetPosition(1, uiWorldPosition);
+
+    //    // 更新字典
+    //    uiLineRenderers[uiPanel] = newLineRenderer;
+    //}
+
     private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
     {
         // 創建新的 LineRenderer
@@ -289,13 +311,23 @@ public class ParabolicLineCircle : MonoBehaviour
         newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         newLineRenderer.useWorldSpace = true;
 
+        // 設定 SortingLayer，確保在 UI 上層或適當的層級
         newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI");
         newLineRenderer.sortingOrder = -1;
 
+        // 設定線條的起點、終點
         newLineRenderer.positionCount = 2;
-        newLineRenderer.startColor = Color.white;
-        newLineRenderer.endColor = Color.white;
-        newLineRenderer.widthMultiplier = 0.05f;
+       
+
+        // **設置首端粗、末端細**
+        newLineRenderer.startWidth = 0.08f; // 線的起點較粗
+        newLineRenderer.endWidth = 0.02f;   // 線的終點較細
+
+        // **設置半透明白色**
+        Color transparentWhite = new Color(1f, 1f, 1f, 0.6f); // 60% 透明
+        newLineRenderer.startColor = transparentWhite;
+        newLineRenderer.endColor = new Color(1f, 1f, 1f, 0.2f); // 末端更透明
+
 
         newLineRenderer.SetPosition(0, newBallInstance.transform.position);
         newLineRenderer.SetPosition(1, uiWorldPosition);
@@ -303,6 +335,9 @@ public class ParabolicLineCircle : MonoBehaviour
         // 更新字典
         uiLineRenderers[uiPanel] = newLineRenderer;
     }
+
+
+
 
     private void UpdateLineRenderer(GameObject uiPanel, GameObject newBallInstance)
     {

@@ -104,6 +104,10 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
             LogInfo($"Instantiated new button for image: {imagesArray[i].name}");
 
             newButton.name = imagesArray[i].name;
+            PrefabHoverHandler hoverHandler = newButton.AddComponent<PrefabHoverHandler>();
+            LogInfo($"Added PrefabHoverHandler to: {newButton.name}");
+
+
             if (imagesArray[i].name == "purpleGhost") {
                 Transform starTransform = newButton.transform.Find("stars");
                 if (starTransform != null)

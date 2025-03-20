@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2835804352840080250}
   - component: {fileID: 2466969731072491309}
   - component: {fileID: -5287732311841457483}
+  - component: {fileID: 4063420460563016464}
   m_Layer: 5
   m_Name: UpperButton
   m_TagString: Untagged
@@ -292,8 +293,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 88.378006, y: 39.76813, z: 1}
+  m_Center: {x: 0.20843937, y: -0.30374297, z: 0}
 --- !u!114 &-5287732311841457483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +308,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newMaterial: {fileID: 2100000, guid: 443b92a855c0491459394138942d760a, type: 2}
+--- !u!114 &4063420460563016464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283181924662316577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -9009719598566312955}
+          m_TargetAssemblyTypeName: PrefabHoverHandler, Assembly-CSharp
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7028419195467269244
 GameObject:
   m_ObjectHideFlags: 0
