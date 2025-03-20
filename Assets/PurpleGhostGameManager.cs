@@ -11,6 +11,8 @@ public class PurpleGhostGameManager : MonoBehaviour
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable hintButton2; // 提示2按鈕
 
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor; // 當前 Hover 的控制器
+    public CustomRayInteractor CustomRayInteractor;
+    public GameObject purpleGhostEndTask;
 
     private void Start()
     {
@@ -46,6 +48,7 @@ public class PurpleGhostGameManager : MonoBehaviour
                 else if (hoveringInteractor.interactablesHovered.Contains(hintButton2))
                 {
                     UpdateText("首先你需要找到一隻綠色的兔子並且與他對話!");
+                    CustomRayInteractor.EndTask(purpleGhostEndTask);
                 }
             }
         }

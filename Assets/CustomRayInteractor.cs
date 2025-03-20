@@ -23,21 +23,27 @@ public class CustomRayInteractor : MonoBehaviour
     public LineRenderer paraboliclineRenderer;
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
-    private Dictionary<GameObject, bool> completedTasks = new Dictionary<GameObject, bool>();
-
+    private Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
+    public GameStarManager gameStarManager;
 
 
     public void EndTask(GameObject targetObject)
     {
-        if (!completedTasks.ContainsKey(targetObject))
+        string npcName = targetObject.name;
+
+        // 確保已經完成該任務，並在字典中記錄
+        if (!completedTasks.ContainsKey(npcName))
         {
-            completedTasks.Add(targetObject, true);
+            completedTasks.Add(npcName, true);
         }
         else
         {
-            completedTasks[targetObject] = true;
+            completedTasks[npcName] = true;
         }
+
+            gameStarManager.MarkTaskComplete(completedTasks);
     }
+
 
     public void RestoreAllBuildings()
     {
@@ -204,7 +210,7 @@ public class CustomRayInteractor : MonoBehaviour
             GameObject targetObject = pair.targetObject;
 
             // **👉 檢查該物件的任務是否已結束**
-            if (completedTasks.ContainsKey(targetObject) && completedTasks[targetObject])
+            if (completedTasks.ContainsKey(targetObject.name) && completedTasks[targetObject.name])
             {
                 Debug.Log($"任務已結束，隱藏 {targetObject.name}");
                 HideMessage(uiPanel);

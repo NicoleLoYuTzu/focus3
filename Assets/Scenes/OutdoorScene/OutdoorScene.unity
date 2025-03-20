@@ -2866,6 +2866,8 @@ MonoBehaviour:
   infoTextUI: {fileID: 780689964}
   hintButton1: {fileID: 1506625154}
   hintButton2: {fileID: 750428794}
+  CustomRayInteractor: {fileID: 1039745786}
+  purpleGhostEndTask: {fileID: 1243229446}
 --- !u!1 &222372008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 202364687, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -11954,6 +11956,7 @@ MonoBehaviour:
   - PreviewArea: {fileID: 937885587861305933}
     uiPanel: {fileID: 926808182}
     targetObject: {fileID: 6431400225764544604}
+  gameStarManager: {fileID: 1358535953}
 --- !u!1 &1063881068
 GameObject:
   m_ObjectHideFlags: 0
@@ -16280,7 +16283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07b794af7307a2c4eb6d4b6fb6696c81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b00ae2f5918dac849b795db9efb30499, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16787,6 +16790,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758265545}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1358535951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358535952}
+  - component: {fileID: 1358535953}
+  m_Layer: 0
+  m_Name: GameStarManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358535952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358535951}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9014170783777442264}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358535953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358535951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0509dc2aad9f96345a6747c2741117e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purpleGhostStarImage: {fileID: 1323924054}
+  rabbitStarImage: {fileID: 2037278706}
+  caterpillarStarImage: {fileID: 1564937431}
+  redPrincessStarImage: {fileID: 0}
+  cardSoldierStarImage: {fileID: 0}
+  aliceStarImage: {fileID: 0}
+  star3: {fileID: 21300000, guid: 61971ca4c5d90194a80aa7afcd17d034, type: 3}
+  star4: {fileID: 21300000, guid: d4ecb2147b5f1dc43aa825a196dfc1c4, type: 3}
+  star5: {fileID: 21300000, guid: b00ae2f5918dac849b795db9efb30499, type: 3}
 --- !u!1 &1374367436
 GameObject:
   m_ObjectHideFlags: 0
@@ -19615,7 +19671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07b794af7307a2c4eb6d4b6fb6696c81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61971ca4c5d90194a80aa7afcd17d034, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23958,7 +24014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07b794af7307a2c4eb6d4b6fb6696c81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4ecb2147b5f1dc43aa825a196dfc1c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -472401,6 +472457,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2072216150}
+    - targetCorrespondingSourceObject: {fileID: 1767192434, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1358535952}
     - targetCorrespondingSourceObject: {fileID: 202364688, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2080414384}
