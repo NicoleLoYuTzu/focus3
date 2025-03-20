@@ -282,27 +282,6 @@ public class ParabolicLineCircle : MonoBehaviour
     }
 
 
-    //private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
-    //{
-    //    // 創建新的 LineRenderer
-    //    LineRenderer newLineRenderer = new GameObject("UILineRenderer").AddComponent<LineRenderer>();
-    //    newLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-    //    newLineRenderer.useWorldSpace = true;
-
-    //    newLineRenderer.sortingLayerID = SortingLayer.NameToID("UI");
-    //    newLineRenderer.sortingOrder = -1;
-
-    //    newLineRenderer.positionCount = 2;
-    //    newLineRenderer.startColor = Color.white;
-    //    newLineRenderer.endColor = Color.white;
-    //    newLineRenderer.widthMultiplier = 0.05f;
-
-    //    newLineRenderer.SetPosition(0, newBallInstance.transform.position);
-    //    newLineRenderer.SetPosition(1, uiWorldPosition);
-
-    //    // 更新字典
-    //    uiLineRenderers[uiPanel] = newLineRenderer;
-    //}
 
     private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
     {
