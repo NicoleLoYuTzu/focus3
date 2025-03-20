@@ -39,6 +39,40 @@ public class CustomRayInteractor : MonoBehaviour
         }
     }
 
+    public void RestoreAllBuildings()
+    {
+        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("building");
+
+        if (allBuildings.Length == 0)
+        {
+            Debug.LogWarning("Warning: No buildings found in the scene!");
+            return;
+        }
+
+        Debug.Log("Restoring " + allBuildings.Length + " buildings.");
+
+        foreach (GameObject building in allBuildings)
+        {
+            if (building == null)
+            {
+                Debug.LogWarning("Warning: Found a null reference in building list!");
+                continue;
+            }
+
+            if (building.TryGetComponent<MeshRenderer>(out MeshRenderer renderer))
+            {
+                renderer.enabled = true;
+                Debug.Log("Restored visibility for: " + building.name);
+            }
+            else
+            {
+                Debug.LogWarning("Warning: " + building.name + " has no MeshRenderer!");
+            }
+        }
+    }
+
+
+
 
     void Start()
     {
@@ -74,6 +108,7 @@ public class CustomRayInteractor : MonoBehaviour
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
             HideAllUI();
+            RestoreAllBuildings();
         }
 
         // 如果控制器在移動並且有有效的射線擊中
