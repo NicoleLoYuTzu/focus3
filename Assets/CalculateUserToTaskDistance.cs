@@ -7,7 +7,7 @@ public class CalculateUserToTaskDistance : MonoBehaviour
 {
     public Transform leftPanelContainer;  // 左側 UI 容器
     public Transform rightPanelContainer; // 右側 UI 容器
-    private float spacing = 300f; // UI 面板之間的間距
+    private float spacing = 400f; // UI 面板之間的間距
 
     void Update()
     {
