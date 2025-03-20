@@ -117,8 +117,8 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         }
 
         // 找到 UI 面板內的 Image 物件
-        Image leftRightImage = uiPanel.transform.Find("ImageLeftRight")?.GetComponent<Image>();
-        Image upDownImage = uiPanel.transform.Find("ImageUpDown")?.GetComponent<Image>();
+        Image leftRightImage = FindDeepChild(uiPanel.transform, "ImageLeftRight")?.GetComponent<Image>();
+        Image upDownImage = FindDeepChild(uiPanel.transform, "ImageUpDown")?.GetComponent<Image>();
 
         // 設定左右的圖片
         if (leftRightImage != null)
@@ -134,6 +134,20 @@ public class CalculateUserToTaskDistance : MonoBehaviour
 
         Debug.Log($"Target {targetObject.name} is {positionRelation} at {distance:F2}m.");
     }
+
+    private Transform FindDeepChild(Transform parent, string childName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == childName)
+                return child;
+            Transform found = FindDeepChild(child, childName);
+            if (found != null)
+                return found;
+        }
+        return null;
+    }
+
 
 
     private Vector3 GetUserPosition()
