@@ -1,9 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI; // 引入导航命名空间
-using UnityEngine.XR.Interaction.Toolkit.Interactors;
-using UnityEngine.XR;
-using System.Collections.Generic;
-using UnityEngine.UIElements; // 引入UI命名空間
 
 public class PrefabHoverHandler : MonoBehaviour
 {
@@ -13,9 +8,39 @@ public class PrefabHoverHandler : MonoBehaviour
 
     void Start()
     {
-        rabbit = GameObject.Find("RabbitPreview");
-        purpleGhost = GameObject.Find("PurpleGhostPreview");
-        Caterpillar = GameObject.Find("CaterpillarPreview");
+        Debug.Log("PrefabHoverHandler Start method called.");
+
+        // 嘗試找到 Canvas 並從中查找 RabbitPreview
+        GameObject canvasObject = GameObject.Find("Canvas");
+        if (canvasObject == null)
+        {
+            Debug.LogError("Canvas not found in the scene!");
+            return; // 提前結束，因為 Canvas 找不到
+        }
+
+        Debug.Log("Canvas found. Searching for RabbitPreview...");
+
+        // 如果 Canvas 存在，嘗試找到 RabbitPreview
+        Transform canvasTransform = canvasObject.transform;
+        //找到兔子
+        Transform rabbitTransform = canvasTransform.Find("RabbitPreview");
+
+        if (rabbitTransform == null)
+        {
+            Debug.LogError("RabbitPreview not found under Canvas!");
+            return; // 提前結束，因為 RabbitPreview 找不到
+        }
+
+        // 如果 RabbitPreview 存在，將其存入變量
+        rabbit = rabbitTransform.gameObject;
+        Debug.Log("Successfully found RabbitPreview!");
+
+        Transform PurpleGhostTransform = canvasTransform.Find("PurpleGhostPreview");
+        purpleGhost = PurpleGhostTransform.gameObject;
+
+        Transform CaterpillarTransform = canvasTransform.Find("CaterpillarPreview");
+        Caterpillar = CaterpillarTransform.gameObject;
+
     }
 
     public void OnHoverEnter()
@@ -37,9 +62,17 @@ public class PrefabHoverHandler : MonoBehaviour
                 break;
 
             case "CATERPILLER":
-                SetActiveRecursively(Caterpillar, true); // 顯示CaterpillarPreview 及其所有子物件
-                SetActiveRecursively(rabbit, false); // 隱藏RabbitPreview 及其所有子物件
-                SetActiveRecursively(purpleGhost, false);
+                if (rabbit != null && purpleGhost != null)
+                {
+                    Debug.Log("Activating CaterpillarPreview UI.");
+                    SetActiveRecursively(Caterpillar, true); // 顯示CaterpillarPreview 及其所有子物件
+                    SetActiveRecursively(rabbit, false); // 隱藏RabbitPreview 及其所有子物件
+                    SetActiveRecursively(purpleGhost, false);
+                }
+                else
+                {
+                    Debug.LogError("RabbitPreview or CaterpillarPreview is null. Cannot activate.");
+                }
                 break;
 
             default:
@@ -53,7 +86,6 @@ public class PrefabHoverHandler : MonoBehaviour
     {
         if (obj != null)
         {
-            Debug.Log($"SetActiveRecursively Setting {obj.name} to {(isActive ? "Active" : "Inactive")}");
             obj.SetActive(isActive);
 
             // 遞迴遍歷所有子物件，設置為相同的 Active 狀態
@@ -67,7 +99,6 @@ public class PrefabHoverHandler : MonoBehaviour
             Debug.LogError("Trying to set active state on a null object.");
         }
     }
-
 
 }
 
