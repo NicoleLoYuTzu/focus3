@@ -9,6 +9,7 @@ TagManager:
   - UI
   - Fiero
   - CaterpillarAnchor
+  - building
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Post Processing
   - SelectableLayer
   - UIignore
-  - 
+  - BuildingLayer
   - 
   - 
   - 
