@@ -33,4 +33,18 @@ public class ItemPlacementZone : MonoBehaviour
             Debug.Log($"ItemPlacementZone: {other.gameObject.name} 已移除！");
         }
     }
+
+    // 返回未放置的物品
+    public List<GameObject> GetMissingItems()
+    {
+        List<GameObject> missingItems = new List<GameObject>();
+        foreach (var item in requiredItems)
+        {
+            if (!placedItems.Contains(item))
+            {
+                missingItems.Add(item);
+            }
+        }
+        return missingItems;
+    }
 }

@@ -26,6 +26,9 @@ public class RabbitGameManager : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor;
     private bool allItemsPlaced = false; // 追蹤是否所有物品都已放置
 
+    public CustomRayInteractor customRayInteractor;
+    public GameObject rabbitGameEndTask;
+
     private void Start()
     {
         // 監聽 Hover 事件
@@ -113,9 +116,21 @@ public class RabbitGameManager : MonoBehaviour
         }
         else
         {
-            UpdateText("「你還沒找到所有東西！請放置冰淇淋、甜甜圈和漢堡在旁邊黃色的盤子上！」");
+            // 獲取未放置的物品列表
+            List<GameObject> missingItems = placementZone.GetMissingItems();
+            if (missingItems.Count > 0)
+            {
+                string missingItemsText = "「你還沒找到所有東西！請放置：";
+                foreach (var item in missingItems)
+                {
+                    missingItemsText += item.name + " ";
+                }
+                missingItemsText += "在旁邊黃色的盤子上！」";
+                UpdateText(missingItemsText); // 顯示缺少物品的訊息
+            }
         }
     }
+
 
     private void DoAction()
     {
@@ -126,6 +141,7 @@ public class RabbitGameManager : MonoBehaviour
                    "冰淇淋、甜甜圈、漢堡，我現在感覺好多了！" +
                    "喔對了，我的手套......給你" +
                    "接下來你去找看看紅色的毛毛蟲吧");
+        customRayInteractor.EndTask(rabbitGameEndTask);
 
         // 顯示獎勵物品
         TakenBox.SetActive(true);
