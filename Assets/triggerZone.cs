@@ -15,6 +15,7 @@ public class TriggerZone : MonoBehaviour
         {
             col.isTrigger = true;
         }
+        hintUI.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
