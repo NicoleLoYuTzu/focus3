@@ -16,8 +16,8 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
     public Sprite aliceSprite;
 
     public Sprite fiveStars;
-    public Sprite fourStars;
     public Sprite threeStars;
+    public Sprite oneStar;
 
     void Start()
     {
@@ -91,13 +91,13 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
                 if (condition == "PurpleGhost")
                 {
                     starTransform.GetComponent<Image>().sprite = imagesArray[i] == purpleGhostSprite ? fiveStars :
-                                                                   imagesArray[i] == rabbitSprite ? fourStars :
-                                                                   imagesArray[i] == caterpillarSprite ? threeStars : null;
+                                                                   imagesArray[i] == rabbitSprite ? threeStars :
+                                                                   imagesArray[i] == caterpillarSprite ? oneStar : null;
                 }
                 else if (condition == "Rabbit")
                 {
                     starTransform.GetComponent<Image>().sprite = imagesArray[i] == rabbitSprite ? fiveStars :
-                                                                   imagesArray[i] == caterpillarSprite ? fourStars : null;
+                                                                   imagesArray[i] == caterpillarSprite ? threeStars : null;
                 }
                 else if (condition == "Caterpillar")
                 {
@@ -106,13 +106,13 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
                 else if (condition == "RedPrincess")
                 {
                     starTransform.GetComponent<Image>().sprite = imagesArray[i] == redprincess2dSprite ? fiveStars :
-                                                                   imagesArray[i] == cardSoldierSprite ? fourStars :
-                                                                   imagesArray[i] == aliceSprite ? threeStars : null;
+                                                                   imagesArray[i] == cardSoldierSprite ? threeStars :
+                                                                   imagesArray[i] == aliceSprite ? oneStar : null;
                 }
                 else if (condition == "CardSoldier")
                 {
                     starTransform.GetComponent<Image>().sprite = imagesArray[i] == cardSoldierSprite ? fiveStars :
-                                                                   imagesArray[i] == aliceSprite ? fourStars : null;
+                                                                   imagesArray[i] == aliceSprite ? threeStars : null;
                 }
                 else if (condition == "Alice")
                 {

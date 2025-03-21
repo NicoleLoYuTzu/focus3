@@ -11,8 +11,8 @@ public class GameStarManager : MonoBehaviour
     //public GameObject cardSoldierStarImage;
     //public GameObject aliceStarImage;
 
+    public Sprite star1;
     public Sprite star3;
-    public Sprite star4;
     public Sprite star5;
 
     public void UpdateNPCStars(Dictionary<string, bool> completedTasks)
@@ -82,7 +82,7 @@ public class GameStarManager : MonoBehaviour
             Image starImageComponent = starImageObj.GetComponent<Image>();
             if (starImageComponent != null)
             {
-                starImageComponent.sprite = stars == 5 ? star5 : stars == 4 ? star4 : star3;
+                starImageComponent.sprite = stars == 5 ? star5 : stars == 4 ? star3 : star1;
             }
         }
     }
