@@ -31,6 +31,8 @@ public class RabbitGameManager : MonoBehaviour
 
     private void Start()
     {
+        targetObject.SetActive(false); // 顯示目標物件
+        GloveTaken.SetActive(false);
         // 監聽 Hover 事件
         hintButton.hoverEntered.AddListener(OnHoverEnter);
         hintButton.hoverExited.AddListener(OnHoverExit);
@@ -91,13 +93,25 @@ public class RabbitGameManager : MonoBehaviour
 
     private void StartGame()
     {
-        if (targetObject != null)
+        // 檢查是否有 PurpleGhost 任務
+        if (customRayInteractor.completedTasks.ContainsKey("PurpleGhost") && customRayInteractor.completedTasks["PurpleGhost"] == true)
         {
-            targetObject.SetActive(true);
+            // 如果 PurpleGhost 任務已經完成，顯示「任務開始」
+            UpdateText("任務開始！快開始找下一個物品吧！");
+
+            if (targetObject != null)
+            {
+                targetObject.SetActive(true); // 顯示目標物件
+            }
+            else
+            {
+                Debug.LogError("RabbitGameManager: targetObject 未設定！");
+            }
         }
         else
         {
-            Debug.LogError("RabbitGameManager: targetObject 未設定！");
+            // 如果 PurpleGhost 任務未完成，提示玩家去找紫色精靈
+            UpdateText("你應該先去找某位紫色的東東? 好像在某個角落");
         }
     }
 
@@ -116,18 +130,26 @@ public class RabbitGameManager : MonoBehaviour
         }
         else
         {
-            // 獲取未放置的物品列表
-            List<GameObject> missingItems = placementZone.GetMissingItems();
-            if (missingItems.Count > 0)
+
+            if (!customRayInteractor.completedTasks.ContainsKey("PurpleGhost"))
             {
-                string missingItemsText = "「你還沒找到所有東西！請放置：";
-                foreach (var item in missingItems)
-                {
-                    missingItemsText += item.name + " ";
-                }
-                missingItemsText += "在旁邊黃色的盤子上！」";
-                UpdateText(missingItemsText); // 顯示缺少物品的訊息
+                UpdateText("你應該先去找某位紫色的東東? 好像在某個角落");
             }
+            else {
+                // 獲取未放置的物品列表
+                List<GameObject> missingItems = placementZone.GetMissingItems();
+                if (missingItems.Count > 0)
+                {
+                    string missingItemsText = "「你還沒找到所有東西！請放置：";
+                    foreach (var item in missingItems)
+                    {
+                        missingItemsText += item.name + " ";
+                    }
+                    missingItemsText += "在旁邊黃色的盤子上！」";
+                    UpdateText(missingItemsText); // 顯示缺少物品的訊息
+                }
+            }
+               
         }
     }
 

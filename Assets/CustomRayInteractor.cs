@@ -23,7 +23,7 @@ public class CustomRayInteractor : MonoBehaviour
     public LineRenderer paraboliclineRenderer;
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
-    private Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
+    public Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
     public GameStarManager gameStarManager;
 
 
