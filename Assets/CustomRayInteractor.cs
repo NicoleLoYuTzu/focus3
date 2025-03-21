@@ -25,6 +25,8 @@ public class CustomRayInteractor : MonoBehaviour
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
     public Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
     public GameStarManager gameStarManager;
+    public GameObject previewCanvas;
+
 
 
     public void EndTask(GameObject targetObject)
@@ -114,7 +116,10 @@ public class CustomRayInteractor : MonoBehaviour
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
             HideAllUI();
-            RestoreAllBuildings();
+            if (!previewCanvas.activeSelf) {
+                RestoreAllBuildings();
+            }
+            
         }
 
         // 如果控制器在移動並且有有效的射線擊中
