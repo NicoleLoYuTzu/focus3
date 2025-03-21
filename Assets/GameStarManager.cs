@@ -7,9 +7,9 @@ public class GameStarManager : MonoBehaviour
     public GameObject purpleGhostStarImage;
     public GameObject rabbitStarImage;
     public GameObject caterpillarStarImage;
-    //public GameObject redPrincessStarImage;
-    //public GameObject cardSoldierStarImage;
-    //public GameObject aliceStarImage;
+    public GameObject redPrincessStarImage;
+    public GameObject cardSoldierStarImage;
+    public GameObject aliceStarImage;
 
     public Sprite star1;
     public Sprite star3;
@@ -30,9 +30,9 @@ public class GameStarManager : MonoBehaviour
         int purpleGhostStars = 5;
         int rabbitStars = 4;
         int caterpillarStars = 3;
-        //int redPrincessStars = 5;
-        //int cardSoldierStars = 4;
-        //int aliceStars = 3;
+        int redPrincessStars = 5;
+        int cardSoldierStars = 4;
+        int aliceStars = 3;
 
 
 
@@ -48,30 +48,30 @@ public class GameStarManager : MonoBehaviour
             caterpillarStars = 4;
         }
 
-        //// 根據紅心皇后的完成情況來更新星級
-        //if (completedTasks.ContainsKey("CardSoldier") && completedTasks.ContainsKey("RedQueen"))
-        //{
+        // 根據紅心皇后的完成情況來更新星級
+        if (completedTasks.ContainsKey("CardSoldier") && completedTasks.ContainsKey("RedPrincess"))
+        {
 
-        //    aliceStars = 5;
-        //}
-        //else if (completedTasks.ContainsKey("RedQueen"))
-        //{
-        //    // 紅心皇后完成，但鋪克牌士兵尚未完成
-        //    cardSoldierStars = 5;
-        //    aliceStars = 4;
-        //}
+            aliceStars = 5;
+        }
+        else if (completedTasks.ContainsKey("RedPrincess"))
+        {
+            // 紅心皇后完成，但鋪克牌士兵尚未完成
+            cardSoldierStars = 5;
+            aliceStars = 4;
+        }
 
         // Log stars for debugging
         Debug.Log($"PurpleGhostStars: {purpleGhostStars}, RabbitStars: {rabbitStars}, CaterpillarStars: {caterpillarStars}");
-        //Debug.Log($"RedPrincessStars: {redPrincessStars}, CardSoldierStars: {cardSoldierStars}, AliceStars: {aliceStars}");
+        Debug.Log($"RedPrincessStars: {redPrincessStars}, CardSoldierStars: {cardSoldierStars}, AliceStars: {aliceStars}");
 
         // Update star images
         UpdateStarImage(purpleGhostStarImage, purpleGhostStars);
         UpdateStarImage(rabbitStarImage, rabbitStars);
         UpdateStarImage(caterpillarStarImage, caterpillarStars);
-        //UpdateStarImage(redPrincessStarImage, redPrincessStars);
-        //UpdateStarImage(cardSoldierStarImage, cardSoldierStars);
-        //UpdateStarImage(aliceStarImage, aliceStars);
+        UpdateStarImage(redPrincessStarImage, redPrincessStars);
+        UpdateStarImage(cardSoldierStarImage, cardSoldierStars);
+        UpdateStarImage(aliceStarImage, aliceStars);
     }
 
     // Update star image for a character

@@ -7,6 +7,7 @@ using UnityEngine.UIElements; // 引入UI命名空間
 
 public class CustomRayInteractor : MonoBehaviour
 {
+    public GameStarManager gameStarManager;
 
     [System.Serializable]
     public class TargetUIPair
@@ -24,8 +25,7 @@ public class CustomRayInteractor : MonoBehaviour
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
     public Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
-    public GameStarManager gameStarManager;
-    public GameStarManagerIndoorScene gameStarManagerIndoorScene;
+   
     public GameObject previewCanvas;
 
 
@@ -45,7 +45,6 @@ public class CustomRayInteractor : MonoBehaviour
         }
 
             gameStarManager.MarkTaskComplete(completedTasks);
-        gameStarManagerIndoorScene.MarkTaskComplete(completedTasks);
     }
 
 
