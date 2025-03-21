@@ -13204,6 +13204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b715fdaab7e66843b3e63a134a62f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStarManager: {fileID: 1358535953}
   parabolicLineCircle: {fileID: 1795298658}
   calculateUserToTaskDistance: {fileID: 1795298665}
   rayInteractor: {fileID: 1795298649}
@@ -13218,7 +13219,6 @@ MonoBehaviour:
   - PreviewArea: {fileID: 937885587861305933}
     uiPanel: {fileID: 926808182}
     targetObject: {fileID: 6431400225764544604}
-  gameStarManager: {fileID: 1358535953}
   previewCanvas: {fileID: 973420878}
 --- !u!1 &1063881068
 GameObject:
@@ -18301,6 +18301,9 @@ MonoBehaviour:
   purpleGhostStarImage: {fileID: 1323924054}
   rabbitStarImage: {fileID: 2037278706}
   caterpillarStarImage: {fileID: 1564937431}
+  redPrincessStarImage: {fileID: 1323924054}
+  cardSoldierStarImage: {fileID: 2037278706}
+  aliceStarImage: {fileID: 1564937431}
   star1: {fileID: 21300000, guid: 61971ca4c5d90194a80aa7afcd17d034, type: 3}
   star3: {fileID: 21300000, guid: d4ecb2147b5f1dc43aa825a196dfc1c4, type: 3}
   star5: {fileID: 21300000, guid: b00ae2f5918dac849b795db9efb30499, type: 3}
@@ -23691,6 +23694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72769a49ae481354c89f8b97c540869a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  customRayInteractor: {fileID: 0}
 --- !u!1 &1807497889
 GameObject:
   m_ObjectHideFlags: 0
