@@ -5,6 +5,7 @@ public class RayTargetChecker : MonoBehaviour
 {
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor rayInteractor; // XRRayInteractor 參考
     private ParabolicLineCircle parabolicLineCircle; // 自定義的線條隱藏工具
+    public CustomRayInteractor customRayInteractor;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class RayTargetChecker : MonoBehaviour
             if (!rayInteractor.hasSelection)
             {
                 parabolicLineCircle.HideUIAndBall(); // 隱藏線條
+                customRayInteractor.HideAllUI();
             }
         }
     }

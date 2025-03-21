@@ -43,7 +43,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        wingUI.SetActive(false);
+        heartUI.SetActive(false);
+        magicWand.SetActive(false);
         if (hintButton != null)
         {
             hintButton.hoverEntered.AddListener(OnStartHoverEnter);

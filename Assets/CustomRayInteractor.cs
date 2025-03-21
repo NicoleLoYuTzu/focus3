@@ -25,6 +25,7 @@ public class CustomRayInteractor : MonoBehaviour
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
     public Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
     public GameStarManager gameStarManager;
+    public GameStarManagerIndoorScene gameStarManagerIndoorScene;
     public GameObject previewCanvas;
 
 
@@ -44,6 +45,7 @@ public class CustomRayInteractor : MonoBehaviour
         }
 
             gameStarManager.MarkTaskComplete(completedTasks);
+        gameStarManagerIndoorScene.MarkTaskComplete(completedTasks);
     }
 
 
@@ -299,7 +301,7 @@ public class CustomRayInteractor : MonoBehaviour
         }
     }
 
-    private void HideAllUI()
+    public void HideAllUI()
     {
         // 确保所有 UI 元素最开始是隐藏的
         foreach (var uiPair in targetObjectsWithUI)
