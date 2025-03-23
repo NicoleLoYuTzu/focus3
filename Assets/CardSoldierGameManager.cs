@@ -31,6 +31,7 @@ public class CardSoldierGameManager : MonoBehaviour
 
     private void Start()
     {
+        potionShowCorner.SetActive(false);
         // 監聽 Hover 進出事件
         hintButton.hoverEntered.AddListener(OnHoverEnter);
         hintButton.hoverExited.AddListener(OnHoverExit);
