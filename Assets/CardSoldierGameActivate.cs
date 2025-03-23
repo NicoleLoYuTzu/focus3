@@ -11,6 +11,7 @@ public class CardSoldierGameActivate : MonoBehaviour
     public GameObject gameArea;
     private void Start()
     {
+        hintUI.SetActive(false);
         // 確保這個物件有 Collider 並啟用 Trigger
         Collider col = GetComponent<Collider>();
         if (col != null)

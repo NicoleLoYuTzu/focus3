@@ -57,22 +57,22 @@ public class PrefabHoverHandler : MonoBehaviour
         // 根據物件名稱顯示對應的 UI
         switch (gameObject.name)
         {
-            case "purpleGhost":
+            case "PurpleGhost":
                 SetActiveRecursively(purpleGhost, true);
                 break;
-            case "rabbit":
+            case "Rabbit":
                 SetActiveRecursively(rabbit, true);
                 break;
-            case "caterpillar":
+            case "Caterpillar":
                 SetActiveRecursively(caterpillar, true);
                 break;
-            case "redPrincess":
+            case "RedPrincess":
                 SetActiveRecursively(redPrincess, true);
                 break;
-            case "cardSoldier":
+            case "CardSoldier":
                 SetActiveRecursively(cardSoldier, true);
                 break;
-            case "alice":
+            case "Alice":
                 SetActiveRecursively(alice, true);
                 break;
             default:
