@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR;
 using System.Collections.Generic;
 using UnityEngine.UIElements; // 引入UI命名空間
+using UnityEngine.SceneManagement;  // 引入 SceneManager
 
 public class CustomRayInteractor : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class CustomRayInteractor : MonoBehaviour
     }
 
 
+    // 新的 RestoreAllBuildings 方法
     public void RestoreAllBuildings()
     {
         GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("building");
@@ -72,10 +74,38 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 renderer.enabled = true;
                 Debug.Log("Restored visibility for: " + building.name);
+
+                // 如果是 IndoorScene，調整材質的透明度
+                if (SceneManager.GetActiveScene().name == "IndoorScene")
+                {
+                    ChangeMaterialsToOpaque(renderer);
+                }
             }
             else
             {
                 Debug.LogWarning("Warning: " + building.name + " has no MeshRenderer!");
+            }
+        }
+    }
+
+    private void ChangeMaterialsToOpaque(MeshRenderer renderer)
+    {
+        foreach (Material mat in renderer.materials)
+        {
+            if (mat.HasProperty("_Mode"))
+            {
+                mat.SetFloat("_Mode", 0);  // 0 代表 Opaque 模式
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                mat.SetInt("_ZWrite", 1);
+                mat.EnableKeyword("_ALPHATEST_ON");
+                mat.DisableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = -1;
+
+                // 恢復 Albedo 的 Alpha 通道為 1
+                Color color = mat.GetColor("_Color");
+                mat.SetColor("_Color", new Color(color.r, color.g, color.b, 1f));
             }
         }
     }
