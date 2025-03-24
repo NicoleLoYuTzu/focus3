@@ -215,7 +215,7 @@ using UnityEngine;
 public class CollisionHandlerRestoreBuilding : MonoBehaviour
 {
     // 用來設定不同場景的行為
-    private string currentScene;
+    //private string currentScene;
     private const string GlassMaterialName = "_2 (Instance)"; // 玻璃材質名稱
     private GameObject[] allBuildings;
 
@@ -223,7 +223,7 @@ public class CollisionHandlerRestoreBuilding : MonoBehaviour
     private void Start()
     {
         // 根據當前場景設定場景名稱
-        currentScene = SceneManager.GetActiveScene().name;
+        //currentScene = SceneManager.GetActiveScene().name;
         allBuildings = GameObject.FindGameObjectsWithTag("building");
 
     }
@@ -235,18 +235,19 @@ public class CollisionHandlerRestoreBuilding : MonoBehaviour
             MeshRenderer renderer = collision.gameObject.GetComponent<MeshRenderer>();
             if (renderer != null)
             {
-                // 根據場景進行不同的處理
-                if (currentScene == "OutdoorScene")
-                {
-                    Debug.Log("Collided with: " + collision.gameObject.name + " - Hiding it.");
-                    renderer.enabled = false; // 隱藏建築
-                }
-                else if (currentScene == "IndoorScene")
-                {
-                    Debug.Log("Collided with: " + collision.gameObject.name + " - Changing materials to transparent.");
-                    // 更改所有材質為 Transparent，排除玻璃材質
-                    ChangeMaterialsToTransparent(renderer);
-                }
+                //// 根據場景進行不同的處理
+                //if (currentScene == "OutdoorScene")
+                //{
+                //    Debug.Log("Collided with: " + collision.gameObject.name + " - Hiding it.");
+                //    renderer.enabled = false; // 隱藏建築
+                //}
+                //else if (currentScene == "IndoorScene")
+                //{
+                //    Debug.Log("Collided with: " + collision.gameObject.name + " - Changing materials to transparent.");
+                //    // 更改所有材質為 Transparent，排除玻璃材質
+                //    ChangeMaterialsToTransparent(renderer);
+                //}
+                ChangeMaterialsToTransparent(renderer);
             }
             else
             {
@@ -262,17 +263,18 @@ public class CollisionHandlerRestoreBuilding : MonoBehaviour
             MeshRenderer renderer = collision.gameObject.GetComponent<MeshRenderer>();
             if (renderer != null)
             {
-                if (currentScene == "OutdoorScene")
-                {
-                    Debug.Log("Exited collision with: " + collision.gameObject.name + " - Restoring visibility.");
-                    renderer.enabled = true; // 恢復建築
-                }
-                else if (currentScene == "IndoorScene")
-                {
-                    Debug.Log("Exited collision with: " + collision.gameObject.name + " - Changing materials back to opaque.");
-                    // 恢復材質為 Opaque
-                    ChangeMaterialsToOpaque(renderer);
-                }
+                //if (currentScene == "OutdoorScene")
+                //{
+                //    Debug.Log("Exited collision with: " + collision.gameObject.name + " - Restoring visibility.");
+                //    renderer.enabled = true; // 恢復建築
+                //}
+                //else if (currentScene == "IndoorScene")
+                //{
+                //    Debug.Log("Exited collision with: " + collision.gameObject.name + " - Changing materials back to opaque.");
+                //    // 恢復材質為 Opaque
+                //    ChangeMaterialsToOpaque(renderer);
+                //}
+                ChangeMaterialsToOpaque(renderer);
             }
             else
             {
@@ -358,16 +360,18 @@ public class CollisionHandlerRestoreBuilding : MonoBehaviour
             if (building.TryGetComponent<MeshRenderer>(out MeshRenderer renderer))
             {
                 // 只處理那些沒有處理過的建築
-                renderer.enabled = true;
-                Debug.Log("Restored visibility for: " + building.name);
+                //renderer.enabled = true;
+                //Debug.Log("Restored visibility for: " + building.name);
 
-               
 
-                // 如果是 IndoorScene，調整材質的透明度
-                if (SceneManager.GetActiveScene().name == "IndoorScene")
-                {
-                    ChangeMaterialsToOpaque(renderer);
-                }
+
+                //// 如果是 IndoorScene，調整材質的透明度
+                //if (SceneManager.GetActiveScene().name == "IndoorScene")
+                //{
+                //    ChangeMaterialsToOpaque(renderer);
+                //}
+
+                ChangeMaterialsToOpaque(renderer);
             }
             else
             {
