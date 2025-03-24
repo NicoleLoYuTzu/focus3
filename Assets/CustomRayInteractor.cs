@@ -4,7 +4,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR;
 using System.Collections.Generic;
 using UnityEngine.UIElements; // 引入UI命名空間
-using UnityEngine.SceneManagement;  // 引入 SceneManager
+using UnityEngine.SceneManagement;
+using Wave.Native;  // 引入 SceneManager
 
 public class CustomRayInteractor : MonoBehaviour
 {
@@ -26,7 +27,9 @@ public class CustomRayInteractor : MonoBehaviour
     public List<TargetUIPair> targetObjectsWithUI; // 多个目标物体及其对应的 UI
     private System.Collections.Generic.List<Vector3> checkSpherePositions = new List<Vector3>(); // 存储 CheckSphere 檢測點
     public Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
-   
+
+    // 用來儲存所有 CollisionHandlerRestoreBuilding 物件的列表
+    private CollisionHandlerRestoreBuilding[] collisionHandlers;
     public GameObject previewCanvas;
 
 
@@ -48,71 +51,6 @@ public class CustomRayInteractor : MonoBehaviour
             gameStarManager.MarkTaskComplete(completedTasks);
     }
 
-
-    // 新的 RestoreAllBuildings 方法
-    public void RestoreAllBuildings()
-    {
-        GameObject[] allBuildings = GameObject.FindGameObjectsWithTag("building");
-
-        if (allBuildings.Length == 0)
-        {
-            Debug.LogWarning("Warning: No buildings found in the scene!");
-            return;
-        }
-
-        Debug.Log("Restoring " + allBuildings.Length + " buildings.");
-
-        foreach (GameObject building in allBuildings)
-        {
-            if (building == null)
-            {
-                Debug.LogWarning("Warning: Found a null reference in building list!");
-                continue;
-            }
-
-            if (building.TryGetComponent<MeshRenderer>(out MeshRenderer renderer))
-            {
-                renderer.enabled = true;
-                Debug.Log("Restored visibility for: " + building.name);
-
-                // 如果是 IndoorScene，調整材質的透明度
-                if (SceneManager.GetActiveScene().name == "IndoorScene")
-                {
-                    ChangeMaterialsToOpaque(renderer);
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Warning: " + building.name + " has no MeshRenderer!");
-            }
-        }
-    }
-
-    private void ChangeMaterialsToOpaque(MeshRenderer renderer)
-    {
-        foreach (Material mat in renderer.materials)
-        {
-            if (mat.HasProperty("_Mode"))
-            {
-                mat.SetFloat("_Mode", 0);  // 0 代表 Opaque 模式
-                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-                mat.SetInt("_ZWrite", 1);
-                mat.EnableKeyword("_ALPHATEST_ON");
-                mat.DisableKeyword("_ALPHABLEND_ON");
-                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                mat.renderQueue = -1;
-
-                // 恢復 Albedo 的 Alpha 通道為 1
-                Color color = mat.GetColor("_Color");
-                mat.SetColor("_Color", new Color(color.r, color.g, color.b, 1f));
-            }
-        }
-    }
-
-
-
-
     void Start()
     {
 
@@ -125,6 +63,10 @@ public class CustomRayInteractor : MonoBehaviour
         lineRenderer.endColor = Color.blue; // 結束顏色
         lineRenderer.useWorldSpace = true; // 使用世界座標
         lineRenderer.enabled = false; // 初始時禁用路徑
+                                      // Store the CollisionHandlerRestoreBuilding references once at the start
+                                      //collisionHandlers = FindObjectsOfType<CollisionHandlerRestoreBuilding>(true);
+                                      // 獲取場景中所有的 CollisionHandlerRestoreBuilding 物件
+        collisionHandlers = FindObjectsOfType<CollisionHandlerRestoreBuilding>(true);
 
 
         // 確保所有 UI 元素最開始是隱藏的
@@ -139,18 +81,35 @@ public class CustomRayInteractor : MonoBehaviour
 
     }
 
+    private bool shouldRestoreBuildings = false; // 新增标志位
+
     void Update()
     {
 
-        if (!paraboliclineRenderer.enabled)
+        if (!paraboliclineRenderer.enabled && !shouldRestoreBuildings)
         {
+            // 抛物线消失时触发恢复
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
             HideAllUI();
-            if (!previewCanvas.activeSelf) {
-                RestoreAllBuildings();
+            if (!previewCanvas.activeSelf)
+            {
+                // 呼叫所有的 RestoreAllBuildings 方法
+                foreach (var handler in collisionHandlers)
+                {
+                    handler.RestoreAllBuildings();
+                }
+                Debug.Log($"paraboliclineRenderer Update RestoreAllBuildings");
             }
-            
+
+            // 设置标志位，防止多次调用
+            shouldRestoreBuildings = true;
+        }
+
+        // 如果 paraboliclineRenderer 重新启用，重置标志位
+        if (paraboliclineRenderer.enabled && shouldRestoreBuildings)
+        {
+            shouldRestoreBuildings = false; // 抛物线重新显示时允许下一次恢复调用
         }
 
         // 如果控制器在移動並且有有效的射線擊中
@@ -175,6 +134,44 @@ public class CustomRayInteractor : MonoBehaviour
             {
                 lineRenderer.enabled = false; // 如果路徑無效，隱藏線
             }
+            // 如果射線碰到標籤為 "Building" 的物體，則更改物體的材質為透明
+            if (hit.collider.CompareTag("building"))
+            {
+                Debug.Log("MeshRendererMeshRenderer hit.collider.CompareTag building");
+                // 呼叫更改材質為透明的方法
+                MeshRenderer meshRenderer = hit.collider.GetComponent<MeshRenderer>();
+                if (meshRenderer != null)
+                {
+                    ParabolaHitBuildingChangeMaterialsToTransparent(meshRenderer);
+
+                }
+            }
+
+
+            int buildingLayerMask = ~(1 << LayerMask.NameToLayer("BuildingLayer"));  // 用反向操作排除 Building 層
+            // 射線的方向：控制器的前進方向
+            Vector3 rayDirection = rayInteractor.transform.forward;
+            // 建立射線
+            Ray ray = new Ray(rayOrigin, rayDirection);
+
+            // 使用 Raycast 檢測物體，並排除 'Building' 層
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, buildingLayerMask))
+            {
+                Debug.Log("MeshRendererMeshRenderer Physics.Raycast(ray, out hit, Mathf.Infinity, buildingLayerMask)");
+                // 呼叫更改材質為透明的方法
+                MeshRenderer meshRenderer = hit.collider.GetComponent<MeshRenderer>();
+                if (meshRenderer != null)
+                {
+                    ParabolaHitBuildingChangeMaterialsToTransparent(meshRenderer);
+
+                }
+            }
+
+
+
+
+
+
         }
         else
         {
@@ -185,6 +182,33 @@ public class CustomRayInteractor : MonoBehaviour
                 uiPair.uiPanel.SetActive(false); // 隱藏所有 UI 面板
             }
             //parabolicLineCircle.HideUIAndBall();
+        }
+    }
+
+    private const string GlassMaterialName = "_2 (Instance)"; // 玻璃材質名稱
+    private void ParabolaHitBuildingChangeMaterialsToTransparent(MeshRenderer renderer)
+    {
+        foreach (Material mat in renderer.materials)
+        {
+            if (mat.name == GlassMaterialName)
+            {
+                continue;  // 如果是玻璃材質，跳過不做處理
+            }
+
+            if (mat.HasProperty("_Mode"))
+            {
+                mat.SetFloat("_Mode", 3);  // Transparent 模式
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.EnableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = 3000;
+
+                Color color = mat.GetColor("_Color");
+                mat.SetColor("_Color", new Color(color.r, color.g, color.b, 0.5f));
+            }
         }
     }
 

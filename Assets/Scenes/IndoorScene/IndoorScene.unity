@@ -3528,7 +3528,7 @@ PrefabInstance:
     - target: {fileID: 1565887663999455726, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       propertyPath: m_Colliders.Array.data[53]
       value: 
-      objectReference: {fileID: 246523915}
+      objectReference: {fileID: 0}
     - target: {fileID: 1565887663999455726, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       propertyPath: m_Colliders.Array.data[54]
       value: 
@@ -3800,9 +3800,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1565887663999455727, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 763107688}
-    - targetCorrespondingSourceObject: {fileID: 1565887663999455727, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 246523914}
     - targetCorrespondingSourceObject: {fileID: 1565887663999455727, guid: 3e07eccb5e6f459d886de95044adb1d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 493287671}
@@ -4378,111 +4375,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &246523913
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 246523914}
-  - component: {fileID: 246523917}
-  - component: {fileID: 246523916}
-  - component: {fileID: 246523915}
-  m_Layer: 0
-  m_Name: ground (36)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &246523914
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246523913}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.09404802, z: -0, w: 0.9955677}
-  m_LocalPosition: {x: 3.4099, y: 0.4257, z: 25.8}
-  m_LocalScale: {x: 17.601038, y: 0.17966376, z: 5.2508864}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 537511681}
-  m_LocalEulerAnglesHint: {x: 0, y: 10.793, z: 0}
---- !u!65 &246523915
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246523913}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &246523916
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246523913}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &246523917
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246523913}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &249048667
 GameObject:
   m_ObjectHideFlags: 0
@@ -39682,7 +39574,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 2147484659
+    m_Bits: 2147485683
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -51590,13 +51482,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967175660}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28586963, y: -0, z: -0, w: 0.9582686}
-  m_LocalPosition: {x: 2.932, y: 3.156, z: 53.262}
-  m_LocalScale: {x: 2.1287384, y: 0.17966376, z: 3.2512672}
+  m_LocalRotation: {x: 0.27339447, y: -0, z: -0, w: 0.9619021}
+  m_LocalPosition: {x: 2.932, y: 3.101, z: 53.2346}
+  m_LocalScale: {x: 2.1287384, y: 0.17966376, z: 3.7253563}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 537511681}
-  m_LocalEulerAnglesHint: {x: 33.222, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.733, y: 0, z: 0}
 --- !u!65 &1967175662
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54626,7 +54518,7 @@ GameObject:
   - component: {fileID: 7776099023667997831}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -54644,7 +54536,7 @@ GameObject:
   - component: {fileID: 8344260252335865475}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -55594,7 +55486,7 @@ GameObject:
   - component: {fileID: 2456951278651948210}
   m_Layer: 10
   m_Name: sago301 15
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -55683,7 +55575,7 @@ GameObject:
   - component: {fileID: 7466016944464100602}
   m_Layer: 10
   m_Name: sago301 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -55791,7 +55683,7 @@ GameObject:
   - component: {fileID: 7573899051345495098}
   m_Layer: 10
   m_Name: Component#88
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -56384,7 +56276,7 @@ GameObject:
   - component: {fileID: 6339217711429378956}
   m_Layer: 10
   m_Name: Group 6675
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -57046,7 +56938,7 @@ GameObject:
   - component: {fileID: 3657577133680213581}
   m_Layer: 10
   m_Name: Group#103 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -57847,7 +57739,7 @@ GameObject:
   - component: {fileID: 7451991032581258987}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -58845,7 +58737,7 @@ GameObject:
   - component: {fileID: 8031106199727723661}
   m_Layer: 10
   m_Name: Groupe#7 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -59520,7 +59412,7 @@ GameObject:
   - component: {fileID: 1277336056385071850}
   m_Layer: 10
   m_Name: sago301 38
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -60543,7 +60435,7 @@ GameObject:
   - component: {fileID: 7334946822896044905}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -60635,7 +60527,7 @@ GameObject:
   - component: {fileID: 996271702969400621}
   m_Layer: 10
   m_Name: Group 6684
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -61546,7 +61438,7 @@ GameObject:
   - component: {fileID: 6811824167155494894}
   m_Layer: 10
   m_Name: red_plant
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -61614,7 +61506,7 @@ GameObject:
   - component: {fileID: 2812783101402133511}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -61726,7 +61618,7 @@ GameObject:
   - component: {fileID: 9018703277872384916}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -61944,7 +61836,7 @@ GameObject:
   - component: {fileID: 7757324790725769232}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -62242,7 +62134,7 @@ GameObject:
   - component: {fileID: 3589985589580154687}
   m_Layer: 10
   m_Name: sago301 11
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -62878,7 +62770,7 @@ GameObject:
   - component: {fileID: 702230611866176364}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -64287,7 +64179,7 @@ GameObject:
   - component: {fileID: 769465183501132758}
   m_Layer: 10
   m_Name: sago301 9
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -64651,7 +64543,7 @@ GameObject:
   - component: {fileID: 2544740352642464383}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -64896,7 +64788,7 @@ GameObject:
   - component: {fileID: 4730961402030032048}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -64914,7 +64806,7 @@ GameObject:
   - component: {fileID: 1714414427512651015}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -65602,7 +65494,7 @@ GameObject:
   - component: {fileID: 6138526796685651313}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -66573,7 +66465,7 @@ GameObject:
   - component: {fileID: 28558577769547520}
   m_Layer: 10
   m_Name: sago301 25
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -66808,7 +66700,7 @@ GameObject:
   - component: {fileID: 3258004032659647020}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -66865,7 +66757,7 @@ GameObject:
   - component: {fileID: 8227785604656833541}
   m_Layer: 10
   m_Name: Group 6670
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -67244,7 +67136,7 @@ GameObject:
   - component: {fileID: 1530747216875298191}
   m_Layer: 10
   m_Name: Group 7445
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -68391,7 +68283,7 @@ GameObject:
   - component: {fileID: 6610835070895893961}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -68483,7 +68375,7 @@ GameObject:
   - component: {fileID: 627110388115212154}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -69897,7 +69789,7 @@ GameObject:
   - component: {fileID: 4866752249894556051}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -70068,7 +69960,7 @@ GameObject:
   - component: {fileID: 8982160805239255713}
   m_Layer: 10
   m_Name: sago301 32
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -70126,7 +70018,7 @@ GameObject:
   - component: {fileID: 4963778884317171860}
   m_Layer: 10
   m_Name: sago301 8
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -70673,7 +70565,7 @@ GameObject:
   - component: {fileID: 8226847260917171849}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -71741,7 +71633,7 @@ GameObject:
   - component: {fileID: 7288893317939243736}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -72492,7 +72384,7 @@ GameObject:
   - component: {fileID: 5917867210085881906}
   m_Layer: 10
   m_Name: sago301 23
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -76235,7 +76127,7 @@ GameObject:
   - component: {fileID: 1963186177233210894}
   m_Layer: 10
   m_Name: sago301 26
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -76562,7 +76454,7 @@ GameObject:
   - component: {fileID: 5321039754492926005}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -76903,7 +76795,7 @@ GameObject:
   - component: {fileID: 6069755396407833850}
   m_Layer: 10
   m_Name: 6-12 step 5
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -77898,7 +77790,7 @@ GameObject:
   - component: {fileID: 7593875695701360819}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -79074,7 +78966,7 @@ GameObject:
   - component: {fileID: 2622520296896373509}
   m_Layer: 10
   m_Name: sago301 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -80630,7 +80522,7 @@ GameObject:
   - component: {fileID: 1135095880859834360}
   m_Layer: 10
   m_Name: sago301 42
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -81808,7 +81700,7 @@ GameObject:
   - component: {fileID: 7195131825093322462}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -82403,7 +82295,7 @@ GameObject:
   - component: {fileID: 4223512499390818361}
   m_Layer: 10
   m_Name: sago301 30
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -83298,7 +83190,7 @@ GameObject:
   - component: {fileID: 8707673333235543676}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -83537,7 +83429,7 @@ GameObject:
   - component: {fileID: 8005434528618274939}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -83780,7 +83672,7 @@ GameObject:
   - component: {fileID: 1965339811290094534}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -84255,7 +84147,7 @@ GameObject:
   - component: {fileID: 2161405448586027401}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -84734,7 +84626,7 @@ GameObject:
   - component: {fileID: 1555965743348640807}
   m_Layer: 10
   m_Name: sago301 42
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -84903,7 +84795,7 @@ GameObject:
   - component: {fileID: 3540823776643004146}
   m_Layer: 10
   m_Name: Group 7385
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85311,7 +85203,7 @@ GameObject:
   - component: {fileID: 5437748913810568888}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -86640,7 +86532,7 @@ GameObject:
   - component: {fileID: 7842289753890596404}
   m_Layer: 10
   m_Name: Group#103 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -86732,7 +86624,7 @@ GameObject:
   - component: {fileID: 1760351737696309666}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -87391,7 +87283,7 @@ GameObject:
   - component: {fileID: 1109550101878212191}
   m_Layer: 10
   m_Name: red_plant 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -87543,7 +87435,7 @@ GameObject:
   - component: {fileID: 1377058837232791576}
   m_Layer: 10
   m_Name: Group 7440
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -87591,7 +87483,7 @@ GameObject:
   - component: {fileID: 3566451653818933055}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -88045,7 +87937,7 @@ GameObject:
   - component: {fileID: 7199493964253452483}
   m_Layer: 10
   m_Name: Group 7449
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -88397,7 +88289,7 @@ GameObject:
   - component: {fileID: 6387605651221570239}
   m_Layer: 10
   m_Name: Pflanze
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -88865,7 +88757,7 @@ GameObject:
   - component: {fileID: 7582338211592134107}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -89098,7 +88990,7 @@ GameObject:
   - component: {fileID: 6076151046997732227}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -90215,7 +90107,7 @@ GameObject:
   - component: {fileID: 7408596246539756444}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -90264,7 +90156,7 @@ GameObject:
   - component: {fileID: 96812278285311035}
   m_Layer: 10
   m_Name: Railing - 25mm-95217
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -90322,7 +90214,7 @@ GameObject:
   - component: {fileID: 754106405574390945}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -90433,7 +90325,7 @@ GameObject:
   - component: {fileID: 7652883672783114566}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -91052,7 +90944,7 @@ GameObject:
   - component: {fileID: 4698931497561057962}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -91357,7 +91249,7 @@ GameObject:
   - component: {fileID: 7582944607252877439}
   m_Layer: 10
   m_Name: Groupe#7 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -91767,7 +91659,7 @@ GameObject:
   - component: {fileID: 7852690514225920331}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -91783,7 +91675,7 @@ GameObject:
   - component: {fileID: 2095814247306320149}
   m_Layer: 10
   m_Name: sago301 45
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -91935,7 +91827,7 @@ GameObject:
   - component: {fileID: 8709854378963687314}
   m_Layer: 10
   m_Name: Group 6689
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -92340,7 +92232,7 @@ GameObject:
   - component: {fileID: 5330250228893996541}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -93814,7 +93706,7 @@ GameObject:
   - component: {fileID: 6949580568838425750}
   m_Layer: 10
   m_Name: sago301 31
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -93939,7 +93831,7 @@ GameObject:
   - component: {fileID: 4231113935168074377}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -94570,7 +94462,7 @@ GameObject:
   - component: {fileID: 4636918247359333580}
   m_Layer: 10
   m_Name: Group 7388
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -96880,7 +96772,7 @@ GameObject:
   - component: {fileID: 8104470033140540202}
   m_Layer: 10
   m_Name: Group 7428
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -97137,7 +97029,7 @@ GameObject:
   - component: {fileID: 130789140475615108}
   m_Layer: 10
   m_Name: sago301 45
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -98004,7 +97896,7 @@ GameObject:
   - component: {fileID: 10825993313849747}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -98040,7 +97932,7 @@ GameObject:
   - component: {fileID: 8199777819964598689}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -98696,7 +98588,7 @@ GameObject:
   - component: {fileID: 1506861708582770355}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -98747,7 +98639,7 @@ GameObject:
   - component: {fileID: 8702997766025758497}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -99032,7 +98924,7 @@ GameObject:
   - component: {fileID: 4383646338595046879}
   m_Layer: 10
   m_Name: sago301 27
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -99500,7 +99392,7 @@ GameObject:
   - component: {fileID: 4409715308750362499}
   m_Layer: 10
   m_Name: sago301 33
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -99912,7 +99804,7 @@ GameObject:
   - component: {fileID: 3688419960965779699}
   m_Layer: 10
   m_Name: Component#342
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -100638,7 +100530,7 @@ GameObject:
   - component: {fileID: 8381458680858258717}
   m_Layer: 10
   m_Name: Group 6680
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -100701,7 +100593,7 @@ GameObject:
   - component: {fileID: 6432059235920390575}
   m_Layer: 10
   m_Name: red_plant 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -100993,7 +100885,7 @@ GameObject:
   - component: {fileID: 1167143375700401851}
   m_Layer: 10
   m_Name: sago301 32
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -101422,7 +101314,7 @@ GameObject:
   - component: {fileID: 467675649756502569}
   m_Layer: 10
   m_Name: Groupe#7 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -101720,7 +101612,7 @@ GameObject:
   - component: {fileID: 6953007566642191340}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -101738,7 +101630,7 @@ GameObject:
   - component: {fileID: 5276615341360812859}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -101937,7 +101829,7 @@ GameObject:
   - component: {fileID: 4036817743049311725}
   m_Layer: 10
   m_Name: Component#88 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -102144,7 +102036,7 @@ GameObject:
   - component: {fileID: 6696967541151743169}
   m_Layer: 10
   m_Name: sago301 27
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -102295,7 +102187,7 @@ GameObject:
   - component: {fileID: 6238165793277451145}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -102412,7 +102304,7 @@ GameObject:
   - component: {fileID: 1188243460609365306}
   m_Layer: 10
   m_Name: Group 6673
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -103168,7 +103060,7 @@ GameObject:
   - component: {fileID: 5787499638899235397}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -103994,7 +103886,7 @@ GameObject:
   - component: {fileID: 6833356545129035851}
   m_Layer: 10
   m_Name: sago301 20
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -104145,7 +104037,7 @@ GameObject:
   - component: {fileID: 4521481534343564801}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -104926,7 +104818,7 @@ GameObject:
   - component: {fileID: 8592627604703588736}
   m_Layer: 10
   m_Name: Group 7369
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -105061,7 +104953,7 @@ GameObject:
   - component: {fileID: 2973559885282706833}
   m_Layer: 10
   m_Name: Railing - 25mm-95217
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -106326,7 +106218,7 @@ GameObject:
   - component: {fileID: 5065561460407224665}
   m_Layer: 10
   m_Name: sago301 12
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -109522,7 +109414,7 @@ GameObject:
   - component: {fileID: 795836268753756164}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -109889,7 +109781,7 @@ GameObject:
   - component: {fileID: 5060992391321344844}
   m_Layer: 10
   m_Name: sago301 16
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -110467,7 +110359,7 @@ GameObject:
   - component: {fileID: 246202263997552158}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -110553,7 +110445,7 @@ GameObject:
   - component: {fileID: 6749289203577461100}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -111734,7 +111626,7 @@ GameObject:
   - component: {fileID: 2005900289276109831}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -114897,7 +114789,7 @@ GameObject:
   - component: {fileID: 6670035593455981093}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -115748,7 +115640,7 @@ GameObject:
   - component: {fileID: 8174926979235211627}
   m_Layer: 10
   m_Name: sago301 18
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -116414,7 +116306,7 @@ GameObject:
   - component: {fileID: 3872918383461468333}
   m_Layer: 10
   m_Name: sago301 21
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -116613,7 +116505,7 @@ GameObject:
   - component: {fileID: 2227758902535509386}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -116990,7 +116882,7 @@ GameObject:
   - component: {fileID: 1391093708770920886}
   m_Layer: 10
   m_Name: sago301 13
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -117480,7 +117372,7 @@ GameObject:
   - component: {fileID: 4538324967295367581}
   m_Layer: 10
   m_Name: Groupe#7 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -118753,7 +118645,7 @@ GameObject:
   - component: {fileID: 7943554723054320569}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -118946,7 +118838,7 @@ GameObject:
   - component: {fileID: 5048381572035096052}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -119436,7 +119328,7 @@ GameObject:
   - component: {fileID: 3784078517805902210}
   m_Layer: 10
   m_Name: Component#88 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -119810,7 +119702,7 @@ GameObject:
   - component: {fileID: 17441078301517821}
   m_Layer: 10
   m_Name: Group 7435
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -120870,7 +120762,7 @@ GameObject:
   - component: {fileID: 4229297416287833384}
   m_Layer: 10
   m_Name: sago301 19
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -121301,7 +121193,7 @@ GameObject:
   - component: {fileID: 650839124083417428}
   m_Layer: 10
   m_Name: Groupe#7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -122515,7 +122407,7 @@ GameObject:
   - component: {fileID: 5147281693726584241}
   m_Layer: 10
   m_Name: Groupe#7 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -122555,7 +122447,7 @@ GameObject:
   - component: {fileID: 5152262700130233036}
   m_Layer: 10
   m_Name: sago301 27
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -122704,7 +122596,7 @@ GameObject:
   - component: {fileID: 8495243387819077877}
   m_Layer: 10
   m_Name: sago301 9
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -122919,7 +122811,7 @@ GameObject:
   - component: {fileID: 8514414510118290288}
   m_Layer: 10
   m_Name: 6-12 step 15
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -123247,7 +123139,7 @@ GameObject:
   - component: {fileID: 4009472621263996840}
   m_Layer: 10
   m_Name: sago301 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -123620,7 +123512,7 @@ GameObject:
   - component: {fileID: 2667584575738873322}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -124086,7 +123978,7 @@ GameObject:
   - component: {fileID: 9085730179481335700}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -124120,7 +124012,7 @@ GameObject:
   - component: {fileID: 5952899848535748050}
   m_Layer: 10
   m_Name: sago301 28
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -124249,7 +124141,7 @@ GameObject:
   - component: {fileID: 5568747113873534218}
   m_Layer: 10
   m_Name: sago301 44
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -124265,7 +124157,7 @@ GameObject:
   - component: {fileID: 1244657173064918507}
   m_Layer: 10
   m_Name: sago301 18
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -124677,7 +124569,7 @@ GameObject:
   - component: {fileID: 8272139482687847202}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -126626,7 +126518,7 @@ GameObject:
   - component: {fileID: 2000825568924196156}
   m_Layer: 10
   m_Name: Group 6861
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -127000,7 +126892,7 @@ GameObject:
   - component: {fileID: 4154499496912950100}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -127264,7 +127156,7 @@ GameObject:
   - component: {fileID: 5247754951882901543}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -127383,7 +127275,7 @@ GameObject:
   - component: {fileID: 681840116519776134}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -128334,7 +128226,7 @@ GameObject:
   - component: {fileID: 5189587043113359747}
   m_Layer: 10
   m_Name: sago301 6
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -128566,7 +128458,7 @@ GameObject:
   - component: {fileID: 9097204362349678173}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -129530,7 +129422,7 @@ GameObject:
   - component: {fileID: 2735093394097012912}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -129652,7 +129544,7 @@ GameObject:
   - component: {fileID: 1666366503312760267}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -130033,7 +129925,7 @@ GameObject:
   - component: {fileID: 1142990344903706818}
   m_Layer: 10
   m_Name: Group 7433
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -131071,7 +130963,7 @@ GameObject:
   - component: {fileID: 7778070875763522240}
   m_Layer: 10
   m_Name: red_plant 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -132131,7 +132023,7 @@ GameObject:
   - component: {fileID: 572891692633610935}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -133798,7 +133690,7 @@ GameObject:
   - component: {fileID: 8708447436845798643}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -135334,7 +135226,7 @@ GameObject:
   - component: {fileID: 9150269188140439605}
   m_Layer: 10
   m_Name: Group 6687
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -136182,7 +136074,7 @@ GameObject:
   - component: {fileID: 7259170892797496851}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -136644,7 +136536,7 @@ GameObject:
   - component: {fileID: 2065239653734531913}
   m_Layer: 10
   m_Name: sago301 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -137930,7 +137822,7 @@ GameObject:
   - component: {fileID: 313675754992231801}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -138257,7 +138149,7 @@ GameObject:
   - component: {fileID: 3550815449356993364}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -139672,7 +139564,7 @@ GameObject:
   - component: {fileID: 6281223297479217393}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -140652,7 +140544,7 @@ GameObject:
   - component: {fileID: 4940547463431421900}
   m_Layer: 10
   m_Name: sago301
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -141131,7 +141023,7 @@ GameObject:
   - component: {fileID: 1425922631020460304}
   m_Layer: 10
   m_Name: sago301 10
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -141263,7 +141155,7 @@ GameObject:
   - component: {fileID: 6113586696660031381}
   m_Layer: 10
   m_Name: sago301 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -141692,7 +141584,7 @@ GameObject:
   - component: {fileID: 7543648098653626711}
   m_Layer: 10
   m_Name: Group 6886
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -141748,7 +141640,7 @@ GameObject:
   - component: {fileID: 5427245126815219970}
   m_Layer: 10
   m_Name: Groupe#7 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -142286,7 +142178,7 @@ GameObject:
   - component: {fileID: 6897351513366587362}
   m_Layer: 10
   m_Name: sago301 36
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -143218,7 +143110,7 @@ GameObject:
   - component: {fileID: 1806729814762031807}
   m_Layer: 10
   m_Name: sago301 14
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -143922,7 +143814,7 @@ GameObject:
   - component: {fileID: 1207441389273725304}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -144493,7 +144385,7 @@ GameObject:
   - component: {fileID: 3878745431982660335}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -145713,7 +145605,7 @@ GameObject:
   - component: {fileID: 6371311593945077055}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -145779,7 +145671,7 @@ GameObject:
   - component: {fileID: 3982364256149691872}
   m_Layer: 10
   m_Name: sago301 35
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -146762,7 +146654,7 @@ GameObject:
   - component: {fileID: 142062089548555310}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -147324,7 +147216,7 @@ GameObject:
   - component: {fileID: 398037867882994232}
   m_Layer: 10
   m_Name: sago301 17
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -148968,7 +148860,7 @@ GameObject:
   - component: {fileID: 5912780981220666410}
   m_Layer: 10
   m_Name: Groupe#7 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -150062,7 +149954,7 @@ GameObject:
   - component: {fileID: 6249189666846822166}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -150595,7 +150487,7 @@ GameObject:
   - component: {fileID: 1325254251056586768}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -150663,7 +150555,7 @@ GameObject:
   - component: {fileID: 4544664745181253857}
   m_Layer: 10
   m_Name: PalmLeaf_404_1b
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -150834,7 +150726,7 @@ GameObject:
   - component: {fileID: 5727898698136234698}
   m_Layer: 10
   m_Name: sago301 20
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -151830,7 +151722,7 @@ GameObject:
   - component: {fileID: 4572731712136312705}
   m_Layer: 10
   m_Name: sago301 24
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -151848,7 +151740,7 @@ GameObject:
   - component: {fileID: 574408002756034884}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -152158,7 +152050,7 @@ GameObject:
   - component: {fileID: 4766427302633345723}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -152804,7 +152696,7 @@ GameObject:
   - component: {fileID: 8786074998659537202}
   m_Layer: 10
   m_Name: sago301 30
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -153498,7 +153390,7 @@ GameObject:
   - component: {fileID: 663245497790596679}
   m_Layer: 10
   m_Name: Group 6870
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -154319,7 +154211,7 @@ GameObject:
   - component: {fileID: 8785686468191571700}
   m_Layer: 10
   m_Name: sago301 9
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -154621,7 +154513,7 @@ GameObject:
   - component: {fileID: 3086268471953704311}
   m_Layer: 10
   m_Name: sago301 29
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -155607,7 +155499,7 @@ GameObject:
   - component: {fileID: 6012699973554654184}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -156113,7 +156005,7 @@ GameObject:
   - component: {fileID: 9205955794657730924}
   m_Layer: 10
   m_Name: sago301 19
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -160296,7 +160188,7 @@ GameObject:
   - component: {fileID: 2822113216999635312}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -160584,7 +160476,7 @@ GameObject:
   - component: {fileID: 7890639958083510058}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -160602,7 +160494,7 @@ GameObject:
   - component: {fileID: 420683479690786336}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -160918,7 +160810,7 @@ GameObject:
   - component: {fileID: 8248984751696121056}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -161057,7 +160949,7 @@ GameObject:
   - component: {fileID: 263965913271835700}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -161253,7 +161145,7 @@ GameObject:
   - component: {fileID: 8304415530114727938}
   m_Layer: 10
   m_Name: sago301 5
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -161503,7 +161395,7 @@ GameObject:
   - component: {fileID: 3997804743423777431}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -161668,7 +161560,7 @@ GameObject:
   - component: {fileID: 8364956084515667795}
   m_Layer: 10
   m_Name: sago301 8
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -162300,7 +162192,7 @@ GameObject:
   - component: {fileID: 7030248861247624921}
   m_Layer: 10
   m_Name: sago301 45
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -162849,7 +162741,7 @@ GameObject:
   - component: {fileID: 7843469980319782029}
   m_Layer: 10
   m_Name: sago301 44
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -163657,7 +163549,7 @@ GameObject:
   - component: {fileID: 4255912275980956825}
   m_Layer: 10
   m_Name: sago301 34
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -163929,7 +163821,7 @@ GameObject:
   - component: {fileID: 9190211769330997818}
   m_Layer: 10
   m_Name: Group 7367
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -164644,7 +164536,7 @@ GameObject:
   - component: {fileID: 3080181489259754669}
   m_Layer: 10
   m_Name: sago301 22
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -165752,7 +165644,7 @@ GameObject:
   - component: {fileID: 2737854637826257063}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -165892,7 +165784,7 @@ GameObject:
   - component: {fileID: 2643058588814459095}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -166491,7 +166383,7 @@ GameObject:
   - component: {fileID: 473227420611035596}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -166532,7 +166424,7 @@ GameObject:
   - component: {fileID: 7122503515462765594}
   m_Layer: 10
   m_Name: PalmLeaf_404_1b 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -166659,7 +166551,7 @@ GameObject:
   - component: {fileID: 8358727262177768192}
   m_Layer: 10
   m_Name: Group 7417
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -167417,7 +167309,7 @@ GameObject:
   - component: {fileID: 4166636290216776396}
   m_Layer: 10
   m_Name: Groupe#7 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -168992,7 +168884,7 @@ GameObject:
   - component: {fileID: 5464129194260493539}
   m_Layer: 10
   m_Name: sago301 39
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -169733,7 +169625,7 @@ GameObject:
   - component: {fileID: 4999329178859203669}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -170352,7 +170244,7 @@ GameObject:
   - component: {fileID: 6831512130790683998}
   m_Layer: 10
   m_Name: sago301 34
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -170402,7 +170294,7 @@ GameObject:
   - component: {fileID: 5181058311329486821}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -171059,7 +170951,7 @@ GameObject:
   - component: {fileID: 7563923176228815792}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -171077,7 +170969,7 @@ GameObject:
   - component: {fileID: 6406007104004502599}
   m_Layer: 10
   m_Name: Group 6879
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -171318,7 +171210,7 @@ GameObject:
   - component: {fileID: 5121367267961056916}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -172334,7 +172226,7 @@ GameObject:
   - component: {fileID: 4980586776795604771}
   m_Layer: 10
   m_Name: PalmLeaf_404_1b 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -173105,7 +172997,7 @@ GameObject:
   - component: {fileID: 7685506336586782188}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -175335,7 +175227,7 @@ GameObject:
   - component: {fileID: 5243651750007991866}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -176908,7 +176800,7 @@ GameObject:
   - component: {fileID: 2735464196634858665}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -177639,7 +177531,7 @@ GameObject:
   - component: {fileID: 6536701198738973809}
   m_Layer: 10
   m_Name: sago301 17
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -178143,7 +178035,7 @@ GameObject:
   - component: {fileID: 6374574814377163590}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -178759,7 +178651,7 @@ GameObject:
   - component: {fileID: 367344656031622432}
   m_Layer: 10
   m_Name: sago301 12
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -180235,7 +180127,7 @@ GameObject:
   - component: {fileID: 9142141325808727458}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -181689,7 +181581,7 @@ GameObject:
   - component: {fileID: 4973573482918627784}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -181772,7 +181664,7 @@ GameObject:
   - component: {fileID: 5494590071010456568}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -182035,7 +181927,7 @@ GameObject:
   - component: {fileID: 3772286508557567303}
   m_Layer: 10
   m_Name: Group 6884
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -182706,7 +182598,7 @@ GameObject:
   - component: {fileID: 3276741225516248510}
   m_Layer: 10
   m_Name: Group 6882
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -182823,7 +182715,7 @@ GameObject:
   - component: {fileID: 3342313310216476550}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -183120,7 +183012,7 @@ GameObject:
   - component: {fileID: 2830107870105447486}
   m_Layer: 10
   m_Name: sago301 34
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -183453,7 +183345,7 @@ GameObject:
   - component: {fileID: 3449605399673229964}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -183633,7 +183525,7 @@ GameObject:
   - component: {fileID: 2684030410399922495}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -183868,7 +183760,7 @@ GameObject:
   - component: {fileID: 4831671369099554038}
   m_Layer: 10
   m_Name: Group 6858
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -183884,7 +183776,7 @@ GameObject:
   - component: {fileID: 1554806898254051842}
   m_Layer: 10
   m_Name: sago301 41
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -184514,7 +184406,7 @@ GameObject:
   - component: {fileID: 3156290440107415843}
   m_Layer: 10
   m_Name: Group 6691
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -184929,7 +184821,7 @@ GameObject:
   - component: {fileID: 5879440176800978205}
   m_Layer: 10
   m_Name: sago301 11
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -185780,7 +185672,7 @@ GameObject:
   - component: {fileID: 3939179277621452787}
   m_Layer: 10
   m_Name: Groupe#7 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -186399,7 +186291,7 @@ GameObject:
   - component: {fileID: 3628516448364627768}
   m_Layer: 10
   m_Name: sago301 43
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -187799,7 +187691,7 @@ GameObject:
   - component: {fileID: 3740249770736733849}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -188214,7 +188106,7 @@ GameObject:
   - component: {fileID: 3110764228695772824}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -188766,7 +188658,7 @@ GameObject:
   - component: {fileID: 6168036895411649847}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -189264,7 +189156,7 @@ GameObject:
   - component: {fileID: 8361423116120009984}
   m_Layer: 10
   m_Name: sago301 40
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -191343,7 +191235,7 @@ GameObject:
   - component: {fileID: 8327412276321634358}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -191664,7 +191556,7 @@ GameObject:
   - component: {fileID: 7286369374301750135}
   m_Layer: 10
   m_Name: Group 7390
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -191758,7 +191650,7 @@ GameObject:
   - component: {fileID: 8255569146701828811}
   m_Layer: 10
   m_Name: sago301
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -192815,7 +192707,7 @@ GameObject:
   - component: {fileID: 7968552510499454621}
   m_Layer: 10
   m_Name: Railing - 25mm-95217
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -193040,7 +192932,7 @@ GameObject:
   - component: {fileID: 3897001529377249889}
   m_Layer: 10
   m_Name: sago301 10
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -193227,7 +193119,7 @@ GameObject:
   - component: {fileID: 261688686741208077}
   m_Layer: 10
   m_Name: Group 7399
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -193404,7 +193296,7 @@ GameObject:
   - component: {fileID: 6730230811347941816}
   m_Layer: 10
   m_Name: Component#343
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -193428,7 +193320,7 @@ GameObject:
   - component: {fileID: 2366950022513211072}
   m_Layer: 10
   m_Name: sago301 30
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -194169,7 +194061,7 @@ GameObject:
   - component: {fileID: 2695594969648594616}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -195476,7 +195368,7 @@ GameObject:
   - component: {fileID: 6481649583029185800}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -195762,7 +195654,7 @@ GameObject:
   - component: {fileID: 8368495144164911373}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -196323,7 +196215,7 @@ GameObject:
   - component: {fileID: 2830018142824916022}
   m_Layer: 10
   m_Name: sago301 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -196798,7 +196690,7 @@ GameObject:
   - component: {fileID: 4827010261279323757}
   m_Layer: 10
   m_Name: sago301 21
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -197425,7 +197317,7 @@ GameObject:
   - component: {fileID: 6357638044610741091}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -199449,7 +199341,7 @@ GameObject:
   - component: {fileID: 2505978908492945943}
   m_Layer: 10
   m_Name: red_plant 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -200207,7 +200099,7 @@ GameObject:
   - component: {fileID: 2863220021553684486}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -200930,7 +200822,7 @@ GameObject:
   - component: {fileID: 3956200224899327555}
   m_Layer: 10
   m_Name: sago301 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -201138,7 +201030,7 @@ GameObject:
   - component: {fileID: 8083274756910381289}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -201440,7 +201332,7 @@ GameObject:
   - component: {fileID: 3294816075023868199}
   m_Layer: 10
   m_Name: sago301 9
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -201501,7 +201393,7 @@ GameObject:
   - component: {fileID: 8384571544037456786}
   m_Layer: 10
   m_Name: sago301 19
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -202247,7 +202139,7 @@ GameObject:
   - component: {fileID: 3806605835329974625}
   m_Layer: 10
   m_Name: sago301 30
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -202519,7 +202411,7 @@ GameObject:
   - component: {fileID: 3084761371443168298}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -203191,7 +203083,7 @@ GameObject:
   - component: {fileID: 4599129887351260992}
   m_Layer: 10
   m_Name: sago301 17
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -203495,7 +203387,7 @@ GameObject:
   - component: {fileID: 7048913239514665426}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -204213,7 +204105,7 @@ GameObject:
   - component: {fileID: 3599421232495303551}
   m_Layer: 10
   m_Name: 6-12 step 9
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -204393,7 +204285,7 @@ GameObject:
   - component: {fileID: 2803563255503545184}
   m_Layer: 10
   m_Name: Groupe#7 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -204478,7 +204370,7 @@ GameObject:
   - component: {fileID: 5576503570717108142}
   m_Layer: 10
   m_Name: sago301 38
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -205622,7 +205514,7 @@ GameObject:
   - component: {fileID: 8903695509761613310}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -205831,7 +205723,7 @@ GameObject:
   - component: {fileID: 1573065033137080828}
   m_Layer: 10
   m_Name: sago301 5
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -206618,7 +206510,7 @@ GameObject:
   - component: {fileID: 4305447211861857594}
   m_Layer: 10
   m_Name: shrub1_texturesb
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -207057,7 +206949,7 @@ GameObject:
   - component: {fileID: 3108742886282825324}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -207624,7 +207516,7 @@ GameObject:
   - component: {fileID: 338608505504624082}
   m_Layer: 10
   m_Name: sago301 35
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -211090,7 +210982,7 @@ GameObject:
   - component: {fileID: 6571998615494902166}
   m_Layer: 10
   m_Name: Component#342
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -211237,7 +211129,7 @@ GameObject:
   - component: {fileID: 3149253761795236197}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -211393,7 +211285,7 @@ GameObject:
   - component: {fileID: 5344502703351568851}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -211700,7 +211592,7 @@ GameObject:
   - component: {fileID: 2347522204945581479}
   m_Layer: 10
   m_Name: sago301 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -211756,7 +211648,7 @@ GameObject:
   - component: {fileID: 4186811103243803460}
   m_Layer: 10
   m_Name: Group 6863
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -212401,7 +212293,7 @@ GameObject:
   - component: {fileID: 5411346310229990431}
   m_Layer: 10
   m_Name: Component#88
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -212576,7 +212468,7 @@ GameObject:
   - component: {fileID: 1037867712742421960}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -212608,7 +212500,7 @@ GameObject:
   - component: {fileID: 2505941216531513392}
   m_Layer: 10
   m_Name: Component#342
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -213670,7 +213562,7 @@ GameObject:
   - component: {fileID: 4844150975426105441}
   m_Layer: 10
   m_Name: Group 6872
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -215323,7 +215215,7 @@ GameObject:
   - component: {fileID: 8900186760419540142}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -215506,7 +215398,7 @@ GameObject:
   - component: {fileID: 6400531829876122298}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -217200,7 +217092,7 @@ GameObject:
   - component: {fileID: 4829023630029726695}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -218151,7 +218043,7 @@ GameObject:
   - component: {fileID: 3867600252455018294}
   m_Layer: 10
   m_Name: red_plant 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -218901,7 +218793,7 @@ GameObject:
   - component: {fileID: 5098974206353352014}
   m_Layer: 10
   m_Name: Group 7447
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -219081,7 +218973,7 @@ GameObject:
   - component: {fileID: 4057262865159238225}
   m_Layer: 10
   m_Name: sago301 28
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -219797,7 +219689,7 @@ GameObject:
   - component: {fileID: 5743677248690364563}
   m_Layer: 10
   m_Name: sago301 37
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -220662,7 +220554,7 @@ GameObject:
   - component: {fileID: 4699691790771989672}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -221002,7 +220894,7 @@ GameObject:
   - component: {fileID: 3742790168150345501}
   m_Layer: 10
   m_Name: sago301
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -221328,7 +221220,7 @@ GameObject:
   - component: {fileID: 6649922075376069527}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -221346,7 +221238,7 @@ GameObject:
   - component: {fileID: 5206463376334544212}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -221557,7 +221449,7 @@ GameObject:
   - component: {fileID: 704365993804322009}
   m_Layer: 10
   m_Name: Groupe#7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -222703,7 +222595,7 @@ GameObject:
   - component: {fileID: 8067188425500029865}
   m_Layer: 10
   m_Name: Component#343
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -223218,7 +223110,7 @@ GameObject:
   - component: {fileID: 7933474340761246882}
   m_Layer: 10
   m_Name: 6-12 step 17
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -224122,7 +224014,7 @@ GameObject:
   - component: {fileID: 3143722752368070192}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -224170,7 +224062,7 @@ GameObject:
   - component: {fileID: 3375320917699392153}
   m_Layer: 10
   m_Name: sago301 22
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -224627,7 +224519,7 @@ GameObject:
   - component: {fileID: 8145422852513558002}
   m_Layer: 10
   m_Name: sago301 7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -224653,7 +224545,7 @@ GameObject:
   - component: {fileID: 5728461538310671769}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -224990,7 +224882,7 @@ GameObject:
   - component: {fileID: 95373043985286007}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -225026,7 +224918,7 @@ GameObject:
   - component: {fileID: 813717812691592277}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -225165,7 +225057,7 @@ GameObject:
   - component: {fileID: 8546363663589012997}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -226490,7 +226382,7 @@ GameObject:
   - component: {fileID: 8669404010947419868}
   m_Layer: 10
   m_Name: sago301 15
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -227649,7 +227541,7 @@ GameObject:
   - component: {fileID: 3185189072244740829}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -227690,7 +227582,7 @@ GameObject:
   - component: {fileID: 6353142090991055936}
   m_Layer: 10
   m_Name: sago301 6
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -227938,7 +227830,7 @@ GameObject:
   - component: {fileID: 1280647112387013259}
   m_Layer: 10
   m_Name: sago301 36
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -228138,7 +228030,7 @@ GameObject:
   - component: {fileID: 8448104246036994796}
   m_Layer: 10
   m_Name: sago301 36
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -228687,7 +228579,7 @@ GameObject:
   - component: {fileID: 7130530174135694572}
   m_Layer: 10
   m_Name: sago301 41
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -229041,7 +228933,7 @@ GameObject:
   - component: {fileID: 4506335310384068263}
   m_Layer: 10
   m_Name: Groupe#7 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -229127,7 +229019,7 @@ GameObject:
   - component: {fileID: 3978443319778663764}
   m_Layer: 10
   m_Name: Component#88
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -230226,7 +230118,7 @@ GameObject:
   - component: {fileID: 19112172305893046}
   m_Layer: 10
   m_Name: sago301 27
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -230395,7 +230287,7 @@ GameObject:
   - component: {fileID: 7281944172386753367}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -230522,7 +230414,7 @@ GameObject:
   - component: {fileID: 7909854276004097162}
   m_Layer: 10
   m_Name: sago301 11
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -231441,7 +231333,7 @@ GameObject:
   - component: {fileID: 4616681443835443812}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -231893,7 +231785,7 @@ GameObject:
   - component: {fileID: 711239933146617797}
   m_Layer: 10
   m_Name: sago301 33
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -232643,7 +232535,7 @@ GameObject:
   - component: {fileID: 4236944708325887053}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -233450,7 +233342,7 @@ GameObject:
   - component: {fileID: 7517369560573955771}
   m_Layer: 10
   m_Name: Topf 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -234587,7 +234479,7 @@ GameObject:
   - component: {fileID: 364806404114002837}
   m_Layer: 10
   m_Name: sago301 21
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -235684,7 +235576,7 @@ GameObject:
   - component: {fileID: 2528765264651569429}
   m_Layer: 10
   m_Name: sago301 25
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -236465,7 +236357,7 @@ GameObject:
   - component: {fileID: 1895004285946298079}
   m_Layer: 10
   m_Name: sago301 38
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -237209,7 +237101,7 @@ GameObject:
   - component: {fileID: 1544253737833530979}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -237607,7 +237499,7 @@ GameObject:
   - component: {fileID: 7509494275624479451}
   m_Layer: 10
   m_Name: Component#88 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -237734,7 +237626,7 @@ GameObject:
   - component: {fileID: 256400559138480101}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -237852,7 +237744,7 @@ GameObject:
   - component: {fileID: 3584319100842483144}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -238699,7 +238591,7 @@ GameObject:
   - component: {fileID: 1766117538021018285}
   m_Layer: 10
   m_Name: Component#4 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -239239,7 +239131,7 @@ GameObject:
   - component: {fileID: 5230193693285533990}
   m_Layer: 10
   m_Name: Group 7426
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -239294,7 +239186,7 @@ GameObject:
   - component: {fileID: 4350087426508341637}
   m_Layer: 10
   m_Name: red_plant
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -240185,7 +240077,7 @@ GameObject:
   - component: {fileID: 6672948974995032277}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -240747,7 +240639,7 @@ GameObject:
   - component: {fileID: 8015209129904279042}
   m_Layer: 10
   m_Name: Group 7383
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -240766,7 +240658,7 @@ GameObject:
   - component: {fileID: 6621843797244876581}
   m_Layer: 10
   m_Name: 6-12 step 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -241709,7 +241601,7 @@ GameObject:
   - component: {fileID: 3598630690041402257}
   m_Layer: 10
   m_Name: sago301 6
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -241727,7 +241619,7 @@ GameObject:
   - component: {fileID: 482471378605286161}
   m_Layer: 10
   m_Name: Component#88
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -242605,7 +242497,7 @@ GameObject:
   - component: {fileID: 5128661712672648705}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -243207,7 +243099,7 @@ GameObject:
   - component: {fileID: 5822128732529452755}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -243243,7 +243135,7 @@ GameObject:
   - component: {fileID: 7156869595751634061}
   m_Layer: 10
   m_Name: Component#4 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -245507,7 +245399,7 @@ GameObject:
   - component: {fileID: 1803040217626503989}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -246757,7 +246649,7 @@ GameObject:
   - component: {fileID: 2068352318744682586}
   m_Layer: 10
   m_Name: sago301 39
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -247052,7 +246944,7 @@ GameObject:
   - component: {fileID: 6289760748614788143}
   m_Layer: 10
   m_Name: Topf
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -247436,7 +247328,7 @@ GameObject:
   - component: {fileID: 6959419423153975742}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -247584,7 +247476,7 @@ GameObject:
   - component: {fileID: 6360363024838134008}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -247806,7 +247698,7 @@ GameObject:
   - component: {fileID: 1723610382602585569}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -248109,7 +248001,7 @@ GameObject:
   - component: {fileID: 2599974264561911759}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -249190,7 +249082,7 @@ GameObject:
   - component: {fileID: 1866999183657317878}
   m_Layer: 10
   m_Name: Group 6668
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -251621,7 +251513,7 @@ GameObject:
   - component: {fileID: 3648771948879256031}
   m_Layer: 10
   m_Name: Groupe#7 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -252473,7 +252365,7 @@ GameObject:
   - component: {fileID: 4905395506294546623}
   m_Layer: 10
   m_Name: sago301 45
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -252977,7 +252869,7 @@ GameObject:
   - component: {fileID: 6127182286048958656}
   m_Layer: 10
   m_Name: Group 7395
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -255315,7 +255207,7 @@ GameObject:
   - component: {fileID: 338012884811066914}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -255334,7 +255226,7 @@ GameObject:
   - component: {fileID: 7565674031369169014}
   m_Layer: 10
   m_Name: 6-12 step 12
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -256352,7 +256244,7 @@ GameObject:
   - component: {fileID: 3092641555338567383}
   m_Layer: 10
   m_Name: Group 6696
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -256510,7 +256402,7 @@ GameObject:
   - component: {fileID: 5452060178350392967}
   m_Layer: 10
   m_Name: sago301 23
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -257000,7 +256892,7 @@ GameObject:
   - component: {fileID: 553046047008721700}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -257018,7 +256910,7 @@ GameObject:
   - component: {fileID: 3112012926739804333}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -257795,7 +257687,7 @@ GameObject:
   - component: {fileID: 5960647789979901758}
   m_Layer: 10
   m_Name: red_plant 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -258386,7 +258278,7 @@ GameObject:
   - component: {fileID: 4857333807798423714}
   m_Layer: 10
   m_Name: sago301 20
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -259212,7 +259104,7 @@ GameObject:
   - component: {fileID: 5413794048131988731}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -260025,7 +259917,7 @@ GameObject:
   - component: {fileID: 7669340413130187195}
   m_Layer: 10
   m_Name: Component#343
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -260442,7 +260334,7 @@ GameObject:
   - component: {fileID: 6042228805311225666}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -261746,7 +261638,7 @@ GameObject:
   - component: {fileID: 7001016274369972986}
   m_Layer: 10
   m_Name: sago301 14
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -261819,7 +261711,7 @@ GameObject:
   - component: {fileID: 3932053589071440808}
   m_Layer: 10
   m_Name: sago301 40
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -262605,7 +262497,7 @@ GameObject:
   - component: {fileID: 5887469393832760943}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -263051,7 +262943,7 @@ GameObject:
   - component: {fileID: 2009061331478919796}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -263272,7 +263164,7 @@ GameObject:
   - component: {fileID: 9135262693661372557}
   m_Layer: 10
   m_Name: Component#4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -263843,7 +263735,7 @@ GameObject:
   - component: {fileID: 1912968952353577186}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -264459,7 +264351,7 @@ GameObject:
   - component: {fileID: 4447376685403358296}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -264952,7 +264844,7 @@ GameObject:
   - component: {fileID: 1908832784049237654}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -265436,7 +265328,7 @@ GameObject:
   - component: {fileID: 6493312929730394046}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -265568,7 +265460,7 @@ GameObject:
   - component: {fileID: 929267702147781226}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -266331,7 +266223,7 @@ GameObject:
   - component: {fileID: 8243521656292627310}
   m_Layer: 10
   m_Name: sago301 35
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -266625,7 +266517,7 @@ GameObject:
   - component: {fileID: 2393430935177371301}
   m_Layer: 10
   m_Name: sago301 29
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -267889,7 +267781,7 @@ GameObject:
   - component: {fileID: 3474520140950384207}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -268148,7 +268040,7 @@ GameObject:
   - component: {fileID: 6684269517046724478}
   m_Layer: 10
   m_Name: sago301 37
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -269858,7 +269750,7 @@ GameObject:
   - component: {fileID: 6273040327952967168}
   m_Layer: 10
   m_Name: sago301 28
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -270041,7 +269933,7 @@ GameObject:
   - component: {fileID: 7227791475062594884}
   m_Layer: 10
   m_Name: Component#4 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -271179,7 +271071,7 @@ GameObject:
   - component: {fileID: 5869405773550043528}
   m_Layer: 10
   m_Name: sago301 37
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -271644,7 +271536,7 @@ GameObject:
   - component: {fileID: 7843980900625883372}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -271778,7 +271670,7 @@ GameObject:
   - component: {fileID: 8385586300375379846}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -271856,7 +271748,7 @@ GameObject:
   - component: {fileID: 5249972691865118916}
   m_Layer: 10
   m_Name: Group 7378
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -273660,7 +273552,7 @@ GameObject:
   - component: {fileID: 2171601527150011928}
   m_Layer: 10
   m_Name: sago301 17
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -274059,7 +273951,7 @@ GameObject:
   - component: {fileID: 3529546484680762634}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -274095,7 +273987,7 @@ GameObject:
   - component: {fileID: 2547466080787295312}
   m_Layer: 10
   m_Name: Component#4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -274161,7 +274053,7 @@ GameObject:
   - component: {fileID: 4733331914703086592}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -274203,7 +274095,7 @@ GameObject:
   - component: {fileID: 5066891821814395228}
   m_Layer: 10
   m_Name: Group 7438
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -274403,7 +274295,7 @@ GameObject:
   - component: {fileID: 7574331433113113550}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -274839,7 +274731,7 @@ GameObject:
   - component: {fileID: 1321234349668602544}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -275395,7 +275287,7 @@ GameObject:
   - component: {fileID: 1664910505967068552}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -275546,7 +275438,7 @@ GameObject:
   - component: {fileID: 5573910756323384881}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -276356,7 +276248,7 @@ GameObject:
   - component: {fileID: 1070753344753762366}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -277203,7 +277095,7 @@ GameObject:
   - component: {fileID: 1836359476130991032}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -278066,7 +277958,7 @@ GameObject:
   - component: {fileID: 1674621747597160490}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -278271,7 +278163,7 @@ GameObject:
   - component: {fileID: 7440784850443561365}
   m_Layer: 10
   m_Name: Group 7392
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -278890,7 +278782,7 @@ GameObject:
   - component: {fileID: 784987655218026565}
   m_Layer: 10
   m_Name: sago301 39
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -279002,7 +278894,7 @@ GameObject:
   - component: {fileID: 5718650450132243709}
   m_Layer: 10
   m_Name: sago301 32
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -279281,7 +279173,7 @@ GameObject:
   - component: {fileID: 7865646225840259713}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -280634,7 +280526,7 @@ GameObject:
   - component: {fileID: 8146733834734311212}
   m_Layer: 10
   m_Name: Group 7381
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -280732,7 +280624,7 @@ GameObject:
   - component: {fileID: 482078966744644371}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -281620,7 +281512,7 @@ GameObject:
   - component: {fileID: 675300459993869562}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -281702,7 +281594,7 @@ GameObject:
   - component: {fileID: 6584222848171257796}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -282975,7 +282867,7 @@ GameObject:
   - component: {fileID: 8436533939061074849}
   m_Layer: 10
   m_Name: 6-12 step 8
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -283170,7 +283062,7 @@ GameObject:
   - component: {fileID: 6747755833493489231}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -284021,7 +283913,7 @@ GameObject:
   - component: {fileID: 3929784388794428970}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -284322,7 +284214,7 @@ GameObject:
   - component: {fileID: 8460961695420436322}
   m_Layer: 10
   m_Name: sago301 12
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -284858,7 +284750,7 @@ GameObject:
   - component: {fileID: 288276382674866164}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -285298,7 +285190,7 @@ GameObject:
   - component: {fileID: 470928074429506911}
   m_Layer: 10
   m_Name: sago301 26
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -287857,7 +287749,7 @@ GameObject:
   - component: {fileID: 6741012305095131794}
   m_Layer: 10
   m_Name: sago301 15
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -288477,7 +288369,7 @@ GameObject:
   - component: {fileID: 9222244861367266967}
   m_Layer: 10
   m_Name: 6-12 step 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -289719,7 +289611,7 @@ GameObject:
   - component: {fileID: 635094370598038474}
   m_Layer: 10
   m_Name: sago301 24
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -290151,7 +290043,7 @@ GameObject:
   - component: {fileID: 5054396798726344928}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -291808,7 +291700,7 @@ GameObject:
   - component: {fileID: 6483149177436589451}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -291956,7 +291848,7 @@ GameObject:
   - component: {fileID: 4699794705904604329}
   m_Layer: 10
   m_Name: sago301 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -291972,7 +291864,7 @@ GameObject:
   - component: {fileID: 5978613655113015393}
   m_Layer: 10
   m_Name: sago301 7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -292573,7 +292465,7 @@ GameObject:
   - component: {fileID: 6636637864488838583}
   m_Layer: 10
   m_Name: 6-12 step 6
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -293706,7 +293598,7 @@ GameObject:
   - component: {fileID: 2467557849151493504}
   m_Layer: 10
   m_Name: Group 6698
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -294594,7 +294486,7 @@ GameObject:
   - component: {fileID: 2065364338960884554}
   m_Layer: 10
   m_Name: sago301 26
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -294733,7 +294625,7 @@ GameObject:
   - component: {fileID: 2083911574466305659}
   m_Layer: 10
   m_Name: sago301 7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -295493,7 +295385,7 @@ GameObject:
   - component: {fileID: 2579560182407424601}
   m_Layer: 10
   m_Name: Groupe#7 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -295511,7 +295403,7 @@ GameObject:
   - component: {fileID: 6117508977956410664}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -295911,7 +295803,7 @@ GameObject:
   - component: {fileID: 5425522056559122465}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -296286,7 +296178,7 @@ GameObject:
   - component: {fileID: 7347635572376288631}
   m_Layer: 10
   m_Name: sago301 38
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -296304,7 +296196,7 @@ GameObject:
   - component: {fileID: 7658911221287666370}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -297303,7 +297195,7 @@ GameObject:
   - component: {fileID: 6842531368638296032}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -297801,7 +297693,7 @@ GameObject:
   - component: {fileID: 15438293394169875}
   m_Layer: 10
   m_Name: sago301 13
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -298014,7 +297906,7 @@ GameObject:
   - component: {fileID: 2702957685622858263}
   m_Layer: 10
   m_Name: sago301 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -298676,7 +298568,7 @@ GameObject:
   - component: {fileID: 1922962392275344028}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -298980,7 +298872,7 @@ GameObject:
   - component: {fileID: 3065717128859090523}
   m_Layer: 10
   m_Name: sago301 22
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -299171,7 +299063,7 @@ GameObject:
   - component: {fileID: 6013889078200221019}
   m_Layer: 10
   m_Name: sago301 41
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -299345,7 +299237,7 @@ GameObject:
   - component: {fileID: 708054100985156579}
   m_Layer: 10
   m_Name: Sago1_trunk
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -299750,7 +299642,7 @@ GameObject:
   - component: {fileID: 5293092199465689906}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -299836,7 +299728,7 @@ GameObject:
   - component: {fileID: 1633962557885432855}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -299948,7 +299840,7 @@ GameObject:
   - component: {fileID: 7580092001715822138}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -300365,7 +300257,7 @@ GameObject:
   - component: {fileID: 6370836557047378317}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -300832,7 +300724,7 @@ GameObject:
   - component: {fileID: 3253462657500847124}
   m_Layer: 10
   m_Name: sago301 42
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -300905,7 +300797,7 @@ GameObject:
   - component: {fileID: 4609938597775460407}
   m_Layer: 10
   m_Name: sago301 21
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -301570,7 +301462,7 @@ GameObject:
   - component: {fileID: 2613038626851150344}
   m_Layer: 10
   m_Name: red_plant
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -302138,7 +302030,7 @@ GameObject:
   - component: {fileID: 5943959932370051072}
   m_Layer: 10
   m_Name: Group 6868
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -302744,7 +302636,7 @@ GameObject:
   - component: {fileID: 6109954675921948826}
   m_Layer: 10
   m_Name: Group 6854
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -304422,7 +304314,7 @@ GameObject:
   - component: {fileID: 8660772011772136700}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -304597,7 +304489,7 @@ GameObject:
   - component: {fileID: 8516123664423616718}
   m_Layer: 10
   m_Name: 6-12 step
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -305560,7 +305452,7 @@ GameObject:
   - component: {fileID: 136130146587160116}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -306041,7 +305933,7 @@ GameObject:
   - component: {fileID: 3755264793715164451}
   m_Layer: 10
   m_Name: sago301 41
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -306134,7 +306026,7 @@ GameObject:
   - component: {fileID: 4390211602553455961}
   m_Layer: 10
   m_Name: Group 7397
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -306641,7 +306533,7 @@ GameObject:
   - component: {fileID: 2401288230020268124}
   m_Layer: 10
   m_Name: Groupe#7 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -306879,7 +306771,7 @@ GameObject:
   - component: {fileID: 7114869948110115221}
   m_Layer: 10
   m_Name: 6-12 step 7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -307076,7 +306968,7 @@ GameObject:
   - component: {fileID: 990180275292836688}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -307586,7 +307478,7 @@ GameObject:
   - component: {fileID: 4827153080803418152}
   m_Layer: 10
   m_Name: Topf 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -307703,7 +307595,7 @@ GameObject:
   - component: {fileID: 6509411388524229784}
   m_Layer: 10
   m_Name: sago301 13
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -307921,7 +307813,7 @@ GameObject:
   - component: {fileID: 2823522566626116703}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -309532,7 +309424,7 @@ GameObject:
   - component: {fileID: 4368204565359454949}
   m_Layer: 10
   m_Name: red_plant 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -310126,7 +310018,7 @@ GameObject:
   - component: {fileID: 1087879826339828620}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -310157,7 +310049,7 @@ GameObject:
   - component: {fileID: 3311846357717963655}
   m_Layer: 10
   m_Name: sago301 36
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -310522,7 +310414,7 @@ GameObject:
   - component: {fileID: 4835832835787459164}
   m_Layer: 10
   m_Name: Pflanze
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -310895,7 +310787,7 @@ GameObject:
   - component: {fileID: 44410588399711052}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -310913,7 +310805,7 @@ GameObject:
   - component: {fileID: 8197285920539204879}
   m_Layer: 10
   m_Name: Group 6856
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -311178,7 +311070,7 @@ GameObject:
   - component: {fileID: 6039624706734639413}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -311222,7 +311114,7 @@ GameObject:
   - component: {fileID: 1267763417907081320}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -311892,7 +311784,7 @@ GameObject:
   - component: {fileID: 6927204318077913971}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -313576,7 +313468,7 @@ GameObject:
   - component: {fileID: 6525830363711243685}
   m_Layer: 10
   m_Name: Group 6677
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -314023,7 +313915,7 @@ GameObject:
   - component: {fileID: 2820423251287836587}
   m_Layer: 10
   m_Name: sago301 20
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -314120,7 +314012,7 @@ GameObject:
   - component: {fileID: 1410201656651682240}
   m_Layer: 10
   m_Name: sago301 10
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -314527,7 +314419,7 @@ GameObject:
   - component: {fileID: 8654305136827545361}
   m_Layer: 10
   m_Name: Groupe#7 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -316694,7 +316586,7 @@ GameObject:
   - component: {fileID: 448494295365491927}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -317265,7 +317157,7 @@ GameObject:
   - component: {fileID: 7530429527956047027}
   m_Layer: 10
   m_Name: sago301 35
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -318302,7 +318194,7 @@ GameObject:
   - component: {fileID: 7865182292300722613}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -318333,7 +318225,7 @@ GameObject:
   - component: {fileID: 178120837727629604}
   m_Layer: 10
   m_Name: red_plant 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -319783,7 +319675,7 @@ GameObject:
   - component: {fileID: 6460807917489670525}
   m_Layer: 10
   m_Name: Component#4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -320724,7 +320616,7 @@ GameObject:
   - component: {fileID: 8551851068095306753}
   m_Layer: 10
   m_Name: 6-12 step 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -320857,7 +320749,7 @@ GameObject:
   - component: {fileID: 663918413007267325}
   m_Layer: 10
   m_Name: sago301 44
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -320991,7 +320883,7 @@ GameObject:
   - component: {fileID: 6458185481206713402}
   m_Layer: 10
   m_Name: sago301 29
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -321142,7 +321034,7 @@ GameObject:
   - component: {fileID: 1403591992593142965}
   m_Layer: 10
   m_Name: Group 6875
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -322541,7 +322433,7 @@ GameObject:
   - component: {fileID: 3425020039826778757}
   m_Layer: 10
   m_Name: sago301 26
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -322559,7 +322451,7 @@ GameObject:
   - component: {fileID: 8873461684606261920}
   m_Layer: 10
   m_Name: Component#88
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -322809,7 +322701,7 @@ GameObject:
   - component: {fileID: 789297357917984048}
   m_Layer: 10
   m_Name: sago301 29
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -323380,7 +323272,7 @@ GameObject:
   - component: {fileID: 1613379868708597490}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -323742,7 +323634,7 @@ GameObject:
   - component: {fileID: 7996365016094596806}
   m_Layer: 10
   m_Name: sago301 5
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -324127,7 +324019,7 @@ GameObject:
   - component: {fileID: 1405395721461268701}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -324889,7 +324781,7 @@ GameObject:
   - component: {fileID: 7644273492789206411}
   m_Layer: 10
   m_Name: Groupe#7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -325011,7 +324903,7 @@ GameObject:
   - component: {fileID: 3604132853571364686}
   m_Layer: 10
   m_Name: shrub1_texturesb
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -325447,7 +325339,7 @@ GameObject:
   - component: {fileID: 352998590283853882}
   m_Layer: 10
   m_Name: sago301 25
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326406,7 +326298,7 @@ GameObject:
   - component: {fileID: 5874830027234989639}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326652,7 +326544,7 @@ GameObject:
   - component: {fileID: 8099555868960987257}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326685,7 +326577,7 @@ GameObject:
   - component: {fileID: 7685912158642753135}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326745,7 +326637,7 @@ GameObject:
   - component: {fileID: 30212658563761174}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326763,7 +326655,7 @@ GameObject:
   - component: {fileID: 805854317990698040}
   m_Layer: 10
   m_Name: Group 7374
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326881,7 +326773,7 @@ GameObject:
   - component: {fileID: 1734324611491757062}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -326916,7 +326808,7 @@ GameObject:
   - component: {fileID: 4033811730419394156}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -327666,7 +327558,7 @@ GameObject:
   - component: {fileID: 6281278946754980206}
   m_Layer: 10
   m_Name: sago301 32
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -328362,7 +328254,7 @@ GameObject:
   - component: {fileID: 6614668100155965984}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -328394,7 +328286,7 @@ GameObject:
   - component: {fileID: 3369265551503282175}
   m_Layer: 10
   m_Name: sago301 42
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -328787,7 +328679,7 @@ GameObject:
   - component: {fileID: 6748942225070105357}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -328889,7 +328781,7 @@ GameObject:
   - component: {fileID: 5704825795503659214}
   m_Layer: 10
   m_Name: sago301 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -329704,7 +329596,7 @@ GameObject:
   - component: {fileID: 7784543408898204027}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -329769,7 +329661,7 @@ GameObject:
   - component: {fileID: 15056723579745093}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -330434,7 +330326,7 @@ GameObject:
   - component: {fileID: 4149882960298032821}
   m_Layer: 10
   m_Name: sago301 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -331691,7 +331583,7 @@ GameObject:
   - component: {fileID: 8673669801126550734}
   m_Layer: 10
   m_Name: 6-12 step 13
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -332720,7 +332612,7 @@ GameObject:
   - component: {fileID: 1066206344813146279}
   m_Layer: 10
   m_Name: sago301 5
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -333246,7 +333138,7 @@ GameObject:
   - component: {fileID: 5814682409258124266}
   m_Layer: 10
   m_Name: Groupe#7 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -333535,7 +333427,7 @@ GameObject:
   - component: {fileID: 7754788096973944710}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -333713,7 +333605,7 @@ GameObject:
   - component: {fileID: 4985432851358160521}
   m_Layer: 10
   m_Name: red_plant 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -333913,7 +333805,7 @@ GameObject:
   - component: {fileID: 8435307590947756569}
   m_Layer: 10
   m_Name: sago301 43
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -334115,7 +334007,7 @@ GameObject:
   - component: {fileID: 2066743281055857255}
   m_Layer: 10
   m_Name: sago301 44
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -334703,7 +334595,7 @@ GameObject:
   - component: {fileID: 4945811182595486397}
   m_Layer: 10
   m_Name: sago301 37
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -334813,7 +334705,7 @@ GameObject:
   - component: {fileID: 179002299140831041}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -334847,7 +334739,7 @@ GameObject:
   - component: {fileID: 3387700757632959585}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -337607,7 +337499,7 @@ GameObject:
   - component: {fileID: 77720387100706878}
   m_Layer: 10
   m_Name: sago301 43
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -338260,7 +338152,7 @@ GameObject:
   - component: {fileID: 3225405257765628476}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -338622,7 +338514,7 @@ GameObject:
   - component: {fileID: 4151479819823232695}
   m_Layer: 10
   m_Name: Railing - 25mm-95217
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -339955,7 +339847,7 @@ GameObject:
   - component: {fileID: 551489784701550068}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -339997,7 +339889,7 @@ GameObject:
   - component: {fileID: 7370621983294613093}
   m_Layer: 10
   m_Name: Topf 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -341097,7 +340989,7 @@ GameObject:
   - component: {fileID: 2096152458839022043}
   m_Layer: 10
   m_Name: sago301 16
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -341317,7 +341209,7 @@ GameObject:
   - component: {fileID: 7412031565208002783}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -341667,7 +341559,7 @@ GameObject:
   - component: {fileID: 611632925045176902}
   m_Layer: 10
   m_Name: Topf 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -343001,7 +342893,7 @@ GameObject:
   - component: {fileID: 531235170177809072}
   m_Layer: 10
   m_Name: Group#103 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -343406,7 +343298,7 @@ GameObject:
   - component: {fileID: 328980878183323294}
   m_Layer: 10
   m_Name: red_plant
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -343869,7 +343761,7 @@ GameObject:
   - component: {fileID: 4464135950572282630}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -344080,7 +343972,7 @@ GameObject:
   - component: {fileID: 3219803001877725935}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -344721,7 +344613,7 @@ GameObject:
   - component: {fileID: 132096174339960974}
   m_Layer: 10
   m_Name: red_plant 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -345201,7 +345093,7 @@ GameObject:
   - component: {fileID: 7435319065133778756}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -345345,7 +345237,7 @@ GameObject:
   - component: {fileID: 3630611170201544902}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -345435,7 +345327,7 @@ GameObject:
   - component: {fileID: 299478425571671679}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -346341,7 +346233,7 @@ GameObject:
   - component: {fileID: 3340494034703327117}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -346907,7 +346799,7 @@ GameObject:
   - component: {fileID: 8229224324987203910}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -347893,7 +347785,7 @@ GameObject:
   - component: {fileID: 421787201544978071}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -348869,7 +348761,7 @@ GameObject:
   - component: {fileID: 1647118775372394262}
   m_Layer: 10
   m_Name: sago301 24
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -349503,7 +349395,7 @@ GameObject:
   - component: {fileID: 7719753428055260989}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -350997,7 +350889,7 @@ GameObject:
   - component: {fileID: 3722970510498975122}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -351271,7 +351163,7 @@ GameObject:
   - component: {fileID: 369684809173123039}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -351662,7 +351554,7 @@ GameObject:
   - component: {fileID: 396117554496151792}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -352738,7 +352630,7 @@ GameObject:
   - component: {fileID: 6376896562808774576}
   m_Layer: 10
   m_Name: sago301 15
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -353554,7 +353446,7 @@ GameObject:
   - component: {fileID: 6087534862890275257}
   m_Layer: 10
   m_Name: sago301 39
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -353707,7 +353599,7 @@ GameObject:
   - component: {fileID: 5425038095349759968}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -353945,7 +353837,7 @@ GameObject:
   - component: {fileID: 1134107368148016834}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -354331,7 +354223,7 @@ GameObject:
   - component: {fileID: 845508530493574973}
   m_Layer: 10
   m_Name: sago301
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -354393,7 +354285,7 @@ GameObject:
   - component: {fileID: 6357714554989634178}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -354655,7 +354547,7 @@ GameObject:
   - component: {fileID: 3102354199442914721}
   m_Layer: 10
   m_Name: Component#342
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -354745,7 +354637,7 @@ GameObject:
   - component: {fileID: 7654467915022591257}
   m_Layer: 10
   m_Name: sago301 40
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -355075,7 +354967,7 @@ GameObject:
   - component: {fileID: 4644278489874091539}
   m_Layer: 10
   m_Name: sago301 16
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -356337,7 +356229,7 @@ GameObject:
   - component: {fileID: 4869791044536713865}
   m_Layer: 10
   m_Name: Sago1_trunk
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -356593,7 +356485,7 @@ GameObject:
   - component: {fileID: 6384060089294710421}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -356800,7 +356692,7 @@ GameObject:
   - component: {fileID: 4168457312709186613}
   m_Layer: 10
   m_Name: sago301 19
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -358445,7 +358337,7 @@ GameObject:
   - component: {fileID: 4849457665642581715}
   m_Layer: 10
   m_Name: sago301 34
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -358540,7 +358432,7 @@ GameObject:
   - component: {fileID: 5759267057480976745}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -358802,7 +358694,7 @@ GameObject:
   - component: {fileID: 8817188757024856857}
   m_Layer: 10
   m_Name: sago301 10
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -358820,7 +358712,7 @@ GameObject:
   - component: {fileID: 6925459844847378237}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -358902,7 +358794,7 @@ GameObject:
   - component: {fileID: 3720017169102596459}
   m_Layer: 10
   m_Name: red_plant 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -359284,7 +359176,7 @@ GameObject:
   - component: {fileID: 4750378813418146676}
   m_Layer: 10
   m_Name: Groupe#7 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -360057,7 +359949,7 @@ GameObject:
   - component: {fileID: 4076144487392950056}
   m_Layer: 10
   m_Name: sago301 23
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -360524,7 +360416,7 @@ GameObject:
   - component: {fileID: 4898814407060725485}
   m_Layer: 10
   m_Name: sago301 31
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -361181,7 +361073,7 @@ GameObject:
   - component: {fileID: 8042109507471589737}
   m_Layer: 10
   m_Name: 6-12 step 16
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -362067,7 +361959,7 @@ GameObject:
   - component: {fileID: 3600117025149066805}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -362085,7 +361977,7 @@ GameObject:
   - component: {fileID: 4959343808883818696}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -362955,7 +362847,7 @@ GameObject:
   - component: {fileID: 483132095318139242}
   m_Layer: 10
   m_Name: Group 7424
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -363233,7 +363125,7 @@ GameObject:
   - component: {fileID: 433578737121521960}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -364458,7 +364350,7 @@ GameObject:
   - component: {fileID: 4912021533195988966}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -364604,7 +364496,7 @@ GameObject:
   - component: {fileID: 5475221429979043861}
   m_Layer: 10
   m_Name: Component#343
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -365066,7 +364958,7 @@ GameObject:
   - component: {fileID: 1462020778880446637}
   m_Layer: 10
   m_Name: sago301 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -365917,7 +365809,7 @@ GameObject:
   - component: {fileID: 5259504877758427209}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -366011,7 +365903,7 @@ GameObject:
   - component: {fileID: 3765666302588767304}
   m_Layer: 10
   m_Name: Topf 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -366437,7 +366329,7 @@ GameObject:
   - component: {fileID: 3106320051047701372}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -367559,7 +367451,7 @@ GameObject:
   - component: {fileID: 9210192781623497544}
   m_Layer: 10
   m_Name: Group 6865
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -367746,7 +367638,7 @@ GameObject:
   - component: {fileID: 7857263429821710206}
   m_Layer: 10
   m_Name: 6-12 step 10
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -367806,7 +367698,7 @@ GameObject:
   - component: {fileID: 799134967865596710}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -368289,7 +368181,7 @@ GameObject:
   - component: {fileID: 6439790073054297085}
   m_Layer: 10
   m_Name: Group#103
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -368305,7 +368197,7 @@ GameObject:
   - component: {fileID: 1155324193522726426}
   m_Layer: 10
   m_Name: red_plant 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -368492,7 +368384,7 @@ GameObject:
   - component: {fileID: 6485324492171336410}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -368760,7 +368652,7 @@ GameObject:
   - component: {fileID: 993916689065604608}
   m_Layer: 10
   m_Name: sago301 13
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -369421,7 +369313,7 @@ GameObject:
   - component: {fileID: 6909141797528324371}
   m_Layer: 10
   m_Name: sago301 23
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -370192,7 +370084,7 @@ GameObject:
   - component: {fileID: 1998618385089788844}
   m_Layer: 10
   m_Name: Group 7371
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -370297,7 +370189,7 @@ GameObject:
   - component: {fileID: 62691558876989744}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -370536,7 +370428,7 @@ GameObject:
   - component: {fileID: 8121057866485309604}
   m_Layer: 10
   m_Name: Sago1_trunk
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -371554,7 +371446,7 @@ GameObject:
   - component: {fileID: 7175955481881139775}
   m_Layer: 10
   m_Name: sago301 28
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -372043,7 +371935,7 @@ GameObject:
   - component: {fileID: 6326895576021375765}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -373872,7 +373764,7 @@ GameObject:
   - component: {fileID: 1240489920862197303}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -374765,7 +374657,7 @@ GameObject:
   - component: {fileID: 8510622072180693634}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -377784,7 +377676,7 @@ GameObject:
   - component: {fileID: 6156528103890569651}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -377865,7 +377757,7 @@ GameObject:
   - component: {fileID: 7674304888316525683}
   m_Layer: 10
   m_Name: sago301 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -378076,7 +377968,7 @@ GameObject:
   - component: {fileID: 6721780107131535356}
   m_Layer: 10
   m_Name: Topf 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -378435,7 +378327,7 @@ GameObject:
   - component: {fileID: 8169255342100244286}
   m_Layer: 10
   m_Name: sago301 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -378461,7 +378353,7 @@ GameObject:
   - component: {fileID: 8283833267600606487}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -379718,7 +379610,7 @@ GameObject:
   - component: {fileID: 8860376164850062774}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -380257,7 +380149,7 @@ GameObject:
   - component: {fileID: 2505911119285568188}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -381590,7 +381482,7 @@ GameObject:
   - component: {fileID: 5028242723945225981}
   m_Layer: 10
   m_Name: Group 6877
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -382734,7 +382626,7 @@ GameObject:
   - component: {fileID: 2722777721213985012}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -382770,7 +382662,7 @@ GameObject:
   - component: {fileID: 2932660581760620979}
   m_Layer: 10
   m_Name: Group 7419
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -383391,7 +383283,7 @@ GameObject:
   - component: {fileID: 3445050998827109157}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -383834,7 +383726,7 @@ GameObject:
   - component: {fileID: 4334025009771035278}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -384037,7 +383929,7 @@ GameObject:
   - component: {fileID: 7670003141059219280}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -384348,7 +384240,7 @@ GameObject:
   - component: {fileID: 1772173531964368708}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -385065,7 +384957,7 @@ GameObject:
   - component: {fileID: 975191266304963587}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -385201,7 +385093,7 @@ GameObject:
   - component: {fileID: 4286718199561110695}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -385521,7 +385413,7 @@ GameObject:
   - component: {fileID: 1162566594483515368}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -385985,7 +385877,7 @@ GameObject:
   - component: {fileID: 6094762444246786037}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -386263,7 +386155,7 @@ GameObject:
   - component: {fileID: 4465304386854713712}
   m_Layer: 10
   m_Name: sago301 22
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -387108,7 +387000,7 @@ GameObject:
   - component: {fileID: 797265072247178435}
   m_Layer: 10
   m_Name: sago301 12
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -387561,7 +387453,7 @@ GameObject:
   - component: {fileID: 4619174343532237759}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -388051,7 +387943,7 @@ GameObject:
   - component: {fileID: 1178579052392749748}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -389085,7 +388977,7 @@ GameObject:
   - component: {fileID: 4645725464240188294}
   m_Layer: 10
   m_Name: sago301 33
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -390393,7 +390285,7 @@ GameObject:
   - component: {fileID: 152925038359505091}
   m_Layer: 10
   m_Name: Group 6682
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -392639,7 +392531,7 @@ GameObject:
   - component: {fileID: 2095925237009441739}
   m_Layer: 10
   m_Name: sago301 6
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -392960,7 +392852,7 @@ GameObject:
   - component: {fileID: 3722259623148042086}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -394820,7 +394712,7 @@ GameObject:
   - component: {fileID: 7312189724702673118}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -396777,7 +396669,7 @@ GameObject:
   - component: {fileID: 6840533255414691989}
   m_Layer: 10
   m_Name: Sago1_trunk
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -399635,7 +399527,7 @@ GameObject:
   - component: {fileID: 665024541445924416}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -401705,7 +401597,7 @@ GameObject:
   - component: {fileID: 5645762428897787238}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -403214,7 +403106,7 @@ GameObject:
   - component: {fileID: 2332825188465026479}
   m_Layer: 10
   m_Name: Group 6666
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -403964,7 +403856,7 @@ GameObject:
   - component: {fileID: 5781512309772599124}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -404510,7 +404402,7 @@ GameObject:
   - component: {fileID: 5675108062913244443}
   m_Layer: 10
   m_Name: sago301 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -406837,7 +406729,7 @@ GameObject:
   - component: {fileID: 3377147459571171153}
   m_Layer: 10
   m_Name: Groupe#7 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -407590,7 +407482,7 @@ GameObject:
   - component: {fileID: 7701977270281615670}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -407995,7 +407887,7 @@ GameObject:
   - component: {fileID: 4737048694686562029}
   m_Layer: 10
   m_Name: sago301 31
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -408052,7 +407944,7 @@ GameObject:
   - component: {fileID: 3925199426495438324}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -408068,7 +407960,7 @@ GameObject:
   - component: {fileID: 6591543364775209053}
   m_Layer: 10
   m_Name: sago301 7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -408349,7 +408241,7 @@ GameObject:
   - component: {fileID: 5944852088621080651}
   m_Layer: 10
   m_Name: Group 6694
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -408365,7 +408257,7 @@ GameObject:
   - component: {fileID: 3150577719206526861}
   m_Layer: 10
   m_Name: sago301 14
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -408551,7 +408443,7 @@ GameObject:
   - component: {fileID: 4578112886956256040}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -409303,7 +409195,7 @@ GameObject:
   - component: {fileID: 6859607079779705776}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -409814,7 +409706,7 @@ GameObject:
   - component: {fileID: 1465424541097593115}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -410160,7 +410052,7 @@ GameObject:
   - component: {fileID: 2739057205220553245}
   m_Layer: 10
   m_Name: sago301 18
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -410737,7 +410629,7 @@ GameObject:
   - component: {fileID: 3443051169316359148}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -411227,7 +411119,7 @@ GameObject:
   - component: {fileID: 7169967087494272492}
   m_Layer: 10
   m_Name: red_plant 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -411548,7 +411440,7 @@ GameObject:
   - component: {fileID: 8228984427535278527}
   m_Layer: 10
   m_Name: sago301 18
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -412048,7 +411940,7 @@ GameObject:
   - component: {fileID: 8459112412845380474}
   m_Layer: 10
   m_Name: 6-12 step 11
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -412202,7 +412094,7 @@ GameObject:
   - component: {fileID: 9018854681808808559}
   m_Layer: 10
   m_Name: 6-12 step 14
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -412228,7 +412120,7 @@ GameObject:
   - component: {fileID: 4064519315787183087}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -413164,7 +413056,7 @@ GameObject:
   - component: {fileID: 795123406328650340}
   m_Layer: 10
   m_Name: Group 7442
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -413309,7 +413201,7 @@ GameObject:
   - component: {fileID: 6525192716031949972}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -413871,7 +413763,7 @@ GameObject:
   - component: {fileID: 3835627152113115729}
   m_Layer: 10
   m_Name: red_plant 2
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -414526,7 +414418,7 @@ GameObject:
   - component: {fileID: 421918033727820288}
   m_Layer: 10
   m_Name: sago301 14
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -414559,7 +414451,7 @@ GameObject:
   - component: {fileID: 5653407445784486706}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -415148,7 +415040,7 @@ GameObject:
   - component: {fileID: 7639622391148753235}
   m_Layer: 10
   m_Name: sago301 40
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -415630,7 +415522,7 @@ GameObject:
   - component: {fileID: 2391662692094130205}
   m_Layer: 10
   m_Name: Groupe#7 4
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -417553,7 +417445,7 @@ GameObject:
   - component: {fileID: 8551008876192729010}
   m_Layer: 10
   m_Name: PalmLeaf_404_1b
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -417737,7 +417629,7 @@ GameObject:
   - component: {fileID: 7028896026829324461}
   m_Layer: 10
   m_Name: Group 7421
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -418426,7 +418318,7 @@ GameObject:
   - component: {fileID: 6388126975000007521}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -418444,7 +418336,7 @@ GameObject:
   - component: {fileID: 2789513572943006631}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -419520,7 +419412,7 @@ GameObject:
   - component: {fileID: 1657733080883247889}
   m_Layer: 10
   m_Name: sago301 8
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -420452,7 +420344,7 @@ GameObject:
   - component: {fileID: 8138613938025872891}
   m_Layer: 10
   m_Name: sago301 43
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -422485,7 +422377,7 @@ GameObject:
   - component: {fileID: 5109569431279892560}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -422527,7 +422419,7 @@ GameObject:
   - component: {fileID: 2569710193657910584}
   m_Layer: 10
   m_Name: sago301 33
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -422559,7 +422451,7 @@ GameObject:
   - component: {fileID: 4097785585926071321}
   m_Layer: 10
   m_Name: sago301 24
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -423361,7 +423253,7 @@ GameObject:
   - component: {fileID: 2384561792944958970}
   m_Layer: 10
   m_Name: sago301 25
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -423619,7 +423511,7 @@ GameObject:
   - component: {fileID: 4545268402659127606}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -423663,7 +423555,7 @@ GameObject:
   - component: {fileID: 967005229392628472}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -424451,7 +424343,7 @@ GameObject:
   - component: {fileID: 7017008975827413517}
   m_Layer: 10
   m_Name: Groupe#7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -424744,7 +424636,7 @@ GameObject:
   - component: {fileID: 5350547539767539161}
   m_Layer: 10
   m_Name: sago301 16
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -424784,7 +424676,7 @@ GameObject:
   - component: {fileID: 3778215935609945579}
   m_Layer: 10
   m_Name: sago301 31
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -425005,7 +424897,7 @@ GameObject:
   - component: {fileID: 563278619378174095}
   m_Layer: 10
   m_Name: Railing - 25mm-95217 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -425905,7 +425797,7 @@ GameObject:
   - component: {fileID: 7436781472339324825}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -426062,7 +425954,7 @@ GameObject:
   - component: {fileID: 8525719607161084437}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -427714,7 +427606,7 @@ GameObject:
   - component: {fileID: 8260410930173551163}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -428307,7 +428199,7 @@ GameObject:
   - component: {fileID: 3148009502201487649}
   m_Layer: 10
   m_Name: red_plant 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -432194,7 +432086,7 @@ GameObject:
   - component: {fileID: 6730397337554439700}
   m_Layer: 10
   m_Name: Group 7376
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -433058,7 +432950,7 @@ GameObject:
   - component: {fileID: 8955471678437439108}
   m_Layer: 10
   m_Name: 6-12 step 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -433295,7 +433187,7 @@ GameObject:
   - component: {fileID: 4556409334461251821}
   m_Layer: 10
   m_Name: sago301 8
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -433480,7 +433372,7 @@ GameObject:
   - component: {fileID: 5898352896435082549}
   m_Layer: 10
   m_Name: Topf
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -433639,7 +433531,7 @@ GameObject:
   - component: {fileID: 8147191377234761589}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -434120,7 +434012,7 @@ GameObject:
   - component: {fileID: 4380609170392569057}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -436447,7 +436339,7 @@ GameObject:
   - component: {fileID: 1549266401766197443}
   m_Layer: 10
   m_Name: sago301 11
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -437530,7 +437422,7 @@ GameObject:
   - component: {fileID: 8912213899106478587}
   m_Layer: 10
   m_Name: Group 7431
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -438340,7 +438232,7 @@ GameObject:
   - component: {fileID: 196661792048185891}
   m_Layer: 10
   m_Name: Component#88 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -439091,7 +438983,7 @@ GameObject:
   - component: {fileID: 7820923592198214710}
   m_Layer: 10
   m_Name: Component#88 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -439151,7 +439043,7 @@ GameObject:
   - component: {fileID: 7313469774065911188}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -440951,7 +440843,7 @@ GameObject:
   - component: {fileID: 5131395438844030021}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -441637,7 +441529,7 @@ GameObject:
   - component: {fileID: 664910631906089068}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -441676,7 +441568,7 @@ GameObject:
   - component: {fileID: 7720767125963354191}
   m_Layer: 10
   m_Name: red_plant 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -442427,7 +442319,7 @@ GameObject:
   - component: {fileID: 1298587638423891716}
   m_Layer: 10
   m_Name: sago301_half 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -442606,7 +442498,7 @@ GameObject:
   - component: {fileID: 5973889134766125547}
   m_Layer: 10
   m_Name: Groupe#7 3
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -444044,7 +443936,7 @@ GameObject:
   - component: {fileID: 2983528863455738707}
   m_Layer: 10
   m_Name: Group#103 1
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -444107,7 +443999,7 @@ GameObject:
   - component: {fileID: 1652175802283774735}
   m_Layer: 10
   m_Name: Groupe#7
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -444926,7 +444818,7 @@ GameObject:
   - component: {fileID: 2018564176338973984}
   m_Layer: 10
   m_Name: sago301_half
-  m_TagString: building
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
