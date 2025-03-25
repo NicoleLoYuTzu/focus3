@@ -9320,7 +9320,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1268800269}
-  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: -20.972, z: 90}
 --- !u!23 &764887224
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13317,11 +13317,11 @@ MonoBehaviour:
   - PreviewArea: {fileID: 1160348450}
     uiPanel: {fileID: 1603746692}
     targetObject: {fileID: 613789344}
-    arrowAnim: {fileID: 0}
+    arrowAnim: {fileID: 764887221}
   - PreviewArea: {fileID: 937885587861305933}
     uiPanel: {fileID: 926808182}
     targetObject: {fileID: 6431400225764544604}
-    arrowAnim: {fileID: 0}
+    arrowAnim: {fileID: 1651028786}
   previewCanvas: {fileID: 973420878}
 --- !u!1 &1063881068
 GameObject:
@@ -22810,7 +22810,7 @@ Transform:
   m_GameObject: {fileID: 1651028786}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6892123, y: 0.14733183, z: 0.69341606, w: 0.14984623}
-  m_LocalPosition: {x: -0.0676, y: 0.2259, z: -0.0897}
+  m_LocalPosition: {x: -0.0676, y: 0.2245, z: -0.0417}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22875,9 +22875,9 @@ Animation:
   m_GameObject: {fileID: 1651028786}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 8a6d9dcfd15adc14c9ef5c48f4521b6d, type: 2}
+  m_Animation: {fileID: 7400000, guid: 92102323590134e4c9267381b37513c2, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 8a6d9dcfd15adc14c9ef5c48f4521b6d, type: 2}
+  - {fileID: 7400000, guid: 92102323590134e4c9267381b37513c2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
