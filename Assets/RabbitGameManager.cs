@@ -33,6 +33,7 @@ public class RabbitGameManager : MonoBehaviour
     {
         targetObject.SetActive(false); // 顯示目標物件
         GloveTaken.SetActive(false);
+        animatedObject.SetActive(false);
         // 監聽 Hover 事件
         hintButton.hoverEntered.AddListener(OnHoverEnter);
         hintButton.hoverExited.AddListener(OnHoverExit);
