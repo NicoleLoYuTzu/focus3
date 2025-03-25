@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     public GameObject princess;
 
 
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -64,6 +68,12 @@ public class GameManager : MonoBehaviour
             endButton.hoverEntered.AddListener(OnEndHoverEnter);
             endButton.hoverExited.AddListener(OnHoverExit);
         }
+
+        English.hoverEntered.AddListener(OnEndHoverEnter);
+        English.hoverExited.AddListener(OnHoverExit);
+
+        Chinese.hoverEntered.AddListener(OnEndHoverEnter);
+        Chinese.hoverExited.AddListener(OnHoverExit);
     }
 
     private void Update()
@@ -92,11 +102,41 @@ public class GameManager : MonoBehaviour
                 else if (hoveringInteractor.interactablesHovered.Contains(endButton))
                 {
                     EndGame();
-                } else if (hoveringInteractor.interactablesHovered.Contains(hintButton)) {
+                }
+                else if (hoveringInteractor.interactablesHovered.Contains(hintButton))
+                {
                     GiveHint();
+                }
+
+
+                else if (hoveringInteractor.interactablesHovered.Contains(English))
+                {
+                    SetLanguageToEnglish();
+                }
+                else if (hoveringInteractor.interactablesHovered.Contains(Chinese))
+                {
+                    SetLanguageToChinese();
                 }
             }
         }
+    }
+    // 假設有一個語言選擇按鈕
+    public void SetLanguageToEnglish()
+    {
+        PlayerPrefs.SetString("selectedLanguage", "en");  // 保存語言設定為英文
+        PlayerPrefs.Save();  // 確保儲存設定
+        Debug.Log("Language set to English: " + PlayerPrefs.GetString("selectedLanguage"));  // 顯示目前的語言設定
+
+        LanguageManager.Instance.SetLanguage("en");  // 更新語言
+    }
+
+    public void SetLanguageToChinese()
+    {
+        PlayerPrefs.SetString("selectedLanguage", "zh-Hans");  // 保存語言設定為繁體中文
+        PlayerPrefs.Save();  // 確保儲存設定
+        Debug.Log("Language set to Chinese: " + PlayerPrefs.GetString("selectedLanguage"));  // 顯示目前的語言設定
+
+        LanguageManager.Instance.SetLanguage("zh-Hans");  // 更新語言
     }
 
 
@@ -150,7 +190,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GiveHint() {
+    public void GiveHint()
+    {
         resultText.text = "我的權杖不完整了！它原本擁有三對翅膀和一顆愛心，現在全都不見了！去，把它們找回來！不然……\r\n你就別想見到愛麗絲了！我可沒時間等太久，快去快回！還愣著幹什麼？快去工作！";
     }
 

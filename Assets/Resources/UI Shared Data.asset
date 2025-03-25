@@ -16,11 +16,27 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 5d2e35b805f4d0948bb5fa808a8ee211
   m_Entries:
   - m_Id: 648562143232
-    m_Key: New Entry
+    m_Key: startBtn
     m_Metadata:
       m_Items: []
   - m_Id: 690840727552
     m_Key: RedPrincessGreetingWord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32261635371008
+    m_Key: hintBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37043511029760
+    m_Key: chinese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37122884038656
+    m_Key: english
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37985417490432
+    m_Key: endBtn
     m_Metadata:
       m_Items: []
   m_Metadata:

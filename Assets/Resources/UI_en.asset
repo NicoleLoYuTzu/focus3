@@ -26,6 +26,26 @@ MonoBehaviour:
       work!"
     m_Metadata:
       m_Items: []
+  - m_Id: 32261635371008
+    m_Localized: Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 648562143232
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37043511029760
+    m_Localized: Chinese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37122884038656
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37985417490432
+    m_Localized: Finish
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
