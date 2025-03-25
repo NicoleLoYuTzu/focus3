@@ -46,6 +46,75 @@ MonoBehaviour:
     m_Localized: Finish
     m_Metadata:
       m_Items: []
+  - m_Id: 56766076350464
+    m_Localized: Mission Failed!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56920032473088
+    m_Localized: Mission Complete!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57044762685440
+    m_Localized: The Queen says you can't pass without the scepter!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59356335894528
+    m_Localized: 'So, you''ve brought the scepter!
+
+
+      Brave player, your task
+      is to find the four card suits: Hearts, Spades, Clubs, and Diamonds.
+
+      Each
+      suit holds a unique charm, and the correct cards will reveal the secret to
+      the growth potion.
+
+
+      Once you''ve found all the cards, enter their numbers
+      in the console in the correct order.
+
+      Complete this challenge, and you''ll
+      earn the real growth potion to help your friend Alice!
+
+
+      Good luck!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59872717631488
+    m_Localized: The mission begins! Please enter the correct answer into the control
+      panel behind you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60151701762048
+    m_Localized: "Congratulations! You\u2019ve successfully solved the card puzzle
+      and obtained the real growth potion!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60252830625792
+    m_Localized: "The numbers you entered don\u2019t seem to be correct. Give it
+      another try!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61838801825792
+    m_Localized: Why did I shrink so much...? Help me figure something out!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62295620251648
+    m_Localized: Submit the potion!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62906206056448
+    m_Localized: Did you bring the potion?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63227842064384
+    m_Localized: Maybe there's something that can help me turn back...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63636027535360
+    m_Localized: The growth potion!! Thank you!! I'm going to drink it now!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

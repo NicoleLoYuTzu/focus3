@@ -39,6 +39,54 @@ MonoBehaviour:
     m_Key: endBtn
     m_Metadata:
       m_Items: []
+  - m_Id: 56766076350464
+    m_Key: MissionFailed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56920032473088
+    m_Key: MissionComplete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57044762685440
+    m_Key: CardSoldierGreetingWord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59356335894528
+    m_Key: CardSoldierGameHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59872717631488
+    m_Key: CardSoldierGameStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60151701762048
+    m_Key: CardSoldierGameCompleted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 60252830625792
+    m_Key: CardSoldierGameFailed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61838801825792
+    m_Key: AliceGreetingWords
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62295620251648
+    m_Key: SubmitPotion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62906206056448
+    m_Key: AskingPotion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63227842064384
+    m_Key: AliceAskingToTurnBack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63636027535360
+    m_Key: AliceDrinkPotion
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

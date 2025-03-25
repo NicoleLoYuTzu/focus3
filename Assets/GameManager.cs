@@ -3,6 +3,9 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 public class GameManager : MonoBehaviour
 {
@@ -176,23 +179,27 @@ public class GameManager : MonoBehaviour
         wingUI.SetActive(false);
         heartUI.SetActive(false);
 
+        string resultMessage = (wingCount == 3 && heartCount == 1) ? LanguageManager.Instance.GetLocalizedString("MissionComplete") : LanguageManager.Instance.GetLocalizedString("MissionFailed");
+
+
+        // 顯示結果
+        resultText.text = resultMessage;
+
+        // 執行任務達成時的操作
         if (wingCount == 3 && heartCount == 1)
         {
-            resultText.text = "任務達成!";
             UpdateMaterials();
             PlayAnimation(); // 播放動畫
             magicWand.SetActive(true);
             customRayInteractor.EndTask(princess);
         }
-        else
-        {
-            resultText.text = "任務未達成!";
-        }
     }
 
     public void GiveHint()
     {
-        resultText.text = "我的權杖不完整了！它原本擁有三對翅膀和一顆愛心，現在全都不見了！去，把它們找回來！不然……\r\n你就別想見到愛麗絲了！我可沒時間等太久，快去快回！還愣著幹什麼？快去工作！";
+//        我的權杖不完整了！它原本擁有三對翅膀和一顆愛心，現在全都不見了！去，把它們找回來！不然……
+//你就別想見到愛麗絲了！我可沒時間等太久，快去快回！還愣著幹什麼？快去工作！
+        resultText.text = LanguageManager.Instance.GetLocalizedString("RedPrincessGreetingWord");
     }
 
     // 更新物件材質

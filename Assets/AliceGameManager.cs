@@ -70,7 +70,8 @@ public class AliceGameManager : MonoBehaviour
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
         if (infoTextUI != null)
         {
-            infoTextUI.text = "為什麼我變得那麼小... 幫我想想辦法";
+            //infoTextUI.text = "為什麼我變得那麼小... 幫我想想辦法";
+            infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceGreetingWords");
         }
     }
 
@@ -79,7 +80,8 @@ public class AliceGameManager : MonoBehaviour
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
         if (infoTextUI != null)
         {
-            infoTextUI.text = "你帶來藥水了嗎?";
+            //infoTextUI.text = "你帶來藥水了嗎?";
+            infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion");
         }
     }
 
@@ -87,7 +89,9 @@ public class AliceGameManager : MonoBehaviour
     {
         if (infoTextUI != null)
         {
-            infoTextUI.text = "也許有什麼能讓我變回來...";
+            //infoTextUI.text = "也許有什麼能讓我變回來...";
+            infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceAskingToTurnBack");
+            
         }
     }
 
@@ -97,17 +101,16 @@ public class AliceGameManager : MonoBehaviour
         {
             if (infoTextUI != null)
             {
-                infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
+                //infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
+                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion");
+
             }
 
             StartCoroutine(ShowMessageThenGrow());
         }
         else
         {
-            if (infoTextUI != null)
-            {
-                infoTextUI.text = "沒拿到藥水啊，你能不能幫我想想辦法?";
-            }
+            infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion");
         }
     }
 

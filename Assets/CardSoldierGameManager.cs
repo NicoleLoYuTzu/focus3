@@ -31,6 +31,8 @@ public class CardSoldierGameManager : MonoBehaviour
 
     private void Start()
     {
+        gameArea.SetActive(false);
+        potion.SetActive(false);
         potionShowCorner.SetActive(false);
         // 監聽 Hover 進出事件
         hintButton.hoverEntered.AddListener(OnHoverEnter);
@@ -90,10 +92,13 @@ public class CardSoldierGameManager : MonoBehaviour
 
     private void GiveHint()
     {
-        UpdateText("你帶來了權杖啊！\n\n勇敢的玩家，請尋找紅心、黑桃、梅花和菱形四種撲克牌圖案。\n" +
-                   "每種圖案都有其獨特的魅力，正確的卡片將揭示通往放大藥水的秘密。\n" +
-                   "找到每張牌後，依照順序將數字輸入控制台。\n" +
-                   "一旦完成，你將獲得真正的放大藥水，幫助你的朋友愛麗絲！祝你好運！");
+        //UpdateText("你帶來了權杖啊！\n\n勇敢的玩家，請尋找紅心、黑桃、梅花和菱形四種撲克牌圖案。\n" +
+        //           "每種圖案都有其獨特的魅力，正確的卡片將揭示通往放大藥水的秘密。\n" +
+        //           "找到每張牌後，依照順序將數字輸入控制台。\n" +
+        //           "一旦完成，你將獲得真正的放大藥水，幫助你的朋友愛麗絲！祝你好運！");
+
+
+        UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameHint"));
     }
 
     private void StartGame()
@@ -102,8 +107,9 @@ public class CardSoldierGameManager : MonoBehaviour
         if (gameArea != null)
         {
             gameArea.SetActive(true); // 啟動遊戲區域
-            UpdateText("任務開始 請把將正確答案輸入在後面的操控台");
+            UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameStart"));
         }
+
         wandCornerClose.SetActive(false);
     }
 
@@ -122,7 +128,7 @@ public class CardSoldierGameManager : MonoBehaviour
 
             if (heartValue == "1" && diamondValue == "12" && clubValue == "10" && spadeValue == "8")
             {
-                UpdateText("恭喜你！你成功解開了撲克牌的謎題，獲得了真正的放大藥水！");
+                UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameCompleted"));
                 potion.SetActive(true); // 讓藥水出現
                 PlayAnimation(); // 播放動畫
                 potionShowCorner.SetActive(true);
@@ -130,7 +136,7 @@ public class CardSoldierGameManager : MonoBehaviour
             }
             else
             {
-                UpdateText("你輸入的數字似乎不正確，再試試看吧！");
+                UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameFailed"));
             }
         }
         else
