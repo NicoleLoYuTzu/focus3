@@ -17,6 +17,7 @@ public class CustomRayInteractor : MonoBehaviour
         public GameObject PreviewArea; // 目標物體
         public GameObject uiPanel; // 對應的 UI 面板
         public GameObject targetObject;
+        public GameObject arrowAnim;
     }
     public ParabolicLineCircle parabolicLineCircle; // 將其他腳本拖動到此引用
     public CalculateUserToTaskDistance calculateUserToTaskDistance; // 將其他腳本拖動到此引用
@@ -268,26 +269,27 @@ public class CustomRayInteractor : MonoBehaviour
             GameObject PreviewArea = pair.PreviewArea;
             GameObject uiPanel = pair.uiPanel;
             GameObject targetObject = pair.targetObject;
+            GameObject arrowAnim = pair.arrowAnim;
 
             // **👉 檢查該物件的任務是否已結束**
             if (completedTasks.ContainsKey(targetObject.name) && completedTasks[targetObject.name])
             {
                 Debug.Log($"任務已結束，隱藏 {targetObject.name}");
-                HideMessage(uiPanel);
+                HideMessage(uiPanel, arrowAnim);
                 continue; // **跳過這個物件，不再顯示 UI**
             }
 
             // 检测该物体是否与路径有交集
             if (CheckIntersection(path, PreviewArea))
             {
-                ShowMessage(uiPanel, targetObject); // 显示对应的 UI 面板
+                ShowMessage(uiPanel, targetObject, arrowAnim); // 显示对应的 UI 面板
                 intersectedUIPanels.Add(pair); // Add the panel to the list
                 calculateUserToTaskDistance.CalculateUserPositionToObject(targetObject, uiPanel);
                 hasIntersection = true;            // 標記存在交集
             }
             else
             {
-                HideMessage(uiPanel); // 隐藏对应的 UI 面板
+                HideMessage(uiPanel,arrowAnim); // 隐藏对应的 UI 面板
 
                 parabolicLineCircle.OnUIPanelHiddenOrDestroyed(uiPanel);
 
@@ -320,7 +322,7 @@ public class CustomRayInteractor : MonoBehaviour
     private Dictionary<GameObject, bool> uiPanelState = new Dictionary<GameObject, bool>();
 
     // 顯示訊息，只有當 uiPanel 尚未顯示過時才會顯示
-    private void ShowMessage(GameObject uiPanel, GameObject targetObject)
+    private void ShowMessage(GameObject uiPanel, GameObject targetObject, GameObject arrowAnim)
     {
         LogWithName($"ShowMessage called");
 
@@ -339,12 +341,13 @@ public class CustomRayInteractor : MonoBehaviour
         calculateUserToTaskDistance.UIPanelPosition(uiPanel, targetObject); // Adjust panel position
         uiPanel.SetActive(true); // Show the UI panel
         uiPanelState[uiPanel] = true; // Set the state as visible
+        arrowAnim.SetActive(true); // Show the UI panel
     }
 
 
 
     // 隱藏訊息，當控制器移出範圍時隱藏 UI
-    private void HideMessage(GameObject uiPanel)
+    private void HideMessage(GameObject uiPanel, GameObject arrowAnim)
     {
         if (uiPanel != null && uiPanelState.ContainsKey(uiPanel))
         {
@@ -352,6 +355,7 @@ public class CustomRayInteractor : MonoBehaviour
             uiPanelState[uiPanel] = false; // 設置為隱藏
             LogWithName($"UI Panel {uiPanel.name} is now hidden.");
         }
+        arrowAnim.SetActive(false); // Show the UI panel
     }
 
     public void HideAllUI()
@@ -359,10 +363,13 @@ public class CustomRayInteractor : MonoBehaviour
         // 确保所有 UI 元素最开始是隐藏的
         foreach (var uiPair in targetObjectsWithUI)
         {
+            GameObject arrowAnim = uiPair.arrowAnim; // 获取对应的 UI 元素
             GameObject uiElement = uiPair.uiPanel; // 获取对应的 UI 元素
             if (uiElement != null)
             {
+              
                 uiElement.SetActive(false); // 隐藏 UI 元素
+                arrowAnim.SetActive(false);
 
                 // 更新状态为从未显示过
                 if (uiPanelState.ContainsKey(uiElement))
