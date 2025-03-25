@@ -14750,8 +14750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d1e71cafe8e1d4a8d8fa57b7f2c7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontPanelContainer: {fileID: 1506240918}
-  backPanelContainer: {fileID: 1824643696}
+  RightPanelContainer: {fileID: 1824643696}
+  LeftPanelContainer: {fileID: 1506240918}
   leftImage: {fileID: 21300000, guid: 57f8972ee6981a241b1baf71c809316b, type: 3}
   rightImage: {fileID: 21300000, guid: 53847fe184b15d54e9389168467b5eb7, type: 3}
   upImage: {fileID: 21300000, guid: cbc8ee88fcb693d489ba0fc1edd2c423, type: 3}
@@ -15145,7 +15145,7 @@ MonoBehaviour:
   m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147484663
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 0
@@ -435638,6 +435638,14 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1178791450436251564, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178791450436251564, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
@@ -435737,6 +435745,10 @@ PrefabInstance:
     - target: {fileID: 5944131804917401860, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232745470614056090, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6501755809687671949, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive

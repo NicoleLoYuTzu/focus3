@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class CalculateUserToTaskDistance : MonoBehaviour
 {
-    public Transform frontPanelContainer;  // 前方 UI 容器
-    public Transform backPanelContainer;   // 後方 UI 容器
+    public Transform RightPanelContainer;  // 前方 UI 容器
+    public Transform LeftPanelContainer;   // 後方 UI 容器
     private float spacing = 400f; // UI 面板之間的間距
     public Sprite leftImage;
     public Sprite rightImage;
@@ -25,10 +25,10 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         Vector3 userPosition = GetUserPosition();
 
         // 判斷物件在使用者的前方或後方
-        string positionRelation = GetFrontOrBack(userPosition, objectPosition);
+        string positionRelation = GetLeftOrRight(userPosition, objectPosition);
 
         // 設定 UI 面板應該放置的區塊
-        Transform parentContainer = positionRelation == "Front" ? frontPanelContainer : backPanelContainer;
+        Transform parentContainer = positionRelation == "Right" ? RightPanelContainer : LeftPanelContainer;
 
         // 🚀 設置新的父物件
         uiPanel.transform.SetParent(parentContainer, false);
