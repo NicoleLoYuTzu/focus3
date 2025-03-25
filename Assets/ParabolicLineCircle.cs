@@ -3,6 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ParabolicLineCircle : MonoBehaviour
 {
@@ -97,6 +98,68 @@ public class ParabolicLineCircle : MonoBehaviour
             return "Back";
     }
 
+    //public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
+    //{
+    //    Log("ParabolicLineCircle: ConnectObjectToUI started.");
+
+    //    if (targetUIPair == null || targetUIPair.Count == 0)
+    //    {
+    //        Log("ParabolicLineCircle: targetUIPair list is null or empty!");
+    //        return;
+    //    }
+
+    //    Camera mainCamera = Camera.main;
+    //    if (mainCamera == null)
+    //    {
+    //        Log("ParabolicLineCircle: No main camera found in the scene!");
+    //        return;
+    //    }
+
+    //    HideUIAndBall(); // Clear previous ball instances
+
+    //    foreach (CustomRayInteractor.TargetUIPair targetUIPairDetail in targetUIPair)
+    //    {
+    //        if (targetUIPairDetail == null)
+    //        {
+    //            Log("ParabolicLineCircle: targetUIPairDetail is null!");
+    //            continue;
+    //        }
+
+    //        Log($"ParabolicLineCircle: Processing TargetUIPair with UI Panel: {targetUIPairDetail.uiPanel.name}");
+
+    //        RectTransform rectTransform = targetUIPairDetail.uiPanel.GetComponent<RectTransform>();
+    //        if (rectTransform == null)
+    //        {
+    //            Log($"ParabolicLineCircle: The provided uiPanel '{targetUIPairDetail.uiPanel.name}' does not have a RectTransform component.");
+    //            continue;
+    //        }
+
+    //        Vector3 uiWorldPosition = Vector3.zero;
+    //        Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
+    //        GameObject newBallInstance = null;
+
+    //        if (!uiLineRenderers.ContainsKey(targetUIPairDetail.uiPanel))
+    //        {
+    //            if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
+    //            {
+    //                Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
+    //                newBallInstance = HandleBallPositions(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
+    //                CreateLineRenderer(newBallInstance, connectionPoint, targetUIPairDetail.uiPanel);
+    //            }
+    //            else
+    //            {
+    //                Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
+    //            newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
+    //            UpdateLineRenderer(targetUIPairDetail.uiPanel, newBallInstance);
+    //        }
+    //    }
+    //}
+
     public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
     {
         Log("ParabolicLineCircle: ConnectObjectToUI started.");
@@ -114,17 +177,28 @@ public class ParabolicLineCircle : MonoBehaviour
             return;
         }
 
-        HideUIAndBall(); // Clear previous ball instances
+        HideUIAndBall(); // 清除先前的球體
 
-        foreach (CustomRayInteractor.TargetUIPair targetUIPairDetail in targetUIPair)
+        // **依據與 Camera 的距離排序，最遠的優先**
+        // 預先對目標進行排序，不需要在每次迭代時再次計算距離
+        targetUIPair.Sort((a, b) =>
         {
+            float distA = Vector3.Distance(mainCamera.transform.position, a.targetObject.transform.position);
+            float distB = Vector3.Distance(mainCamera.transform.position, b.targetObject.transform.position);
+            return distA.CompareTo(distB); // 由遠到近排序
+        });
+
+        int totalPairs = targetUIPair.Count;
+
+        // **遍歷每個目標，根據索引決定 LineRenderer 上的球體位置**
+        for (int i = 0; i < totalPairs; i++)
+        {
+            var targetUIPairDetail = targetUIPair[i];
             if (targetUIPairDetail == null)
             {
                 Log("ParabolicLineCircle: targetUIPairDetail is null!");
                 continue;
             }
-
-            Log($"ParabolicLineCircle: Processing TargetUIPair with UI Panel: {targetUIPairDetail.uiPanel.name}");
 
             RectTransform rectTransform = targetUIPairDetail.uiPanel.GetComponent<RectTransform>();
             if (rectTransform == null)
@@ -137,26 +211,61 @@ public class ParabolicLineCircle : MonoBehaviour
             Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
             GameObject newBallInstance = null;
 
-            if (!uiLineRenderers.ContainsKey(targetUIPairDetail.uiPanel))
+            Vector3 targetPosition = targetUIPairDetail.targetObject.transform.position;
+            Vector3 userPosition = mainCamera.transform.position;
+
+            // **計算球的位置**
+            // 不再在這裡做排序，只是傳入已經排序的 targetUIPair
+            Vector3 ballPosition = CalculateBallPositionByDistance(lineRenderer, userPosition, targetPosition, i, totalPairs);
+
+            // **創建球體並放到正確的位置**
+            newBallInstance = Instantiate(circleObject, ballPosition, Quaternion.identity);
+            ballInstances.Add(newBallInstance);
+
+            if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
             {
-                if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
-                {
-                    Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
-                    newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
-                    CreateLineRenderer(newBallInstance, connectionPoint, targetUIPairDetail.uiPanel);
-                }
-                else
-                {
-                    Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
-                }
+                Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
+                CreateLineRenderer(newBallInstance, connectionPoint, targetUIPairDetail.uiPanel);
             }
             else
             {
-                Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
-                newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
-                UpdateLineRenderer(targetUIPairDetail.uiPanel, newBallInstance);
+                Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
             }
         }
+    }
+
+
+    private Vector3 CalculateBallPositionByDistance(LineRenderer lineRenderer, Vector3 userPosition, Vector3 targetPosition, int targetIndex, int totalPairs)
+    {
+        if (totalPairs <= 1)
+            return lineRenderer.GetPosition(Mathf.FloorToInt(lineRenderer.positionCount * 0.3f)); // 單一目標時，放 30% 位置
+
+        // 計算每個目標與使用者的距離
+        List<float> distances = new List<float>();
+        for (int i = 0; i < totalPairs; i++)
+        {
+            float distance = Vector3.Distance(userPosition, targetPosition);
+            distances.Add(distance);
+        }
+
+        // 根據距離對目標進行排序，從最小到最大
+        List<int> sortedIndices = new List<int>();
+        for (int i = 0; i < totalPairs; i++)
+        {
+            sortedIndices.Add(i);
+        }
+        sortedIndices.Sort((a, b) => distances[a].CompareTo(distances[b])); // 按距離排序
+
+        // 計算最接近的目標的索引，並根據最小距離開始
+        float t = (float)targetIndex / (totalPairs - 1); // t 值在 0 ~ 1 之間
+        int minIndex = Mathf.FloorToInt(lineRenderer.positionCount * 0.5f);
+        int maxIndex = Mathf.FloorToInt(lineRenderer.positionCount * 0.8f);
+
+        // 在 minIndex 到 maxIndex 之間進行插值
+        int lerpIndex = Mathf.FloorToInt(Mathf.Lerp(minIndex, maxIndex, t));
+
+        // 返回計算後的球體位置
+        return lineRenderer.GetPosition(lerpIndex);
     }
 
     private Vector3 GetUIPanelConnectionPoint(RectTransform rectTransform, Vector3 uiWorldPosition)
@@ -201,86 +310,48 @@ public class ParabolicLineCircle : MonoBehaviour
         return RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, screenPoint, mainCamera, out uiWorldPosition);
     }
 
-    private GameObject HandleBallPosition(CustomRayInteractor.TargetUIPair targetUIPairDetail, Camera mainCamera, RectTransform rectTransform, Vector3 uiWorldPosition, ref GameObject newBallInstance)
+
+    private void HandleBallPositions(List<CustomRayInteractor.TargetUIPair> targetUIPairList, Camera mainCamera)
     {
+        if (targetUIPairList == null || targetUIPairList.Count == 0) return;
+
         Vector3 lineStart = lineRenderer.GetPosition(0);
         Vector3 lineEnd = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
-
         Vector3 userPosition = mainCamera.transform.position;
-        Vector3 targetPosition = targetUIPairDetail.targetObject.transform.position;
-        Vector3 ballPositionOnLine = Vector3.zero;
 
-        if (rayInteractor != null && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        // 計算每個目標與使用者的距離
+        List<(CustomRayInteractor.TargetUIPair, float)> targetDistances = new List<(CustomRayInteractor.TargetUIPair, float)>();
+        foreach (var target in targetUIPairList)
         {
-            Vector3 hitPoint = hit.point;
-            Debug.Log($"Ray hit point: {hitPoint}");
+            float distance = Vector3.Distance(userPosition, target.targetObject.transform.position);
+            targetDistances.Add((target, distance));
+        }
 
-            float lineEndToUser = Vector3.Distance(hitPoint, userPosition);
-            float targetToUser = Vector3.Distance(targetPosition, userPosition);
+        // 根據距離遞減排序 (距離最遠的在前方)
+        targetDistances.Sort((a, b) => b.Item2.CompareTo(a.Item2));
 
-            Log($"ParabolicLineCircle: lineEndToUser '{lineEndToUser}' targetToUser {targetToUser}.");
+        int totalTargets = targetDistances.Count;
 
-            string positionRelation = GetPositionRelation(userPosition, targetPosition);
+        // 計算 `n` 個等間距點
+        for (int i = 0; i < totalTargets; i++)
+        {
+            float t = (i + 1) / (float)(totalTargets + 1); // 避免 0% 和 100%，確保點落在中間
+            Vector3 ballPositionOnLine = Vector3.Lerp(lineStart, lineEnd, t);
 
-            ballPositionOnLine = CalculateBallPosition(lineStart, lineEnd, lineEndToUser, targetToUser, positionRelation);
-
-            // Create or update the ball instance
-            if (newBallInstance == null)
+            // 創建或更新球體
+            if (ballInstances.Count > i)
             {
-                newBallInstance = Instantiate(circleObject, ballPositionOnLine, Quaternion.identity);
+                ballInstances[i].transform.position = ballPositionOnLine;
+            }
+            else
+            {
+                GameObject newBallInstance = Instantiate(circleObject, ballPositionOnLine, Quaternion.identity);
                 ballInstances.Add(newBallInstance);
             }
-            else
-            {
-                newBallInstance.transform.position = ballPositionOnLine;
-            }
 
-            Log($"ParabolicLineCircle: Updated ballInstance for UI Panel '{targetUIPairDetail.uiPanel.name}' to position: {ballPositionOnLine}");
+            Log($"Ball {i + 1}/{totalTargets} positioned at: {ballPositionOnLine}");
         }
-        return newBallInstance;
     }
-
-    private Vector3 CalculateBallPosition(Vector3 lineStart, Vector3 lineEnd, float lineEndToUser, float targetToUser, string positionRelation)
-    {
-        // Log 輸出
-        Log($"CalculateBallPosition: lineStart = {lineStart}, lineEnd = {lineEnd}, lineEndToUser = {lineEndToUser}, targetToUser = {targetToUser}, positionRelation = {positionRelation}");
-
-        // 獲取線段的中間點
-        int middleIndex = lineRenderer.positionCount / 2;
-        Vector3 middlePoint = lineRenderer.GetPosition(middleIndex);
-
-        Vector3 ballPositionOnLine = Vector3.zero;
-
-        if (positionRelation == "Front")
-        {
-            if (lineEndToUser < targetToUser)
-            {
-                ballPositionOnLine = lineEnd;
-                Log($"CalculateBallPosition: Front case, ball placed at lineEnd = {lineEnd}");
-            }
-            else
-            {
-                ballPositionOnLine = middlePoint;
-            }
-        }
-        else if (positionRelation == "Back")
-        {
-            //if (lineEndToUser < targetToUser)
-            //{
-            //    ballPositionOnLine = lineStart;
-            //    Log($"CalculateBallPosition: Back case, ball placed at lineStart = {lineStart}");
-            //}
-            //else
-            //{
-                ballPositionOnLine = middlePoint;
-            //}
-        }
-
-        Log($"CalculateBallPosition: Final ball position = {ballPositionOnLine}");
-
-        return ballPositionOnLine;
-    }
-
 
 
     private void CreateLineRenderer(GameObject newBallInstance, Vector3 uiWorldPosition, GameObject uiPanel)
