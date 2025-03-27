@@ -115,6 +115,44 @@ MonoBehaviour:
     m_Localized: The growth potion!! Thank you!! I'm going to drink it now!
     m_Metadata:
       m_Items: []
+  - m_Id: 276347558621184
+    m_Localized: "Oh dear, this is terrible! I just lost my gloves, but I can't give
+      them to you directly. You know, I'm just too hungry right now\u2014my brain
+      isn't working properly. Hmm... If you can help me find my three favorite things\u2014an
+      ice cream, a donut, and a burger\u2014once my stomach is full, maybe I'll remember
+      where I left the gloves. Please, I don't have time to waste\u2014the Queen's
+      orders are not to be ignored!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277228094025728
+    m_Localized: "Oh, it's you. What are you doing here? You should know I don't
+      just help people for no reason. Unless... you find that foolish rabbit's gloves\u2014those
+      are the key to opening the secret door. I don\u2019t have the patience to wait
+      too long. Now go, and come back to me once you have the gloves."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277521758220288
+    m_Localized: "Welcome to this mysterious Wonderland, adventurer!\nYou\u2019ve
+      arrived at just the right time\u2014we need a brave soul like you.\n\nAlice
+      has already drunk the shrinking potion and is now trapped in a hidden corner.
+      We must find her and restore her to her original size.\n\nYour mission is to
+      complete all the challenges, obtain the essential items, and ultimately find
+      the growth potion. Only then can you help Alice escape her predicament and
+      restore order to this world."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277675114557440
+    m_Localized: Hint 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277741967568896
+    m_Localized: Hint 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 282673437274112
+    m_Localized: It seems you haven't gotten the Queen's scepter yet...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

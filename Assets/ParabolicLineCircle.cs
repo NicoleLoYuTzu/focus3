@@ -97,69 +97,6 @@ public class ParabolicLineCircle : MonoBehaviour
         else
             return "Back";
     }
-
-    //public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
-    //{
-    //    Log("ParabolicLineCircle: ConnectObjectToUI started.");
-
-    //    if (targetUIPair == null || targetUIPair.Count == 0)
-    //    {
-    //        Log("ParabolicLineCircle: targetUIPair list is null or empty!");
-    //        return;
-    //    }
-
-    //    Camera mainCamera = Camera.main;
-    //    if (mainCamera == null)
-    //    {
-    //        Log("ParabolicLineCircle: No main camera found in the scene!");
-    //        return;
-    //    }
-
-    //    HideUIAndBall(); // Clear previous ball instances
-
-    //    foreach (CustomRayInteractor.TargetUIPair targetUIPairDetail in targetUIPair)
-    //    {
-    //        if (targetUIPairDetail == null)
-    //        {
-    //            Log("ParabolicLineCircle: targetUIPairDetail is null!");
-    //            continue;
-    //        }
-
-    //        Log($"ParabolicLineCircle: Processing TargetUIPair with UI Panel: {targetUIPairDetail.uiPanel.name}");
-
-    //        RectTransform rectTransform = targetUIPairDetail.uiPanel.GetComponent<RectTransform>();
-    //        if (rectTransform == null)
-    //        {
-    //            Log($"ParabolicLineCircle: The provided uiPanel '{targetUIPairDetail.uiPanel.name}' does not have a RectTransform component.");
-    //            continue;
-    //        }
-
-    //        Vector3 uiWorldPosition = Vector3.zero;
-    //        Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
-    //        GameObject newBallInstance = null;
-
-    //        if (!uiLineRenderers.ContainsKey(targetUIPairDetail.uiPanel))
-    //        {
-    //            if (TryGetWorldPosition(rectTransform, screenPoint, mainCamera, out uiWorldPosition))
-    //            {
-    //                Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
-    //                newBallInstance = HandleBallPositions(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
-    //                CreateLineRenderer(newBallInstance, connectionPoint, targetUIPairDetail.uiPanel);
-    //            }
-    //            else
-    //            {
-    //                Log("ParabolicLineCircle: Failed to convert RectTransform position to world position.");
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Vector3 connectionPoint = GetUIPanelConnectionPoint(rectTransform, uiWorldPosition);
-    //            newBallInstance = HandleBallPosition(targetUIPairDetail, mainCamera, rectTransform, connectionPoint, ref newBallInstance);
-    //            UpdateLineRenderer(targetUIPairDetail.uiPanel, newBallInstance);
-    //        }
-    //    }
-    //}
-
     public void ConnectObjectToUI(List<CustomRayInteractor.TargetUIPair> targetUIPair)
     {
         Log("ParabolicLineCircle: ConnectObjectToUI started.");

@@ -32,6 +32,7 @@ public class CustomRayInteractor : MonoBehaviour
     // 用來儲存所有 CollisionHandlerRestoreBuilding 物件的列表
     private CollisionHandlerRestoreBuilding[] collisionHandlers;
     public GameObject previewCanvas;
+    public GameObject UIController;
 
 
 
@@ -116,6 +117,7 @@ public class CustomRayInteractor : MonoBehaviour
         // 如果控制器在移動並且有有效的射線擊中
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
+            UIController.SetActive(true);
             Vector3 rayOrigin = rayInteractor.transform.position; // 射線的原始位置
             Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
@@ -360,6 +362,7 @@ public class CustomRayInteractor : MonoBehaviour
 
     public void HideAllUI()
     {
+        UIController.SetActive(false);
         // 确保所有 UI 元素最开始是隐藏的
         foreach (var uiPair in targetObjectsWithUI)
         {

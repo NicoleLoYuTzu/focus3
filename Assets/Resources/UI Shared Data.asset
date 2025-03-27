@@ -87,6 +87,30 @@ MonoBehaviour:
     m_Key: AliceDrinkPotion
     m_Metadata:
       m_Items: []
+  - m_Id: 276347558621184
+    m_Key: RabbitGreetingWords
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277228094025728
+    m_Key: CaterPillarGreetingWords
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277521758220288
+    m_Key: PurpleGhostGreetingWords
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277675114557440
+    m_Key: hint_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 277741967568896
+    m_Key: hint_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 282673437274112
+    m_Key: CardSoldierNoWand
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
