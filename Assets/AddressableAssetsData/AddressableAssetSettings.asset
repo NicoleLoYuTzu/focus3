@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 3d13a1e787c5dea4883c7c2bf4ee34d1
   m_currentHash:
     serializedVersion: 2
-    Hash: 47fba6127e6c5035502c124c0d43f153
+    Hash: 8ad6a6fea9846fd24168809425fd0c38
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -23,10 +23,10 @@ MonoBehaviour:
   m_DisableCatalogUpdateOnStart: 0
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
-  m_NonRecursiveBuilding: 0
+  m_NonRecursiveBuilding: 1
   m_CCDEnabled: 0
   m_maxConcurrentWebRequests: 3
-  m_ContiguousBundles: 0
+  m_ContiguousBundles: 1
   m_StripUnityVersionFromBundleBuild: 0
   m_DisableVisibleSubAssetRepresentations: 0
   m_ShaderBundleNaming: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
-    m_LogResourceManagerExceptions: 0
+    m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
   m_ProfileSettings:
     m_Profiles:
