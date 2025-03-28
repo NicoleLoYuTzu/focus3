@@ -111,6 +111,62 @@ MonoBehaviour:
     m_Key: CardSoldierNoWand
     m_Metadata:
       m_Items: []
+  - m_Id: 1090258696466432
+    m_Key: pass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090331069181952
+    m_Key: PurpleGhostHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092094794985472
+    m_Key: CaterPillarDoorOpened
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092376866123776
+    m_Key: CaterPillarDoorCannotOpen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100107379437568
+    m_Key: RabbitHint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100817378635776
+    m_Key: RabbitGameStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1101081812725760
+    m_Key: RabbitGameCannotStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1101999731961856
+    m_Key: RabbitGameFailed1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1102071311953920
+    m_Key: RabbitGameFailed2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1102521729871872
+    m_Key: RabbitGameSuccess
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1105504970534912
+    m_Key: chooseLanguage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1116005431570432
+    m_Key: ReferencePicture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1116123979378688
+    m_Key: ButtonSelection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1116226400088064
+    m_Key: GrabOrInteract
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

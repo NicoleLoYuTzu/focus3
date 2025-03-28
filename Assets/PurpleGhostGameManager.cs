@@ -24,6 +24,7 @@ public class PurpleGhostGameManager : MonoBehaviour
         hintButton2.hoverExited.AddListener(OnHoverExit);
     }
 
+    [System.Obsolete]
     private void Update()
     {
         if (hoveringInteractor != null) // 確保目前有 Hover 的控制器
@@ -43,11 +44,15 @@ public class PurpleGhostGameManager : MonoBehaviour
                 // 🔹 判斷 Hover 的物件來顯示不同的提示
                 if (hoveringInteractor.interactablesHovered.Contains(hintButton1))
                 {
-                    UpdateText("歡迎來到這片神秘的仙境，冒險者！\r\n你來得正是時候，我們正需要像你這樣的勇士。愛麗絲已經喝下了縮小藥水，現在被困在某個隱秘的角落裡。我們必須找到她，幫她恢復原來的大小。\r\n\r\n你的任務是完成所有挑戰，獲得至關重要的道具，最終找到放大藥水。只有這樣，才能幫助愛麗絲擺脫困境，恢復這片世界的秩序。");
+                    UpdateText(LanguageManager.Instance.GetLocalizedString("PurpleGhostGreetingWords"));
+
+                    //UpdateText("歡迎來到這片神秘的仙境，冒險者！\r\n你來得正是時候，我們正需要像你這樣的勇士。愛麗絲已經喝下了縮小藥水，現在被困在某個隱秘的角落裡。我們必須找到她，幫她恢復原來的大小。\r\n\r\n你的任務是完成所有挑戰，獲得至關重要的道具，最終找到放大藥水。只有這樣，才能幫助愛麗絲擺脫困境，恢復這片世界的秩序。");
                 }
                 else if (hoveringInteractor.interactablesHovered.Contains(hintButton2))
                 {
-                    UpdateText("首先你需要找到一隻綠色的兔子並且與他對話!");
+                    //UpdateText("首先你需要找到一隻綠色的兔子並且與他對話!");
+
+                    UpdateText(LanguageManager.Instance.GetLocalizedString("PurpleGhostHint"));
                     CustomRayInteractor.EndTask(purpleGhostEndTask);
                 }
             }

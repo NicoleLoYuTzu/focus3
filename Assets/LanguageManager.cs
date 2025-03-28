@@ -31,6 +31,10 @@ public class LanguageManager : MonoBehaviour
     // 根據語言設置自動獲取表格
     public void SetLanguage(string languageCode)
     {
+        Debug.Log("SelectedSetLanguageSetLanguage locale: " + LocalizationSettings.SelectedLocale?.Identifier);
+
+
+
         Locale newLocale = null;
 
         // 自動設定語言
@@ -58,16 +62,16 @@ public class LanguageManager : MonoBehaviour
 
             if (table != null)
             {
-                Debug.Log("Table loaded successfully.");
+                Debug.Log("SelectedSetLanguageSetLanguage Table loaded successfully.");
             }
             else
             {
-                Debug.LogWarning("Table not found.");
+                Debug.LogWarning("SelectedSetLanguageSetLanguage Table not found.");
             }
         }
         else
         {
-            Debug.LogWarning("Selected locale is not available!");
+            Debug.LogWarning("SelectedSetLanguageSetLanguage Selected locale is not available!");
         }
     }
 
@@ -83,6 +87,16 @@ public class LanguageManager : MonoBehaviour
                 return entry.LocalizedValue;
             }
         }
+
+        if (table != null)
+        {
+            Debug.Log("SelectedSetLanguageSetLanguage GetLocalizedString Table loaded successfully.");
+        }
+        else
+        {
+            Debug.LogWarning("SelectedSetLanguageSetLanguage GetLocalizedString Table not found.");
+        }
+
 
         return $"Key {key} not found!";
     }

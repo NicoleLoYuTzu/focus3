@@ -153,6 +153,78 @@ MonoBehaviour:
     m_Localized: It seems you haven't gotten the Queen's scepter yet...
     m_Metadata:
       m_Items: []
+  - m_Id: 1090258696466432
+    m_Localized: Pass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1090331069181952
+    m_Localized: First, you need to find a green rabbit and talk to it!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092094794985472
+    m_Localized: You got the gloves! The gate to another world has opened! Go explore!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1092376866123776
+    m_Localized: "You didn\u2019t give me the gloves, so there\u2019s no way I can
+      open the gate to another world!~~"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100107379437568
+    m_Localized: 'Oh no, this is terrible!
+
+      I just lost my gloves,
+
+      but
+      I''m too hungry to think straight.
+
+
+      If you can help me find ice cream,
+      a donut, and a burger,
+
+      maybe I''ll remember where I left my gloves.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100817378635776
+    m_Localized: Mission start! Hurry and find the next item!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1101081812725760
+    m_Localized: You should go find a certain purple thing first. It seems to be
+      in a corner somewhere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1101999731961856
+    m_Localized: 'You haven''t found everything yet! Please place:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1102071311953920
+    m_Localized: On the yellow plate nearby!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1102521729871872
+    m_Localized: "Wow! You really found everything!\nIce cream, donuts, burgers,
+      I\u2019m feeling so much better now!\nOh, by the way, my gloves... here you
+      go.\nNow, go ahead and look for the red caterpillar!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1105504970534912
+    m_Localized: 'Choose language:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1116005431570432
+    m_Localized: 'Please refer to the image below to understand the location and
+      functions of the Focus button:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1116123979378688
+    m_Localized: 'Button Selection:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1116226400088064
+    m_Localized: 'Grab Item or Interact with Item:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

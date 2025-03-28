@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
     public GameObject princess;
 
 
-    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
-    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
+    //public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
+    //public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
 
 
     private void Awake()
@@ -72,11 +72,11 @@ public class GameManager : MonoBehaviour
             endButton.hoverExited.AddListener(OnHoverExit);
         }
 
-        English.hoverEntered.AddListener(OnEndHoverEnter);
-        English.hoverExited.AddListener(OnHoverExit);
+        //English.hoverEntered.AddListener(OnEndHoverEnter);
+        //English.hoverExited.AddListener(OnHoverExit);
 
-        Chinese.hoverEntered.AddListener(OnEndHoverEnter);
-        Chinese.hoverExited.AddListener(OnHoverExit);
+        //Chinese.hoverEntered.AddListener(OnEndHoverEnter);
+        //Chinese.hoverExited.AddListener(OnHoverExit);
     }
 
     private void Update()
@@ -112,14 +112,14 @@ public class GameManager : MonoBehaviour
                 }
 
 
-                else if (hoveringInteractor.interactablesHovered.Contains(English))
-                {
-                    SetLanguageToEnglish();
-                }
-                else if (hoveringInteractor.interactablesHovered.Contains(Chinese))
-                {
-                    SetLanguageToChinese();
-                }
+                //else if (hoveringInteractor.interactablesHovered.Contains(English))
+                //{
+                //    SetLanguageToEnglish();
+                //}
+                //else if (hoveringInteractor.interactablesHovered.Contains(Chinese))
+                //{
+                //    SetLanguageToChinese();
+                //}
             }
         }
     }

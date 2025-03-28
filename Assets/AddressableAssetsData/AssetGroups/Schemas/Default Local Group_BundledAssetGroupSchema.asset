@@ -15,17 +15,17 @@ MonoBehaviour:
   m_Group: {fileID: 11400000, guid: 6082c9d9374741e4697708d6cd285e42, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
-  m_IncludeAddressInCatalog: 0
+  m_IncludeAddressInCatalog: 1
   m_IncludeGUIDInCatalog: 0
-  m_IncludeLabelsInCatalog: 0
+  m_IncludeLabelsInCatalog: 1
   m_InternalIdNamingMode: 0
   m_CacheClearBehavior: 0
-  m_IncludeInBuild: 0
+  m_IncludeInBuild: 1
   m_BundledAssetProviderType:
     m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider
   m_ForceUniqueProvider: 0
-  m_UseAssetBundleCache: 0
+  m_UseAssetBundleCache: 1
   m_UseAssetBundleCrc: 1
   m_UseAssetBundleCrcForCachedBundles: 1
   m_UseUWRForLocalBundles: 0

@@ -86,10 +86,11 @@ public class RabbitGameManager : MonoBehaviour
 
     private void ShowHint()
     {
-        UpdateText("「唉呀，真是糟透了！我剛剛弄丟了我的手套，" +
-                   "但我太餓了，腦袋轉不過來。" +
-                   "如果你能幫我找到冰淇淋、甜甜圈和漢堡，" +
-                   "或許我就能想起來手套放在哪了。」");
+        UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitHint"));
+        //UpdateText("「唉呀，真是糟透了！我剛剛弄丟了我的手套，" +
+        //           "但我太餓了，腦袋轉不過來。" +
+        //           "如果你能幫我找到冰淇淋、甜甜圈和漢堡，" +
+        //           "或許我就能想起來手套放在哪了。」");
     }
 
     private void StartGame()
@@ -98,7 +99,10 @@ public class RabbitGameManager : MonoBehaviour
         if (customRayInteractor.completedTasks.ContainsKey("PurpleGhost") && customRayInteractor.completedTasks["PurpleGhost"] == true)
         {
             // 如果 PurpleGhost 任務已經完成，顯示「任務開始」
-            UpdateText("任務開始！快開始找下一個物品吧！");
+
+            UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameStart"));
+
+            //UpdateText("任務開始！快開始找下一個物品吧！");
 
             if (targetObject != null)
             {
@@ -112,7 +116,9 @@ public class RabbitGameManager : MonoBehaviour
         else
         {
             // 如果 PurpleGhost 任務未完成，提示玩家去找紫色精靈
-            UpdateText("你應該先去找某位紫色的東東? 好像在某個角落");
+            //UpdateText("你應該先去找某位紫色的東東? 好像在某個角落");
+            UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameCannotStart"));
+            
         }
     }
 
@@ -134,23 +140,26 @@ public class RabbitGameManager : MonoBehaviour
 
             if (!customRayInteractor.completedTasks.ContainsKey("PurpleGhost"))
             {
-                UpdateText("你應該先去找某位紫色的東東? 好像在某個角落");
+                UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameCannotStart"));
             }
-            else {
+            else
+            {
                 // 獲取未放置的物品列表
                 List<GameObject> missingItems = placementZone.GetMissingItems();
                 if (missingItems.Count > 0)
                 {
-                    string missingItemsText = "「你還沒找到所有東西！請放置：";
+                    //string missingItemsText = "「你還沒找到所有東西！請放置：";
+                    string missingItemsText =LanguageManager.Instance.GetLocalizedString("RabbitGameFailed1");
                     foreach (var item in missingItems)
                     {
                         missingItemsText += item.name + " ";
                     }
-                    missingItemsText += "在旁邊黃色的盤子上！」";
+                    //missingItemsText += "在旁邊黃色的盤子上！」";
+                    missingItemsText += LanguageManager.Instance.GetLocalizedString("RabbitGameFailed2");
                     UpdateText(missingItemsText); // 顯示缺少物品的訊息
                 }
             }
-               
+
         }
     }
 
@@ -160,10 +169,12 @@ public class RabbitGameManager : MonoBehaviour
         Debug.Log("RabbitGameManager: 開始結束流程...");
 
         // 更新 NPC 對話
-        UpdateText("「哇！你真的找到所有東西了！" +
-                   "冰淇淋、甜甜圈、漢堡，我現在感覺好多了！" +
-                   "喔對了，我的手套......給你" +
-                   "接下來你去找看看紅色的毛毛蟲吧");
+        //UpdateText("「哇！你真的找到所有東西了！" +
+        //           "冰淇淋、甜甜圈、漢堡，我現在感覺好多了！" +
+        //           "喔對了，我的手套......給你" +
+        //           "接下來你去找看看紅色的毛毛蟲吧");
+
+        UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameSuccess"));
         customRayInteractor.EndTask(rabbitGameEndTask);
 
         // 顯示獎勵物品
