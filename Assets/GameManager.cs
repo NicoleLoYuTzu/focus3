@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         wingUI.SetActive(true);
         heartUI.SetActive(true);
         //customRayInteractor.StartTask(princess);
+        resultText.text = LanguageManager.Instance.GetLocalizedString("RabbitGameStart");
 
     }
 

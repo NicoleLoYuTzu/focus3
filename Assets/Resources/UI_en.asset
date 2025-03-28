@@ -225,6 +225,90 @@ MonoBehaviour:
     m_Localized: 'Grab Item or Interact with Item:'
     m_Metadata:
       m_Items: []
+  - m_Id: 1141956932595712
+    m_Localized: "Oh dear, this is awful! I just lost my glove, but I can't give
+      it to you directly. You know, I'm so hungry right now that I can barely think.
+      Hmm... If you can help me find my three favorite things\u2014an ice cream,
+      a donut, and a hamburger\u2014then once my stomach is full, maybe I'll remember
+      where I put the glove. Please, I don't have time to waste, the Queen's orders
+      are non-negotiable!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1142799450828800
+    m_Localized: Retrieve the lost glove that the caterpillar wants.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1143311139139584
+    m_Localized: "Welcome to this mysterious world! Alice has run into some trouble\u2014she
+      drank the shrinking potion and is now hiding"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1143570280017920
+    m_Localized: Step one, we need to find Mr. White Rabbit. He knows some clues
+      that can bring you closer to Alice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1143916914077696
+    m_Localized: I can sense the presence of the White Rabbit. You will need to help
+      him solve a few problems
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1144341654466560
+    m_Localized: This glove is not just the rabbit's possession; it also holds the
+      secret to unlocking the next world.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1144668743069696
+    m_Localized: It's that light. Are you ready? The path to the unknown has been
+      opened for you. Go and see what's inside!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1144943939743744
+    m_Localized: Oh, it's you. What brings you here? You should know that I don't
+      help just anyone. Unless... you find that silly rabbit's glove. It's the key
+      to unlocking the secret door. I don't have the patience to wait too long, so
+      go ahead, and come back to me once you've got the glove.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1147530130812928
+    m_Localized: Rescue Alice!!!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1148195963990016
+    m_Localized: You need to obtain the card soldier's potion first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1148443130130432
+    m_Localized: Alice is waiting in the backyard of the house for the antidote!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1148771640602624
+    m_Localized: By entering the correct answer, you have obtained the antidote.
+      The answer is in every room on the second floor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1149129150492672
+    m_Localized: Without the Queen's scepter, I cannot give you the task pass!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1149494310793216
+    m_Localized: My scepter is incomplete! It originally had three pairs of wings
+      and a heart, but now they are all gone! Go, find them and bring them back!
+      Otherwise... you won't be able to see Alice! I don't have time to wait too
+      long, hurry up and come back!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1150271842480128
+    m_Localized: Stop! Without the Queen of Hearts' scepter, you have no right to
+      enter!" "Want to challenge us? First, go complete the Queen of Hearts' task!"
+      "Rumor has it that the Queen of Hearts' scepter requires four items to be complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1150507524616192
+    m_Localized: Three pairs of wings and a heart, they are located near the house
+      behind you.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
