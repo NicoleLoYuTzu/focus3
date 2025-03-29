@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public CustomRayInteractor customRayInteractor;
     public GameObject princess;
 
+    public GameObject pickUp; 
+
 
     //public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
     //public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        pickUp.SetActive(false);
         wingUI.SetActive(false);
         heartUI.SetActive(false);
         magicWand.SetActive(false);
@@ -168,6 +171,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start Button Pressed");
         wingUI.SetActive(true);
         heartUI.SetActive(true);
+        pickUp.SetActive(true);
         //customRayInteractor.StartTask(princess);
         resultText.text = LanguageManager.Instance.GetLocalizedString("RabbitGameStart");
 

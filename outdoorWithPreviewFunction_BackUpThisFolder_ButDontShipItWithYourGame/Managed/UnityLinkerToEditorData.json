@@ -13,6 +13,7 @@
           {
             "name": "NavMeshData",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -33,6 +34,7 @@
           {
             "name": "NavMeshSettings",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -50,6 +52,7 @@
           {
             "name": "Animation",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -58,6 +61,7 @@
           {
             "name": "AnimationClip",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -66,6 +70,7 @@
           {
             "name": "Animator",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -74,6 +79,7 @@
           {
             "name": "AnimatorController",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -130,6 +136,7 @@
           {
             "name": "AudioBehaviour",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -138,7 +145,16 @@
           {
             "name": "AudioClip",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "AudioListener",
+            "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity"
             ],
             "dependencyType": 0,
             "icon": null
@@ -152,6 +168,7 @@
           {
             "name": "AudioSource",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -160,6 +177,7 @@
           {
             "name": "SampleClip",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -191,6 +209,7 @@
           {
             "name": "Camera",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -211,6 +230,7 @@
           {
             "name": "Cubemap",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -231,6 +251,7 @@
           {
             "name": "EditorExtension",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -245,6 +266,7 @@
           {
             "name": "GameObject",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -271,6 +293,7 @@
           {
             "name": "LevelGameManager",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -279,6 +302,7 @@
           {
             "name": "Light",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -299,6 +323,7 @@
           {
             "name": "LightmapSettings",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -307,6 +332,7 @@
           {
             "name": "LineRenderer",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -321,6 +347,7 @@
           {
             "name": "Material",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -329,6 +356,7 @@
           {
             "name": "Mesh",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -337,6 +365,7 @@
           {
             "name": "MeshFilter",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -345,6 +374,7 @@
           {
             "name": "MeshRenderer",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -353,6 +383,7 @@
           {
             "name": "MonoBehaviour",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -367,6 +398,7 @@
           {
             "name": "MonoScript",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -375,6 +407,7 @@
           {
             "name": "NamedObject",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 1,
@@ -407,6 +440,7 @@
           {
             "name": "RectTransform",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -421,6 +455,7 @@
           {
             "name": "RenderSettings",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -429,6 +464,7 @@
           {
             "name": "RenderTexture",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -455,6 +491,7 @@
           {
             "name": "Shader",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -469,6 +506,7 @@
           {
             "name": "SkinnedMeshRenderer",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -483,6 +521,7 @@
           {
             "name": "SortingGroup",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -491,6 +530,7 @@
           {
             "name": "Sprite",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -504,7 +544,9 @@
           },
           {
             "name": "SpriteRenderer",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -863,6 +905,7 @@
           {
             "name": "ParticleSystem",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -871,6 +914,7 @@
           {
             "name": "ParticleSystemRenderer",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -884,6 +928,7 @@
           {
             "name": "BoxCollider",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -892,6 +937,7 @@
           {
             "name": "CapsuleCollider",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -900,6 +946,7 @@
           {
             "name": "CharacterController",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -914,6 +961,7 @@
           {
             "name": "MeshCollider",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -928,6 +976,7 @@
           {
             "name": "Rigidbody",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -936,6 +985,7 @@
           {
             "name": "SphereCollider",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -1265,6 +1315,7 @@
           {
             "name": "Font",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -1308,6 +1359,7 @@
           {
             "name": "Canvas",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -1322,6 +1374,7 @@
           {
             "name": "CanvasRenderer",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -1437,6 +1490,7 @@
           {
             "name": "VideoClip",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,
@@ -1445,6 +1499,7 @@
           {
             "name": "VideoPlayer",
             "scenes": [
+              "Assets/Scenes/IndoorScene/IndoorScene.unity",
               "Assets/Scenes/OutdoorScene/OutdoorScene.unity"
             ],
             "dependencyType": 0,

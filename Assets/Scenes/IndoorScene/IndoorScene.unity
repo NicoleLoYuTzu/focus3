@@ -28439,6 +28439,7 @@ MonoBehaviour:
   magicWand: {fileID: 1127583099}
   customRayInteractor: {fileID: 720394172}
   princess: {fileID: 8921839260689611235}
+  pickUp: {fileID: 3518993119739833176}
 --- !u!1 &1310694504
 GameObject:
   m_ObjectHideFlags: 0

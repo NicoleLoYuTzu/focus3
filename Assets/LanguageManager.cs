@@ -2,6 +2,7 @@
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
+using UnityEngine.SceneManagement;
 
 public class LanguageManager : MonoBehaviour
 {
@@ -17,11 +18,7 @@ public class LanguageManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);  // 保證場景切換時不銷毀
 
-            // 這段只執行一次，不會在換場景時再次執行
-            //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "IndoorScene")
-            //{
-            //    gameObject.SetActive(false); // 讓物件在 SceneB 變為不可見
-            //}
+            
         }
         else
         {
@@ -31,11 +28,36 @@ public class LanguageManager : MonoBehaviour
 
     private void Start()
     {
-
-    
-
+        // 查詢當前場景的名稱
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log("currentSceneNamecurrentSceneName : " + currentSceneName);
         string languageCode = PlayerPrefs.GetString(selectedLanguageKey, "zh-Hans");
         SetLanguage(languageCode);
+    }
+
+    private void OnEnable()
+    {
+        // 訂閱場景變更事件
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        // 取消訂閱，避免記憶體洩漏
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 切換場景時，檢查場景名稱來決定是否隱藏物件
+        if (scene.name == "IndoorScene")
+        {
+            gameObject.SetActive(false); // 讓物件變為不可見
+        }
+        else
+        {
+            gameObject.SetActive(true); // 其他場景時確保物件可見
+        }
     }
 
     // 根據語言設置自動獲取表格

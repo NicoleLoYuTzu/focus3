@@ -65,7 +65,7 @@ public class CaterpillarGameManager : MonoBehaviour
                         Debug.Log("CaterpillarGameManager Glove is active! Unlocking door...");  // 🔹 確保手套狀態正確
                         lightBeam.SetActive(true);
                         lightBeamAnchor.SetActive(true);
-
+                        glove.SetActive(false);
                         infoText.text = LanguageManager.Instance.GetLocalizedString("CaterPillarDoorOpened");
 
                         //infoText.text = "你拿到手套！通往另一世界的大門已開啟!快去探索吧!";

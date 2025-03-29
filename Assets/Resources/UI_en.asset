@@ -180,9 +180,11 @@ MonoBehaviour:
       but
       I''m too hungry to think straight.
 
+      It smells so good~ The aroma of the
+      food is all around!
 
-      If you can help me find ice cream,
-      a donut, and a burger,
+      If you can help me find ice cream, a donut, and
+      a burger,
 
       maybe I''ll remember where I left my gloves.'
     m_Metadata:
@@ -220,7 +222,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1116123979378688
-    m_Localized: 'Button Selection:'
+    m_Localized: 'Button Selection or Pick up the object:'
     m_Metadata:
       m_Items: []
   - m_Id: 1116226400088064
