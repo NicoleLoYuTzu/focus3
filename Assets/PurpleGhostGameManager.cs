@@ -14,6 +14,12 @@ public class PurpleGhostGameManager : MonoBehaviour
     public CustomRayInteractor CustomRayInteractor;
     public GameObject purpleGhostEndTask;
 
+    public AudioSource audioSource;  // 音效播放元件
+    public AudioClip hintSound1;     // 按下 hintButton1 時播放的音效
+    public AudioClip hintSound2;     // 按下 hintButton2 時播放的音效
+
+    private bool isSoundPlayed = false; // 是否播放過音效的標誌
+
     private void Start()
     {
         // 監聽 Hover 進出事件
@@ -24,7 +30,6 @@ public class PurpleGhostGameManager : MonoBehaviour
         hintButton2.hoverExited.AddListener(OnHoverExit);
     }
 
-    [System.Obsolete]
     private void Update()
     {
         if (hoveringInteractor != null) // 確保目前有 Hover 的控制器
@@ -39,21 +44,20 @@ public class PurpleGhostGameManager : MonoBehaviour
             InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
 
-            if (isPressedLeft || isPressedRight) // 任何一隻手的 Trigger 被按下
+            if ((isPressedLeft || isPressedRight) && !isSoundPlayed) // 確保音效只播放一次
             {
-                // 🔹 判斷 Hover 的物件來顯示不同的提示
                 if (hoveringInteractor.interactablesHovered.Contains(hintButton1))
                 {
                     UpdateText(LanguageManager.Instance.GetLocalizedString("PurpleGhostGreetingWords"));
-
-                    //UpdateText("歡迎來到這片神秘的仙境，冒險者！\r\n你來得正是時候，我們正需要像你這樣的勇士。愛麗絲已經喝下了縮小藥水，現在被困在某個隱秘的角落裡。我們必須找到她，幫她恢復原來的大小。\r\n\r\n你的任務是完成所有挑戰，獲得至關重要的道具，最終找到放大藥水。只有這樣，才能幫助愛麗絲擺脫困境，恢復這片世界的秩序。");
+                    PlaySound(hintSound1); // 播放 hintButton1 音效
+                    isSoundPlayed = true;  // 標記音效已經播放
                 }
                 else if (hoveringInteractor.interactablesHovered.Contains(hintButton2))
                 {
-                    //UpdateText("首先你需要找到一隻綠色的兔子並且與他對話!");
-
                     UpdateText(LanguageManager.Instance.GetLocalizedString("PurpleGhostHint"));
+                    PlaySound(hintSound2); // 播放 hintButton2 音效
                     CustomRayInteractor.EndTask(purpleGhostEndTask);
+                    isSoundPlayed = true;  // 標記音效已經播放
                 }
             }
         }
@@ -62,11 +66,13 @@ public class PurpleGhostGameManager : MonoBehaviour
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
+        isSoundPlayed = false; // 重新進入 hover 區域時重置音效播放標誌
     }
 
     private void OnHoverExit(HoverExitEventArgs args)
     {
         hoveringInteractor = null;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     private void UpdateText(string message)
@@ -78,6 +84,14 @@ public class PurpleGhostGameManager : MonoBehaviour
         else
         {
             Debug.LogError("infoTextUI 沒有設定！");
+        }
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // 播放指定音效
         }
     }
 }

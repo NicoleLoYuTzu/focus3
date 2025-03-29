@@ -28,6 +28,22 @@ public class RabbitGameManager : MonoBehaviour
 
     public CustomRayInteractor customRayInteractor;
     public GameObject rabbitGameEndTask;
+    public AudioSource audioSource;  // 🔹 音效播放元件
+    public AudioClip Clicked;     // 🔹 按下 hintButton2 時播放的音效
+    public AudioClip GameStart;     // 🔹 按下 hintButton1 時播放的音效
+    public AudioClip Success;     // 🔹 按下 hintButton1 時播放的音效
+    public AudioClip Failed;     // 🔹 按下 hintButton2 時播放的音效
+
+    private bool isSoundPlayed = false; // 是否播放過音效的標誌
+
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // 🔹 播放指定音效
+        }
+    }
 
     private void Start()
     {
@@ -48,11 +64,16 @@ public class RabbitGameManager : MonoBehaviour
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
+        isSoundPlayed = false; // 重新進入 hover 區域時重置音效播放標誌
     }
 
     private void OnHoverExit(HoverExitEventArgs args)
     {
-        hoveringInteractor = null;
+        if (hoveringInteractor == args.interactorObject)
+        {
+            hoveringInteractor = null;
+        }
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     private void Update()
@@ -86,6 +107,8 @@ public class RabbitGameManager : MonoBehaviour
 
     private void ShowHint()
     {
+        isSoundPlayed = true; // 標記音效已經播放
+        PlaySound(Clicked);
         UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitHint"));
         //UpdateText("「唉呀，真是糟透了！我剛剛弄丟了我的手套，" +
         //           "但我太餓了，腦袋轉不過來。" +
@@ -95,15 +118,14 @@ public class RabbitGameManager : MonoBehaviour
 
     private void StartGame()
     {
+        isSoundPlayed = true; // 標記音效已經播放
         // 檢查是否有 PurpleGhost 任務
         if (customRayInteractor.completedTasks.ContainsKey("PurpleGhost") && customRayInteractor.completedTasks["PurpleGhost"] == true)
         {
             // 如果 PurpleGhost 任務已經完成，顯示「任務開始」
-
-            UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameStart"));
-
             //UpdateText("任務開始！快開始找下一個物品吧！");
-
+            UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameStart"));
+            PlaySound(GameStart);
             if (targetObject != null)
             {
                 targetObject.SetActive(true); // 顯示目標物件
@@ -115,6 +137,8 @@ public class RabbitGameManager : MonoBehaviour
         }
         else
         {
+
+            PlaySound(Failed);
             // 如果 PurpleGhost 任務未完成，提示玩家去找紫色精靈
             //UpdateText("你應該先去找某位紫色的東東? 好像在某個角落");
             UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameCannotStart"));
@@ -130,17 +154,20 @@ public class RabbitGameManager : MonoBehaviour
 
     private void EndGame()
     {
+        isSoundPlayed = true; // 標記音效已經播放
         if (allItemsPlaced) // 確保所有物品已放置
         {
             Debug.Log("所有物品收集完成，觸發結束動作！");
             DoAction();
+
         }
         else
         {
-
+            PlaySound(Failed);
             if (!customRayInteractor.completedTasks.ContainsKey("PurpleGhost"))
             {
                 UpdateText(LanguageManager.Instance.GetLocalizedString("RabbitGameCannotStart"));
+                
             }
             else
             {
@@ -167,7 +194,7 @@ public class RabbitGameManager : MonoBehaviour
     private void DoAction()
     {
         Debug.Log("RabbitGameManager: 開始結束流程...");
-
+        PlaySound(Success);
         // 更新 NPC 對話
         //UpdateText("「哇！你真的找到所有東西了！" +
         //           "冰淇淋、甜甜圈、漢堡，我現在感覺好多了！" +
