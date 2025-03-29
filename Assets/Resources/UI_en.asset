@@ -112,7 +112,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 63636027535360
-    m_Localized: The growth potion!! Thank you!! I'm going to drink it now!
+    m_Localized: The growth potion!! Thank you!! I'm going to drink it now! You can
+      take off VR headset, Thank you!
     m_Metadata:
       m_Items: []
   - m_Id: 276347558621184
@@ -121,7 +122,8 @@ MonoBehaviour:
       isn't working properly. Hmm... If you can help me find my three favorite things\u2014an
       ice cream, a donut, and a burger\u2014once my stomach is full, maybe I'll remember
       where I left the gloves. Please, I don't have time to waste\u2014the Queen's
-      orders are not to be ignored!"
+      orders are not to be ignored!It smells so good~ The aroma of the food is all
+      around!"
     m_Metadata:
       m_Items: []
   - m_Id: 277228094025728

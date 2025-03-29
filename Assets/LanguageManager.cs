@@ -15,6 +15,13 @@ public class LanguageManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);  // 保證場景切換時不銷毀
+
+            // 這段只執行一次，不會在換場景時再次執行
+            //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "IndoorScene")
+            //{
+            //    gameObject.SetActive(false); // 讓物件在 SceneB 變為不可見
+            //}
         }
         else
         {
@@ -24,6 +31,9 @@ public class LanguageManager : MonoBehaviour
 
     private void Start()
     {
+
+    
+
         string languageCode = PlayerPrefs.GetString(selectedLanguageKey, "zh-Hans");
         SetLanguage(languageCode);
     }

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: focus3
+  productName: Alice_TeleportFunction
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -143,7 +143,6 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 11400000, guid: ec5ee6e99bdb8f547bce41f3174c4676, type: 2}
   - {fileID: 6637553933066813930, guid: 8e1cb915d0ec70f4d9a2bd1296c88bf3, type: 2}
-  - {fileID: 11400000, guid: 8f088df1f6d992044b010c0f47097f5b, type: 2}
   - {fileID: 3602595768544850620, guid: e549fa6df4c446d4d9a38d663b5f76cb, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -165,7 +164,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.focus3
+    Android: com.DefaultCompany.Alice_TeleportFunction
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -287,7 +286,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 13b3314f952566f4ea4864f1196104ac, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
