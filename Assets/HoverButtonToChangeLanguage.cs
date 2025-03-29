@@ -13,8 +13,12 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
 
+    public AudioSource audioSource;  // 音效播放元件
+    public AudioClip btnClick1;     // 按下 hintButton1 時播放的音效
+    public AudioClip btnClick2;     // 按下 hintButton2 時播放的音效
 
-  
+    private bool isSoundPlayed = false; // 是否播放過音效的標誌
+
     private void Start()
     {
       
@@ -39,7 +43,7 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
             InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
 
-            if (isPressedLeft || isPressedRight) // 任何一隻手的 Trigger 被按下
+            if ((isPressedLeft || isPressedRight) && !isSoundPlayed)
             {
                 if (hoveringInteractor.hasSelection) return; // 避免重複觸發
 
@@ -48,12 +52,24 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
                 else if (hoveringInteractor.interactablesHovered.Contains(English))
                 {
                     SetLanguageToEnglish();
+                    PlaySound(btnClick1); // 播放 hintButton1 音效
+                    isSoundPlayed = true;  // 標記音效已經播放
                 }
                 else if (hoveringInteractor.interactablesHovered.Contains(Chinese))
                 {
                     SetLanguageToChinese();
+                    PlaySound(btnClick2); // 播放 hintButton1 音效
+                    isSoundPlayed = true;  // 標記音效已經播放
                 }
             }
+        }
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // 播放指定音效
         }
     }
     // 假設有一個語言選擇按鈕
@@ -79,12 +95,14 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
     private void OnEndHoverEnter(HoverEnterEventArgs args)
     {
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     // 離開 Hover
     private void OnHoverExit(HoverExitEventArgs args)
     {
         hoveringInteractor = null;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
 }

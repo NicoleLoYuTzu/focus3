@@ -31257,6 +31257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   English: {fileID: 442979261}
   Chinese: {fileID: 1396941489}
+  audioSource: {fileID: 1776041754}
+  btnClick1: {fileID: 8300000, guid: f43f8c66d1719a74c957055039254b72, type: 3}
+  btnClick2: {fileID: 8300000, guid: f43f8c66d1719a74c957055039254b72, type: 3}
 --- !u!1 &2117181869
 GameObject:
   m_ObjectHideFlags: 0

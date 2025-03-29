@@ -85,7 +85,7 @@ public class RabbitGameManager : MonoBehaviour
             bool isPressed = false;
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressed);
 
-            if (isPressed)
+            if (isPressed && !isSoundPlayed)
             {
                 if (hoveringInteractor.hasSelection) return;
 

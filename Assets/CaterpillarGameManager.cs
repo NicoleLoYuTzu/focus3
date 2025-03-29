@@ -51,7 +51,7 @@ public class CaterpillarGameManager : MonoBehaviour
             InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
 
-            if (isPressedLeft || isPressedRight)
+            if ((isPressedLeft || isPressedRight) && !isSoundPlayed)
             {
                 Debug.Log("CaterpillarGameManager Trigger button pressed!");  // 🔹 記錄按鈕是否被按到
 
