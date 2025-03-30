@@ -15390,6 +15390,58 @@ MonoBehaviour:
     arrowAnim: {fileID: 1651028786}
   previewCanvas: {fileID: 973420878}
   UIController: {fileID: 1264026767}
+--- !u!1 &1055129226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1055129228}
+  - component: {fileID: 1055129227}
+  m_Layer: 0
+  m_Name: CloseTeleportPreviewFunction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1055129227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055129226}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8062b4cd19808f5419e0fb8a16ec09cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToDisable:
+  - {fileID: 973420878}
+  - {fileID: 1487792942}
+  - {fileID: 2072216149}
+  - {fileID: 301012397}
+  - {fileID: 1651028786}
+  - {fileID: 9097378985854621505}
+  - {fileID: 764887221}
+--- !u!4 &1055129228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055129226}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.571127, y: 3.2808418, z: 71.89681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063881068
 GameObject:
   m_ObjectHideFlags: 0
@@ -489693,6 +489745,7 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1055129228}
   - {fileID: 9014170783777442263}
   - {fileID: 2116939792}
   - {fileID: 3127728408198131895}
