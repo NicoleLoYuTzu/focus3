@@ -50,6 +50,7 @@ public class CollectibleItem : MonoBehaviour
             if ((isPressedLeft || isPressedRight) && !isSoundPlayed) // 確保音效只播放一次
             {
                 Debug.Log("Trigger pressed on Hovered Collectible: " + itemType);
+                PlaySound(clicked);
                 RedPrincessGameManager.Instance.CollectItem(itemType); // 更新數量
                 Destroy(gameObject); // 撿到後銷毀物件
             }

@@ -27,11 +27,11 @@ public class ItemPlacementZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (placedItems.Contains(other.gameObject))
-        {
-            placedItems.Remove(other.gameObject);
-            Debug.Log($"ItemPlacementZone: {other.gameObject.name} 已移除！");
-        }
+        //if (placedItems.Contains(other.gameObject))
+        //{
+        //    placedItems.Remove(other.gameObject);
+        //    Debug.Log($"ItemPlacementZone: {other.gameObject.name} 已移除！");
+        //}
     }
 
     // 返回未放置的物品
