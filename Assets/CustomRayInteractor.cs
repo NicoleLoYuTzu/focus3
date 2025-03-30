@@ -33,6 +33,7 @@ public class CustomRayInteractor : MonoBehaviour
     private CollisionHandlerRestoreBuilding[] collisionHandlers;
     public GameObject previewCanvas;
     public GameObject UIController;
+    public GameObject camera; // 定義為 GameObject 類型
 
 
 
@@ -118,12 +119,13 @@ public class CustomRayInteractor : MonoBehaviour
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             UIController.SetActive(true);
-            Vector3 rayOrigin = rayInteractor.transform.position; // 射線的原始位置
+            
+            Vector3 cameraPosition = camera.transform.position; // 這是正確的寫法
             Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
             Debug.Log("TryGetCurrent3DRaycastHit");
             // 計算路徑
-            if (NavMesh.CalculatePath(rayOrigin, hitPoint, NavMesh.AllAreas, path))
+            if (NavMesh.CalculatePath(cameraPosition, hitPoint, NavMesh.AllAreas, path))
             {
 
                 if (paraboliclineRenderer.enabled)
@@ -136,6 +138,8 @@ public class CustomRayInteractor : MonoBehaviour
             else
             {
                 lineRenderer.enabled = false; // 如果路徑無效，隱藏線
+
+                Debug.Log("IsControllerMoving not in NavMesh.CalculatePath");
             }
             // 如果射線碰到標籤為 "Building" 的物體，則更改物體的材質為透明
             if (hit.collider.CompareTag("building"))
@@ -154,6 +158,7 @@ public class CustomRayInteractor : MonoBehaviour
             int buildingLayerMask = ~(1 << LayerMask.NameToLayer("BuildingLayer"));  // 用反向操作排除 Building 層
             // 射線的方向：控制器的前進方向
             Vector3 rayDirection = rayInteractor.transform.forward;
+            Vector3 rayOrigin = rayInteractor.transform.position;
             // 建立射線
             Ray ray = new Ray(rayOrigin, rayDirection);
 

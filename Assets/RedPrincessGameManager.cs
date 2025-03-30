@@ -186,14 +186,15 @@ public class RedPrincessGameManager : MonoBehaviour
     // 當開始被觸發
     public void StartGame()
     {
+        
         PlaySound(gameStart); // 播放 hintButton1 音效
+        isSoundPlayed = true;  // 標記音效已經播放
         Debug.Log("Start Button Pressed");
         wingUI.SetActive(true);
         heartUI.SetActive(true);
         pickUp.SetActive(true);
         //customRayInteractor.StartTask(princess);
         resultText.text = LanguageManager.Instance.GetLocalizedString("RabbitGameStart");
-
     }
 
     // 當結束被觸發
@@ -217,9 +218,11 @@ public class RedPrincessGameManager : MonoBehaviour
             magicWand.SetActive(true);
             customRayInteractor.EndTask(princess);
             PlaySound(success); // 播放 hintButton1 音效
+            isSoundPlayed = true;  // 標記音效已經播放
         }
         else {
             PlaySound(fail); // 播放 hintButton1 音效
+            isSoundPlayed = true;  // 標記音效已經播放
         }
     }
 
@@ -229,6 +232,7 @@ public class RedPrincessGameManager : MonoBehaviour
 //你就別想見到愛麗絲了！我可沒時間等太久，快去快回！還愣著幹什麼？快去工作！
         resultText.text = LanguageManager.Instance.GetLocalizedString("RedPrincessGreetingWord");
         PlaySound(clicked); // 播放 hintButton1 音效
+        isSoundPlayed = true;  // 標記音效已經播放
     }
 
     // 更新物件材質

@@ -9,7 +9,6 @@ Library: D:\focus3\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=D:\focus3\Temp\Burst
---debug=Full
 --key-folder=C:/Users/1705B/Desktop/unity download/2022.3.40f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=D:\focus3\Library\Burst
 --output=D:\focus3\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
@@ -106,7 +105,6 @@ Library: D:\focus3\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
 --float-mode=Fast
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=D:\focus3\Temp\Burst
---debug=Full
 --key-folder=C:/Users/1705B/Desktop/unity download/2022.3.40f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=D:\focus3\Library\Burst
 --output=D:\focus3\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated

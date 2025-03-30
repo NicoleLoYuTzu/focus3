@@ -115,6 +115,7 @@ public class AliceGameManager : MonoBehaviour
     private void GiveHint()
     {
         PlaySound(clicked); // 播放 hintButton1 音效
+        isSoundPlayed = true;  // 標記音效已經播放
         if (infoTextUI != null)
         {
             //infoTextUI.text = "也許有什麼能讓我變回來...";
@@ -132,6 +133,7 @@ public class AliceGameManager : MonoBehaviour
                 //infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
                 infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion");
                 PlaySound(success); // 播放 hintButton1 音效
+                isSoundPlayed = true;  // 標記音效已經播放
             }
 
             StartCoroutine(ShowMessageThenGrow());
@@ -139,6 +141,7 @@ public class AliceGameManager : MonoBehaviour
         else
         {
             PlaySound(fail); // 播放 hintButton1 音效
+            isSoundPlayed = true;  // 標記音效已經播放
             infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion");
         }
     }

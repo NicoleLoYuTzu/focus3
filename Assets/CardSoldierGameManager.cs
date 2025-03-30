@@ -98,11 +98,13 @@ public class CardSoldierGameManager : MonoBehaviour
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
+        isSoundPlayed = false;  // 標記音效已經播放
     }
 
     private void OnHoverExit(HoverExitEventArgs args)
     {
         hoveringInteractor = null;
+        isSoundPlayed = false;  // 標記音效已經播放
     }
 
     private void GiveHint()
@@ -113,12 +115,14 @@ public class CardSoldierGameManager : MonoBehaviour
         //           "一旦完成，你將獲得真正的放大藥水，幫助你的朋友愛麗絲！祝你好運！");
 
         PlaySound(clicked); // 播放 hintButton1 音效
+        isSoundPlayed = true;  // 標記音效已經播放
         UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameHint"));
     }
 
     private void StartGame()
     {
         PlaySound(gameStart); // 播放 hintButton1 音效
+        isSoundPlayed = true;  // 標記音效已經播放
         Debug.Log("Game Started");
         if (gameArea != null)
         {
@@ -145,6 +149,7 @@ public class CardSoldierGameManager : MonoBehaviour
             if (heartValue == "1" && diamondValue == "12" && clubValue == "10" && spadeValue == "8")
             {
                 PlaySound(success); // 播放 hintButton1 音效
+                isSoundPlayed = true;  // 標記音效已經播放
                 UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameCompleted"));
                 potion.SetActive(true); // 讓藥水出現
                 PlayAnimation(); // 播放動畫
@@ -154,6 +159,7 @@ public class CardSoldierGameManager : MonoBehaviour
             else
             {
                 PlaySound(fail); // 播放 hintButton1 音效
+                isSoundPlayed = true;  // 標記音效已經播放
                 UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameFailed"));
             }
         }

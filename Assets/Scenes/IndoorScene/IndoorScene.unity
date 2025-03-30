@@ -2698,6 +2698,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082834179}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &164937206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1680501586, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 9014170783777442263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170691091
 GameObject:
   m_ObjectHideFlags: 0
@@ -17128,6 +17133,7 @@ MonoBehaviour:
     arrowAnim: {fileID: 786521029}
   previewCanvas: {fileID: 2027790619}
   UIController: {fileID: 1804962927}
+  camera: {fileID: 164937206}
 --- !u!1 &722798796
 GameObject:
   m_ObjectHideFlags: 0
@@ -28650,7 +28656,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1309933281}
-  - component: {fileID: 1309933282}
   - component: {fileID: 1309933283}
   m_Layer: 0
   m_Name: RedPrincessGameManager
@@ -28674,41 +28679,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3447693300215382337}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1309933282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309933280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ac350dc55318448bd5156f8430caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wingCount: 0
-  heartCount: 0
-  wingText: {fileID: 1158472805}
-  heartText: {fileID: 1577208956}
-  resultText: {fileID: 454583860332511786}
-  hintButton: {fileID: 2045640518}
-  startButton: {fileID: 1941468502}
-  endButton: {fileID: 1990009524}
-  wingUI: {fileID: 722798796}
-  heartUI: {fileID: 469290835}
-  wingMaterial: {fileID: -4262996574493526963, guid: 9ffaab2d4fb856948afe8d8968fd4ddc, type: 3}
-  heartMaterial: {fileID: 2765754955099291254, guid: 9ffaab2d4fb856948afe8d8968fd4ddc, type: 3}
-  objectsToUpdate:
-  - {fileID: 1005535822784758122}
-  - {fileID: 8761581429507374053}
-  - {fileID: 8820616389928312568}
-  - {fileID: 3230409011944800900}
-  hoveringInteractor: {fileID: 0}
-  animatedObject: {fileID: 2558260893388161687}
-  magicWand: {fileID: 1127583099}
-  customRayInteractor: {fileID: 720394172}
-  princess: {fileID: 8921839260689611235}
-  pickUp: {fileID: 3518993119739833176}
 --- !u!114 &1309933283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438097,15 +438067,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.42
+      value: 48.6
       objectReference: {fileID: 0}
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.19
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.44
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -438189,11 +438159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
