@@ -7,9 +7,9 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 
-public class GameManager : MonoBehaviour
+public class RedPrincessGameManager : MonoBehaviour
 {
-    public static GameManager Instance; // 單例模式
+    public static RedPrincessGameManager Instance; // 單例模式
 
     private int wingCount = 0;  // 翅膀數量
     private int heartCount = 0; // 愛心數量
@@ -35,12 +35,27 @@ public class GameManager : MonoBehaviour
     public CustomRayInteractor customRayInteractor;
     public GameObject princess;
 
-    public GameObject pickUp; 
+    public GameObject pickUp;
+
+    public AudioSource audioSource;  // 音效播放元件
+    public AudioClip gameStart;     // 按下 hintButton1 時播放的音效
+    public AudioClip clicked;     // 按下 hintButton1 時播放的音效
+    public AudioClip success;     // 按下 hintButton2 時播放的音效
+    public AudioClip fail;     // 按下 hintButton2 時播放的音效
+
+    private bool isSoundPlayed = false; // 是否播放過音效的標誌
 
 
     //public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
     //public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
 
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // 播放指定音效
+        }
+    }
 
     private void Awake()
     {
@@ -96,7 +111,7 @@ public class GameManager : MonoBehaviour
             InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
 
-            if (isPressedLeft || isPressedRight) // 任何一隻手的 Trigger 被按下
+            if ((isPressedLeft || isPressedRight) && !isSoundPlayed) // 確保音效只播放一次
             {
                 if (hoveringInteractor.hasSelection) return; // 避免重複觸發
 
@@ -151,23 +166,27 @@ public class GameManager : MonoBehaviour
     private void OnStartHoverEnter(HoverEnterEventArgs args)
     {
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     // 進入 Hover (結束按鈕)
     private void OnEndHoverEnter(HoverEnterEventArgs args)
     {
         hoveringInteractor = args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     // 離開 Hover
     private void OnHoverExit(HoverExitEventArgs args)
     {
         hoveringInteractor = null;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     // 當開始被觸發
     public void StartGame()
     {
+        PlaySound(gameStart); // 播放 hintButton1 音效
         Debug.Log("Start Button Pressed");
         wingUI.SetActive(true);
         heartUI.SetActive(true);
@@ -197,6 +216,10 @@ public class GameManager : MonoBehaviour
             PlayAnimation(); // 播放動畫
             magicWand.SetActive(true);
             customRayInteractor.EndTask(princess);
+            PlaySound(success); // 播放 hintButton1 音效
+        }
+        else {
+            PlaySound(fail); // 播放 hintButton1 音效
         }
     }
 
@@ -205,6 +228,7 @@ public class GameManager : MonoBehaviour
 //        我的權杖不完整了！它原本擁有三對翅膀和一顆愛心，現在全都不見了！去，把它們找回來！不然……
 //你就別想見到愛麗絲了！我可沒時間等太久，快去快回！還愣著幹什麼？快去工作！
         resultText.text = LanguageManager.Instance.GetLocalizedString("RedPrincessGreetingWord");
+        PlaySound(clicked); // 播放 hintButton1 音效
     }
 
     // 更新物件材質

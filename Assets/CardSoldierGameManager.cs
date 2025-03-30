@@ -29,6 +29,21 @@ public class CardSoldierGameManager : MonoBehaviour
     public CustomRayInteractor customRayInteractor;
     public GameObject endGameCloseCardSoldierPreview;
 
+    public AudioSource audioSource;  // 音效播放元件
+    public AudioClip gameStart;     // 按下 hintButton1 時播放的音效
+    public AudioClip clicked;     // 按下 hintButton1 時播放的音效
+    public AudioClip success;     // 按下 hintButton2 時播放的音效
+    public AudioClip fail;     // 按下 hintButton2 時播放的音效
+
+    private bool isSoundPlayed = false; // 是否播放過音效的標誌
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // 播放指定音效
+        }
+    }
+
     private void Start()
     {
         gameArea.SetActive(false);
@@ -59,7 +74,7 @@ public class CardSoldierGameManager : MonoBehaviour
             InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
 
-            if (isPressedLeft || isPressedRight) // 任何一隻手的 Trigger 被按下
+            if ((isPressedLeft || isPressedRight) && !isSoundPlayed) // 確保音效只播放一次
             {
                 if (hoveringInteractor.hasSelection) return; // 避免重複觸發
 
@@ -97,12 +112,13 @@ public class CardSoldierGameManager : MonoBehaviour
         //           "找到每張牌後，依照順序將數字輸入控制台。\n" +
         //           "一旦完成，你將獲得真正的放大藥水，幫助你的朋友愛麗絲！祝你好運！");
 
-
+        PlaySound(clicked); // 播放 hintButton1 音效
         UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameHint"));
     }
 
     private void StartGame()
     {
+        PlaySound(gameStart); // 播放 hintButton1 音效
         Debug.Log("Game Started");
         if (gameArea != null)
         {
@@ -128,6 +144,7 @@ public class CardSoldierGameManager : MonoBehaviour
 
             if (heartValue == "1" && diamondValue == "12" && clubValue == "10" && spadeValue == "8")
             {
+                PlaySound(success); // 播放 hintButton1 音效
                 UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameCompleted"));
                 potion.SetActive(true); // 讓藥水出現
                 PlayAnimation(); // 播放動畫
@@ -136,6 +153,7 @@ public class CardSoldierGameManager : MonoBehaviour
             }
             else
             {
+                PlaySound(fail); // 播放 hintButton1 音效
                 UpdateText(LanguageManager.Instance.GetLocalizedString("CardSoldierGameFailed"));
             }
         }

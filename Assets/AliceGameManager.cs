@@ -16,21 +16,37 @@ public class AliceGameManager : MonoBehaviour
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable endButton; // 結束按鈕
 
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor; // 紀錄 Hover 的控制器
+    public AudioSource audioSource;  // 音效播放元件
+    public AudioClip clicked;     // 按下 hintButton1 時播放的音效
+    public AudioClip success;     // 按下 hintButton2 時播放的音效
+    public AudioClip fail;     // 按下 hintButton2 時播放的音效
+
+    private bool isSoundPlayed = false; // 是否播放過音效的標誌
+
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // 播放指定音效
+        }
+    }
 
     private void Start()
     {
-       
+
 
         // 綁定 Hover 事件到提示按鈕
         if (hintButton != null)
         {
             hintButton.hoverEntered.AddListener(OnHintHoverEnter);
+            hintButton.hoverExited.AddListener(OnHoverExit);
         }
-
         // 綁定 Hover 事件到結束按鈕
         if (endButton != null)
         {
             endButton.hoverEntered.AddListener(OnEndHoverEnter);
+            endButton.hoverExited.AddListener(OnHoverExit);
         }
     }
 
@@ -48,17 +64,19 @@ public class AliceGameManager : MonoBehaviour
             InputHelpers.IsPressed(leftHandDevice, InputHelpers.Button.Trigger, out isPressedLeft);
             InputHelpers.IsPressed(rightHandDevice, InputHelpers.Button.Trigger, out isPressedRight);
 
-            if (isPressedLeft || isPressedRight) // 任何一隻手的 Trigger 被按下
+            if ((isPressedLeft || isPressedRight) && !isSoundPlayed) // 確保音效只播放一次
             {
                 if (hoveringInteractor.hasSelection) return; // 避免重複觸發
 
                 // 判斷 Hover 的物件來決定要執行哪個按鈕
                 if (hoveringInteractor.interactablesHovered.Contains(endButton))
                 {
+
                     EndGame();
                 }
                 else if (hoveringInteractor.interactablesHovered.Contains(hintButton))
                 {
+                   
                     GiveHint();
                 }
             }
@@ -73,6 +91,7 @@ public class AliceGameManager : MonoBehaviour
             //infoTextUI.text = "為什麼我變得那麼小... 幫我想想辦法";
             infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceGreetingWords");
         }
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     private void OnEndHoverEnter(HoverEnterEventArgs args)
@@ -82,16 +101,25 @@ public class AliceGameManager : MonoBehaviour
         {
             //infoTextUI.text = "你帶來藥水了嗎?";
             infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion");
+
         }
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
+    }
+
+    private void OnHoverExit(HoverExitEventArgs args)
+    {
+        hoveringInteractor = null;
+        isSoundPlayed = false; // 離開 hover 區域時重置音效播放標誌
     }
 
     private void GiveHint()
     {
+        PlaySound(clicked); // 播放 hintButton1 音效
         if (infoTextUI != null)
         {
             //infoTextUI.text = "也許有什麼能讓我變回來...";
             infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceAskingToTurnBack");
-            
+
         }
     }
 
@@ -103,13 +131,14 @@ public class AliceGameManager : MonoBehaviour
             {
                 //infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
                 infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion");
-
+                PlaySound(success); // 播放 hintButton1 音效
             }
 
             StartCoroutine(ShowMessageThenGrow());
         }
         else
         {
+            PlaySound(fail); // 播放 hintButton1 音效
             infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion");
         }
     }
