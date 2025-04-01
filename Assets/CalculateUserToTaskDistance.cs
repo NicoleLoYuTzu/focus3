@@ -37,33 +37,88 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         ArrangePanels(parentContainer);
     }
 
+    //private void ArrangePanels(Transform container)
+    //{
+    //    int panelCount = container.childCount;
+    //    Debug.Log($"Container: {container.name}, Number of child objects: {panelCount}");
+
+    //    if (panelCount == 0) return;
+
+    //    float totalWidth = (panelCount - 1) * spacing;
+    //    float startX = -totalWidth / 2f;
+
+    //    for (int i = 0; i < panelCount; i++)
+    //    {
+    //        Transform panel = container.GetChild(i);
+    //        Vector3 newPosition = new Vector3(startX + (i * spacing), 0, 0);
+
+    //        // **只有當位置確實變動時才更新**
+    //        if (panel.localPosition != newPosition)
+    //        {
+    //            panel.localPosition = newPosition;
+    //            Debug.Log($"UI Panel {panel.name} set position: {panel.localPosition}");
+    //        }
+    //        else
+    //        {
+    //            Debug.Log($"UI Panel {panel.name} position unchanged: {panel.localPosition}");
+    //        }
+    //    }
+    //}
+
     private void ArrangePanels(Transform container)
     {
         int panelCount = container.childCount;
-        Debug.Log($"Container: {container.name}, Number of child objects: {panelCount}");
-
         if (panelCount == 0) return;
 
-        float totalWidth = (panelCount - 1) * spacing;
-        float startX = -totalWidth / 2f;
+        // 定義不同的間距
+        float upperPanelSpacing = 300f; // 上排面板的間距
+        float lowerPanelSpacing = 250f; // 下排面板的間距
+        float verticalSpacing = 200f;   // 用於上下排的Y軸間距
+        List<Transform> upperPanels = new List<Transform>();
+        List<Transform> lowerPanels = new List<Transform>();
 
+        // 根據面板名稱分類
         for (int i = 0; i < panelCount; i++)
         {
             Transform panel = container.GetChild(i);
-            Vector3 newPosition = new Vector3(startX + (i * spacing), 0, 0);
+            string panelName = panel.name.ToLower();
 
-            // **只有當位置確實變動時才更新**
-            if (panel.localPosition != newPosition)
+            // 根據面板名稱判斷是否是下排面板（例如包含"wing"或"heart"的名稱）
+            if (panelName.Contains("wing") || panelName.Contains("heart"))
             {
-                panel.localPosition = newPosition;
-                Debug.Log($"UI Panel {panel.name} set position: {panel.localPosition}");
+                lowerPanels.Add(panel); // 下排面板
             }
             else
             {
-                Debug.Log($"UI Panel {panel.name} position unchanged: {panel.localPosition}");
+                upperPanels.Add(panel); // 上排面板
             }
         }
+
+        // 排列上排面板
+        float upperTotalWidth = (upperPanels.Count - 1) * upperPanelSpacing;
+        float upperStartX = -upperTotalWidth / 2f;
+
+        for (int i = 0; i < upperPanels.Count; i++)
+        {
+            Transform panel = upperPanels[i];
+            Vector3 newPosition = new Vector3(upperStartX + (i * upperPanelSpacing), 0, 0);
+            panel.localPosition = newPosition;
+        }
+
+        // 排列下排面板
+        float lowerTotalWidth = (lowerPanels.Count - 1) * lowerPanelSpacing;
+        float lowerStartX = -lowerTotalWidth / 2f;
+
+        // 使用較大Y軸偏移，避免上下排重疊
+        for (int i = 0; i < lowerPanels.Count; i++)
+        {
+            Transform panel = lowerPanels[i];
+            Vector3 newPosition = new Vector3(lowerStartX + (i * lowerPanelSpacing), -verticalSpacing, 0); // 設定下排 Y 軸位置
+            panel.localPosition = newPosition;
+        }
     }
+
+
 
     private string GetFrontOrBack(Vector3 userPosition, Vector3 objectPosition)
     {

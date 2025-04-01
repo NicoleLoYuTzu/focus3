@@ -12,6 +12,7 @@ public class CollectibleItem : MonoBehaviour
     public AudioClip clicked;     // 按下 hintButton1 時播放的音效
 
     private bool isSoundPlayed = false; // 是否播放過音效的標誌
+    public CustomRayInteractor customRayInteractor;
 
     private void Start()
     {
@@ -52,7 +53,9 @@ public class CollectibleItem : MonoBehaviour
                 Debug.Log("Trigger pressed on Hovered Collectible: " + itemType);
                 PlaySound(clicked);
                 RedPrincessGameManager.Instance.CollectItem(itemType); // 更新數量
-                Destroy(gameObject); // 撿到後銷毀物件
+                //Destroy(gameObject); // 撿到後銷毀物件
+                gameObject.SetActive(false);
+                customRayInteractor.EndTask(gameObject);
             }
         }
     }
