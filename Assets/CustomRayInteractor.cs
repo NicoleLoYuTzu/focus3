@@ -116,6 +116,10 @@ public class CustomRayInteractor : MonoBehaviour
 
     void Update()
     {
+        if (!paraboliclineRenderer.enabled)
+        {
+            UIController.SetActive(false);
+        }
 
         if (!paraboliclineRenderer.enabled && !shouldRestoreBuildings)
         {
@@ -123,7 +127,7 @@ public class CustomRayInteractor : MonoBehaviour
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
             HideAllUI();
-         
+
             if (!previewCanvas.activeSelf)
             {
                 foreach (GameObject building in allBuildings)
@@ -410,7 +414,6 @@ public class CustomRayInteractor : MonoBehaviour
 
     public void HideAllUI()
     {
-        UIController.SetActive(false);
         // 确保所有 UI 元素最开始是隐藏的
         foreach (var uiPair in targetObjectsWithUI)
         {

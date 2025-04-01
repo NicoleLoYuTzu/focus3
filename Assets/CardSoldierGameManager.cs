@@ -146,7 +146,8 @@ public class CardSoldierGameManager : MonoBehaviour
 
             Debug.Log($"Heart: {heartValue}, Diamond: {diamondValue}, Club: {clubValue}, Spade: {spadeValue}");
 
-            if (heartValue == "1" && diamondValue == "12" && clubValue == "10" && spadeValue == "8")
+            //8 6 5  10
+            if (heartValue == "5" && diamondValue == "6" && clubValue == "10" && spadeValue == "8")
             {
                 PlaySound(success); // 播放 hintButton1 音效
                 isSoundPlayed = true;  // 標記音效已經播放
