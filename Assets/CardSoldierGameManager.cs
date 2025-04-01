@@ -28,6 +28,10 @@ public class CardSoldierGameManager : MonoBehaviour
     public GameObject wandCornerClose;
     public CustomRayInteractor customRayInteractor;
     public GameObject endGameCloseCardSoldierPreview;
+    public GameObject endCard1;
+    public GameObject endCard2;
+    public GameObject endCard3;
+    public GameObject endCard4;
 
     public AudioSource audioSource;  // 音效播放元件
     public AudioClip gameStart;     // 按下 hintButton1 時播放的音效
@@ -156,6 +160,10 @@ public class CardSoldierGameManager : MonoBehaviour
                 PlayAnimation(); // 播放動畫
                 potionShowCorner.SetActive(true);
                 customRayInteractor.EndTask(endGameCloseCardSoldierPreview);
+                customRayInteractor.EndTask(endCard1);
+                customRayInteractor.EndTask(endCard2);
+                customRayInteractor.EndTask(endCard3);
+                customRayInteractor.EndTask(endCard4);
             }
             else
             {

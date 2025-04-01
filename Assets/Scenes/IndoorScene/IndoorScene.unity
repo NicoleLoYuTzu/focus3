@@ -24854,6 +24854,10 @@ MonoBehaviour:
   wandCornerClose: {fileID: 1127583099}
   customRayInteractor: {fileID: 720394172}
   endGameCloseCardSoldierPreview: {fileID: 455713969}
+  endCard1: {fileID: 727707702}
+  endCard2: {fileID: 1928228040}
+  endCard3: {fileID: 1708711636}
+  endCard4: {fileID: 205964204}
   audioSource: {fileID: 1216817518}
   gameStart: {fileID: 8300000, guid: 73440e29327678043929ee4aee5c6fd4, type: 3}
   clicked: {fileID: 8300000, guid: f43f8c66d1719a74c957055039254b72, type: 3}
