@@ -144,14 +144,14 @@ public class ParabolicLineCircle : MonoBehaviour
                 continue;
             }
 
-            // **如果 uiPanel 名稱包含 "wing", "heart", "card"，則不創建球體，直接跳過**
-            if (targetUIPairDetail.uiPanel.name.Contains("wing") ||
-                targetUIPairDetail.uiPanel.name.Contains("heart") ||
-                targetUIPairDetail.uiPanel.name.Contains("card"))
-            {
-                Log($"ParabolicLineCircle: Skipping ball creation for {targetUIPairDetail.uiPanel.name}");
-                continue; // 直接跳過這次迴圈，不執行球體生成
-            }
+            //// **如果 uiPanel 名稱包含 "wing", "heart", "card"，則不創建球體，直接跳過**
+            //if (targetUIPairDetail.uiPanel.name.Contains("wing") ||
+            //    targetUIPairDetail.uiPanel.name.Contains("heart") ||
+            //    targetUIPairDetail.uiPanel.name.Contains("card"))
+            //{
+            //    Log($"ParabolicLineCircle: Skipping ball creation for {targetUIPairDetail.uiPanel.name}");
+            //    continue; // 直接跳過這次迴圈，不執行球體生成
+            //}
 
             Vector3 uiWorldPosition = Vector3.zero;
             Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
@@ -342,7 +342,7 @@ public class ParabolicLineCircle : MonoBehaviour
 
         // 設定線條的起點、終點
         newLineRenderer.positionCount = 2;
-       
+
 
         // **設置首端粗、末端細**
         newLineRenderer.startWidth = 0.08f; // 線的起點較粗
@@ -353,7 +353,19 @@ public class ParabolicLineCircle : MonoBehaviour
         newLineRenderer.startColor = transparentWhite;
         newLineRenderer.endColor = new Color(1f, 1f, 1f, 0.2f); // 末端更透明
 
-      
+        if (uiPanel.name.Contains("wing") ||
+            uiPanel.name.Contains("heart") ||
+                uiPanel.name.Contains("card"))
+        {
+            // Set finer line width for wings or hearts
+            newLineRenderer.startWidth = 0.05f; // Thinner at the start
+            newLineRenderer.endWidth = 0.01f;   // Thinner at the end
+
+            // Set a different color (e.g., a soft pastel or other color) for wings or hearts
+            newLineRenderer.startColor = new Color(0.6f, 0.8f, 1f, 0.6f); // Light Blue with transparency
+            newLineRenderer.endColor = new Color(0.6f, 0.8f, 1f, 0.2f);   // More transparent blue at the end
+        }
+
 
         newLineRenderer.SetPosition(0, newBallInstance.transform.position);
         newLineRenderer.SetPosition(1, uiWorldPosition);
