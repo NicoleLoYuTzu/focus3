@@ -159,17 +159,32 @@ public class ParabolicLineCircle : MonoBehaviour
             newBallInstance = Instantiate(circleObject, ballPosition, Quaternion.identity);
             ballInstances.Add(newBallInstance);
 
-            // Check if the name of the UI panel contains "wing" or "heart"
-            bool hasWing = targetUIPairDetail.uiPanel.name.Contains("wing");
-            bool hasHeart = targetUIPairDetail.uiPanel.name.Contains("heart");
+            //// Check if the name of the UI panel contains "wing" or "heart"
+            //bool hasWing = targetUIPairDetail.uiPanel.name.Contains("wing");
+            //bool hasHeart = targetUIPairDetail.uiPanel.name.Contains("heart");
 
 
-            // If it contains wings or hearts, adjust line and ball size
-            if (hasWing || hasHeart)
+            //// If it contains wings or hearts, adjust line and ball size
+            //if (hasWing || hasHeart)
+            //{
+            //    // Adjust ball size to be smaller
+            //    newBallInstance.transform.localScale = new Vector3(0.0003f, 0.0003f, 0.0003f);  // Make the ball smaller
+            //}
+            // Check if the panel contains "wing" or "heart" in the name
+            if (targetUIPairDetail.uiPanel.name.Contains("wing") ||
+                targetUIPairDetail.uiPanel.name.Contains("heart") ||
+                    targetUIPairDetail.uiPanel.name.Contains("card"))
             {
-                // Adjust ball size to be smaller
-                newBallInstance.transform.localScale = new Vector3(0.0003f, 0.0003f, 0.0003f);  // Make the ball smaller
+                //// Set finer line width for wings or hearts
+                //newLineRenderer.startWidth = 0.05f; // Thinner at the start
+                //newLineRenderer.endWidth = 0.01f;   // Thinner at the end
+
+                //// Set a different color (e.g., a soft pastel or other color) for wings or hearts
+                //newLineRenderer.startColor = new Color(0.6f, 0.8f, 1f, 0.6f); // Light Blue with transparency
+                //newLineRenderer.endColor = new Color(0.6f, 0.8f, 1f, 0.2f);   // More transparent blue at the end
+                return; // 直接結束函式，不建立 LineRenderer
             }
+
 
 
 
@@ -329,19 +344,7 @@ public class ParabolicLineCircle : MonoBehaviour
         newLineRenderer.startColor = transparentWhite;
         newLineRenderer.endColor = new Color(1f, 1f, 1f, 0.2f); // 末端更透明
 
-        // Check if the panel contains "wing" or "heart" in the name
-        if (uiPanel.name.Contains("wing") ||
-            uiPanel.name.Contains("heart"))
-        {
-            // Set finer line width for wings or hearts
-            newLineRenderer.startWidth = 0.05f; // Thinner at the start
-            newLineRenderer.endWidth = 0.01f;   // Thinner at the end
-
-            // Set a different color (e.g., a soft pastel or other color) for wings or hearts
-            newLineRenderer.startColor = new Color(0.6f, 0.8f, 1f, 0.6f); // Light Blue with transparency
-            newLineRenderer.endColor = new Color(0.6f, 0.8f, 1f, 0.2f);   // More transparent blue at the end
-        }
-
+      
 
         newLineRenderer.SetPosition(0, newBallInstance.transform.position);
         newLineRenderer.SetPosition(1, uiWorldPosition);

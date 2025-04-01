@@ -30,11 +30,11 @@ public class CustomRayInteractor : MonoBehaviour
     public Dictionary<string, bool> completedTasks = new Dictionary<string, bool>();
 
     // 用來儲存所有 CollisionHandlerRestoreBuilding 物件的列表
-    private CollisionHandlerRestoreBuilding[] collisionHandlers;
+    //private CollisionHandlerRestoreBuilding[] collisionHandlers;
     public GameObject previewCanvas;
     public GameObject UIController;
     public GameObject camera; // 定義為 GameObject 類型
-
+    private GameObject[] allBuildings;
 
 
     public void EndTask(GameObject targetObject)
@@ -51,7 +51,7 @@ public class CustomRayInteractor : MonoBehaviour
             completedTasks[npcName] = true;
         }
 
-            gameStarManager.MarkTaskComplete(completedTasks);
+        gameStarManager.MarkTaskComplete(completedTasks);
     }
 
     void Start()
@@ -69,7 +69,7 @@ public class CustomRayInteractor : MonoBehaviour
                                       // Store the CollisionHandlerRestoreBuilding references once at the start
                                       //collisionHandlers = FindObjectsOfType<CollisionHandlerRestoreBuilding>(true);
                                       // 獲取場景中所有的 CollisionHandlerRestoreBuilding 物件
-        collisionHandlers = FindObjectsOfType<CollisionHandlerRestoreBuilding>(true);
+                                      //collisionHandlers = FindObjectsOfType<CollisionHandlerRestoreBuilding>(true);
 
 
         // 確保所有 UI 元素最開始是隱藏的
@@ -82,9 +82,37 @@ public class CustomRayInteractor : MonoBehaviour
             }
         }
 
+        // 假設在這裡處理與建築物的碰撞，並儲存其 MeshRenderer
+        allBuildings = GameObject.FindGameObjectsWithTag("building");
     }
 
     private bool shouldRestoreBuildings = false; // 新增标志位
+
+    public void ChangeMaterialsToOpaque(MeshRenderer renderer)
+    {
+        foreach (Material mat in renderer.materials)
+        {
+            if (mat.name == GlassMaterialName)
+            {
+                continue;  // 如果是玻璃材質，跳過不做處理
+            }
+
+            if (mat.HasProperty("_Mode"))
+            {
+                mat.SetFloat("_Mode", 0);  // Opaque 模式
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                mat.SetInt("_ZWrite", 1);
+                mat.EnableKeyword("_ALPHATEST_ON");
+                mat.DisableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = -1;
+
+                Color color = mat.GetColor("_Color");
+                mat.SetColor("_Color", new Color(color.r, color.g, color.b, 1f));
+            }
+        }
+    }
 
     void Update()
     {
@@ -95,19 +123,34 @@ public class CustomRayInteractor : MonoBehaviour
             Debug.Log($"paraboliclineRenderer.enabled {paraboliclineRenderer.enabled}");
             parabolicLineCircle.HideUIAndBall();
             HideAllUI();
+         
             if (!previewCanvas.activeSelf)
             {
-                // 呼叫所有的 RestoreAllBuildings 方法
-                foreach (var handler in collisionHandlers)
+                foreach (GameObject building in allBuildings)
                 {
-                    handler.RestoreAllBuildings();
+                    if (building == null)
+                    {
+                        Debug.LogWarning("Warning: Found a null reference in building list!");
+                        continue;
+                    }
+
+                    if (building.TryGetComponent<MeshRenderer>(out MeshRenderer renderer))
+                    {
+                        ChangeMaterialsToOpaque(renderer);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Warning: " + building.name + " has no MeshRenderer or has already been processed!");
+                    }
                 }
-                Debug.Log($"paraboliclineRenderer Update RestoreAllBuildings");
+
             }
 
-            // 设置标志位，防止多次调用
             shouldRestoreBuildings = true;
         }
+
+
+
 
         // 如果 paraboliclineRenderer 重新启用，重置标志位
         if (paraboliclineRenderer.enabled && shouldRestoreBuildings)
@@ -119,7 +162,7 @@ public class CustomRayInteractor : MonoBehaviour
         if (IsControllerMoving() && rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             UIController.SetActive(true);
-            
+
             Vector3 cameraPosition = camera.transform.position; // 這是正確的寫法
             Vector3 hitPoint = hit.point; // 射線擊中的位置
             NavMeshPath path = new NavMeshPath();
@@ -296,7 +339,7 @@ public class CustomRayInteractor : MonoBehaviour
             }
             else
             {
-                HideMessage(uiPanel,arrowAnim); // 隐藏对应的 UI 面板
+                HideMessage(uiPanel, arrowAnim); // 隐藏对应的 UI 面板
 
                 parabolicLineCircle.OnUIPanelHiddenOrDestroyed(uiPanel);
 
@@ -375,7 +418,7 @@ public class CustomRayInteractor : MonoBehaviour
             GameObject uiElement = uiPair.uiPanel; // 获取对应的 UI 元素
             if (uiElement != null)
             {
-              
+
                 uiElement.SetActive(false); // 隐藏 UI 元素
                 arrowAnim.SetActive(false);
 

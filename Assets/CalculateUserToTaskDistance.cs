@@ -72,7 +72,7 @@ public class CalculateUserToTaskDistance : MonoBehaviour
 
         // 定義不同的間距
         float upperPanelSpacing = 300f; // 上排面板的間距
-        float lowerPanelSpacing = 250f; // 下排面板的間距
+        float lowerPanelSpacing = 150f; // 下排面板的間距
         float verticalSpacing = 200f;   // 用於上下排的Y軸間距
         List<Transform> upperPanels = new List<Transform>();
         List<Transform> lowerPanels = new List<Transform>();
@@ -81,10 +81,10 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         for (int i = 0; i < panelCount; i++)
         {
             Transform panel = container.GetChild(i);
-            string panelName = panel.name.ToLower();
+            string panelName = panel.name;
 
             // 根據面板名稱判斷是否是下排面板（例如包含"wing"或"heart"的名稱）
-            if (panelName.Contains("wing") || panelName.Contains("heart"))
+            if (panelName.Contains("wing") || panelName.Contains("heart") || panelName.Contains("card"))
             {
                 lowerPanels.Add(panel); // 下排面板
             }
