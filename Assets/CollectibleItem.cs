@@ -55,7 +55,9 @@ public class CollectibleItem : MonoBehaviour
                 RedPrincessGameManager.Instance.CollectItem(itemType); // 更新數量
                 //Destroy(gameObject); // 撿到後銷毀物件
                 gameObject.SetActive(false);
+                //移除提示物件
                 customRayInteractor.EndTask(gameObject);
+
             }
         }
     }

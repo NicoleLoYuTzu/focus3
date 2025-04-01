@@ -144,6 +144,15 @@ public class ParabolicLineCircle : MonoBehaviour
                 continue;
             }
 
+            // **如果 uiPanel 名稱包含 "wing", "heart", "card"，則不創建球體，直接跳過**
+            if (targetUIPairDetail.uiPanel.name.Contains("wing") ||
+                targetUIPairDetail.uiPanel.name.Contains("heart") ||
+                targetUIPairDetail.uiPanel.name.Contains("card"))
+            {
+                Log($"ParabolicLineCircle: Skipping ball creation for {targetUIPairDetail.uiPanel.name}");
+                continue; // 直接跳過這次迴圈，不執行球體生成
+            }
+
             Vector3 uiWorldPosition = Vector3.zero;
             Vector3 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, rectTransform.position);
             GameObject newBallInstance = null;
@@ -171,19 +180,19 @@ public class ParabolicLineCircle : MonoBehaviour
             //    newBallInstance.transform.localScale = new Vector3(0.0003f, 0.0003f, 0.0003f);  // Make the ball smaller
             //}
             // Check if the panel contains "wing" or "heart" in the name
-            if (targetUIPairDetail.uiPanel.name.Contains("wing") ||
-                targetUIPairDetail.uiPanel.name.Contains("heart") ||
-                    targetUIPairDetail.uiPanel.name.Contains("card"))
-            {
-                //// Set finer line width for wings or hearts
-                //newLineRenderer.startWidth = 0.05f; // Thinner at the start
-                //newLineRenderer.endWidth = 0.01f;   // Thinner at the end
+            //if (targetUIPairDetail.uiPanel.name.Contains("wing") ||
+            //    targetUIPairDetail.uiPanel.name.Contains("heart") ||
+            //        targetUIPairDetail.uiPanel.name.Contains("card"))
+            //{
+            //    //// Set finer line width for wings or hearts
+            //    //newLineRenderer.startWidth = 0.05f; // Thinner at the start
+            //    //newLineRenderer.endWidth = 0.01f;   // Thinner at the end
 
-                //// Set a different color (e.g., a soft pastel or other color) for wings or hearts
-                //newLineRenderer.startColor = new Color(0.6f, 0.8f, 1f, 0.6f); // Light Blue with transparency
-                //newLineRenderer.endColor = new Color(0.6f, 0.8f, 1f, 0.2f);   // More transparent blue at the end
-                return; // 直接結束函式，不建立 LineRenderer
-            }
+            //    //// Set a different color (e.g., a soft pastel or other color) for wings or hearts
+            //    //newLineRenderer.startColor = new Color(0.6f, 0.8f, 1f, 0.6f); // Light Blue with transparency
+            //    //newLineRenderer.endColor = new Color(0.6f, 0.8f, 1f, 0.2f);   // More transparent blue at the end
+            //    continue; // 直接結束函式，不建立 LineRenderer
+            //}
 
 
 
