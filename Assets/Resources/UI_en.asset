@@ -287,8 +287,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1148771640602624
-    m_Localized: By entering the correct answer, you have obtained the antidote.
-      The answer is in every room on the second floor.
+    m_Localized: The answer is in every room on the second floor.
     m_Metadata:
       m_Items: []
   - m_Id: 1149129150492672
