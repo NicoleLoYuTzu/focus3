@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 2272923}
   - component: {fileID: 2272922}
   - component: {fileID: 2272921}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview_Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 16340445}
   - component: {fileID: 16340447}
   - component: {fileID: 16340446}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 24842951}
   - component: {fileID: 24842950}
   - component: {fileID: 24842949}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview_Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 39035113}
   - component: {fileID: 39035115}
   - component: {fileID: 39035114}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 49667179}
   - component: {fileID: 49667181}
   - component: {fileID: 49667180}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: textBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1015,7 @@ GameObject:
   - component: {fileID: 92107711}
   - component: {fileID: 92107710}
   - component: {fileID: 92107712}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1449,7 @@ GameObject:
   - component: {fileID: 96710690}
   - component: {fileID: 96710692}
   - component: {fileID: 96710691}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ImageLeftRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 179400582}
   - component: {fileID: 179400584}
   - component: {fileID: 179400583}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1890,7 +1890,7 @@ GameObject:
   - component: {fileID: 184756124}
   - component: {fileID: 184756123}
   - component: {fileID: 184756122}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview1_DownerImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1994,7 +1994,7 @@ GameObject:
   - component: {fileID: 192623354}
   - component: {fileID: 192623356}
   - component: {fileID: 192623355}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2406,7 +2406,7 @@ GameObject:
   - component: {fileID: 205604014}
   - component: {fileID: 205604013}
   - component: {fileID: 205604012}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   upperDetail: {fileID: 5061248416490257506}
   raycastLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 288
   generateDetailUpperRecycleImage: {fileID: 8847400005895080963}
   targetUIPairs:
   - selectableObject: {fileID: 1288595833}
@@ -3955,7 +3955,7 @@ GameObject:
   - component: {fileID: 255447477}
   - component: {fileID: 255447476}
   - component: {fileID: 255447475}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4046,7 +4046,7 @@ GameObject:
   - component: {fileID: 257938671}
   - component: {fileID: 257938673}
   - component: {fileID: 257938672}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5101,7 +5101,7 @@ GameObject:
   - component: {fileID: 329597267}
   - component: {fileID: 329597269}
   - component: {fileID: 329597268}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: textBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5592,7 +5592,7 @@ GameObject:
   - component: {fileID: 352090720}
   - component: {fileID: 352090722}
   - component: {fileID: 352090721}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Caterpillar2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6200,7 +6200,7 @@ GameObject:
   - component: {fileID: 386026554}
   - component: {fileID: 386026553}
   - component: {fileID: 386026555}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview_Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6508,7 +6508,7 @@ GameObject:
   - component: {fileID: 395357288}
   - component: {fileID: 395357287}
   - component: {fileID: 395357286}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview_Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7048,7 +7048,7 @@ GameObject:
   - component: {fileID: 430438830}
   - component: {fileID: 430438832}
   - component: {fileID: 430438831}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Caterpillar_distance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7498,7 +7498,7 @@ GameObject:
   - component: {fileID: 446152038}
   - component: {fileID: 446152040}
   - component: {fileID: 446152039}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8088,7 +8088,7 @@ GameObject:
   - component: {fileID: 563374596}
   - component: {fileID: 563374595}
   - component: {fileID: 563374597}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview_Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8373,7 +8373,7 @@ GameObject:
   - component: {fileID: 563627680}
   - component: {fileID: 563627682}
   - component: {fileID: 563627681}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8524,7 +8524,7 @@ GameObject:
   - component: {fileID: 568370727}
   - component: {fileID: 568370729}
   - component: {fileID: 568370728}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8796,7 +8796,7 @@ GameObject:
   - component: {fileID: 624219786}
   - component: {fileID: 624219788}
   - component: {fileID: 624219787}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PurpleGhost_distance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9159,7 +9159,7 @@ GameObject:
   - component: {fileID: 664752728}
   - component: {fileID: 664752727}
   - component: {fileID: 664752729}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9539,7 +9539,7 @@ GameObject:
   - component: {fileID: 722257680}
   - component: {fileID: 722257679}
   - component: {fileID: 722257681}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9891,7 +9891,7 @@ GameObject:
   - component: {fileID: 743531652}
   - component: {fileID: 743531654}
   - component: {fileID: 743531653}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10752,7 +10752,7 @@ GameObject:
   - component: {fileID: 780018056}
   - component: {fileID: 780018055}
   - component: {fileID: 780018057}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11103,7 +11103,7 @@ GameObject:
   - component: {fileID: 785257785}
   - component: {fileID: 785257784}
   - component: {fileID: 785257786}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11563,7 +11563,7 @@ GameObject:
   - component: {fileID: 824839995}
   - component: {fileID: 824839997}
   - component: {fileID: 824839996}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11741,7 +11741,7 @@ GameObject:
   - component: {fileID: 829626795}
   - component: {fileID: 829626794}
   - component: {fileID: 829626796}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11915,7 +11915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845110155}
   - component: {fileID: 845110156}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: horizontalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13605,7 +13605,7 @@ GameObject:
   - component: {fileID: 908058812}
   - component: {fileID: 908058814}
   - component: {fileID: 908058813}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PurpleGhost2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13753,7 +13753,7 @@ GameObject:
   - component: {fileID: 926808191}
   - component: {fileID: 926808192}
   - component: {fileID: 926808193}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Caterpillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13797,7 +13797,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -13915,7 +13915,7 @@ MonoBehaviour:
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!114 &926808188
 MonoBehaviour:
@@ -14071,7 +14071,7 @@ GameObject:
   - component: {fileID: 928120220}
   - component: {fileID: 928120219}
   - component: {fileID: 928120221}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14245,7 +14245,7 @@ GameObject:
   - component: {fileID: 931359099}
   - component: {fileID: 931359101}
   - component: {fileID: 931359100}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14495,7 +14495,7 @@ GameObject:
   - component: {fileID: 939799183}
   - component: {fileID: 939799186}
   - component: {fileID: 939799185}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14768,7 +14768,7 @@ GameObject:
   - component: {fileID: 971970783}
   - component: {fileID: 971970782}
   - component: {fileID: 971970784}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14944,7 +14944,7 @@ GameObject:
   - component: {fileID: 973420882}
   - component: {fileID: 973420881}
   - component: {fileID: 973420880}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14960,8 +14960,8 @@ RectTransform:
   m_GameObject: {fileID: 973420878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.54999995}
-  m_LocalScale: {x: 0.0005880419, y: 0.0005880419, z: 0.0005880419}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.00030000004, y: 0.00030000004, z: 0.00030000004}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1989123460}
   - {fileID: 4170998599299717358}
@@ -15049,7 +15049,7 @@ GameObject:
   - component: {fileID: 999112815}
   - component: {fileID: 999112817}
   - component: {fileID: 999112816}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: textBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15562,7 +15562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1070959732}
   - component: {fileID: 1070959733}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15635,7 +15635,7 @@ GameObject:
   - component: {fileID: 1081737253}
   - component: {fileID: 1081737255}
   - component: {fileID: 1081737254}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15805,7 +15805,7 @@ GameObject:
   - component: {fileID: 1095951073}
   - component: {fileID: 1095951072}
   - component: {fileID: 1095951074}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16088,7 +16088,7 @@ GameObject:
   - component: {fileID: 1104632676}
   - component: {fileID: 1104632675}
   - component: {fileID: 1104632674}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview_Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16371,7 +16371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1118806076}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16547,13 +16547,13 @@ GameObject:
   - component: {fileID: 1125975345}
   - component: {fileID: 1125975344}
   - component: {fileID: 1125975343}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1125975342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16642,7 +16642,7 @@ GameObject:
   - component: {fileID: 1137678892}
   - component: {fileID: 1137678893}
   - component: {fileID: 1137678894}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview_Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17744,7 +17744,7 @@ GameObject:
   - component: {fileID: 1194666993}
   - component: {fileID: 1194666992}
   - component: {fileID: 1194666991}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caterpillar_DownerImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17925,7 +17925,7 @@ GameObject:
   - component: {fileID: 1233533593}
   - component: {fileID: 1233533592}
   - component: {fileID: 1233533591}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhost_DownerImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18123,7 +18123,7 @@ GameObject:
   - component: {fileID: 1236160761}
   - component: {fileID: 1236160763}
   - component: {fileID: 1236160762}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18981,7 +18981,7 @@ GameObject:
   - component: {fileID: 1280465687}
   - component: {fileID: 1280465686}
   - component: {fileID: 1280465685}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview_Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19272,7 +19272,7 @@ GameObject:
   - component: {fileID: 1288595844}
   - component: {fileID: 1288595845}
   - component: {fileID: 1288595846}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PurpleGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19654,7 +19654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307496209}
   - component: {fileID: 1307496210}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: horizontalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19823,7 +19823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314654360}
   - component: {fileID: 1314654361}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: verticalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19887,7 +19887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1316412260}
   - component: {fileID: 1316412261}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: verticalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20049,7 +20049,7 @@ GameObject:
   - component: {fileID: 1323924055}
   - component: {fileID: 1323924057}
   - component: {fileID: 1323924056}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20122,7 +20122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328321770}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20266,13 +20266,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194260727}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1345809886
 GameObject:
   m_ObjectHideFlags: 0
@@ -20284,7 +20284,7 @@ GameObject:
   - component: {fileID: 1345809887}
   - component: {fileID: 1345809889}
   - component: {fileID: 1345809888}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: textBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20899,7 +20899,7 @@ GameObject:
   - component: {fileID: 1392676722}
   - component: {fileID: 1392676724}
   - component: {fileID: 1392676723}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ImageUpDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21393,7 +21393,7 @@ GameObject:
   - component: {fileID: 1423128639}
   - component: {fileID: 1423128641}
   - component: {fileID: 1423128640}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Rabbit_distance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21632,7 +21632,7 @@ GameObject:
   - component: {fileID: 1433315107}
   - component: {fileID: 1433315109}
   - component: {fileID: 1433315108}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22363,7 +22363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1478197375}
   - component: {fileID: 1478197376}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: horizontalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22743,7 +22743,7 @@ GameObject:
   - component: {fileID: 1499302395}
   - component: {fileID: 1499302397}
   - component: {fileID: 1499302396}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ImageLeftRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23077,7 +23077,7 @@ GameObject:
   - component: {fileID: 1508297470}
   - component: {fileID: 1508297472}
   - component: {fileID: 1508297471}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ImageUpDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23616,7 +23616,7 @@ GameObject:
   - component: {fileID: 1533496400}
   - component: {fileID: 1533496399}
   - component: {fileID: 1533496401}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24219,7 +24219,7 @@ GameObject:
   - component: {fileID: 1564937432}
   - component: {fileID: 1564937434}
   - component: {fileID: 1564937433}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24470,7 +24470,7 @@ GameObject:
   - component: {fileID: 1570823874}
   - component: {fileID: 1570823873}
   - component: {fileID: 1570823872}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24688,7 +24688,7 @@ GameObject:
   - component: {fileID: 1584856204}
   - component: {fileID: 1584856203}
   - component: {fileID: 1584856202}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CaterpillarPreview3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24854,7 +24854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592780341}
   - component: {fileID: 1592780342}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: verticalLayoutGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24926,7 +24926,7 @@ GameObject:
   - component: {fileID: 1603746701}
   - component: {fileID: 1603746702}
   - component: {fileID: 1603746703}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25091,7 +25091,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 4294967295
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -25243,7 +25243,7 @@ GameObject:
   - component: {fileID: 1610426748}
   - component: {fileID: 1610426750}
   - component: {fileID: 1610426749}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25423,7 +25423,7 @@ GameObject:
   - component: {fileID: 1628518727}
   - component: {fileID: 1628518729}
   - component: {fileID: 1628518728}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26340,7 +26340,7 @@ GameObject:
   - component: {fileID: 1753562622}
   - component: {fileID: 1753562624}
   - component: {fileID: 1753562623}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26449,7 +26449,7 @@ GameObject:
   - component: {fileID: 1766839703}
   - component: {fileID: 1766839705}
   - component: {fileID: 1766839704}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Video Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27781,7 +27781,7 @@ GameObject:
   - component: {fileID: 1822867261}
   - component: {fileID: 1822867263}
   - component: {fileID: 1822867262}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Rabbit2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27868,13 +27868,13 @@ GameObject:
   - component: {fileID: 1855489938}
   - component: {fileID: 1855489937}
   - component: {fileID: 1855489936}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1855489935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27961,7 +27961,7 @@ GameObject:
   - component: {fileID: 1860072459}
   - component: {fileID: 1860072461}
   - component: {fileID: 1860072460}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: textBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28175,7 +28175,7 @@ GameObject:
   - component: {fileID: 1892148954}
   - component: {fileID: 1892148956}
   - component: {fileID: 1892148955}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: textBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28250,7 +28250,7 @@ GameObject:
   - component: {fileID: 1894604557}
   - component: {fileID: 1894604559}
   - component: {fileID: 1894604558}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ImageUpDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28983,7 +28983,7 @@ GameObject:
   - component: {fileID: 1961426733}
   - component: {fileID: 1961426735}
   - component: {fileID: 1961426734}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ImageLeftRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29261,7 +29261,7 @@ GameObject:
   - component: {fileID: 1989123460}
   - component: {fileID: 1989123462}
   - component: {fileID: 1989123461}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GrayBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29443,7 +29443,7 @@ GameObject:
   - component: {fileID: 2001910721}
   - component: {fileID: 2001910720}
   - component: {fileID: 2001910722}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RabbitPreview3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29612,7 +29612,7 @@ GameObject:
   - component: {fileID: 2037278707}
   - component: {fileID: 2037278709}
   - component: {fileID: 2037278708}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30445,7 +30445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 6
   m_Handedness: 0
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
@@ -30585,7 +30585,7 @@ MonoBehaviour:
     m_Bits: 2147486711
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
-  m_HitClosestOnly: 0
+  m_HitClosestOnly: 1
   m_HoverToSelect: 0
   m_HoverTimeToSelect: 0.5
   m_AutoDeselect: 0
@@ -30830,8 +30830,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -30855,7 +30855,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_BlockedColorGradient:
@@ -31531,7 +31531,7 @@ GameObject:
   - component: {fileID: 2132963520}
   - component: {fileID: 2132963519}
   - component: {fileID: 2132963518}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PurpleGhostPreview_Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286039,7 +286039,7 @@ GameObject:
   - component: {fileID: 8847400005895080963}
   - component: {fileID: 8847400005895080965}
   - component: {fileID: 8847400005895080964}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpperImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478610,6 +478610,10 @@ PrefabInstance:
     - target: {fileID: 2196849375614954873, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449787133337329425, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2449787133337329439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_InvalidColorGradient.atime0

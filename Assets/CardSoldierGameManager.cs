@@ -164,6 +164,7 @@ public class CardSoldierGameManager : MonoBehaviour
                 customRayInteractor.EndTask(endCard2);
                 customRayInteractor.EndTask(endCard3);
                 customRayInteractor.EndTask(endCard4);
+                gameArea.SetActive(false);
             }
             else
             {

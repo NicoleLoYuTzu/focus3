@@ -219,6 +219,7 @@ public class RedPrincessGameManager : MonoBehaviour
             customRayInteractor.EndTask(princess);
             PlaySound(success); // 播放 hintButton1 音效
             isSoundPlayed = true;  // 標記音效已經播放
+            pickUp.SetActive(false);
         }
         else {
             PlaySound(fail); // 播放 hintButton1 音效
