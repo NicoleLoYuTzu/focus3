@@ -312,6 +312,26 @@ MonoBehaviour:
       behind you.
     m_Metadata:
       m_Items: []
+  - m_Id: 7672639395098624
+    m_Localized: Pool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7672774451687424
+    m_Localized: Stair Front
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7673563119251456
+    m_Localized: 1F Backyard (Near Alice)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7673856166883328
+    m_Localized: 2F room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7674795502235648
+    m_Localized: "Grab item \u2192 red arrow"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

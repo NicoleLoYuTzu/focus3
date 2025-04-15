@@ -235,6 +235,26 @@ MonoBehaviour:
     m_Key: RedPrincessPreview2
     m_Metadata:
       m_Items: []
+  - m_Id: 7672639395098624
+    m_Key: pool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7672774451687424
+    m_Key: 1FStage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7673563119251456
+    m_Key: 1Fbackyard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7673856166883328
+    m_Key: 2Froom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7674795502235648
+    m_Key: grabItem
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
