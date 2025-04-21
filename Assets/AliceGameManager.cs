@@ -126,12 +126,13 @@ public class AliceGameManager : MonoBehaviour
 
     private void EndGame()
     {
+        Debug.Log("StartTimerAction EndTimerAction Elapsed Time: " + EndTimerAction() + " seconds");
         if (potion.activeSelf) // 確保藥水存在
         {
             if (infoTextUI != null)
             {
                 //infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
-                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion");
+                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion") + $"\nFinish time: {EndTimerAction()}  seconds";
                 PlaySound(success); // 播放 hintButton1 音效
                 isSoundPlayed = true;  // 標記音效已經播放
             }
@@ -142,9 +143,24 @@ public class AliceGameManager : MonoBehaviour
         {
             PlaySound(fail); // 播放 hintButton1 音效
             isSoundPlayed = true;  // 標記音效已經播放
-            infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion");
+            infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AskingPotion"); // 使用字符串插值
         }
     }
+
+    // 修改为返回 float 类型
+    public float EndTimerAction()
+    {
+        float elapsedTime = 0;
+
+        if (PlayerPrefs.HasKey("StartTime"))  // 检查数据是否存在
+        {
+            float startTime = PlayerPrefs.GetFloat("StartTime");  // 获取存储的时间
+            elapsedTime = Time.time - startTime;  // 计算经过的时间
+        }
+
+        return elapsedTime;  // 返回经过的时间
+    }
+
 
     private IEnumerator ShowMessageThenGrow()
     {

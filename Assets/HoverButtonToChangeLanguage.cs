@@ -12,10 +12,12 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor hoveringInteractor; // 紀錄 Hover 的控制器
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable English;  // 愛心數量顯示
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable startBtn; // 結果顯示
 
     public AudioSource audioSource;  // 音效播放元件
     public AudioClip btnClick1;     // 按下 hintButton1 時播放的音效
     public AudioClip btnClick2;     // 按下 hintButton2 時播放的音效
+    public AudioClip goSound;     // 按下 hintButton2 時播放的音效
 
     private bool isSoundPlayed = false; // 是否播放過音效的標誌
 
@@ -27,6 +29,9 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
 
         Chinese.hoverEntered.AddListener(OnEndHoverEnter);
         Chinese.hoverExited.AddListener(OnHoverExit);
+
+        startBtn.hoverEntered.AddListener(OnEndHoverEnter);
+        startBtn.hoverExited.AddListener(OnHoverExit);
     }
 
     private void Update()
@@ -61,8 +66,25 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
                     PlaySound(btnClick2); // 播放 hintButton1 音效
                     isSoundPlayed = true;  // 標記音效已經播放
                 }
+                else if (hoveringInteractor.interactablesHovered.Contains(startBtn))
+                {
+                    StartTimerAction();
+                    PlaySound(goSound); // 播放 hintButton1 音效
+                    isSoundPlayed = true;  // 標記音效已經播放
+                }
             }
         }
+    }
+
+    void StartTimerAction()
+    {
+        float startTime = Time.time;
+        Debug.Log("StartTimerAction Start Time: " + startTime);
+        PlayerPrefs.SetFloat("StartTime", startTime); // 保存数据
+        PlayerPrefs.Save();  // 确保数据被保存
+                             // 再次打印 PlayerPrefs 中的值，验证它是否保存成功
+        float savedTime = PlayerPrefs.GetFloat("StartTime");
+        Debug.Log("StartTimerAction Saved Time in PlayerPrefs: " + savedTime);
     }
 
     private void PlaySound(AudioClip clip)
