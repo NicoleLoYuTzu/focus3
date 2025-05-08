@@ -14,6 +14,10 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable Chinese; // 結果顯示
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable startBtn; // 結果顯示
 
+    public TextMeshProUGUI gameStart; // 顯示訊息的 UI
+    public TeleportDistanceTracker teleportDistanceTracker;  // 直接引用
+
+
     public AudioSource audioSource;  // 音效播放元件
     public AudioClip btnClick1;     // 按下 hintButton1 時播放的音效
     public AudioClip btnClick2;     // 按下 hintButton2 時播放的音效
@@ -69,6 +73,7 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
                 else if (hoveringInteractor.interactablesHovered.Contains(startBtn))
                 {
                     StartTimerAction();
+                    gameStart.text = "Started!!";
                     PlaySound(goSound); // 播放 hintButton1 音效
                     isSoundPlayed = true;  // 標記音效已經播放
                 }
@@ -78,6 +83,9 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
 
     void StartTimerAction()
     {
+        //CSVLogger.LogGameData(123, 4456);
+
+
         float startTime = Time.time;
         Debug.Log("StartTimerAction Start Time: " + startTime);
         PlayerPrefs.SetFloat("StartTime", startTime); // 保存数据
@@ -85,6 +93,14 @@ public class HoverButtonToChangeLanguage : MonoBehaviour
                              // 再次打印 PlayerPrefs 中的值，验证它是否保存成功
         float savedTime = PlayerPrefs.GetFloat("StartTime");
         Debug.Log("StartTimerAction Saved Time in PlayerPrefs: " + savedTime);
+
+
+        // 啟用 TeleportDistanceTracker
+        if (teleportDistanceTracker != null)
+        {
+            teleportDistanceTracker.isTrackingEnabled = true;  // 開始計算
+            Debug.Log("Teleport distance tracking is now ENABLED.");
+        }
     }
 
     private void PlaySound(AudioClip clip)

@@ -10,7 +10,7 @@ public class AliceGameManager : MonoBehaviour
     public GameObject potion; // 放大藥水物件
     public TextMeshProUGUI infoTextUI; // 顯示訊息的 UI
     public GameObject animatedObject;
-
+    public GameObject PreviewOpenOrNot;
 
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable hintButton; // 提示按鈕
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable endButton; // 結束按鈕
@@ -22,6 +22,8 @@ public class AliceGameManager : MonoBehaviour
     public AudioClip fail;     // 按下 hintButton2 時播放的音效
 
     private bool isSoundPlayed = false; // 是否播放過音效的標誌
+
+    public float totalDistance = 0f;
 
 
     private void PlaySound(AudioClip clip)
@@ -126,13 +128,23 @@ public class AliceGameManager : MonoBehaviour
 
     private void EndGame()
     {
-        Debug.Log("StartTimerAction EndTimerAction Elapsed Time: " + EndTimerAction() + " seconds");
+        float elapsedTime = EndTimerAction();
+        Debug.Log("StartTimerAction EndTimerAction Elapsed Time: " + elapsedTime + " seconds");
+        totalDistance = PlayerPrefs.GetFloat("totalDistance", 0f);  // 如果沒找到，預設為 0
+        Debug.Log($"OnTeleportEnd EndGameEndGame  | Total Distance: {totalDistance}");
+
+       
+
         if (potion.activeSelf) // 確保藥水存在
         {
             if (infoTextUI != null)
             {
                 //infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
-                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion") + $"\nFinish time: {EndTimerAction()}  seconds";
+                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion") + $"\nFinish time: {elapsedTime}  seconds"
+                    +$"\nTotal Distance: {totalDistance}";
+                // 將結果寫入 CSV
+                CSVLogger.LogGameData(elapsedTime, totalDistance, PreviewOpenOrNot);
+
                 PlaySound(success); // 播放 hintButton1 音效
                 isSoundPlayed = true;  // 標記音效已經播放
             }

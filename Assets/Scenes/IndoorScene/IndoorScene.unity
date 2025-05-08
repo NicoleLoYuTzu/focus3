@@ -1826,7 +1826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101417874}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8062b4cd19808f5419e0fb8a16ec09cb, type: 3}
   m_Name: 
@@ -19022,12 +19022,14 @@ MonoBehaviour:
   potion: {fileID: 1117038238}
   infoTextUI: {fileID: 35136940}
   animatedObject: {fileID: 1962204950034108382}
+  PreviewOpenOrNot: {fileID: 101417874}
   hintButton: {fileID: 914440494}
   endButton: {fileID: 1021978274}
   audioSource: {fileID: 1216817518}
   clicked: {fileID: 8300000, guid: f43f8c66d1719a74c957055039254b72, type: 3}
   success: {fileID: 8300000, guid: da534ce9fdcff774ebc2b647d0073f79, type: 3}
   fail: {fileID: 8300000, guid: d7e9fd9e168c7d04288c5b6aed926da7, type: 3}
+  totalDistance: 0
 --- !u!1 &643026219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2449787133337329437, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
@@ -62683,6 +62685,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customRayInteractor: {fileID: 720394172}
+--- !u!114 &2039517887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643026219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f9fce2b97adc543a9431007a752090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2043869231
 GameObject:
   m_ObjectHideFlags: 0
@@ -446758,6 +446772,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2449787133337329437, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2039517886}
+    - targetCorrespondingSourceObject: {fileID: 2449787133337329437, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2039517887}
   m_SourcePrefab: {fileID: 100100000, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
 --- !u!4 &9014170783777442264 stripped
 Transform:

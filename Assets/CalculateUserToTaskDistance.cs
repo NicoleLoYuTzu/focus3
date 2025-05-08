@@ -37,33 +37,6 @@ public class CalculateUserToTaskDistance : MonoBehaviour
         ArrangePanels(parentContainer);
     }
 
-    //private void ArrangePanels(Transform container)
-    //{
-    //    int panelCount = container.childCount;
-    //    Debug.Log($"Container: {container.name}, Number of child objects: {panelCount}");
-
-    //    if (panelCount == 0) return;
-
-    //    float totalWidth = (panelCount - 1) * spacing;
-    //    float startX = -totalWidth / 2f;
-
-    //    for (int i = 0; i < panelCount; i++)
-    //    {
-    //        Transform panel = container.GetChild(i);
-    //        Vector3 newPosition = new Vector3(startX + (i * spacing), 0, 0);
-
-    //        // **只有當位置確實變動時才更新**
-    //        if (panel.localPosition != newPosition)
-    //        {
-    //            panel.localPosition = newPosition;
-    //            Debug.Log($"UI Panel {panel.name} set position: {panel.localPosition}");
-    //        }
-    //        else
-    //        {
-    //            Debug.Log($"UI Panel {panel.name} position unchanged: {panel.localPosition}");
-    //        }
-    //    }
-    //}
 
     private void ArrangePanels(Transform container)
     {
