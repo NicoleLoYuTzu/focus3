@@ -10,7 +10,6 @@ public class AliceGameManager : MonoBehaviour
     public GameObject potion; // 放大藥水物件
     public TextMeshProUGUI infoTextUI; // 顯示訊息的 UI
     public GameObject animatedObject;
-    public GameObject PreviewOpenOrNot;
 
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable hintButton; // 提示按鈕
     public UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable endButton; // 結束按鈕
@@ -143,7 +142,7 @@ public class AliceGameManager : MonoBehaviour
                 infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion") + $"\nFinish time: {elapsedTime}  seconds"
                     +$"\nTotal Distance: {totalDistance}";
                 // 將結果寫入 CSV
-                CSVLogger.LogGameData(elapsedTime, totalDistance, PreviewOpenOrNot);
+                CSVLogger.LogGameData(elapsedTime, totalDistance);
 
                 PlaySound(success); // 播放 hintButton1 音效
                 isSoundPlayed = true;  // 標記音效已經播放

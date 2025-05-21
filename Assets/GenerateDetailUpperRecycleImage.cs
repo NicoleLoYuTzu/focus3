@@ -33,7 +33,7 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
         }
     }
 
-    public void UpdateImagesBasedOnCondition(string condition)
+    public void MultipleHint(string condition)
     {
         imagesArray.Clear();
         LogInfo($"Updating images based on condition: {condition}");
@@ -71,6 +71,44 @@ public class GenerateDetailUpperRecycleImage : MonoBehaviour
 
         GenerateImages(condition);
     }
+
+    public void SingleHint(string condition)
+    {
+        imagesArray.Clear();
+        LogInfo($"Updating images based on condition: {condition}");
+
+        if (condition == "PurpleGhost")
+        {
+            imagesArray.Add(purpleGhostSprite);
+        }
+        else if (condition == "Rabbit")
+        {
+            imagesArray.Add(rabbitSprite);
+        }
+        else if (condition == "Caterpillar")
+        {
+            imagesArray.Add(caterpillarSprite);
+        }
+        else if (condition == "RedPrincess")
+        {
+            imagesArray.Add(redprincess2dSprite);
+        }
+        else if (condition == "CardSoldier")
+        {
+            imagesArray.Add(cardSoldierSprite);
+        }
+        else if (condition == "Alice")
+        {
+            imagesArray.Add(aliceSprite);
+        }
+
+        GenerateImages(condition);
+    }
+
+
+
+
+
 
     void GenerateImages(string condition)
     {

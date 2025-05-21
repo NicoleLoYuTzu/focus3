@@ -3,6 +3,7 @@
 public class RabbitHintActivate : MonoBehaviour
 {
     public GameObject hint;
+    public TriggerAnchorToShowDetail detailManager;
 
 
     void Start() {
@@ -19,7 +20,7 @@ public class RabbitHintActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 進入觸發區，顯示提示 UI");
 
-
+            detailManager.SetCurrentTargetInRange(gameObject);
             hint.SetActive(true); // 顯示提示 UI
         }
     }
@@ -30,7 +31,7 @@ public class RabbitHintActivate : MonoBehaviour
         if (other.gameObject.CompareTag("MainCamera"))
         {
             Debug.Log("MainCamera 離開觸發區，隱藏提示 UI");
-
+            detailManager.ClearCurrentTarget();
             hint.SetActive(false); // 顯示提示 UI
         }
     }

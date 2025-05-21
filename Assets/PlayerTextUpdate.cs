@@ -5,6 +5,7 @@ public class PlayerTextUpdate : MonoBehaviour
 {
     //public TMP_Text infoText; // 使用 TextMeshPro，或改成 `public Text infoText;` 來使用舊版 UI
     public GameObject hintCanvas;
+    public TriggerAnchorToShowDetail detailManager;
 
     void Start(){
         hintCanvas.SetActive(false);
@@ -24,6 +25,7 @@ public class PlayerTextUpdate : MonoBehaviour
             //    infoText.text = "你拿到手套！通往另一世界的大門已開啟!快去探索吧!";
             //}
             hintCanvas.SetActive(true);
+            detailManager.SetCurrentTargetInRange(gameObject);
 
 
             Log("PlayerTextUpdate OnTriggerEnter");
@@ -38,6 +40,8 @@ public class PlayerTextUpdate : MonoBehaviour
             Debug.Log("MainCamera 離開觸發區，隱藏提示 UI");
 
             hintCanvas.SetActive(false);
+            detailManager.ClearCurrentTarget();
+
         }
     }
 

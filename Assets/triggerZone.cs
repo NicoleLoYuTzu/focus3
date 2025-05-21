@@ -6,6 +6,7 @@ using TMPro;
 public class TriggerZone : MonoBehaviour
 {
     public GameObject hintUI;   // 提示 UI
+    public TriggerAnchorToShowDetail detailManager;
 
     private void Start()
     {
@@ -16,6 +17,8 @@ public class TriggerZone : MonoBehaviour
             col.isTrigger = true;
         }
         hintUI.SetActive(false);
+       
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +28,7 @@ public class TriggerZone : MonoBehaviour
         {
             Debug.Log("MainCamera 進入觸發區");
             ShowUI();
+            detailManager.SetCurrentTargetInRange(gameObject);
         }
     }
 
@@ -35,6 +39,7 @@ public class TriggerZone : MonoBehaviour
         {
             Debug.Log("MainCamera 離開觸發區");
             HideUI();
+            detailManager.ClearCurrentTarget();
         }
     }
 

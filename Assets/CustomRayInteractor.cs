@@ -56,7 +56,6 @@ public class CustomRayInteractor : MonoBehaviour
 
     void Start()
     {
-
         HideAllUI();
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.startWidth = 0.1f; // 設置起始點的寬度

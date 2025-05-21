@@ -10,6 +10,8 @@ public class CardSoldierGameActivate : MonoBehaviour
     public GameObject wandUI;   // 權杖 UI (檢查是否已經獲得權杖)
     public TextMeshProUGUI infoTextUI;  // 顯示文字的 UI (需拖入 TextMeshPro 物件)
     public GameObject gameArea;
+    public TriggerAnchorToShowDetail detailManager;
+
     private void Start()
     {
         hintUI.SetActive(false);
@@ -30,6 +32,7 @@ public class CardSoldierGameActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 進入觸發區");
             ShowHintUI();
+            detailManager.SetCurrentTargetInRange(gameObject);
         }
     }
 
@@ -40,6 +43,7 @@ public class CardSoldierGameActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 離開觸發區");
             HideHintUI();
+            detailManager.ClearCurrentTarget();
         }
     }
 

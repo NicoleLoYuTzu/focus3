@@ -3,11 +3,12 @@
 public class PurpleGhostHintActivate : MonoBehaviour
 {
     public GameObject hint;
+    public TriggerAnchorToShowDetail detailManager;
     void Start()
     {
 
         hint.SetActive(false); // 顯示提示 UI
-
+       
     }
 
 
@@ -21,7 +22,7 @@ public class PurpleGhostHintActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 進入觸發區，顯示提示 UI");
 
-
+            detailManager.SetCurrentTargetInRange(gameObject);
             hint.SetActive(true); 
         }
     }
@@ -33,7 +34,8 @@ public class PurpleGhostHintActivate : MonoBehaviour
         {
             Debug.Log("MainCamera 離開觸發區，隱藏提示 UI");
 
-            hint.SetActive(false); 
+            hint.SetActive(false);
+            detailManager.ClearCurrentTarget();
         }
     }
 }

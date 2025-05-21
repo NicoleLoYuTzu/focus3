@@ -51,7 +51,7 @@ public class RaycastInteractor : MonoBehaviour
                     {
                         ShowSelectableObjectDetail(matchedPair);
                         generateDetailUpperRecycleImage.ClearExistingButtons();
-                        generateDetailUpperRecycleImage.UpdateImagesBasedOnCondition(matchedPair.selectableObject.name);
+                        generateDetailUpperRecycleImage.SingleHint(matchedPair.selectableObject.name);
                         currentSelectedObject = matchedPair.selectableObject;
                     }
                 }
