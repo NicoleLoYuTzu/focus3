@@ -4,7 +4,7 @@ using System.IO;
 public static class CSVLogger
 {
     // 改為靜態方法，但會傳遞 preview 參數
-    public static void LogGameData(float time, float distance)
+    public static void LogGameData(float time, float distance, int teleportSteps)
     {
         // 使用 Unity 提供的安全資料夾路徑，不需額外權限
         string filePath = Path.Combine(Application.persistentDataPath, "game_data.csv");
@@ -14,7 +14,8 @@ public static class CSVLogger
         {
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine("Time (seconds), Total Distance (meters), Date and Time, Preview Status"); // 加入 Preview Status 欄位
+               
+                writer.WriteLine("Time (seconds), Total Distance (meters), Teleport Steps, Date and Time, Preview Status");
             }
         }
 
@@ -24,7 +25,8 @@ public static class CSVLogger
         using (StreamWriter writer = new StreamWriter(filePath, true))
         {
             string currentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            writer.WriteLine($"{time}, {distance}, {currentTime}, {appName}");
+            writer.WriteLine($"{time}, {distance}, {teleportSteps}, {currentTime}, {appName}");
+
         }
 
         // 顯示實際儲存位置

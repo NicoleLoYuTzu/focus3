@@ -8,6 +8,7 @@ public class TeleportDistanceTrackerScene2 : MonoBehaviour
     private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor rayInteractor;
     private Vector3 lastPosition;
     private float totalDistance = 0f;
+    private int navigationCount = 0;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class TeleportDistanceTrackerScene2 : MonoBehaviour
 
         // 加載之前保存的 totalDistance
         totalDistance = PlayerPrefs.GetFloat("totalDistance", 0f);  // 如果沒找到，預設為 0
+        navigationCount = PlayerPrefs.GetInt("navigationCount", 0);
     }
 
     private void OnTeleportEnd(SelectExitEventArgs args)
@@ -28,12 +30,15 @@ public class TeleportDistanceTrackerScene2 : MonoBehaviour
         float distance = Vector3.Distance(transform.position, lastPosition);
         totalDistance += distance;
         lastPosition = transform.position;
+        // 傳送次數 +1
+        navigationCount += 1;
 
         PlayerPrefs.SetFloat("totalDistance", totalDistance); // 保存数据
+        PlayerPrefs.SetInt("navigationCount", navigationCount);
         PlayerPrefs.Save();
 
         // 輸出結果
-        Debug.Log($"OnTeleportEnd Teleport Distance: {distance} | Total Distance: {totalDistance}");
+        Debug.Log($"OnTeleportEnd Teleport Distance: {distance} | Total Distance: {totalDistance} | Navigation Count: {navigationCount}");
     }
 
     void Update()

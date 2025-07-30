@@ -27,10 +27,16 @@ public class TeleportDistanceTracker : MonoBehaviour
         lastPosition = transform.position;
 
         PlayerPrefs.SetFloat("totalDistance", totalDistance); // 保存数据
+
+        // 每次導航次數加 1
+        int navigationCount = PlayerPrefs.GetInt("navigationCount", 0);
+        navigationCount += 1;
+        PlayerPrefs.SetInt("navigationCount", navigationCount);
+
         PlayerPrefs.Save();
 
         // 輸出結果
-        Debug.Log($"OnTeleportEnd Teleport Distance: {distance} | Total Distance: {totalDistance}");
+        Debug.Log($"OnTeleportEnd Teleport Distance: {distance} | Total Distance: {totalDistance} | Navigation Count: {navigationCount}");
     }
 
     void Update()

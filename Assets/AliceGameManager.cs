@@ -23,6 +23,7 @@ public class AliceGameManager : MonoBehaviour
     private bool isSoundPlayed = false; // 是否播放過音效的標誌
 
     public float totalDistance = 0f;
+    public int totalTeleportSteps = 0; // 新增：傳送次數
 
 
     private void PlaySound(AudioClip clip)
@@ -77,7 +78,7 @@ public class AliceGameManager : MonoBehaviour
                 }
                 else if (hoveringInteractor.interactablesHovered.Contains(hintButton))
                 {
-                   
+
                     GiveHint();
                 }
             }
@@ -130,19 +131,21 @@ public class AliceGameManager : MonoBehaviour
         float elapsedTime = EndTimerAction();
         Debug.Log("StartTimerAction EndTimerAction Elapsed Time: " + elapsedTime + " seconds");
         totalDistance = PlayerPrefs.GetFloat("totalDistance", 0f);  // 如果沒找到，預設為 0
+        totalTeleportSteps = PlayerPrefs.GetInt("navigationCount", 0);  // 新增：取得步數
         Debug.Log($"OnTeleportEnd EndGameEndGame  | Total Distance: {totalDistance}");
 
-       
+
 
         if (potion.activeSelf) // 確保藥水存在
         {
             if (infoTextUI != null)
             {
-                //infoTextUI.text = "放大藥水!! 謝謝你!! 我要喝下去了!";
-                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion") + $"\nFinish time: {elapsedTime}  seconds"
-                    +$"\nTotal Distance: {totalDistance}";
+                infoTextUI.text = LanguageManager.Instance.GetLocalizedString("AliceDrinkPotion")
+    + $"\nFinish time: {elapsedTime} seconds"
+    + $"\nTotal Distance: {totalDistance}"
+    + $"\nTotal Teleport Steps: {totalTeleportSteps}";
                 // 將結果寫入 CSV
-                CSVLogger.LogGameData(elapsedTime, totalDistance);
+                CSVLogger.LogGameData(elapsedTime, totalDistance, totalTeleportSteps);
 
                 PlaySound(success); // 播放 hintButton1 音效
                 isSoundPlayed = true;  // 標記音效已經播放
